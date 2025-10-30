@@ -1,0 +1,53 @@
+### Simulation, KEIN fertiges Script
+
+
+# Definition der Pipeline-Stages
+stages:
+  - build   # Build-Phase: Projekt kompilieren / vorbereiten
+  - test    # Test-Phase: Code prüfen / Linting
+  - deploy  # Deployment-Phase: Website live stellen
+
+# Build-Job
+build-job:
+  stage: build
+  script:
+    - cd teilzeit-ausbildungsrechner  # In Projektordner wechseln
+    - echo "Building HTML/CSS/JS project..."  # Build starten
+    - echo "Copying files to dist folder..."  # Dateien ins Zielverzeichnis kopieren
+    - echo "Build complete."  # Build abgeschlossen
+
+# HTML-Linting
+lint-html-job:
+  stage: test
+  script:
+    - cd teilzeit-ausbildungsrechner  # Projektordner
+    - echo "Checking HTML for errors..."  # HTML prüfen
+    - sleep 5  # Simulation Zeitaufwand
+    - echo "No HTML issues found."  # Ergebnis
+
+# CSS-Linting
+lint-css-job:
+  stage: test
+  script:
+    - cd teilzeit-ausbildungsrechner  # Projektordner
+    - echo "Checking CSS for issues..."  # CSS prüfen
+    - sleep 5  # Simulation Zeitaufwand
+    - echo "No CSS issues found."  # Ergebnis
+
+# JavaScript-Linting
+lint-js-job:
+  stage: test
+  script:
+    - cd teilzeit-ausbildungsrechner  # Projektordner
+    - echo "Linting JavaScript code..."  # JS prüfen
+    - sleep 5  # Simulation Zeitaufwand
+    - echo "No JS issues found."  # Ergebnis
+
+# Deployment
+deploy-job:
+  stage: deploy
+  environment: production  # Zielumgebung
+  script:
+    - cd teilzeit-ausbildungsrechner  # Projektordner
+    - echo "Deploying HTML/CSS/JS website..."  # Deployment starten
+    - echo "Website successfully deployed to production."  # Erfolg
