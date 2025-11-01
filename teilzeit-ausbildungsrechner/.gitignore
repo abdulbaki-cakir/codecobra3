@@ -1,0 +1,12 @@
+# Abhängigkeiten (Riesiger Ordner, wird per 'npm install' geholt)
+node_modules/
+
+# Build-Ergebnis (Wird von 'npm run build' erstellt)
+dist/
+
+# IDE-Ordner (Persönliche Editor-Einstellungen)
+.idea/
+.vscode/
+
+# Systemdateien
+.DS_Store
