@@ -5,25 +5,26 @@ stages:
   - deploy  # Deployment-Phase: Website live stellen
 
 # Globales Skript, das VOR jedem Job ausgeführt wird
-# Wir wechseln hier zentral in den neuen Quellcode-Ordner
+# KORRIGIERT: Wir wechseln jetzt in den Haupt-Projektordner,
+# wo die package.json und die index.html liegen (nicht mehr in /src)
 before_script:
-  - cd teilzeit-ausbildungsrechner/src
+  - cd teilzeit-ausbildungsrechner
 
 # Build-Job
 build-job:
   stage: build
   script:
     # Das 'cd' ist jetzt im globalen before_script
-    - echo "Building HTML/CSS/JS project from src/..."
-    - echo "Copying files to dist folder..."
+    - echo "Building project from teilzeit-ausbildungsrechner/..."
+    - echo "Simulating build..."
+    - sleep 5
     - echo "Build complete."
 
 # HTML-Linting
 lint-html-job:
   stage: test
   script:
-    # Das 'cd' ist jetzt im globalen before_script
-    - echo "Checking HTML in src/ for errors..."
+    - echo "Checking HTML in root for errors..."
     - sleep 5
     - echo "No HTML issues found."
 
@@ -31,7 +32,6 @@ lint-html-job:
 lint-css-job:
   stage: test
   script:
-    # Das 'cd' ist jetzt im globalen before_script
     - echo "Checking CSS in src/ for issues..."
     - sleep 5
     - echo "No CSS issues found."
@@ -40,7 +40,6 @@ lint-css-job:
 lint-js-job:
   stage: test
   script:
-    # Das 'cd' ist jetzt im globalen before_script
     - echo "Linting JavaScript code in src/..."
     - sleep 5
     - echo "No JS issues found."
@@ -50,6 +49,6 @@ deploy-job:
   stage: deploy
   environment: production
   script:
-    # Das 'cd' ist jetzt im globalen before_script
-    - echo "Deploying HTML/CSS/JS website from src/..."
+    - echo "Deploying simulated website..."
+    - sleep 5
     - echo "Website successfully deployed to production."

@@ -1,20 +1,15 @@
-Dieses Projekt MUSS mit ein Webserver geöffnet werden (Hier Python benutzt)
--------------------------------------------------------------------------
+PROJEKT STARTEN
 
-Vorraussetzung: PYTHON muss installiert sein.
+VORAUSSETZUNG: NODE JS INSTALLIERT
 
--------------------------------------------------------------------------
+--------------------------------------
 
-in CMD:
+Im Projektordner, da wo sich der INDEX befindet
 
-cd /pfad/zu/deinem/projektordner   (da wo die Index sich befindet)
+npm install   (nur einmal dann nie wieder)
 
-python -m http.server
+dann npm run dev
 
--------------------------------------------------------------------------
+--------------------------------------
 
-Auf dem Browser folgendes eingeben:
-
-http://localhost:8000
-
--------------------------------------------------------------------------
+auf dem Webbrowser auf http://localhost:5173/

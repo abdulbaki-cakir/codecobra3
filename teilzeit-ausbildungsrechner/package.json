@@ -1,0 +1,19 @@
+{
+  "name": "teilzeit-ausbildungsrechner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "vite": "^7.1.12",
+    "vite-plugin-handlebars": "^2.0.0"
+  }
+}
