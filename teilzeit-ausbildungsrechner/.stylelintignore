@@ -3,3 +3,5 @@ public/
 
 # Ignoriere installierte Pakete
 node_modules/
+
+dist/
