@@ -8,10 +8,7 @@ module.exports = {
   // 'standard' prüft die Code-Logik.
   // 'prettier' (als letztes) schaltet alle Stil-Regeln von 'standard' ab,
   // die mit Prettier in Konflikt stehen.
-  extends: [
-    "standard",
-    //'prettier'
-  ],
+  extends: ["standard", "prettier"],
 
   parserOptions: {
     ecmaVersion: "latest",
