@@ -28,3 +28,119 @@
 #calculator-section button.primary:hover { background-color: #1a1a1a; }
 #calculator-section button.secondary { background-color: transparent; color: #000; }
 #calculator-section button.secondary:hover { background-color: #f4f4f4; }
+
+#calculator-section .progress-line-bg,
+#calculator-section .progress-line-fill {
+    content: '';
+    position: absolute;
+    /* KORREKTUR: Wert um 1px reduziert, um die Linie anzuheben */
+    top: calc(1rem + 21px);
+    left: 0;
+    height: 2px;
+    z-index: 0;
+    transition: width 0.4s ease-in-out;
+}
+#calculator-section .progress-line-bg {
+    background-color: #e0e0e0;
+    width: 100%;
+}
+#calculator-section .progress-line-fill {
+    background-color: #000;
+    width: 0%;
+}
+
+/* ------- NEU: Stile für die Radio-Button-Karte (Nur für Desktop) ------- */
+#calculator-section .radio-card-group {
+    /* Stellt sicher, dass die Info-Box korrekt positioniert ist */
+    align-items: flex-start;
+    padding-top: 10px; /* Kleiner Abstand oben für die Info-Box */
+}
+
+#calculator-section .radio-card-container {
+    width: 100%;
+    background-color: var(--calculator-input-bg);
+    border-radius: 20px; /* Angepasster Radius */
+    padding: 1.2rem 1.5rem;
+    color: white;
+}
+
+#calculator-section .radio-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+#calculator-section .radio-card-header h4 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+#calculator-section .radio-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem; /* Abstand zwischen den Optionen */
+}
+
+#calculator-section .radio-card-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+/* Versteckt den originalen Radio-Button */
+#calculator-section .radio-card-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Der benutzerdefinierte Radio-Button (der äußere Kreis) */
+#calculator-section .radio-card-option .radio-custom {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    margin-right: 12px;
+    position: relative;
+    transition: border-color 0.2s ease;
+}
+
+/* Der innere Punkt, der erscheint, wenn ausgewählt */
+#calculator-section .radio-card-option .radio-custom::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); /* Startet unsichtbar */
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+/* Wenn der originale Radio-Button gecheckt ist -> style den custom-Button */
+#calculator-section .radio-card-option input[type="radio"]:checked + .radio-custom::after {
+    transform: translate(-50%, -50%) scale(1); /* Macht den inneren Punkt sichtbar */
+}
+
+#calculator-section .radio-label .subtext {
+    color: #ccc;
+    font-size: 0.8em;
+    margin-left: 5px;
+}
+
+/* NEUER ABSCHNITT: Trennlinie innerhalb der Radio-Card (Desktop) */
+#calculator-section .card-line-separator {
+    /* Die Linie soll die Breite des Inhalts einnehmen */
+    width: 100%; /* Volle Breite */
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.15); /* Dezente helle Linie für Dark-Card */
+    /* Vertikaler Abstand, horizontal keine Verschiebung nötig */
+    margin: 1.2rem 0;
+}

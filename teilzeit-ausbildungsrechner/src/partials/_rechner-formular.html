@@ -64,4 +64,130 @@
     <button class="secondary" disabled>Zurück</button
     ><button class="primary">Weiter</button>
   </div>
+
+
+  <main class="calculator-form hidden" id="step-2">
+    <h2>2. Prüfe deine mögliche Verkürzung</h2>
+
+    <div class="input-group radio-card-group">
+        <div class="radio-card-container">
+            <div class="radio-card-header">
+                <i class="fas fa-birthday-cake"></i>
+                <h4>Bist du älter als 21?</h4>
+            </div>
+            <div class="radio-card-body">
+                <label class="radio-card-option">
+                    <input type="radio" name="age-radio" value="0" checked>
+                    <span class="radio-custom"></span><span class="radio-label">Nein</span>
+                </label>
+                <label class="radio-card-option">
+                    <input type="radio" name="age-radio" value="12">
+                    <span class="radio-custom"></span><span class="radio-label">Ja</span>
+                </label>
+            </div>
+        </div>
+        <div class="info-icon-wrapper"><i class="fas fa-info-circle"></i><div class="info-box">WIP</div></div>
+        <select name="age" id="age-select" style="display: none;"><option value="0" selected>Nein</option><option value="12">Ja</option></select>
+    </div>
+
+    <div class="input-group radio-card-group">
+        <div class="radio-card-container">
+            <div class="radio-card-header">
+                <i class="fas fa-graduation-cap"></i>
+                <h4>Was ist dein höchster Schulabschluss?</h4>
+            </div>
+            <div class="radio-card-body">
+                <label class="radio-card-option"><input type="radio" name="school-finish-radio" value="0" checked><span class="radio-custom"></span><span class="radio-label">Keinen der genannten</span></label>
+                <label class="radio-card-option"><input type="radio" name="school-finish-radio" value="0"><span class="radio-custom"></span><span class="radio-label">Hauptschulabschluss</span></label>
+                <label class="radio-card-option"><input type="radio" name="school-finish-radio" value="6"><span class="radio-custom"></span><span class="radio-label">Mittlere Reife</span></label>
+                <label class="radio-card-option"><input type="radio" name="school-finish-radio" value="12"><span class="radio-custom"></span><span class="radio-label">Fachhochschulreife / Abitur</span></label>
+            </div>
+        </div>
+        <div class="info-icon-wrapper"><i class="fas fa-info-circle"></i><div class="info-box">WIP</div></div>
+        <select id="school-finish" style="display: none;"><option value="0" selected>Keiner/Hauptschule</option><option value="6">Mittlere Reife</option><option value="12">Abitur/Fachhochschulreife</option></select>
+    </div>
+
+    <div class="input-group radio-card-group">
+        <div class="radio-card-container">
+            <div class="radio-card-header">
+                <i class="fas fa-briefcase"></i>
+                <h4>Hast du schon erste relevante Berufserfahrungen gesammelt (z. B. in einem Praktikum)?</h4>
+            </div>
+            <div class="radio-card-body">
+                <label class="radio-card-option"><input type="radio" name="experience-radio" value="0" checked><span class="radio-custom"></span><span class="radio-label">Nein</span></label>
+                <label class="radio-card-option"><input type="radio" name="experience-radio" value="12"><span class="radio-custom"></span><span class="radio-label">Ja</span></label>
+            </div>
+        </div>
+        <div class="info-icon-wrapper"><i class="fas fa-info-circle"></i><div class="info-box">WIP</div></div>
+        <select name="experience" id="experience-select" style="display: none;"><option value="0" selected>Nein</option><option value="12">Ja</option></select>
+    </div>
+
+    <div class="input-group radio-card-group">
+        <div class="radio-card-container">
+            <div class="radio-card-header">
+                <i class="fas fa-certificate"></i>
+                <h4>Hast du bereits eine Ausbildung abgeschlossen?</h4>
+            </div>
+            <div class="radio-card-body">
+                <label class="radio-card-option"><input type="radio" name="apprenticeship-radio" value="0" checked><span class="radio-custom"></span><span class="radio-label">Nein</span></label>
+                <label class="radio-card-option"><input type="radio" name="apprenticeship-radio" value="12"><span class="radio-custom"></span><span class="radio-label">Ja</span></label>
+            </div>
+        </div>
+        <div class="info-icon-wrapper"><i class="fas fa-info-circle"></i><div class="info-box">WIP</div></div>
+        <select name="apprenticeship" id="apprenticeship-select" style="display: none;"><option value="0" selected>Nein</option><option value="12">Ja</option></select>
+    </div>
+
+    <div class="input-group radio-card-group">
+        <div class="radio-card-container">
+            <div class="radio-card-header">
+                <i class="fas fa-university"></i>
+                <h4>Hast du passende Fächer im Studium belegt?</h4>
+            </div>
+            <div class="radio-card-body">
+                <label class="radio-card-option"><input type="radio" name="study-radio" value="0" checked><span class="radio-custom"></span><span class="radio-label">Nein</span></label>
+                <label class="radio-card-option"><input type="radio" name="study-radio" value="12"><span class="radio-custom"></span><span class="radio-label">Ja</span></label>
+            </div>
+        </div>
+        <div class="info-icon-wrapper"><i class="fas fa-info-circle"></i><div class="info-box">WIP</div></div>
+        <select name="study" id="study-select" style="display: none;"><option value="0" selected>Nein</option><option value="12">Ja</option></select>
+    </div>
+
+    <div class="input-group radio-card-group">
+        <div class="radio-card-container">
+            <div class="radio-card-header">
+                <i class="fas fa-child"></i>
+                <h4>Hast du Kinder?</h4>
+            </div>
+            <div class="radio-card-body">
+                <label class="radio-card-option"><input type="radio" name="child-care-radio" value="0" checked><span class="radio-custom"></span><span class="radio-label">Nein</span></label>
+                <label class="radio-card-option"><input type="radio" name="child-care-radio" value="12"><span class="radio-custom"></span><span class="radio-label">Ja</span></label>
+            </div>
+        </div>
+        <div class="info-icon-wrapper"><i class="fas fa-info-circle"></i><div class="info-box">WIP</div></div>
+        <select name="child-care" id="child-care-select" style="display: none;"><option value="0" selected>Nein</option><option value="12">Ja</option></select>
+    </div>
+
+    <div class="input-group radio-card-group">
+        <div class="radio-card-container">
+            <div class="radio-card-header">
+                <i class="fas fa-hands-helping"></i>
+                <h4>Pflegst du Angehörige?</h4>
+            </div>
+            <div class="radio-card-body">
+                <label class="radio-card-option"><input type="radio" name="family-care-radio" value="0" checked><span class="radio-custom"></span><span class="radio-label">Nein</span></label>
+                <label class="radio-card-option"><input type="radio" name="family-care-radio" value="12"><span class="radio-custom"></span><span class="radio-label">Ja</span></label>
+            </div>
+        </div>
+        <div class="info-icon-wrapper"><i class="fas fa-info-circle"></i><div class="info-box"> WIP
+        </div></div>
+        <select name="family-care" id="family-care-select" style="display: none;"><option value="0" selected>Nein</option><option value="12">Ja</option></select>
+    </div>
+    
+    <div class="form-buttons">
+        <button class="secondary" id="back-btn-2">Zurück</button>
+        <button class="primary" id="next-btn-2">Weiter</button>
+    </div>
+
+
+
 </main>
