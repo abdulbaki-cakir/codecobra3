@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint:html": "htmlhint .",
+    "lint:html": "htmlhint . --ignore \"dist/**\"",
     "lint:css": "stylelint \"**/*.css\"",
     "lint:js": "eslint .",
     "lint": "npm run lint:html && npm run lint:css && npm run lint:js"
