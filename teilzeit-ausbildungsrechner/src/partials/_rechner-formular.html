@@ -4,20 +4,20 @@
   <p>Wie lange dauert deine Ausbildung? Finde es hier sofort heraus.</p>
 </header>
 <div class="progress-container">
-  <div class="step active">
+  <div class="step active" data-step="1">
     <i class="fas fa-home"></i>
     <p>Start</p>
   </div>
-  <div class="step">
+  <div class="step" data-step="2">
     <i class="fas fa-sliders"></i>
     <p>Anpassung der Dauer</p>
   </div>
-  <div class="step">
+  <div class="step" data-step="3">
     <i class="fas fa-chart-line"></i>
     <p>Ergebnisse</p>
   </div>
 </div>
-<main class="calculator-form">
+<main class="calculator-form" id="step-1">
   <h2>1. Basis Daten</h2>
   <div class="input-group">
     <div class="input-container-nested">
@@ -252,3 +252,13 @@
     ><button class="primary" type="button">Weiter</button>
   </div>
 </main>
+
+<main class="calculator-form hidden" id="step-3">
+    <h2>3. Ergebnisse</h2>
+</main>
+
+<style>
+    .hidden {
+        display: none !important;
+    }
+</style>
