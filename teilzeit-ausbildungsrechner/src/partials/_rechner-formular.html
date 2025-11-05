@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <header>
   <h1>Teilzeit-Ausbildungsrechner</h1>
@@ -258,3 +259,140 @@
     <button class="primary" id="next-btn-2">Weiter</button>
   </div>
 </main>
+||||||| 3b352ee
+<!doctype html>
+<header>
+  <h1>Teilzeit-Ausbildungsrechner</h1>
+  <p>Wie lange dauert deine Ausbildung? Finde es hier sofort heraus.</p>
+</header>
+<div class="progress-container">
+  <div class="step active">
+    <i class="fas fa-home"></i>
+    <p>Start</p>
+  </div>
+  <div class="step">
+    <i class="fas fa-clock-rotate-left"></i>
+    <p>Anpassung der Dauer</p>
+  </div>
+  <div class="step">
+    <i class="fas fa-user"></i>
+    <p>Ergebnisse</p>
+  </div>
+</div>
+<main class="calculator-form">
+  <h2>1. Basis Daten</h2>
+  <div class="input-group">
+    <div class="input-container-nested">
+      <div class="input-prefix">
+        <i class="fas fa-clock"></i>Übliche Stunden pro Woche (Vollzeit)
+      </div>
+      <input type="number" id="vollzeitstunden" value="40" />
+    </div>
+    <div class="info-icon-wrapper">
+      <i class="fas fa-info-circle"></i>
+      <div class="info-box">WIP</div>
+    </div>
+  </div>
+  <div class="input-group">
+    <div class="input-container-nested">
+      <div class="input-prefix">
+        <i class="fas fa-clock"></i>Gewünschte Stunden pro Woche (Teilzeit)
+      </div>
+      <input type="text" id="wochenstunden" placeholder="20" />
+    </div>
+    <div class="info-icon-wrapper">
+      <i class="fas fa-info-circle"></i>
+      <div class="info-box">WIP</div>
+    </div>
+  </div>
+  <div class="input-group">
+    <div class="input-container-nested">
+      <div class="input-prefix">
+        <i class="fas fa-calendar-alt"></i>Dauer der Ausbildung in Monate
+        (Vollzeit)
+      </div>
+      <select id="ausbildungsdauer">
+        <option value="24">24</option>
+        <option value="36" selected>36</option>
+        <option value="42">42</option>
+      </select>
+    </div>
+    <div class="info-icon-wrapper">
+      <i class="fas fa-info-circle"></i>
+      <div class="info-box">WIP</div>
+    </div>
+  </div>
+  <div class="form-buttons">
+    <button class="secondary" disabled>Zurück</button
+    ><button class="primary">Weiter</button>
+  </div>
+</main>
+=======
+<!doctype html>
+<header>
+  <h1>Teilzeit-Ausbildungsrechner</h1>
+  <p>Wie lange dauert deine Ausbildung? Finde es hier sofort heraus.</p>
+</header>
+<div class="progress-container">
+  <div class="step active">
+    <i class="fas fa-home"></i>
+    <p>Start</p>
+  </div>
+  <div class="step">
+    <i class="fas fa-sliders"></i>
+    <p>Anpassung der Dauer</p>
+  </div>
+  <div class="step">
+    <i class="fas fa-chart-line"></i>
+    <p>Ergebnisse</p>
+  </div>
+</div>
+<main class="calculator-form">
+  <h2>1. Basis Daten</h2>
+  <div class="input-group">
+    <div class="input-container-nested">
+      <div class="input-prefix">
+        <i class="fas fa-briefcase-clock"></i>Übliche Stunden pro Woche (Vollzeit)
+      </div>
+      <input type="number" id="vollzeitstunden" value="40" />
+    </div>
+    <div class="info-icon-wrapper">
+      <i class="fas fa-info-circle"></i>
+      <div class="info-box">WIP</div>
+    </div>
+  </div>
+  <div class="input-group">
+    <div class="input-container-nested">
+      <div class="input-prefix">
+        <i class="fas fa-user-clock"></i>Gewünschte Stunden pro Woche (Teilzeit)
+      </div>
+      <input type="text" id="wochenstunden" placeholder="20" />
+    </div>
+    <div class="info-icon-wrapper">
+      <i class="fas fa-info-circle"></i>
+      <div class="info-box">WIP</div>
+    </div>
+  </div>
+  <div class="input-group">
+    <div class="input-container-nested">
+      <div class="input-prefix">
+        <i class="fas fa-calendar-days"></i>Dauer der Ausbildung in Monate
+        (Vollzeit)
+      </div>
+      <select id="ausbildungsdauer">
+        <option value="24">24</option>
+        <option value="36" selected>36</option>
+        <option value="42">42</option>
+      </select>
+    </div>
+    <div class="info-icon-wrapper">
+      <i class="fas fa-info-circle"></i>
+      <div class="info-box">WIP</div>
+    </div>
+  </div>
+  <div class="form-buttons">
+    <button class="secondary" type="button" disabled>Zurück</button
+    ><button class="primary" type="button">Weiter</button>
+  </div>
+</main>
+>>>>>>> origin/main
