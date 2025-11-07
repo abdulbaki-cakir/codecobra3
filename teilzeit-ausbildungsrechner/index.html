@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/src/css/_base.css" />
     <link rel="stylesheet" href="/src/css/_header.css" />
     <link rel="stylesheet" href="/src/css/_calculator.css" />
+    <link rel="stylesheet" href="/src/css/_footer.css" />
 
     <link
       rel="stylesheet"
@@ -15,13 +16,15 @@
     />
   </head>
   <body>
-  <div>{{> _header }}</div>
+    <div>{{> _header }}</div>
 
     <main>
       <section id="calculator-section">
-          <div class="container">{{> _rechner-formular }}</div>
+        <div class="container">{{> _rechner-formular }}</div>
       </section>
     </main>
+
+    <div>{{> _footer }}</div>
 
     <script src="/src/js/main.js" type="module"></script>
   </body>
