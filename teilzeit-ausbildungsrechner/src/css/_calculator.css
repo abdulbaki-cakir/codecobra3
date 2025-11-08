@@ -50,9 +50,9 @@
 #calculator-section .input-container-nested select { appearance: none; -webkit-appearance: none; -moz-appearance: none; padding-right: 30px; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 10px center; background-size: 16px 16px; }
 #calculator-section .info-icon-wrapper { position: relative; flex-shrink: 0; }
 #calculator-section .info-icon-wrapper .fa-info-circle { color: #000; font-size: 1.2rem; cursor: pointer; }
-#calculator-section .info-box { display: none; position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%); width: 250px; background-color: #999; color: white; padding: 1rem; border-radius: 8px; font-size: 0.9rem; text-align: left; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); z-index: 10; }
+#calculator-section .info-box { display: none; position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%); width: 250px; background-color: #8f8f8f; color: white; padding: 1rem; border-radius: 8px; font-size: 0.9rem; text-align: left; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); z-index: 10; }
 #calculator-section .info-icon-wrapper:hover .info-box { display: block; }
-#calculator-section .info-box::after { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border-width: 8px; border-style: solid; border-color: #999 transparent transparent; }
+#calculator-section .info-box::after { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border-width: 8px; border-style: solid; border-color: #8f8f8f transparent transparent; }
 #calculator-section .icon { width: 1em; height: 1em; display: inline-block; vertical-align: middle; fill: #000; stroke: none; }
 
 #calculator-section .form-buttons { display: flex; justify-content: center; gap: 1rem; margin-top: 3rem; }

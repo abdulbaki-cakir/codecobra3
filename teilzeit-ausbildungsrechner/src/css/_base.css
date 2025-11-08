@@ -1,9 +1,12 @@
+
+/* --- Base Styles --- */
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap');
 
 :root {
     --bg-color: #fff;
     --text-color: #1a1a1a;
     --text-light: #555;
+    --primary-button-bg: #0d2a57;
     --primary-button-text: #fff;
     --card-bg: rgba(255, 255, 255, 0.95);
     --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -19,16 +22,69 @@
 
 html {
     scroll-behavior: smooth;
+    height: 100%;
 }
 
 body {
     font-family: 'Manrope', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     overflow-x: hidden;
     position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+.content-section {
+    padding-top: 150px; /* Platz für den fixierten Header + Abstand */
+    padding-bottom: 50px; /* Platz über dem Footer */
+    min-height: 50vh;     /* Stellt sicher, dass der Footer unten bleibt */
+}
+
+
+/* ==========================================================================
+    Datenschutz.html
+==========================================================================
+*/
+
+
+.content-section h2 {
+    margin-top: 2em;
+    margin-bottom: 1.5em;
+}
+
+.content-section h3 {
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+.content-section p {
+    margin-bottom: 1.5em;
+}
+
+.content-section ul {
+    margin-left: 20px;
+    padding-left: 1em;
+    margin-bottom: 1.5em;
+}
+
+.content-section li {
+    margin-bottom: 1em;
+}
+
+
+.content-section li:last-child,
+.content-section p:last-child {
+    margin-bottom: 0;
 }

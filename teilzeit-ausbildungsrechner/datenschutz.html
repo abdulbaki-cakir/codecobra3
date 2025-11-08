@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Datenschutz - Teilzeit-Ausbildungsrechner</title>
+
+    <link rel="stylesheet" href="/src/css/_base.css" />
+    <link rel="stylesheet" href="/src/css/_header.css" />
+    <link rel="stylesheet" href="/src/css/_footer.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>{{> _header }}</header>
+
+    <main>
+      <div class="container content-section">
+        <h1 data-translate-key="privacy_title">Datenschutz</h1>
+        <br />
+
+        <h2 data-translate-key="privacy_subtitle_storage">
+          Verarbeitung Ihrer Eingaben
+        </h2>
+
+        <p data-translate-key="privacy_text_1">
+          Der Schutz Ihrer Daten ist uns wichtig. Alle Eingaben, die Sie in
+          diesem Teilzeit-Ausbildungsrechner tätigen, sowie die daraus
+          resultierenden Berechnungsergebnisse, werden
+          <strong>ausschließlich temporär</strong> in der sogenannten "Session
+          Storage" Ihres Webbrowsers gespeichert.
+        </p>
+
+        <h3 data-translate-key="privacy_text_2">
+          <strong>Dies bedeutet im Detail:</strong>
+        </h3>
+
+        <ul>
+          <li data-translate-key="privacy_point_1">
+            <strong>Keine Übermittlung:</strong> Ihre Daten werden zu keinem
+            Zeitpunkt an einen Server oder an Dritte übermittelt. Die gesamte
+            Verarbeitung findet ausschließlich lokal auf Ihrem Gerät statt.
+          </li>
+          <li data-translate-key="privacy_point_2">
+            <strong>Automatisches Löschen:</strong> Sobald Sie den Browser-Tab
+            oder das Browser-Fenster schließen, in dem Sie den Rechner
+            verwenden, werden
+            <strong
+              >alle Ihre Eingaben und Ergebnisse automatisch und unwiderruflich
+              gelöscht</strong
+            >.
+          </li>
+        </ul>
+
+        <p data-translate-key="privacy_text_3">
+          Diese kurzfristige Speicherung dient lediglich dazu, die
+          Funktionalität des Rechners während Ihrer aktuellen Sitzung
+          sicherzustellen, damit Ihre Eingaben beim Navigieren innerhalb der
+          Seite nicht verloren gehen.
+        </p>
+
+        <p>
+          <em
+            >Diese Website verwendet keine Cookies und keine Tracking-Tools.</em
+          >
+        </p>
+
+        <br /><br /><br />
+      </div>
+    </main>
+
+    <footer>{{> _footer }}</footer>
+
+    <script src="/src/js/main.js" type="module"></script>
+  </body>
+</html>
