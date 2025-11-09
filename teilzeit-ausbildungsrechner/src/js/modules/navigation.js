@@ -15,7 +15,7 @@ export function initializeNavigation() {
   window.addEventListener(
     "scroll",
     function () {
-      let currentScrollTop =
+      const currentScrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
 
       // Ignoriere kleine "Wackel-Scrolls"

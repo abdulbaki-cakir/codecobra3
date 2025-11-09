@@ -7,7 +7,7 @@ header {
     z-index: 100;
     padding: 15px 0;
     background-color: var(--bg-color);
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid #ccc;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 
     /* KORREKTUR: HIER IST DIE FEHLENDE TRANSITION FÜR DEN "SMOOTH FADE" */
@@ -48,14 +48,14 @@ nav {
     border-radius: 10px;
     padding: 8px 14px; /* Etwas mehr Padding */
     border: 2px solid #222;
-    box-shadow: 4px 4px 0px #222; /* Neuer "Hard Shadow" Effekt */
+    box-shadow: 4px 4px 0 #222; /* Neuer "Hard Shadow" Effekt */
     transition: all 0.15s ease-out;
 }
 
 /* Der Hover-Effekt (klar und interaktiv) */
 .logo-link:hover {
     transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0px #222;
+    box-shadow: 2px 2px 0 #222;
     background-color: #fcfcfc;
 }
 
@@ -74,7 +74,7 @@ nav {
     align-items: center;
     gap: 8px;
     background-color: #222;
-    color: #ffffff;
+    color: #fff;
     border-radius: 50px;
     padding: 10px 20px;
     font-size: 16px;
@@ -89,7 +89,7 @@ nav {
 }
 
 .nav-btn svg {
-    fill: #ffffff;
+    fill: #fff;
     width: 18px;
     height: 18px;
 }
