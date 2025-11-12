@@ -41,8 +41,6 @@ export function initializeNavigation() {
   );
 }
 
-// --- NEU INTEGRIERT ---
-
 // Modul: Steuert die Anker-Navigation im Footer über mehrere Seiten hinweg.
 export function initializeFooterNavigation() {
   // Finde alle Links im Footer, die auf einen Anker (#) verweisen.
@@ -67,31 +65,17 @@ export function initializeFooterNavigation() {
   });
 }
 
-// Modul: Sorgt dafür, dass der Rechner bei Schrittwechseln nach oben scrollt.
-export function initializeCalculatorScrolling() {
-  // Stabileres Ziel: Wir zielen auf die gesamte Rechner-Sektion.
+// Modul: Stellt die Scroll-Funktion bereit.
+// Wird vom calculatorController aufgerufen, wenn die Validierung erfolgreich war.
+export function scrollToCalculator() {
   const scrollTarget = document.getElementById("calculator-section");
-  const navigationButtons = document.querySelectorAll(
-    "#next-btn-1, #back-btn-2, #next-btn-2, #back-btn-3",
-  );
+  if (!scrollTarget) return;
 
-  // Funktion nur ausführen, wenn die benötigten Elemente auf der Seite sind.
-  if (!scrollTarget || navigationButtons.length === 0) {
-    return;
-  }
-
-  function scrollToCalculatorTop() {
-    // Eine leicht erhöhte Verzögerung (150ms), um sicherzustellen, dass
-    // alle DOM-Änderungen abgeschlossen sind.
-    setTimeout(() => {
-      scrollTarget.scrollIntoView({
-        behavior: "smooth", // 'auto' bewirkt einen sofortigen Sprung ohne Animation.
-        block: "start",
-      });
-    }, 150);
-  }
-
-  navigationButtons.forEach((button) => {
-    button.addEventListener("click", scrollToCalculatorTop);
-  });
+  // Verzögerung, um sicherzustellen, dass DOM-Änderungen abgeschlossen sind.
+  setTimeout(() => {
+    scrollTarget.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, 150);
 }

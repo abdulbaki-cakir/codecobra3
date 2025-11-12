@@ -1,0 +1,131 @@
+/* --- VALIDIERUNGS-STILE (FINALE VERSION MIT HANDY-FIX) --- */
+
+/* 1. Roter Rahmen für JEDES invalide Input-Feld */
+.input-group input.invalid {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+}
+
+/* 2. Relative Positionierung der Eltern-Container */
+.input-group {
+  position: relative;
+}
+.radio-card-container {
+  position: relative;
+  padding-bottom: 5px; /* Etwas Platz für das Popup */
+}
+
+/* 3. Allgemeiner Stil für das Popup-Fenster */
+.validation-popup {
+  position: absolute;
+  z-index: 10;
+  width: auto;
+  white-space: nowrap; /* Standard: kein Umbruch */
+  background-color: #fff; /* FIX: color-hex-length */
+  border: 1px solid #e0e0e0; /* FIX: declaration-empty-line-before */
+  border-radius: 6px;
+  padding: 10px 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center; /* FIX: declaration-empty-line-before */
+
+  /* Standardmäßig ausgeblendet */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-5px);
+  transition:
+    opacity 0.2s ease-out,
+    transform 0.2s ease-out,
+    visibility 0.2s;
+}
+
+/* Sichtbarer Zustand (wird per JS hinzugefügt) */
+.validation-popup.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* 4. Inhalt des Popups (Icon und Text) */
+.validation-popup .fa-exclamation-triangle {
+  color: #f39c12;
+  font-size: 1.1rem;
+  margin-right: 8px;
+  flex-shrink: 0; /* Verhindert, dass das Icon schrumpft */
+}
+.validation-popup span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+/* 5. Allgemeiner Pfeil nach oben (für alle Popups) */
+.validation-popup::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  right: 50px; /* Standard-Position */
+  border-width: 7px;
+  border-style: solid;
+  border-color: transparent transparent #fff; /* FIX: shorthand-property-no-redundant-values & color-hex-length */
+  z-index: 11;
+}
+.validation-popup::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  right: 49px; /* Standard-Position */
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent #e0e0e0; /* FIX: shorthand-property-no-redundant-values */
+  z-index: 10;
+}
+
+/* 6. SPEZIFISCHE POSITIONIERUNG (DESKTOP) */
+
+/* Position für Feld 1 (Vollzeit) & Feld 2 (Teilzeit) */
+#vollzeitstunden-error,
+#wochenstunden-error {
+  top: 100%;
+  right: 45px;
+  margin-top: 8px;
+}
+
+/* Position für Feld 3 (Monate in Vollzeit) */
+#vollzeit-monate-error {
+  top: auto;
+  bottom: -30px;
+  right: 45px;
+}
+
+/* 7. --- NEU: HANDY-FIX --- */
+/* Gilt für Bildschirme, die 500px oder schmaler sind */
+@media (max-width: 500px) {
+  .validation-popup {
+    /* Position am linken Rand statt am rechten */
+    left: 20px;
+    right: 20px; /* Spannt das Popup über die verfügbare Breite auf */
+    width: auto; /* Passt die Breite automatisch an */
+
+    /* Erlaube Textumbruch auf Handy */
+    white-space: normal;
+  }
+
+  /* Pfeil-Position für Handy anpassen (links statt rechts) */
+  .validation-popup::before {
+    left: 30px;
+    right: auto; /* Hebt die 'right'-Regel auf */
+  }
+  .validation-popup::after {
+    left: 29px;
+    right: auto; /* Hebt die 'right'-Regel auf */
+  }
+
+  /* Sicherstellen, dass die spezifischen Popups auch links ausgerichtet sind */
+  #vollzeitstunden-error,
+  #wochenstunden-error,
+  #vollzeit-monate-error {
+    left: 20px;
+    right: 20px;
+  }
+}

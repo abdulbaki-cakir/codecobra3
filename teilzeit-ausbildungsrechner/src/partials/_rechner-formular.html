@@ -3,10 +3,10 @@
   <h1>Teilzeit-Ausbildungs&shy;rechner</h1>
   <p>Wie lange dauert deine Ausbildung? Finde es hier sofort heraus.</p>
 </header>
+
 <div class="progress-container">
   <div class="progress-line-bg"></div>
   <div class="progress-line-fill" id="progress-line"></div>
-
   <div class="step active" data-step="1">
     <i class="fas fa-home"></i>
     <p>Start</p>
@@ -20,56 +20,137 @@
     <p>Ergebnisse</p>
   </div>
 </div>
+
 <main class="calculator-form" id="step-1">
-  <h2>1. Basis Daten</h2>
-  <div class="input-group">
-    <div class="input-container-nested">
-      <div class="input-prefix">
-        <i class="fas fa-briefcase-clock"></i>Übliche Stunden pro Woche (Vollzeit)
-      </div>
-      <input type="number" id="vollzeitstunden" value="40" />
+    <h2>1. Basis Daten</h2>
+
+    <div class="input-group">
+        <div class="input-container-nested">
+            <div class="input-prefix">
+                <i class="fas fa-briefcase-clock"></i>Übliche Stunden pro Woche
+                (Vollzeit)
+            </div>
+            <input type="number" id="vollzeitstunden" value="40" min="35" max="40" />
+        </div>
+        <div class="info-icon-wrapper">
+            <i class="fas fa-info-circle"></i>
+            <div class="info-box">
+                Standard‑Vollzeitumfang im Beruf (meist 35–40 Std/Woche).
+            </div>
+        </div>
+        <div class="validation-popup" id="vollzeitstunden-error">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span></span>
+        </div>
     </div>
-    <div class="info-icon-wrapper">
-      <i class="fas fa-info-circle"></i>
-      <div class="info-box">Standard‑Vollzeitumfang im Beruf (meist 38–40 Std/Woche).</div>
+
+    <div class="input-group">
+        <div class="input-container-nested">
+            <div class="input-prefix">
+                <i class="fas fa-user-clock"></i>Gewünschte Stunden pro Woche (Teilzeit)
+            </div>
+            <input type="number" id="wochenstunden" placeholder="20" min="20" max="35" />
+        </div>
+        <div class="info-icon-wrapper">
+            <i class="fas fa-info-circle"></i>
+            <div class="info-box">
+                Tatsächlicher geplanter Teilzeit‑Umfang in Stunden pro Woche.
+            </div>
+        </div>
+        <div class="validation-popup" id="wochenstunden-error">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span></span>
+        </div>
     </div>
-  </div>
-  <div class="input-group">
-    <div class="input-container-nested">
-      <div class="input-prefix">
-        <i class="fas fa-user-clock"></i>Gewünschte Stunden pro Woche (Teilzeit)
-      </div>
-      <input type="text" id="wochenstunden" placeholder="20" />
+
+    <div class="input-group">
+        <div class="input-container-nested">
+            <div class="input-prefix">
+                <i class="fas fa-calendar-days"></i>Dauer der Ausbildung in Monate
+                (Vollzeit)
+            </div>
+            <select id="ausbildungsdauer">
+                <option value="24">24</option>
+                <option value="36" selected>36</option>
+                <option value="42">42</option>
+            </select>
+        </div>
+        <div class="info-icon-wrapper">
+            <i class="fas fa-info-circle"></i>
+            <div class="info-box">
+                Reguläre Ausbildungsdauer laut Ordnung – ohne Teilzeit/Verkürzung.
+            </div>
+        </div>
     </div>
-    <div class="info-icon-wrapper">
-      <i class="fas fa-info-circle"></i>
-      <div class="info-box">Tatsächlicher geplanter Teilzeit‑Umfang in Stunden pro Woche.</div>
+
+    <div class="input-group radio-card-group">
+        <div class="radio-card-container">
+            <div class="radio-card-header">
+                <i class="fas fa-sync-alt"></i>
+                <h4>Wie möchtest du deine Ausbildung absolvieren?</h4>
+            </div>
+            <div class="radio-card-body">
+                <label class="radio-card-option">
+                    <input type="radio" name="part-time-start-radio" value="0" checked />
+                    <span class="radio-custom"></span
+                    ><span class="radio-label"
+                >Ich beginne <strong>direkt in Teilzeit</strong></span
+                >
+                </label>
+                <label class="radio-card-option">
+                    <input type="radio" name="part-time-start-radio" value="1" />
+                    <span class="radio-custom"></span
+                    ><span class="radio-label"
+                >Erst Vollzeit, <strong>später Teilzeit</strong></span
+                >
+                </label>
+            </div>
+
+            <div
+                    class="card-line-separator hidden"
+                    id="vollzeit-monate-separator"
+            ></div>
+
+            <div class="input-container-nested hidden" id="vollzeit-monate-input">
+                <div class="input-prefix">
+                    <i class="fas fa-calendar-alt"></i> Monate in Vollzeit
+                </div>
+                <input
+                        type="number"
+                        id="vollzeit-monate"
+                        placeholder="6"
+                        style="width: 80px"
+                        min="1"
+                />
+            </div>
+            <div class="validation-popup" id="vollzeit-monate-error">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span></span>
+            </div>
+        </div>
+        <div class="info-icon-wrapper">
+            <i class="fas fa-info-circle"></i>
+            <div class="info-box">
+                💬 Du kannst die Ausbildung in Vollzeit beginnen und später zur Teilzeit
+                wechseln. Dies kann die Genehmigung erleichtern.
+            </div>
+        </div>
+        <select
+                name="part-time-start"
+                id="part-time-start-select"
+                style="display: none"
+        >
+            <option value="0" selected>Direkt Teilzeit</option>
+            <option value="1">Wechsel später</option>
+        </select>
     </div>
-  </div>
-  <div class="input-group">
-    <div class="input-container-nested">
-      <div class="input-prefix">
-        <i class="fas fa-calendar-days"></i>Dauer der Ausbildung in Monate
-        (Vollzeit)
-      </div>
-      <select id="ausbildungsdauer">
-        <option value="24">24</option>
-        <option value="36" selected>36</option>
-        <option value="42">42</option>
-      </select>
-    </div>
-    <div class="info-icon-wrapper">
-      <i class="fas fa-info-circle"></i>
-      <div class="info-box">Reguläre Ausbildungsdauer laut Ordnung – ohne Teilzeit/Verkürzung.</div>
-    </div>
-  </div>
+
     <div class="form-buttons">
         <button class="secondary" disabled>Zurück</button>
         <button class="primary" id="next-btn-1">Weiter</button>
     </div>
 </main>
 
-<!-- Step 2 -->
 <main class="calculator-form hidden" id="step-2">
   <h2>2. Prüfe deine mögliche Verkürzung</h2>
 
@@ -82,7 +163,8 @@
       <div class="radio-card-body">
         <label class="radio-card-option">
           <input type="radio" name="age-radio" value="0" checked />
-          <span class="radio-custom"></span><span class="radio-label">Nein</span>
+          <span class="radio-custom"></span
+          ><span class="radio-label">Nein</span>
         </label>
         <label class="radio-card-option">
           <input type="radio" name="age-radio" value="12" />
@@ -90,8 +172,14 @@
         </label>
       </div>
     </div>
-    <div class="info-icon-wrapper"><i class="fas fa-info-circle"></i><div class="info-box">Ab 21 kann eine Verkürzung möglich sein; maßgeblich ist das Alter zu Ausbildungsbeginn.</div></div>
-    <select name="age" id="age-select" style="display: none;">
+    <div class="info-icon-wrapper">
+      <i class="fas fa-info-circle"></i>
+      <div class="info-box">
+        Ab 21 kann eine Verkürzung möglich sein; maßgeblich ist das Alter zu
+        Ausbildungsbeginn.
+      </div>
+    </div>
+    <select name="age" id="age-select" style="display: none">
       <option value="0" selected>Nein</option>
       <option value="12">Ja</option>
     </select>
@@ -106,24 +194,34 @@
       <div class="radio-card-body">
         <label class="radio-card-option">
           <input type="radio" name="school-finish-radio" value="0" checked />
-          <span class="radio-custom"></span><span class="radio-label">Keinen der genannten</span>
+          <span class="radio-custom"></span
+          ><span class="radio-label">Keinen der genannten</span>
         </label>
         <label class="radio-card-option">
           <input type="radio" name="school-finish-radio" value="0" />
-          <span class="radio-custom"></span><span class="radio-label">Hauptschulabschluss</span>
+          <span class="radio-custom"></span
+          ><span class="radio-label">Hauptschulabschluss</span>
         </label>
         <label class="radio-card-option">
           <input type="radio" name="school-finish-radio" value="6" />
-          <span class="radio-custom"></span><span class="radio-label">Mittlere Reife</span>
+          <span class="radio-custom"></span
+          ><span class="radio-label">Mittlere Reife</span>
         </label>
         <label class="radio-card-option">
           <input type="radio" name="school-finish-radio" value="12" />
-          <span class="radio-custom"></span><span class="radio-label">Fachhochschulreife / Abitur</span>
+          <span class="radio-custom"></span
+          ><span class="radio-label">Fachhochschulreife / Abitur</span>
         </label>
       </div>
     </div>
-    <div class="info-icon-wrapper"><i class="fas fa-info-circle"></i><div class="info-box">Höhere Abschlüsse können eine Verkürzung ermöglichen – wähle deinen höchsten Abschluss.</div></div>
-    <select id="school-finish" style="display: none;">
+    <div class="info-icon-wrapper">
+      <i class="fas fa-info-circle"></i>
+      <div class="info-box">
+        Höhere Abschlüsse können eine Verkürzung ermöglichen – wähle deinen
+        höchsten Abschluss.
+      </div>
+    </div>
+    <select id="school-finish" style="display: none">
       <option value="0" selected>Keiner/Hauptschule</option>
       <option value="6">Mittlere Reife</option>
       <option value="12">Abitur/Fachhochschulreife</option>
@@ -134,12 +232,16 @@
     <div class="radio-card-container">
       <div class="radio-card-header">
         <i class="fas fa-briefcase"></i>
-        <h4>Hast du schon erste relevante Berufserfahrungen gesammelt (z. B. in einem Praktikum)?</h4>
+        <h4>
+          Hast du schon erste relevante Berufserfahrungen gesammelt (z. B. in
+          einem Praktikum)?
+        </h4>
       </div>
       <div class="radio-card-body">
         <label class="radio-card-option">
           <input type="radio" name="experience-radio" value="0" checked />
-          <span class="radio-custom"></span><span class="radio-label">Nein</span>
+          <span class="radio-custom"></span
+          ><span class="radio-label">Nein</span>
         </label>
         <label class="radio-card-option">
           <input type="radio" name="experience-radio" value="12" />
@@ -147,8 +249,13 @@
         </label>
       </div>
     </div>
-    <div class="info-icon-wrapper"><i class="fas fa-info-circle"></i><div class="info-box">Einschlägige Praxis (z. B. Praktikum) kann ggf. angerechnet werden.</div></div>
-    <select name="experience" id="experience-select" style="display: none;">
+    <div class="info-icon-wrapper">
+      <i class="fas fa-info-circle"></i>
+      <div class="info-box">
+        Einschlägige Praxis (z. B. Praktikum) kann ggf. angerechnet werden.
+      </div>
+    </div>
+    <select name="experience" id="experience-select" style="display: none">
       <option value="0" selected>Nein</option>
       <option value="12">Ja</option>
     </select>
@@ -163,7 +270,8 @@
       <div class="radio-card-body">
         <label class="radio-card-option">
           <input type="radio" name="apprenticeship-radio" value="0" checked />
-          <span class="radio-custom"></span><span class="radio-label">Nein</span>
+          <span class="radio-custom"></span
+          ><span class="radio-label">Nein</span>
         </label>
         <label class="radio-card-option">
           <input type="radio" name="apprenticeship-radio" value="12" />
@@ -171,8 +279,18 @@
         </label>
       </div>
     </div>
-    <div class="info-icon-wrapper"><i class="fas fa-info-circle"></i><div class="info-box">Eine passende, abgeschlossene Ausbildung kann die Dauer deutlich reduzieren.</div></div>
-    <select name="apprenticeship" id="apprenticeship-select" style="display: none;">
+    <div class="info-icon-wrapper">
+      <i class="fas fa-info-circle"></i>
+      <div class="info-box">
+        Eine passende, abgeschlossene Ausbildung kann die Dauer deutlich
+        reduzieren.
+      </div>
+    </div>
+    <select
+      name="apprenticeship"
+      id="apprenticeship-select"
+      style="display: none"
+    >
       <option value="0" selected>Nein</option>
       <option value="12">Ja</option>
     </select>
@@ -187,7 +305,8 @@
       <div class="radio-card-body">
         <label class="radio-card-option">
           <input type="radio" name="study-radio" value="0" checked />
-          <span class="radio-custom"></span><span class="radio-label">Nein</span>
+          <span class="radio-custom"></span
+          ><span class="radio-label">Nein</span>
         </label>
         <label class="radio-card-option">
           <input type="radio" name="study-radio" value="12" />
@@ -195,8 +314,14 @@
         </label>
       </div>
     </div>
-    <div class="info-icon-wrapper"><i class="fas fa-info-circle"></i><div class="info-box">Anerkannte, einschlägige Studienleistungen können auf die Ausbildung angerechnet werden.</div></div>
-    <select name="study" id="study-select" style="display: none;">
+    <div class="info-icon-wrapper">
+      <i class="fas fa-info-circle"></i>
+      <div class="info-box">
+        Anerkannte, einschlägige Studienleistungen können auf die Ausbildung
+        angerechnet werden.
+      </div>
+    </div>
+    <select name="study" id="study-select" style="display: none">
       <option value="0" selected>Nein</option>
       <option value="12">Ja</option>
     </select>
@@ -211,7 +336,8 @@
       <div class="radio-card-body">
         <label class="radio-card-option">
           <input type="radio" name="child-care-radio" value="0" checked />
-          <span class="radio-custom"></span><span class="radio-label">Nein</span>
+          <span class="radio-custom"></span
+          ><span class="radio-label">Nein</span>
         </label>
         <label class="radio-card-option">
           <input type="radio" name="child-care-radio" value="12" />
@@ -219,8 +345,14 @@
         </label>
       </div>
     </div>
-    <div class="info-icon-wrapper"><i class="fas fa-info-circle"></i><div class="info-box">Elternschaft kann Teilzeit erleichtern; prüfe ggf. Anrechnung/Regelungen mit Betrieb/Kammer.</div></div>
-    <select name="child-care" id="child-care-select" style="display: none;">
+    <div class="info-icon-wrapper">
+      <i class="fas fa-info-circle"></i>
+      <div class="info-box">
+        Elternschaft kann Teilzeit erleichtern; prüfe ggf. Anrechnung/Regelungen
+        mit Betrieb/Kammer.
+      </div>
+    </div>
+    <select name="child-care" id="child-care-select" style="display: none">
       <option value="0" selected>Nein</option>
       <option value="12">Ja</option>
     </select>
@@ -235,7 +367,8 @@
       <div class="radio-card-body">
         <label class="radio-card-option">
           <input type="radio" name="family-care-radio" value="0" checked />
-          <span class="radio-custom"></span><span class="radio-label">Nein</span>
+          <span class="radio-custom"></span
+          ><span class="radio-label">Nein</span>
         </label>
         <label class="radio-card-option">
           <input type="radio" name="family-care-radio" value="12" />
@@ -243,14 +376,20 @@
         </label>
       </div>
     </div>
-    <div class="info-icon-wrapper"><i class="fas fa-info-circle"></i><div class="info-box">Pflege kann Teilzeit/Anrechnung begründen; Details mit der zuständigen Kammer klären.</div></div>
-    <select name="family-care" id="family-care-select" style="display: none;">
+    <div class="info-icon-wrapper">
+      <i class="fas fa-info-circle"></i>
+      <div class="info-box">
+        Pflege kann Teilzeit/Anrechnung begründen; Details mit der zuständigen
+        Kammer klären.
+      </div>
+    </div>
+    <select name="family-care" id="family-care-select" style="display: none">
       <option value="0" selected>Nein</option>
       <option value="12">Ja</option>
     </select>
   </div>
 
- <div class="form-buttons">
+  <div class="form-buttons">
     <button class="secondary" type="button" id="back-btn-2">Zurück</button>
     <button class="primary" id="next-btn-2">Weiter</button>
   </div>
@@ -258,15 +397,16 @@
 
 <main class="calculator-form hidden" id="step-3">
   <h2>3. Ergebnisse</h2>
-    <div class="form-buttons">
-        <button class="secondary" id="back-btn-3">Zurück</button>
-        <button class="primary pdf-btn"><i class="fas fa-download"></i> Als PDF ausdrucken</button>
-    </div>
+  <div class="form-buttons">
+    <button class="secondary" id="back-btn-3">Zurück</button>
+    <button class="primary pdf-btn">
+      <i class="fas fa-download"></i> Als PDF ausdrucken
+    </button>
+  </div>
 </main>
 
-
 <style>
-    .hidden {
-        display: none !important;
-    }
+  .hidden {
+    display: none !important;
+  }
 </style>

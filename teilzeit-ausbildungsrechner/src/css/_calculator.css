@@ -1,40 +1,62 @@
 /* Basiseinstellungen + lokale Custom Properties in EINEM Block */
 #calculator-section {
-  padding: 5rem 2rem;
+    padding: 5rem 2rem;
 
-  /* Lokale Custom Properties für konsistente Abstände/Größen */
-  --rc-radius: 20px;
-  --rc-gap: 0.8rem;
-  --rc-padding-y: 1.2rem;
-  --rc-padding-x: 1.5rem;
-  --rc-size: 20px;
-  --rc-stroke: 2px;
-  --rc-dot-size: 10px;
-  --rc-fg: #fff;
-  --rc-fg-muted: #ccc;
-  --rc-sep: rgba(255,255,255,0.15);
-  --rc-hover: rgba(255,255,255,0.85);
-  --rc-focus: 0 0 0 3px rgba(255,255,255,0.35);
-  --rc-shadow: 0 6px 24px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.12);
-  --rc-transition: 160ms ease;
+    /* Lokale Custom Properties für konsistente Abstände/Größen */
+    --rc-radius: 20px;
+    --rc-gap: 0.8rem;
+    --rc-padding-y: 1.2rem;
+    --rc-padding-x: 1.5rem;
+    --rc-size: 20px;
+    --rc-stroke: 2px;
+    --rc-dot-size: 10px;
+    --rc-fg: #fff;
+    --rc-fg-muted: #ccc;
+    --rc-sep: rgba(255, 255, 255, 0.15);
+    --rc-hover: rgba(255, 255, 255, 0.85);
+    --rc-focus: 0 0 0 3px rgba(255, 255, 255, 0.35);
+    --rc-shadow: 0 6px 24px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.12);
+    --rc-transition: 160ms ease;
 }
 
-#calculator-section .container { width: 100%; max-width: 700px; background: var(--bg-color); padding: 2rem; }
-#calculator-section header { position: static; text-align: center; margin-bottom: 2rem; margin-top: 3rem; padding-bottom: 1.5rem; border-bottom: 1px solid #ddd; border: none !important; box-shadow: none !important; }
-#calculator-section header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; white-space: normal; word-break: break-word; }
-#calculator-section header p { color: #666; font-size: 0.95rem; }
-#calculator-section .progress-container { 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  max-width: 600px;
-  margin: 3rem auto;
-  padding: 1rem 23px;
+#calculator-section .container {
+    width: 100%;
+    max-width: 700px;
+    background: var(--bg-color);
+    padding: 2rem;
+}
+#calculator-section header {
+    position: static;
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #ddd;
+    border: none !important;
+    box-shadow: none !important;
+}
+#calculator-section header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    white-space: normal;
+    word-break: break-word;
+}
+#calculator-section header p {
+    color: #666;
+    font-size: 0.95rem;
+}
+#calculator-section .progress-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 1rem 23px;
 }
 #calculator-section .progress-line-bg,
 #calculator-section .progress-line-fill {
-    content: '';
+    content: "";
     position: absolute;
     top: calc(1rem + 21px);
     left: 0;
@@ -51,11 +73,46 @@
     width: 0%;
 }
 
-#calculator-section .step { display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; color: #aaa; transition: color 0.4s ease-in-out; flex: 1; }
-#calculator-section .step i { font-size: 1.2rem; margin-bottom: 0.75rem; width: 42px; height: 42px; display: flex; justify-content: center; align-items: center; color: #ccc; background-color: var(--bg-color); border-radius: 50%; border: 2px solid #e0e0e0; line-height: 1; transition: background-color 0.4s ease-in-out, border-color 0.4s ease-in-out, color 0.4s ease-in-out; }
-#calculator-section .step p { font-size: 0.8rem; white-space: nowrap; background-color: var(--bg-color); padding: 0 5px; }
-#calculator-section .step.active p { color: #000; }
-#calculator-section .step.active i { background-color: #000; border-color: #000; color: #fff; }
+#calculator-section .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    color: #aaa;
+    transition: color 0.4s ease-in-out;
+    flex: 1;
+}
+#calculator-section .step i {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ccc;
+    background-color: var(--bg-color);
+    border-radius: 50%;
+    border: 2px solid #e0e0e0;
+    line-height: 1;
+    transition: background-color 0.4s ease-in-out, border-color 0.4s ease-in-out,
+    color 0.4s ease-in-out;
+}
+#calculator-section .step p {
+    font-size: 0.8rem;
+    white-space: nowrap;
+    background-color: var(--bg-color);
+    padding: 0 5px;
+}
+#calculator-section .step.active p {
+    color: #000;
+}
+#calculator-section .step.active i {
+    background-color: #000;
+    border-color: #000;
+    color: #fff;
+}
 #calculator-section .calculator-form {
     /* --- Das ist der Card-Look --- */
     background: #fff;
@@ -68,58 +125,169 @@
     max-width: 700px;
     margin: 3rem auto;
 }
-#calculator-section .calculator-form h2 { text-align: center; margin-bottom: 2rem; font-weight: 400; font-size: 1.8rem; }
-#calculator-section .input-group { display: flex; align-items: center; gap: 15px; max-width: 600px; margin: 0 auto 1.5rem; position: relative; }
-#calculator-section .input-container-nested { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 50px; background-color: var(--calculator-input-bg); border-radius: 50px; padding: 6px 6px 6px 1.5rem; }
-#calculator-section .input-prefix { flex-grow: 1; display: flex; align-items: center; gap: 0.75rem; color: white; font-size: 1rem; white-space: normal; }
-#calculator-section .input-prefix i { color: #fff; font-size: 1.1rem; }
-#calculator-section .input-container-nested input, #calculator-section .input-container-nested select { width: 120px; height: 38px; flex-shrink: 0; background-color: #fff; color: #000; border: none; outline: none; border-radius: 50px; font-size: 1.05rem; text-align: center; padding: 0 10px; }
-#calculator-section .input-container-nested select { appearance: none; -webkit-appearance: none; -moz-appearance: none; padding-right: 30px; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 10px center; background-size: 16px 16px; }
-#calculator-section .info-icon-wrapper { position: relative; flex-shrink: 0; }
-#calculator-section .info-icon-wrapper .fa-info-circle { color: #000; font-size: 1.2rem; cursor: pointer; }
+#calculator-section .calculator-form h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 400;
+    font-size: 1.8rem;
+}
+#calculator-section .input-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+    position: relative;
+}
+#calculator-section .input-container-nested {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 50px;
+    background-color: var(--calculator-input-bg);
+    border-radius: 50px;
+    padding: 6px 6px 6px 1.5rem;
+}
+#calculator-section .input-prefix {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+    font-size: 1rem;
+    white-space: normal;
+}
+#calculator-section .input-prefix i {
+    color: #fff;
+    font-size: 1.1rem;
+}
+#calculator-section .input-container-nested input,
+#calculator-section .input-container-nested select {
+    width: 120px;
+    height: 38px;
+    flex-shrink: 0;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    font-size: 1.05rem;
+    text-align: center;
+    padding: 0 10px;
+}
+#calculator-section .input-container-nested select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 30px;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px 16px;
+}
+#calculator-section .info-icon-wrapper {
+    position: relative;
+    flex-shrink: 0;
+}
+#calculator-section .info-icon-wrapper .fa-info-circle {
+    color: #000;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
 #calculator-section .info-box {
-  display: none;
-  position: absolute;
-  bottom: calc(100% + 10px);
-  right: -20px;
-  left: auto;
-  transform: none;
-  min-width: 320px;
-  max-width: min(420px, calc(100vw - 24px));
-  background-color: #2b2b2b;
-  color: #fff;
-  padding: 0.9rem 1rem;
-  border-radius: 10px;
-  border: 1px solid #3d3d3d; 
-  font-size: 0.92rem;
-  line-height: 1.4;
-  text-align: left;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 2px 10px rgba(0, 0, 0, 0.12);
-  z-index: 10;
-  overflow: visible;
-  overflow-wrap: anywhere;
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 10px);
+    right: -20px;
+    left: auto;
+    transform: none;
+    min-width: 320px;
+    max-width: min(420px, calc(100vw - 24px));
+    background-color: #2b2b2b;
+    color: #fff;
+    padding: 0.9rem 1rem;
+    border-radius: 10px;
+    border: 1px solid #3d3d3d;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 2px 10px rgba(0, 0, 0, 0.12);
+    z-index: 10;
+    overflow: visible;
+    overflow-wrap: anywhere;
 }
-#calculator-section .info-icon-wrapper:hover .info-box { display: block; }
-#calculator-section .info-icon-wrapper.open .info-box { display: block; }
+#calculator-section .info-icon-wrapper:hover .info-box {
+    display: block;
+}
+#calculator-section .info-icon-wrapper.open .info-box {
+    display: block;
+}
 #calculator-section .info-box::after {
-  content: '';
-  position: absolute;
-  top: calc(100% - 1px);
-  right: 20px;
-  border-width: 8px 8px 0;
-  border-style: solid;
-  border-color: #2b2b2b transparent transparent;
+    content: "";
+    position: absolute;
+    top: calc(100% - 1px);
+    right: 20px;
+    border-width: 8px 8px 0;
+    border-style: solid;
+    border-color: #2b2b2b transparent transparent;
 }
-#calculator-section .icon { width: 1em; height: 1em; display: inline-block; vertical-align: middle; fill: #000; stroke: none; }
+#calculator-section .icon {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: middle;
+    fill: #000;
+    stroke: none;
+}
 
-#calculator-section .form-buttons { display: flex; justify-content: center; gap: 1rem; margin-top: 3rem; }
-#calculator-section button { padding: 0.6rem 1.25rem; border-radius: 8px; border: 1px solid #000; font-size: 1rem; cursor: pointer; transition: background-color 0.18s, color 0.18s, border-color 0.18s, transform 0.12s; min-height:44px; display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; }
-#calculator-section button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-#calculator-section button:focus { outline: none; box-shadow: 0 0 0 3px rgba(0,0,0,0.08); }
-#calculator-section button.primary { background-color: #000; color: #fff; border-color: #000; }
-#calculator-section button.primary:hover { background-color: #111; transform: translateY(-1px); }
-#calculator-section button.secondary { background-color: #fff; color: #000; border-color: #000; }
-#calculator-section button.secondary:hover { background-color: #fafafa; transform: translateY(-1px); }
+#calculator-section .form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 3rem;
+}
+#calculator-section button {
+    padding: 0.6rem 1.25rem;
+    border-radius: 8px;
+    border: 1px solid #000;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.18s, color 0.18s, border-color 0.18s,
+    transform 0.12s;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+#calculator-section button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+#calculator-section button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+#calculator-section button.primary {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}
+#calculator-section button.primary:hover {
+    background-color: #111;
+    transform: translateY(-1px);
+}
+#calculator-section button.secondary {
+    background-color: #fff;
+    color: #000;
+    border-color: #000;
+}
+#calculator-section button.secondary:hover {
+    background-color: #fafafa;
+    transform: translateY(-1px);
+}
 
 /* ==========================================================================
    Calculator – Radio Card
@@ -128,175 +296,231 @@
 
 /* Gruppe */
 #calculator-section .radio-card-group {
-  /* Stellt sicher, dass die Info-Box korrekt positioniert ist */
-  align-items: center;
-  padding-top: 10px; /* Kleiner Abstand oben für die Info-Box */
+    /* Stellt sicher, dass die Info-Box korrekt positioniert ist */
+    align-items: center;
+    padding-top: 10px; /* Kleiner Abstand oben für die Info-Box */
 }
 
 /* Karte / Container */
 #calculator-section .radio-card-container {
-  width: 100%;
-  background-color: var(--calculator-input-bg);
-  border-radius: var(--rc-radius);
-  padding: var(--rc-padding-y) var(--rc-padding-x);
-  color: var(--rc-fg);
-  box-shadow: var(--rc-shadow);
-  border: 1px solid rgba(255,255,255,0.06);
-  backdrop-filter: saturate(120%) blur(2px);
+    width: 100%;
+    background-color: var(--calculator-input-bg);
+    border-radius: var(--rc-radius);
+    padding: var(--rc-padding-y) var(--rc-padding-x);
+    color: var(--rc-fg);
+    box-shadow: var(--rc-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: saturate(120%) blur(2px);
 }
 
 /* Header */
 #calculator-section .radio-card-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
 }
 
 #calculator-section .radio-card-header h4 {
-  font-size: 1rem;
-  font-weight: 600; /* leicht kräftiger für bessere Lesbarkeit */
-  letter-spacing: .01em;
-  margin: 0;
+    font-size: 1rem;
+    font-weight: 600; /* leicht kräftiger für bessere Lesbarkeit */
+    letter-spacing: 0.01em;
+    margin: 0;
 }
 
 /* Body */
 #calculator-section .radio-card-body {
-  display: flex;
-  flex-direction: column;
-  gap: var(--rc-gap); /* Abstand zwischen den Optionen */
+    display: flex;
+    flex-direction: column;
+    gap: var(--rc-gap); /* Abstand zwischen den Optionen */
 }
 
 /* Option */
 #calculator-section .radio-card-option {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  font-size: 0.95rem;
-  line-height: 1.35;
-  padding: .35rem .25rem; /* größere Klickfläche ohne Layout zu verändern */
-  border-radius: 12px;
-  transition: background-color var(--rc-transition);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    padding: 0.35rem 0.25rem; /* größere Klickfläche ohne Layout zu verändern */
+    border-radius: 12px;
+    transition: background-color var(--rc-transition);
 }
 
 #calculator-section .radio-card-option:hover {
-  background-color: rgba(255,255,255,0.04);
+    background-color: rgba(255, 255, 255, 0.04);
 }
 
 /* Originalen Radio-Button verstecken, aber zugänglich halten */
 #calculator-section .radio-card-option input[type="radio"] {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 /* Benutzerdefinierter Radio-Button (äußerer Kreis) */
 #calculator-section .radio-card-option .radio-custom {
-  display: inline-block;
-  width: var(--rc-size);
-  height: var(--rc-size);
-  border: var(--rc-stroke) solid var(--rc-fg);
-  border-radius: 50%;
-  margin-right: 12px;
-  position: relative;
-  flex: 0 0 var(--rc-size);
-  transition: border-color var(--rc-transition), box-shadow var(--rc-transition), transform var(--rc-transition);
-  will-change: transform;
+    display: inline-block;
+    width: var(--rc-size);
+    height: var(--rc-size);
+    border: var(--rc-stroke) solid var(--rc-fg);
+    border-radius: 50%;
+    margin-right: 12px;
+    position: relative;
+    flex: 0 0 var(--rc-size);
+    transition: border-color var(--rc-transition), box-shadow var(--rc-transition),
+    transform var(--rc-transition);
+    will-change: transform;
 }
 
 /* Innerer Punkt (aktiv) */
 #calculator-section .radio-card-option .radio-custom::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: var(--rc-dot-size);
-  height: var(--rc-dot-size);
-  background-color: var(--rc-fg);
-  border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0); /* Start unsichtbar */
-  transition: transform var(--rc-transition);
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--rc-dot-size);
+    height: var(--rc-dot-size);
+    background-color: var(--rc-fg);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0); /* Start unsichtbar */
+    transition: transform var(--rc-transition);
 }
 
 /* Checked-State – innerer Punkt sichtbar, leichter Punch */
-#calculator-section .radio-card-option input[type="radio"]:checked + .radio-custom {
-  border-color: var(--rc-hover);
-  transform: translateZ(0) scale(1.02);
+#calculator-section
+.radio-card-option
+input[type="radio"]:checked
++ .radio-custom {
+    border-color: var(--rc-hover);
+    transform: translateZ(0) scale(1.02);
 }
-#calculator-section .radio-card-option input[type="radio"]:checked + .radio-custom::after {
-  transform: translate(-50%, -50%) scale(1);
+#calculator-section
+.radio-card-option
+input[type="radio"]:checked
++ .radio-custom::after {
+    transform: translate(-50%, -50%) scale(1);
 }
 
 /* Fokus für Tastatur-Nutzer (WCAG) */
-#calculator-section .radio-card-option input[type="radio"]:focus-visible + .radio-custom {
-  box-shadow: var(--rc-focus);
-  outline: none;
+#calculator-section
+.radio-card-option
+input[type="radio"]:focus-visible
++ .radio-custom {
+    box-shadow: var(--rc-focus);
+    outline: none;
 }
 
 /* Hover-State für den Kreis */
 #calculator-section .radio-card-option:hover .radio-custom {
-  border-color: var(--rc-hover);
+    border-color: var(--rc-hover);
 }
 
 /* Disabled-State */
-#calculator-section .radio-card-option input[type="radio"]:disabled + .radio-custom {
-  opacity: 0.5;
-  cursor: not-allowed;
+#calculator-section
+.radio-card-option
+input[type="radio"]:disabled
++ .radio-custom {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
-#calculator-section .radio-card-option input[type="radio"]:disabled ~ .radio-label {
-  opacity: 0.6;
-  cursor: not-allowed;
+#calculator-section
+.radio-card-option
+input[type="radio"]:disabled
+~ .radio-label {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 /* Label / Subtext */
 #calculator-section .radio-label {
-  display: inline-flex;
-  align-items: baseline;
-  gap: .35rem;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
 }
 #calculator-section .radio-label .subtext {
-  color: var(--rc-fg-muted);
-  font-size: 0.82em;
-  margin-left: 2px; /* etwas kompakter */
+    color: var(--rc-fg-muted);
+    font-size: 0.82em;
+    margin-left: 2px; /* etwas kompakter */
+}
+
+/* --- HANDY-FIX FÜR RADIO-BUTTON-LABEL --- */
+/* Dieser Block behebt den fehlerhaften Textumbruch auf Mobilgeräten. */
+
+@media (max-width: 500px) {
+
+    /* Wir überschreiben die 'inline-flex'-Regel mit 'inline'.
+       Dadurch fließt der Text ganz normal wie ein Satz. */
+    #calculator-section .radio-label {
+        display: inline;
+        line-height: 1.4; /* Verbessert die Lesbarkeit bei Umbruch */
+    }
+
+    /* Stellt sicher, dass der fette Text
+       sich auch normal im Satz verhält. */
+    #calculator-section .radio-label strong {
+        display: inline;
+    }
 }
 
 /* Trennlinie in der Card */
 #calculator-section .card-line-separator {
-  width: 100%;
-  height: 1px;
-  background-color: var(--rc-sep);
-  margin: 1.2rem 0;
-  border-radius: 1px;
+    width: 100%;
+    height: 1px;
+    background-color: var(--rc-sep);
+    margin: 1.2rem 0;
+    border-radius: 1px;
 }
 
 /* High Contrast Nutzer-Präferenzen */
 @media (prefers-contrast: more) {
-  #calculator-section .radio-card-option .radio-custom {
-    border-width: 3px;
-  }
-  #calculator-section .radio-card-option input[type="radio"]:focus-visible + .radio-custom {
-    box-shadow: 0 0 0 4px rgba(255,255,255,0.55);
-  }
+    #calculator-section .radio-card-option .radio-custom {
+        border-width: 3px;
+    }
+    #calculator-section
+    .radio-card-option
+    input[type="radio"]:focus-visible
+    + .radio-custom {
+        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.55);
+    }
 }
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  #calculator-section .radio-card-option,
-  #calculator-section .radio-card-option .radio-custom,
-  #calculator-section .radio-card-option .radio-custom::after {
-    transition: none;
-  }
+    #calculator-section .radio-card-option,
+    #calculator-section .radio-card-option .radio-custom,
+    #calculator-section .radio-card-option .radio-custom::after {
+        transition: none;
+    }
 }
-
 
 /* Mobile */
 @media (max-width: 1024px) {
-  #calculator-section .container { padding: 0;}
-  #calculator-section { padding: 7rem 1rem;}
-  #calculator-section .calculator-form {padding: 2rem 1rem; margin: 0;}
-  #calculator-section .input-container-nested { border-radius: 20px; padding: 10px; display: flex; flex-direction: column; gap: 10px; }
-  #calculator-section .input-container-nested input { width: 100%;}
-  #calculator-section .input-container-nested select {width: 100%;}
-  #calculator-section .input-prefix {padding-left: 10px;}
+    #calculator-section .container {
+        padding: 0;
+    }
+    #calculator-section {
+        padding: 7rem 1rem;
+    }
+    #calculator-section .calculator-form {
+        padding: 2rem 1rem;
+        margin: 0;
+    }
+    #calculator-section .input-container-nested {
+        border-radius: 20px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    #calculator-section .input-container-nested input {
+        width: 100%;
+    }
+    #calculator-section .input-container-nested select {
+        width: 100%;
+    }
+    #calculator-section .input-prefix {
+        padding-left: 10px;
+    }
 }
