@@ -445,6 +445,25 @@ input[type="radio"]:disabled
     margin-left: 2px; /* etwas kompakter */
 }
 
+/* --- HANDY-FIX FÜR RADIO-BUTTON-LABEL --- */
+/* Dieser Block behebt den fehlerhaften Textumbruch auf Mobilgeräten. */
+
+@media (max-width: 500px) {
+
+    /* Wir überschreiben die 'inline-flex'-Regel mit 'inline'.
+       Dadurch fließt der Text ganz normal wie ein Satz. */
+    #calculator-section .radio-label {
+        display: inline;
+        line-height: 1.4; /* Verbessert die Lesbarkeit bei Umbruch */
+    }
+
+    /* Stellt sicher, dass der fette Text
+       sich auch normal im Satz verhält. */
+    #calculator-section .radio-label strong {
+        display: inline;
+    }
+}
+
 /* Trennlinie in der Card */
 #calculator-section .card-line-separator {
     width: 100%;

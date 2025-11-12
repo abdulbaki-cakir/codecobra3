@@ -1,8 +1,9 @@
 // Importiere die getrennten Module
 import * as View from "./calculatorView.js";
-// --- NEUER IMPORT FÜR VALIDIERUNG ---
 import * as Validation from "./input-validation.js";
 import { initializeTooltips } from "./tooltips.js";
+// NEUER IMPORT der Scroll-Funktion
+import { scrollToCalculator } from "./navigation.js";
 
 let currentStep = 1;
 
@@ -19,14 +20,16 @@ export function initializeCalculator() {
 
   if (nextBtn1) {
     nextBtn1.addEventListener("click", () => {
-      // --- GEÄNDERT: Ruft Validation statt View auf ---
+      // Validierung
       const isVollzeitValid = Validation.validateVollzeitstunden(true);
       const isWochenstundenValid = Validation.validateWochenstunden(true);
       const isVollzeitMonateValid = Validation.validateVollzeitMonate(true);
 
+      // Nur bei Erfolg weitergehen UND scrollen
       if (isVollzeitValid && isWochenstundenValid && isVollzeitMonateValid) {
         currentStep = 2;
         View.showStep(currentStep);
+        scrollToCalculator();
       }
     });
   }
@@ -35,13 +38,20 @@ export function initializeCalculator() {
     backBtn2.addEventListener("click", () => {
       currentStep = 1;
       View.showStep(currentStep);
+      scrollToCalculator(); // Zurück-Buttons scrollen immer
     });
   }
 
   if (nextBtn2) {
     nextBtn2.addEventListener("click", () => {
-      currentStep = 3;
-      View.showStep(currentStep);
+      // HINWEIS: Hier muss noch deine Step 2 Validierung hin
+      const isStep2Valid = true; // Platzhalter
+
+      if (isStep2Valid) {
+        currentStep = 3;
+        View.showStep(currentStep);
+        scrollToCalculator();
+      }
     });
   }
 
@@ -49,6 +59,7 @@ export function initializeCalculator() {
     backBtn3.addEventListener("click", () => {
       currentStep = 2;
       View.showStep(currentStep);
+      scrollToCalculator(); // Zurück-Buttons scrollen immer
     });
   }
 
@@ -57,8 +68,7 @@ export function initializeCalculator() {
   View.setupPartTimeSwitch();
   initializeTooltips();
 
-  // --- 3. VALIDIERUNGS-LISTENER HINZUFÜGEN ---
-
+  // --- 3. VALIDIERUNGS-LISTENER (Unverändert) ---
   const vollzeitInput = document.getElementById("vollzeitstunden");
   const wochenstundenInput = document.getElementById("wochenstunden");
   const vollzeitMonateInput = document.getElementById("vollzeit-monate");
@@ -66,13 +76,11 @@ export function initializeCalculator() {
 
   if (vollzeitInput) {
     const validateVollzeit = () => {
-      // --- GEÄNDERT: Ruft Validation statt View auf ---
       Validation.validateVollzeitstunden(true);
       if (wochenstundenInput.value.trim() !== "") {
         Validation.validateWochenstunden(false);
       }
     };
-
     vollzeitInput.addEventListener("blur", validateVollzeit);
     vollzeitInput.addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
@@ -84,10 +92,8 @@ export function initializeCalculator() {
 
   if (wochenstundenInput) {
     const validateWochenstunden = () => {
-      // --- GEÄNDERT: Ruft Validation statt View auf ---
       Validation.validateWochenstunden(true);
     };
-
     wochenstundenInput.addEventListener("blur", validateWochenstunden);
     wochenstundenInput.addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
@@ -99,7 +105,6 @@ export function initializeCalculator() {
 
   if (vollzeitMonateInput) {
     const validateMonate = () => {
-      // --- GEÄNDERT: Ruft Validation statt View auf ---
       Validation.validateVollzeitMonate(true);
     };
     vollzeitMonateInput.addEventListener("blur", validateMonate);
@@ -113,7 +118,6 @@ export function initializeCalculator() {
 
   if (dauerSelect) {
     dauerSelect.addEventListener("change", () => {
-      // --- GEÄNDERT: Ruft Validation statt View auf ---
       Validation.validateVollzeitMonate(false);
     });
   }
@@ -123,7 +127,6 @@ export function initializeCalculator() {
   );
   partTimeRadios.forEach((radio) => {
     radio.addEventListener("change", () => {
-      // --- GEÄNDERT: Ruft Validation statt View auf ---
       Validation.validateVollzeitMonate(false);
     });
   });
