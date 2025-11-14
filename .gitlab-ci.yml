@@ -23,7 +23,7 @@ build-job:
   <<: *setup
   stage: build
   script:
-    - echo "Building project with Vite...."
+    - echo "Building project with Vite..."
     - npm run build
   artifacts:
     paths:
