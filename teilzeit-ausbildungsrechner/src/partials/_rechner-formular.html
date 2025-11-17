@@ -396,24 +396,93 @@
 </main>
 
 <main class="calculator-form hidden" id="step-3">
-  <h2>3. Ergebnisse</h2>
+    <h2>3. Ergebnisse</h2>
+    <div class="results-container">
 
-  <!-- Ergebnisfeld -->
-  <div class="result-box">
-    <h3>Dein Ergebnis</h3>
+        <div class="result-card served-time-card" style="display: none;">
+            <div class="result-card-left">
+                <span class="result-card-title">geplante<br>Vollzeit-Phase</span>
+                <span class="result-card-number" id="served-card-value">--</span>
+                <span class="result-card-unit">Monate</span>
+            </div>
+            <div class="result-card-right">
+                <p class="result-card-header-info">
+                    Vollzeit am Anfang deiner Ausbildung
+                </p>
+                <hr class="card-divider">
+                <div id="detailed-served-time-card">
+                    <p>Diese Monate planst du am Anfang in Vollzeit, bevor du in Teilzeit wechselst.</p>
+                </div>
+            </div>
+        </div>
 
-    <div class="result-line">
-      <span class="result-label">Ausbildungsdauer (Teilzeit):</span>
-      <span class="result-value" id="simple-result">– Monate</span>
+        <div class="result-card part-time-card">
+            <div class="result-card-left">
+                <span class="result-card-title">Verlängerung durch Teilzeit</span>
+                <span class="result-card-number" id="extension-card-value">--</span>
+                <span class="result-card-unit">Monate</span>
+            </div>
+            <div class="result-card-right">
+                <p class="result-card-header-info">
+                    Anpassung der Restlaufzeit
+                </p>
+                <hr class="card-divider">
+                <div id="detailed-part-time-card">
+                    <p>Hier steht die Erklärung zur Teilzeit-Anpassung.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="result-card">
+            <div class="result-card-left">
+                <span class="result-card-title">Gesamte<br>Verkürzung</span>
+                <span class="result-card-number" id="shortening-card-value">--</span>
+                <span class="result-card-unit">Monate</span>
+            </div>
+            <div class="result-card-right">
+                <p class="result-card-header-info">
+                    Reguläre Dauer (Vollzeit): <strong id="original-duration-header">-- Monate</strong>
+                </p>
+                <hr class="card-divider">
+                <div id="detailed-shortenings-card">
+                    <p>Hier werden die Gründe für die Verkürzung aufgelistet.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="result-card new-full-time-card" style="display: none;">
+            <div class="result-card-left">
+                <span class="result-card-title">Verbleibende<br>Dauer (Vollzeit)</span>
+                <span class="result-card-number" id="new-full-time-card-value">--</span>
+                <span class="result-card-unit">Monate</span>
+            </div>
+            <div class="result-card-right">
+                <p class="result-card-header-info">
+                    Restliche Dauer in Vollzeit
+                </p>
+                <hr class="card-divider">
+                <div id="detailed-new-full-time-card">
+                    <p>Dies ist die verbleibende Restdauer in Vollzeit (nach Anrechnung und Abzug der geleisteten Zeit).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="final-result-box">
+            <span class="result-label">Gesamtausbildungsdauer ab Beginn</span>
+            <span class="result-value" id="final-duration-result">-- Monate</span>
+        </div>
+
     </div>
-  </div>
+    <p class="disclaimer">
+        <strong>Bitte beachten Sie:</strong> Die Ergebnisse dieses Rechners sind unverbindlich und dienen lediglich als Orientierung. Ein Rechtsanspruch kann daraus nicht abgeleitet werden.<br><br>
 
-  <div class="form-buttons">
-    <button class="secondary" id="back-btn-3">Zurück</button>
-    <button class="primary pdf-btn">
-      <i class="fas fa-download"></i> Als PDF ausdrucken
-    </button>
-  </div>
+        Auch bei der Kombination mehrerer Gründe darf die gesetzliche Mindestausbildungsdauer nicht unterschritten werden. Eine detaillierte Erklärung zur Berechnung und die offizielle Tabelle finden Sie auf unserer Seite <a href="how-it-works.html">"So funktioniert's"</a>.<br><br>
+
+    </p>
+    <div class="form-buttons">
+        <button class="secondary" id="back-btn-3">Zurück</button>
+        <button class="primary pdf-btn"><i class="fas fa-download"></i> Als PDF ausdrucken</button>
+    </div>
 </main>
 
 
