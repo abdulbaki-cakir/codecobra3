@@ -19,6 +19,25 @@
     --rc-transition: 160ms ease;
 }
 
+.nav-btn .fas,
+.nav-btn .bi-book {
+    /* Größe für beide Icons vereinheitlichen */
+    width: 24px;
+    height: 24px;
+
+    /* Vertikale Ausrichtung (optional, aber empfohlen) */
+    vertical-align: middle;
+}
+
+.nav-btn .fas {
+    /* Speziell für Font Awesome: Größe über font-size steuern */
+    font-size: 24px;
+
+    /* Sicherstellen, dass es zentriert ist */
+    text-align: center;
+    line-height: 1;
+}
+
 #calculator-section .container {
     width: 100%;
     max-width: 700px;
