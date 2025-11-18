@@ -1,12 +1,6 @@
-// --- NEUER IMPORT ---
 import { resetVollzeitMonateValidation } from "./input-validation.js";
 
-/**
- * Liest alle Eingabewerte aus dem Formular aus.
- * @returns {object} - Ein Objekt mit allen Rohwerten.
- */
 export function getFormInputs() {
-  // 1. Hole alle <select>-Werte für die Anrechnung
   const selections = {};
   const reasonIds = [
     "age-select",
@@ -22,21 +16,22 @@ export function getFormInputs() {
     if (el) selections[id] = el.value;
   });
 
-  // 2. Hole die restlichen Werte
-    return {
-        originalDuration: parseInt(document.getElementById('ausbildungsdauer').value, 10),
-        fullTimeHours: parseInt(document.getElementById('vollzeitstunden').value, 10) || 40,
-        partTimeHours: parseInt(document.getElementById('wochenstunden').value, 10) || 0,
-        initialFullTimeMonths: parseInt(document.getElementById('vollzeit-monate').value, 10) || 0,
-        selections: selections // Übergibt das Objekt mit allen Select-Werten
-    };
+  return {
+    originalDuration: parseInt(
+      document.getElementById("ausbildungsdauer").value,
+      10,
+    ),
+    fullTimeHours:
+      parseInt(document.getElementById("vollzeitstunden").value, 10) || 40,
+    partTimeHours:
+      parseInt(document.getElementById("wochenstunden").value, 10) || 0,
+    initialFullTimeMonths:
+      parseInt(document.getElementById("vollzeit-monate").value, 10) || 0,
+    selections: selections,
+  };
 }
 
-/**
- * Verknüpft Radio-Buttons mit einem versteckten Select-Feld.
- */
 export const linkRadiosToSelect = (radioGroupName, selectElementId) => {
-  // ... (Diese Funktion bleibt unverändert) ...
   const radios = document.querySelectorAll(`input[name="${radioGroupName}"]`);
   const hiddenSelect = document.getElementById(selectElementId);
   if (radios.length > 0 && hiddenSelect) {
@@ -48,12 +43,7 @@ export const linkRadiosToSelect = (radioGroupName, selectElementId) => {
   }
 };
 
-/**
- * Zeigt den gewünschten Schritt an und blendet andere aus.
- * @param {number} stepNumber - Der Schritt, der angezeigt werden soll (1, 2, oder 3)
- */
 export function showStep(stepNumber) {
-  // ... (Diese Funktion bleibt unverändert) ...
   const allStepForms = [
     document.getElementById("step-1"),
     document.getElementById("step-2"),
@@ -65,13 +55,10 @@ export function showStep(stepNumber) {
       form.classList.toggle("hidden", index + 1 !== stepNumber);
     }
   });
+
   updateProgress(stepNumber);
 }
 
-/**
- * Richtet das Ein-/Ausblenden des "Monate in Vollzeit"-Feldes ein.
- * (Aktualisiert, um resetVollzeitMonateValidation aufzurufen)
- */
 export const setupPartTimeSwitch = () => {
   const radios = document.querySelectorAll(
     'input[name="part-time-start-radio"]',
@@ -95,10 +82,7 @@ export const setupPartTimeSwitch = () => {
         if (vollzeitMonateInput) {
           vollzeitMonateInput.value = "0";
         }
-
-        // --- GEÄNDERT: Ruft die importierte Reset-Funktion auf ---
         resetVollzeitMonateValidation();
-        // --- ENDE ÄNDERUNG ---
       }
     }
   };
@@ -117,11 +101,7 @@ export const setupPartTimeSwitch = () => {
   }
 };
 
-/**
- * Aktualisiert die Fortschrittsanzeige (Punkte und Linie).
- */
 function updateProgress(currentStep) {
-  // ... (Diese Funktion bleibt unverändert) ...
   const progressLine = document.getElementById("progress-line");
   const progressSteps = document.querySelectorAll(".progress-container .step");
 
@@ -131,22 +111,130 @@ function updateProgress(currentStep) {
   });
 
   let progressPercentage = 0;
-  if (currentStep === 1) {
-    progressPercentage = 20;
-  } else if (currentStep === 2) {
-    progressPercentage = 50;
-  } else {
-    progressPercentage = 100;
-  }
+  if (currentStep === 1) progressPercentage = 20;
+  else if (currentStep === 2) progressPercentage = 50;
+  else progressPercentage = 100;
 
   if (progressLine) {
     progressLine.style.width = progressPercentage + "%";
   }
 }
 
-export function showSimpleResult(durationInMonths) {
-  const resultElement = document.getElementById("extension-card-value");
-  if (resultElement) {
-    resultElement.textContent = `${durationInMonths} Monate`;
+/**
+ * Malt die finalen Ergebnisse auf die Seite.
+ */
+export function renderResults(data) {
+  const {
+    originalDuration,
+    fullTimeHours,
+    partTimeHours,
+    partTimeHoursAvailable,
+    initialFullTimeMonths,
+    shorteningResult,
+    officialShorteningMonths,
+    capWasHit_Shortening,
+    remainingFullTimeEquivalent,
+    finalExtensionMonths,
+    finalTotalDuration,
+    gracePeriod,
+  } = data;
+
+  const partTimeCard = document.querySelector(".part-time-card");
+
+  // 1. "Geleistete Zeit"-Karte
+  const servedTimeCard = document.querySelector(".served-time-card");
+  const servedTimeValue = document.getElementById("served-card-value");
+  const servedTimeDetailsDiv = document.getElementById(
+    "detailed-served-time-card",
+  );
+  if (servedTimeCard && servedTimeValue && servedTimeDetailsDiv) {
+    let noteElement = servedTimeDetailsDiv.querySelector(".cap-message");
+    if (initialFullTimeMonths > 0) {
+      servedTimeCard.style.display = "flex";
+      servedTimeValue.textContent = initialFullTimeMonths;
+      if (!noteElement) {
+        noteElement = document.createElement("p");
+        noteElement.classList.add("cap-message");
+        servedTimeDetailsDiv.appendChild(noteElement);
+      }
+      noteElement.innerHTML =
+        "<strong>Hinweis: Dies ist keine Verkürzung, sondern geleistete Zeit.</strong>";
+      noteElement.style.display = "block";
+    } else {
+      servedTimeCard.style.display = "none";
+      if (noteElement) noteElement.style.display = "none";
+    }
   }
+
+  // 2. Verkürzungs-Karte
+  document.getElementById("original-duration-header").textContent =
+    `${originalDuration} Monate`;
+  document.getElementById("shortening-card-value").textContent =
+    officialShorteningMonths;
+  const detailedShorteningsDiv = document.getElementById(
+    "detailed-shortenings-card",
+  );
+  detailedShorteningsDiv.innerHTML = "";
+
+  if (shorteningResult.details.length > 0) {
+    shorteningResult.details.forEach((detail) => {
+      const p = document.createElement("p");
+      p.classList.add("detailed-shortening-item");
+      p.innerHTML = `${detail.reason}: <strong>- ${detail.months} Monate</strong>`;
+      detailedShorteningsDiv.appendChild(p);
+    });
+  } else {
+    detailedShorteningsDiv.innerHTML =
+      '<p class="no-shortening-message">Keine Verkürzungsgründe ausgewählt.</p>';
+  }
+
+  if (capWasHit_Shortening) {
+    const capMessage = document.createElement("p");
+    capMessage.classList.add("cap-message");
+    capMessage.innerHTML =
+      "<strong>Hinweis: Maximal zulässige Verkürzung erreicht.</strong>";
+    detailedShorteningsDiv.appendChild(capMessage);
+  }
+
+  // 3. Neue Vollzeit-Karte
+  const newFullTimeCard = document.querySelector(".new-full-time-card");
+  const newFullTimeValue = document.getElementById("new-full-time-card-value");
+  if (newFullTimeCard && newFullTimeValue) {
+    newFullTimeCard.style.display = "flex";
+    newFullTimeValue.textContent = remainingFullTimeEquivalent;
+    document.getElementById("detailed-new-full-time-card").innerHTML =
+      "<p>Dies ist die verbleibende Restdauer in Vollzeit (nach Anrechnung und Abzug der geleisteten Zeit).</p>";
+  }
+
+  // 4. Teilzeit-Verlängerungs-Karte
+  if (partTimeHoursAvailable) {
+    partTimeCard.style.display = "flex";
+    document.getElementById("extension-card-value").textContent =
+      finalExtensionMonths;
+    const partTimeDetailsDiv = document.getElementById(
+      "detailed-part-time-card",
+    );
+
+    partTimeDetailsDiv.innerHTML = "";
+
+    if (finalExtensionMonths === 0) {
+      partTimeDetailsDiv.innerHTML = `<p class="detailed-part-time-item">Die Reduzierung auf <strong>${partTimeHours}h</strong> führt zu einer geringfügigen Verlängerung von ≤ ${gracePeriod} Monaten, die in der Praxis oft ignoriert wird.</p>`;
+    } else {
+      partTimeDetailsDiv.innerHTML = `<p class="detailed-part-time-item">Die Reduzierung der wöchentlichen Arbeitszeit von <strong>${fullTimeHours}h</strong> auf <strong>${partTimeHours}h</strong> für die verbleibende Dauer führt zu einer Verlängerung <strong>um ${finalExtensionMonths} Monate</strong>.</p>`;
+    }
+
+    document.getElementById("final-duration-result").textContent =
+      `${finalTotalDuration} Monate`;
+  } else {
+    partTimeCard.style.display = "none";
+    document.getElementById("final-duration-result").textContent =
+      `${finalTotalDuration} Monate`;
+  }
+
+  // Aufräumen alter Elemente
+  const existingBox = document.getElementById("average-hours-box");
+  if (existingBox) existingBox.remove();
+
+  const existingEarlyBox = document.getElementById("early-admission-box");
+  if (existingEarlyBox) existingEarlyBox.remove();
 }

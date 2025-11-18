@@ -22,133 +22,139 @@
 </div>
 
 <main class="calculator-form" id="step-1">
-    <h2>1. Basis Daten</h2>
+  <h2>1. Basis Daten</h2>
 
-    <div class="input-group">
-        <div class="input-container-nested">
-            <div class="input-prefix">
-                <i class="fas fa-briefcase-clock"></i>Übliche Stunden pro Woche
-                (Vollzeit)
-            </div>
-            <input type="number" id="vollzeitstunden" value="40" min="35" max="40" />
-        </div>
-        <div class="info-icon-wrapper">
-            <i class="fas fa-info-circle"></i>
-            <div class="info-box">
-                Standard‑Vollzeitumfang im Beruf (meist 35–40 Std/Woche).
-            </div>
-        </div>
-        <div class="validation-popup" id="vollzeitstunden-error">
-            <i class="fas fa-exclamation-triangle"></i>
-            <span></span>
-        </div>
+  <div class="input-group">
+    <div class="input-container-nested">
+      <div class="input-prefix">
+        <i class="fas fa-briefcase-clock"></i>Übliche Stunden pro Woche
+        (Vollzeit)
+      </div>
+      <input type="number" id="vollzeitstunden" value="40" min="35" max="40" />
     </div>
-
-    <div class="input-group">
-        <div class="input-container-nested">
-            <div class="input-prefix">
-                <i class="fas fa-user-clock"></i>Gewünschte Stunden pro Woche (Teilzeit)
-            </div>
-            <input type="number" id="wochenstunden" placeholder="20" min="20" max="35" />
-        </div>
-        <div class="info-icon-wrapper">
-            <i class="fas fa-info-circle"></i>
-            <div class="info-box">
-                Tatsächlicher geplanter Teilzeit‑Umfang in Stunden pro Woche.
-            </div>
-        </div>
-        <div class="validation-popup" id="wochenstunden-error">
-            <i class="fas fa-exclamation-triangle"></i>
-            <span></span>
-        </div>
+    <div class="info-icon-wrapper">
+      <i class="fas fa-info-circle"></i>
+      <div class="info-box">
+        Standard‑Vollzeitumfang im Beruf (meist 35–40 Std/Woche).
+      </div>
     </div>
-
-    <div class="input-group">
-        <div class="input-container-nested">
-            <div class="input-prefix">
-                <i class="fas fa-calendar-days"></i>Dauer der Ausbildung in Monate
-                (Vollzeit)
-            </div>
-            <select id="ausbildungsdauer">
-                <option value="24">24</option>
-                <option value="36" selected>36</option>
-                <option value="42">42</option>
-            </select>
-        </div>
-        <div class="info-icon-wrapper">
-            <i class="fas fa-info-circle"></i>
-            <div class="info-box">
-                Reguläre Ausbildungsdauer laut Ordnung – ohne Teilzeit/Verkürzung.
-            </div>
-        </div>
+    <div class="validation-popup" id="vollzeitstunden-error">
+      <i class="fas fa-exclamation-triangle"></i>
+      <span></span>
     </div>
+  </div>
 
-    <div class="input-group radio-card-group">
-        <div class="radio-card-container">
-            <div class="radio-card-header">
-                <i class="fas fa-sync-alt"></i>
-                <h4>Wie möchtest du deine Ausbildung absolvieren?</h4>
-            </div>
-            <div class="radio-card-body">
-                <label class="radio-card-option">
-                    <input type="radio" name="part-time-start-radio" value="0" checked />
-                    <span class="radio-custom"></span
-                    ><span class="radio-label"
-                >Ich beginne <strong>direkt in Teilzeit</strong></span
-                >
-                </label>
-                <label class="radio-card-option">
-                    <input type="radio" name="part-time-start-radio" value="1" />
-                    <span class="radio-custom"></span
-                    ><span class="radio-label"
-                >Erst Vollzeit, <strong>später Teilzeit</strong></span
-                >
-                </label>
-            </div>
-
-            <div
-                    class="card-line-separator hidden"
-                    id="vollzeit-monate-separator"
-            ></div>
-
-            <div class="input-container-nested hidden" id="vollzeit-monate-input">
-                <div class="input-prefix">
-                    <i class="fas fa-calendar-alt"></i> Monate in Vollzeit
-                </div>
-                <input
-                        type="number"
-                        id="vollzeit-monate"
-                        placeholder="6"
-                        style="width: 80px"
-                        min="1"
-                />
-            </div>
-            <div class="validation-popup" id="vollzeit-monate-error">
-                <i class="fas fa-exclamation-triangle"></i>
-                <span></span>
-            </div>
-        </div>
-        <div class="info-icon-wrapper">
-            <i class="fas fa-info-circle"></i>
-            <div class="info-box">
-                💬 Du kannst die Ausbildung in Vollzeit beginnen und später zur Teilzeit
-                wechseln. Dies kann die Genehmigung erleichtern.
-            </div>
-        </div>
-        <select
-                name="part-time-start"
-                id="part-time-start-select"
-                style="display: none"
-        >
-            <option value="0" selected>Direkt Teilzeit</option>
-            <option value="1">Wechsel später</option>
-        </select>
+  <div class="input-group">
+    <div class="input-container-nested">
+      <div class="input-prefix">
+        <i class="fas fa-user-clock"></i>Gewünschte Stunden pro Woche (Teilzeit)
+      </div>
+      <input
+        type="number"
+        id="wochenstunden"
+        placeholder="20"
+        min="20"
+        max="35"
+      />
     </div>
-
-    <div class="form-buttons">
-        <button class="secondary" disabled>Zurück</button>
-        <button class="primary" id="next-btn-1">Weiter</button>
+    <div class="info-icon-wrapper">
+      <i class="fas fa-info-circle"></i>
+      <div class="info-box">
+        Tatsächlicher geplanter Teilzeit‑Umfang in Stunden pro Woche.
+      </div>
     </div>
+    <div class="validation-popup" id="wochenstunden-error">
+      <i class="fas fa-exclamation-triangle"></i>
+      <span></span>
+    </div>
+  </div>
+
+  <div class="input-group">
+    <div class="input-container-nested">
+      <div class="input-prefix">
+        <i class="fas fa-calendar-days"></i>Dauer der Ausbildung in Monate
+        (Vollzeit)
+      </div>
+      <select id="ausbildungsdauer">
+        <option value="24">24</option>
+        <option value="36" selected>36</option>
+        <option value="42">42</option>
+      </select>
+    </div>
+    <div class="info-icon-wrapper">
+      <i class="fas fa-info-circle"></i>
+      <div class="info-box">
+        Reguläre Ausbildungsdauer laut Ordnung – ohne Teilzeit/Verkürzung.
+      </div>
+    </div>
+  </div>
+
+  <div class="input-group radio-card-group">
+    <div class="radio-card-container">
+      <div class="radio-card-header">
+        <i class="fas fa-sync-alt"></i>
+        <h4>Wie möchtest du deine Ausbildung absolvieren?</h4>
+      </div>
+      <div class="radio-card-body">
+        <label class="radio-card-option">
+          <input type="radio" name="part-time-start-radio" value="0" checked />
+          <span class="radio-custom"></span
+          ><span class="radio-label"
+            >Ich beginne <strong>direkt in Teilzeit</strong></span
+          >
+        </label>
+        <label class="radio-card-option">
+          <input type="radio" name="part-time-start-radio" value="1" />
+          <span class="radio-custom"></span
+          ><span class="radio-label"
+            >Erst Vollzeit, <strong>später Teilzeit</strong></span
+          >
+        </label>
+      </div>
+
+      <div
+        class="card-line-separator hidden"
+        id="vollzeit-monate-separator"
+      ></div>
+
+      <div class="input-container-nested hidden" id="vollzeit-monate-input">
+        <div class="input-prefix">
+          <i class="fas fa-calendar-alt"></i> Monate in Vollzeit
+        </div>
+        <input
+          type="number"
+          id="vollzeit-monate"
+          placeholder="6"
+          style="width: 80px"
+          min="1"
+        />
+      </div>
+      <div class="validation-popup" id="vollzeit-monate-error">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span></span>
+      </div>
+    </div>
+    <div class="info-icon-wrapper">
+      <i class="fas fa-info-circle"></i>
+      <div class="info-box">
+        💬 Du kannst die Ausbildung in Vollzeit beginnen und später zur Teilzeit
+        wechseln. Dies kann die Genehmigung erleichtern.
+      </div>
+    </div>
+    <select
+      name="part-time-start"
+      id="part-time-start-select"
+      style="display: none"
+    >
+      <option value="0" selected>Direkt Teilzeit</option>
+      <option value="1">Wechsel später</option>
+    </select>
+  </div>
+
+  <div class="form-buttons">
+    <button class="secondary" disabled>Zurück</button>
+    <button class="primary" id="next-btn-1">Weiter</button>
+  </div>
 </main>
 
 <main class="calculator-form hidden" id="step-2">
@@ -396,100 +402,105 @@
 </main>
 
 <main class="calculator-form hidden" id="step-3">
-    <h2>3. Ergebnisse</h2>
-    <div class="results-container">
-
-        <div class="result-card served-time-card" style="display: none;">
-            <div class="result-card-left">
-                <span class="result-card-title">geplante<br />Vollzeit-Phase</span>
-                <span class="result-card-number" id="served-card-value">--</span>
-                <span class="result-card-unit">Monate</span>
-            </div>
-            <div class="result-card-right">
-                <p class="result-card-header-info">
-                    Vollzeit am Anfang deiner Ausbildung
-                </p>
-                <hr class="card-divider" />
-                <div id="detailed-served-time-card">
-                    <p>Diese Monate planst du am Anfang in Vollzeit, bevor du in Teilzeit wechselst.</p>
-                </div>
-            </div>
+  <h2>3. Ergebnisse</h2>
+  <div class="results-container">
+    <div class="result-card served-time-card" style="display: none">
+      <div class="result-card-left">
+        <span class="result-card-title">geplante<br />Vollzeit-Phase</span>
+        <span class="result-card-number" id="served-card-value">--</span>
+        <span class="result-card-unit">Monate</span>
+      </div>
+      <div class="result-card-right">
+        <p class="result-card-header-info">
+          Vollzeit am Anfang deiner Ausbildung
+        </p>
+        <hr class="card-divider" />
+        <div id="detailed-served-time-card">
+          <p>
+            Diese Monate planst du am Anfang in Vollzeit, bevor du in Teilzeit
+            wechselst.
+          </p>
         </div>
-
-        <div class="result-card part-time-card">
-            <div class="result-card-left">
-                <span class="result-card-title">Verlängerung durch Teilzeit</span>
-                <span class="result-card-number" id="extension-card-value">--</span>
-                <span class="result-card-unit">Monate</span>
-            </div>
-            <div class="result-card-right">
-                <p class="result-card-header-info">
-                    Anpassung der Restlaufzeit
-                </p>
-                <hr class="card-divider" />
-                <div id="detailed-part-time-card">
-                    <p>Hier steht die Erklärung zur Teilzeit-Anpassung.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="result-card">
-            <div class="result-card-left">
-                <span class="result-card-title">Gesamte<br />Verkürzung</span>
-                <span class="result-card-number" id="shortening-card-value">--</span>
-                <span class="result-card-unit">Monate</span>
-            </div>
-            <div class="result-card-right">
-                <p class="result-card-header-info">
-                    Reguläre Dauer (Vollzeit): <strong id="original-duration-header">-- Monate</strong>
-                </p>
-                <hr class="card-divider" />
-                <div id="detailed-shortenings-card">
-                    <p>Hier werden die Gründe für die Verkürzung aufgelistet.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="result-card new-full-time-card" style="display: none;">
-            <div class="result-card-left">
-                <span class="result-card-title">Verbleibende<br />Dauer (Vollzeit)</span>
-                <span class="result-card-number" id="new-full-time-card-value">--</span>
-                <span class="result-card-unit">Monate</span>
-            </div>
-            <div class="result-card-right">
-                <p class="result-card-header-info">
-                    Restliche Dauer in Vollzeit
-                </p>
-                <hr class="card-divider" />
-                <div id="detailed-new-full-time-card">
-                    <p>Dies ist die verbleibende Restdauer in Vollzeit (nach Anrechnung und Abzug der geleisteten Zeit).</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="final-result-box">
-            <span class="result-label">Gesamtausbildungsdauer ab Beginn</span>
-            <span class="result-value" id="final-duration-result">-- Monate</span>
-        </div>
-
+      </div>
     </div>
 
-    <p class="disclaimer">
-        <strong>Bitte beachten Sie:</strong> Die Ergebnisse dieses Rechners sind unverbindlich und dienen lediglich als Orientierung. Ein Rechtsanspruch kann daraus nicht abgeleitet werden.<br /><br />
-        Auch bei der Kombination mehrerer Gründe darf die gesetzliche Mindestausbildungsdauer nicht unterschritten werden.
-        Eine detaillierte Erklärung zur Berechnung und die offizielle Tabelle finden Sie auf unserer Seite 
-        <a href="how-it-works.html">„So funktioniert's“</a>.<br />
-    </p>
-
-    <div class="form-buttons">
-        <button class="secondary" id="back-btn-3">Zurück</button>
-        <button class="primary pdf-btn">
-            <i class="fas fa-download"></i> Als PDF ausdrucken
-        </button>
+    <div class="result-card">
+      <div class="result-card-left">
+        <span class="result-card-title">Gesamte<br />Verkürzung</span>
+        <span class="result-card-number" id="shortening-card-value">--</span>
+        <span class="result-card-unit">Monate</span>
+      </div>
+      <div class="result-card-right">
+        <p class="result-card-header-info">
+          Reguläre Dauer (Vollzeit):
+          <strong id="original-duration-header">-- Monate</strong>
+        </p>
+        <hr class="card-divider" />
+        <div id="detailed-shortenings-card">
+          <p>Hier werden die Gründe für die Verkürzung aufgelistet.</p>
+        </div>
+      </div>
     </div>
 
+    <div class="result-card new-full-time-card" style="display: none">
+      <div class="result-card-left">
+        <span class="result-card-title"
+          >Verbleibende<br />Dauer (Vollzeit)</span
+        >
+        <span class="result-card-number" id="new-full-time-card-value">--</span>
+        <span class="result-card-unit">Monate</span>
+      </div>
+      <div class="result-card-right">
+        <p class="result-card-header-info">Restliche Dauer in Vollzeit</p>
+        <hr class="card-divider" />
+        <div id="detailed-new-full-time-card">
+          <p>
+            Dies ist die verbleibende Restdauer in Vollzeit (nach Anrechnung und
+            Abzug der geleisteten Zeit).
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-card part-time-card">
+      <div class="result-card-left">
+        <span class="result-card-title">Verlängerung durch Teilzeit</span>
+        <span class="result-card-number" id="extension-card-value">--</span>
+        <span class="result-card-unit">Monate</span>
+      </div>
+      <div class="result-card-right">
+        <p class="result-card-header-info">Anpassung der Restlaufzeit</p>
+        <hr class="card-divider" />
+        <div id="detailed-part-time-card">
+          <p>Hier steht die Erklärung zur Teilzeit-Anpassung.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="final-result-box">
+      <span class="result-label">Gesamtausbildungsdauer ab Beginn</span>
+      <span class="result-value" id="final-duration-result">-- Monate</span>
+    </div>
+  </div>
+
+  <p class="disclaimer">
+    <strong>Bitte beachten Sie:</strong> Die Ergebnisse dieses Rechners sind
+    unverbindlich und dienen lediglich als Orientierung. Ein Rechtsanspruch kann
+    daraus nicht abgeleitet werden.<br /><br />
+    Auch bei der Kombination mehrerer Gründe darf die gesetzliche
+    Mindestausbildungsdauer nicht unterschritten werden. Eine detaillierte
+    Erklärung zur Berechnung und die offizielle Tabelle finden Sie auf unserer
+    Seite
+    <a href="how-it-works.html">„So funktioniert's“</a>.<br />
+  </p>
+
+  <div class="form-buttons">
+    <button class="secondary" id="back-btn-3">Zurück</button>
+    <button class="primary pdf-btn">
+      <i class="fas fa-download"></i> Als PDF ausdrucken
+    </button>
+  </div>
 </main>
-
 
 <style>
   .hidden {
