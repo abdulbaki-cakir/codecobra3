@@ -650,6 +650,8 @@
   margin-bottom: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   overflow: hidden;
+  /* HINZUGEFÜGT: Leichte Umrandung für bessere Abgrenzung */
+  border: 1px solid #ccc;
 }
 
 .result-card-left {
@@ -754,6 +756,7 @@
   font-style: italic;
 }
 
+/* WURDE UMBENANNT VON .cap-message--error (BEM) ZU .cap-message-error (Kebab-Case) */
 .cap-message-error {
   margin-top: 15px;
   padding: 10px 15px;
