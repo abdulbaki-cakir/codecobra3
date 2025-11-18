@@ -29,7 +29,7 @@ export function calculateShortening(selections, originalDuration) {
     const currentReason = {
       reason: reasonText,
       months: currentValue,
-      isVariable: isVariable,
+      isVariable, // <--- HIER WURDE GEKÜRZT (Property Shorthand)
     };
 
     potentialShortening += currentReason.months;

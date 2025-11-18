@@ -176,15 +176,56 @@ export function renderResults(data) {
   );
   detailedShorteningsDiv.innerHTML = "";
 
+  // 1. Prüfen: Wurde Schulabschluss schon von der Logik erfasst?
+  const hasSchoolEntry = shorteningResult.details.some(
+    (d) =>
+      d.reason.toLowerCase().includes("schulabschluss") ||
+      d.reason.toLowerCase().includes("abitur") ||
+      d.reason.toLowerCase().includes("reife") ||
+      d.reason.toLowerCase().includes("hauptschule"),
+  );
+
+  // 2. Wenn nicht (weil 0 Monate), prüfen wir genau, was angeklickt wurde
+  if (!hasSchoolEntry) {
+    const selectedRadio = document.querySelector(
+      'input[name="school-finish-radio"]:checked',
+    );
+
+    if (selectedRadio && selectedRadio.value === "0") {
+      // Text des Labels holen
+      const labelSpan = selectedRadio
+        .closest(".radio-card-option")
+        .querySelector(".radio-label");
+      const reasonText = labelSpan ? labelSpan.textContent.trim() : "";
+
+      if (reasonText === "Hauptschulabschluss") {
+        shorteningResult.details.unshift({
+          reason: reasonText,
+          months: 0,
+          isVariable: false,
+        });
+      }
+    }
+  }
+  // --- FIX ENDE ---
+
   if (shorteningResult.details.length > 0) {
     shorteningResult.details.forEach((detail) => {
       const p = document.createElement("p");
       p.classList.add("detailed-shortening-item");
 
-      //  Bedingte Anzeige von "bis zu" basierend auf der Config
-      const prefix = detail.isVariable ? "bis zu " : "";
+      // FIX 3: === statt ==
+      // Fallunterscheidung: 0 Monate vs. echte Verkürzung
+      if (detail.months === 0) {
+        // ÄNDERUNG: Hier steht jetzt nur noch "0 Monate Verkürzung"
+        p.innerHTML = `${detail.reason}: <strong>0 Monate Verkürzung</strong>`;
+        p.style.color = "#555";
+      } else {
+        // Echte Verkürzung
+        const prefix = detail.isVariable ? "bis zu " : "";
+        p.innerHTML = `${detail.reason}: <strong>${prefix}${detail.months} Monate Verkürzung</strong>`;
+      }
 
-      p.innerHTML = `${detail.reason}: <strong>${prefix}${detail.months} Monate Verkürzung</strong>`;
       detailedShorteningsDiv.appendChild(p);
     });
   } else {
