@@ -528,9 +528,8 @@ input[type="radio"]:disabled
 #calculator-section .form-buttons { display: flex; justify-content: center; gap: 1rem; margin-top: 3rem; }
 #calculator-section button { padding: 0.8rem 2rem; border-radius: 8px; border: 1px solid #000; font-size: 1rem; cursor: pointer; transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
 #calculator-section button.primary { background-color: #000; color: white; }
-#calculator-section button.primary:hover { background-color: #1a1a1a; }
-#calculator-section button.secondary { background-color: transparent; color: #000; }
-#calculator-section button.secondary:hover { background-color: #f4f4f4; }
+
+
 /* Stile für die detaillierte Verkürzungsanzeige */
 .result-item-group {
     margin-bottom: 1rem;
@@ -718,5 +717,5 @@ input[type="radio"]:disabled
     border: 0;
     height: 1px;
     background-color: #e0e0e0;
-    margin: 0 0 1rem 0; /* Abstand nach der Trennlinie */
+    margin: 0 0 1rem; /* Abstand nach der Trennlinie */
 }
