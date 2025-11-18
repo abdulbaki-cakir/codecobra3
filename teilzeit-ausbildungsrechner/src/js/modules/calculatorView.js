@@ -158,7 +158,7 @@ export function renderResults(data) {
         servedTimeDetailsDiv.appendChild(noteElement);
       }
       noteElement.innerHTML =
-        "<strong>Hinweis: Dies ist keine Verkürzung, sondern geleistete Zeit.</strong>";
+        "<i><strong>Hinweis: Dies ist keine Verkürzung, sondern geleistete Zeit.</strong></i>";
       noteElement.style.display = "block";
     } else {
       servedTimeCard.style.display = "none";
