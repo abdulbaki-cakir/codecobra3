@@ -2,17 +2,40 @@
 import * as View from "./calculatorView.js";
 import * as Validation from "./input-validation.js";
 import { initializeTooltips } from "./tooltips.js";
-// NEUER IMPORT der Scroll-Funktion
 import { scrollToCalculator } from "./navigation.js";
+import * as Service from "./calculatorService.js";
 
 let currentStep = 1;
+
+/**
+ * Haupt-Event-Handler für die Berechnung (auf "Weiter" in Schritt 2).
+ */
+function handleCalculation() {
+  // 1. Alle Inputs holen
+  const inputs = View.getFormInputs();
+
+  // 2. Die KOMPLETTE Berechnung durchführen (Verkürzung + Teilzeit + Mindestdauer)
+  const finalResults = Service.calculateFinalResults(inputs);
+
+  // 3. Das Ergebnis an die View übergeben zum Anzeigen
+  View.renderResults(finalResults);
+}
 
 /**
  * INITIALISIERUNG:
  * Startet die gesamte Logik für den Rechner.
  */
 export function initializeCalculator() {
-  // --- 1. Button-Listener (Navigation & Aktionen) ---
+  // --- 1. Radio-Buttons mit Selects verknüpfen ---
+  View.linkRadiosToSelect("age-radio", "age-select");
+  View.linkRadiosToSelect("school-finish-radio", "school-finish");
+  View.linkRadiosToSelect("experience-radio", "experience-select");
+  View.linkRadiosToSelect("apprenticeship-radio", "apprenticeship-select");
+  View.linkRadiosToSelect("study-radio", "study-select");
+  View.linkRadiosToSelect("child-care-radio", "child-care-select");
+  View.linkRadiosToSelect("family-care-radio", "family-care-select");
+
+  // --- 2. Button-Listener (Navigation & Aktionen) ---
   const nextBtn1 = document.getElementById("next-btn-1");
   const backBtn2 = document.getElementById("back-btn-2");
   const nextBtn2 = document.getElementById("next-btn-2");
@@ -38,20 +61,18 @@ export function initializeCalculator() {
     backBtn2.addEventListener("click", () => {
       currentStep = 1;
       View.showStep(currentStep);
-      scrollToCalculator(); // Zurück-Buttons scrollen immer
+      scrollToCalculator();
     });
   }
 
   if (nextBtn2) {
     nextBtn2.addEventListener("click", () => {
-      // HINWEIS: Hier muss noch deine Step 2 Validierung hin
-      const isStep2Valid = true; // Platzhalter
+      // HIER WAR DER FEHLER: Wir rufen jetzt die korrigierte Funktion auf
+      handleCalculation();
 
-      if (isStep2Valid) {
-        currentStep = 3;
-        View.showStep(currentStep);
-        scrollToCalculator();
-      }
+      currentStep = 3;
+      View.showStep(currentStep);
+      scrollToCalculator();
     });
   }
 
@@ -59,16 +80,16 @@ export function initializeCalculator() {
     backBtn3.addEventListener("click", () => {
       currentStep = 2;
       View.showStep(currentStep);
-      scrollToCalculator(); // Zurück-Buttons scrollen immer
+      scrollToCalculator();
     });
   }
 
-  // --- 2. Initialen Zustand setzen ---
+  // --- 3. Initialen Zustand setzen ---
   View.showStep(currentStep);
   View.setupPartTimeSwitch();
   initializeTooltips();
 
-  // --- 3. VALIDIERUNGS-LISTENER (Unverändert) ---
+  // --- 4. VALIDIERUNGS-LISTENER ---
   const vollzeitInput = document.getElementById("vollzeitstunden");
   const wochenstundenInput = document.getElementById("wochenstunden");
   const vollzeitMonateInput = document.getElementById("vollzeit-monate");

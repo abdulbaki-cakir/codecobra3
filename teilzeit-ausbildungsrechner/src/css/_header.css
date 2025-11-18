@@ -1,193 +1,216 @@
 /* --- Header & Navigation --- */
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    padding: 15px 0;
-    background-color: var(--bg-color);
-    border-bottom: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 15px 0;
+  background-color: var(--bg-color);
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 
-    /* KORREKTUR: HIER IST DIE FEHLENDE TRANSITION FÜR DEN "SMOOTH FADE" */
-    transition: transform 0.3s ease-in-out;
+  /* KORREKTUR: HIER IST DIE FEHLENDE TRANSITION FÜR DEN "SMOOTH FADE" */
+  transition: transform 0.3s ease-in-out;
 }
 
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* KORREKTUR: Die erste, veraltete .logo-link Regel wurde entfernt, um Konflikte zu vermeiden */
 
 .logo {
-    height: 100%;
-    width: auto;
-    max-height: 40px;
-    display: block;
-    border-radius: 3px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  height: 100%;
+  width: auto;
+  max-height: 40px;
+  display: block;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 /* Dies ist die korrekte .logo-link Regel, die du gestaltet hast */
 .logo-link {
-    display: inline-flex;
-    align-items: center;
-    height: auto;
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--text-color);
-    text-decoration: none;
-    white-space: nowrap;
-    line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  height: auto;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-color);
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 1.2;
 
-    /* --- DEFINIERTES BUTTON-DESIGN --- */
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 8px 14px; /* Etwas mehr Padding */
-    border: 2px solid #222;
-    box-shadow: 4px 4px 0 #222; /* Neuer "Hard Shadow" Effekt */
-    transition: all 0.15s ease-out;
+  /* --- DEFINIERTES BUTTON-DESIGN --- */
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 8px 14px; /* Etwas mehr Padding */
+  border: 2px solid #222;
+  box-shadow: 4px 4px 0 #222; /* Neuer "Hard Shadow" Effekt */
+  transition: all 0.15s ease-out;
 }
 
 /* Der Hover-Effekt (klar und interaktiv) */
 .logo-link:hover {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0 #222;
-    background-color: #fcfcfc;
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #222;
+  background-color: #fcfcfc;
 }
 
-
-
 .nav-buttons {
-    display: flex;
-    gap: 10px;
-    flex-shrink: 0;
-    margin-right: 0;
-    padding-right: 5px;
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+  margin-right: 0;
+  padding-right: 5px;
 }
 
 .nav-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background-color: #222;
-    color: #fff;
-    border-radius: 50px;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #222;
+  color: #fff;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .nav-btn:hover {
-    background-color: #444;
-    transform: translateY(-2px);
+  background-color: #444;
+  transform: translateY(-2px);
 }
 
 .nav-btn svg {
-    fill: #fff;
-    width: 18px;
-    height: 18px;
+  fill: #fff;
+  width: 18px;
+  height: 18px;
 }
 
 /* --- Dropdown Styles --- */
 .language-selector {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .language-dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    margin-top: 8px;
-    background-color: var(--bg-color);
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    min-width: 160px;
-    z-index: 101;
-    padding: 5px 0;
-    overflow: hidden;
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background-color: var(--bg-color);
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 160px;
+  z-index: 101;
+  padding: 5px 0;
+  overflow: hidden;
 }
 
 .language-dropdown.show {
-    display: block;
+  display: block;
 }
 
 .language-option {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 15px;
-    color: var(--text-color);
-    text-decoration: none;
-    font-size: 16px;
-    transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
 }
 
 .language-option:hover {
-    background-color: #f5f5f5;
+  background-color: #f5f5f5;
 }
 
 .language-option img {
-    width: 24px;
-    height: auto;
-    border-radius: 3px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  width: 24px;
+  height: auto;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn .fas,
+.nav-btn .bi-book {
+  /* Größe für beide Icons vereinheitlichen */
+  width: 24px;
+  height: 24px;
+
+  /* Vertikale Ausrichtung (optional, aber empfohlen) */
+  vertical-align: middle;
+}
+
+.nav-btn .fas {
+  /* Speziell für Font Awesome: Größe über font-size steuern */
+  font-size: 24px;
+
+  /* Sicherstellen, dass es zentriert ist */
+  text-align: center;
+  line-height: 1;
 }
 
 /* --- Responsive Header Styles --- */
 @media (max-width: 768px) {
-    .logo {
-        max-height: 30px;
-    }
-    .nav-btn { padding: 10px 15px; }
-    .nav-btn span { display: none; }
+  .logo {
+    max-height: 30px;
+  }
+  .nav-btn {
+    padding: 10px 15px;
+  }
+  .nav-btn span {
+    display: none;
+  }
 
-    .nav-buttons {
-        flex-shrink: 0;
-        transform: translateX(10px);
-        padding-right: 5px;
-    }
+  .nav-buttons {
+    flex-shrink: 0;
+    transform: translateX(10px);
+    padding-right: 5px;
+  }
 
-    .logo-link {
-        white-space: normal;
-        font-size: 20px;
-        line-height: 1.2;
-        max-width: 60%;
-        height: auto;
-        flex-shrink: 1;
-    }
+  .logo-link {
+    white-space: normal;
+    font-size: 20px;
+    line-height: 1.2;
+    max-width: 60%;
+    height: auto;
+    flex-shrink: 1;
+  }
 
-    /* KORREKTUR: Die Autohide-Regel gehört hier hin,
+  /* KORREKTUR: Die Autohide-Regel gehört hier hin,
        damit sie auf allen mobilen Geräten greift */
-    .header-hidden {
-        transform: translateY(-100%);
-    }
+  .header-hidden {
+    transform: translateY(-100%);
+  }
 }
 
 @media (max-width: 450px) {
-    /* Anpassung des Logo-Links für sehr kleine Displays */
-    .logo-link {
-        font-size: 21px;
-        max-width: 55%; /* Noch aggressiver reduzieren */
-    }
+  /* Anpassung des Logo-Links für sehr kleine Displays */
+  .logo-link {
+    font-size: 21px;
+    max-width: 55%; /* Noch aggressiver reduzieren */
+  }
 
-    /* Anpassung der Buttons für sehr kleine Displays */
-    .nav-buttons {
-        transform: translateX(15px);
-        padding-right: 5px;
-    }
-    .nav-btn {
-        padding: 8px 15px;
-        font-size: 14px;
-    }
+  /* Anpassung der Buttons für sehr kleine Displays */
+  .nav-buttons {
+    transform: translateX(15px);
+    padding-right: 5px;
+  }
+  .nav-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
 
-    /* KORREKTUR: Die falsch verschachtelte Regel von hier wurde entfernt */
+  /* KORREKTUR: Die falsch verschachtelte Regel von hier wurde entfernt */
 }

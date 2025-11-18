@@ -1,10 +1,10 @@
 import { initializeCalculator } from "./modules/calculatorController.js";
 
-// KORRIGIERT: Importiere alle Navigations-Funktionen vom neuen Pfad
 import {
   initializeNavigation,
   initializeFooterNavigation,
-} from "./modules/navigation.js"; // Pfad & Tippfehler ('from' statt 'in') korrigiert
+} from "./modules/navigation.js";
+import { initializeLanguageSwitcher } from "./modules/language";
 
 // Hauptfunktion, die die App startet
 async function main() {
@@ -14,6 +14,7 @@ async function main() {
     // Rufe alle Navigations-Funktionen auf
     initializeNavigation();
     initializeFooterNavigation();
+    initializeLanguageSwitcher();
   }, 0);
 }
 
