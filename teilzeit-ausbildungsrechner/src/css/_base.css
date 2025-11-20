@@ -36,6 +36,15 @@ body {
     flex-direction: column;
 }
 
+.icon {
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: contain;
+}
+
 main {
     flex-grow: 1;
 }

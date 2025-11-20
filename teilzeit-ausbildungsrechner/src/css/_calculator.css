@@ -87,23 +87,28 @@
   transition: color 0.4s ease-in-out;
   flex: 1;
 }
-#calculator-section .step i {
-  font-size: 1.2rem;
+#calculator-section .step .icon-step {
   margin-bottom: 0.75rem;
-  width: 42px;
-  height: 42px;
+  width: 52px;
+  height: 52px;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #ccc;
   background-color: var(--bg-color);
   border-radius: 50%;
   border: 2px solid #e0e0e0;
-  line-height: 1;
+  padding: 10px;
   transition:
     background-color 0.4s ease-in-out,
-    border-color 0.4s ease-in-out,
-    color 0.4s ease-in-out;
+    border-color 0.4s ease-in-out;
+}
+#calculator-section .step .icon-step img {
+  width: 24px;
+  height: 24px;
+  border-radius: 0;
+  filter: grayscale(1);
+  transition: filter 0.4s ease-in-out;
 }
 #calculator-section .step p {
   font-size: 0.8rem;
@@ -114,10 +119,12 @@
 #calculator-section .step.active p {
   color: #000;
 }
-#calculator-section .step.active i {
+#calculator-section .step.active .icon-step {
   background-color: #000;
   border-color: #000;
-  color: #fff;
+}
+#calculator-section .step.active .icon-step img {
+  filter: brightness(0) invert(1);
 }
 #calculator-section .calculator-form {
   /* --- Das ist der Card-Look --- */
@@ -164,9 +171,17 @@
   font-size: 1rem;
   white-space: normal;
 }
-#calculator-section .input-prefix i {
-  color: #fff;
-  font-size: 1.1rem;
+#calculator-section .input-prefix .icon-inline,
+#calculator-section .radio-card-container .icon-inline {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  filter: brightness(0) invert(1);
+}
+
+#calculator-section .pdf-btn .icon-inline {
+  margin-right: 10px;
+  filter: brightness(0) invert(1);
 }
 #calculator-section .input-container-nested input,
 #calculator-section .input-container-nested select {
@@ -196,10 +211,11 @@
   position: relative;
   flex-shrink: 0;
 }
-#calculator-section .info-icon-wrapper .fa-info-circle {
-  color: #000;
-  font-size: 1.2rem;
+#calculator-section .info-icon-wrapper .info-icon {
+  width: 22px;
+  height: 22px;
   cursor: pointer;
+  flex-shrink: 0;
 }
 #calculator-section .info-box {
   display: none;
@@ -787,12 +803,10 @@
   display: none;
 }
 
-.result-card-info-box i {
-  font-size: 1.8em;
-  color: #fff;
-  margin-right: 18px;
+.result-card-info-box .icon-inline {
   width: 30px;
-  text-align: center;
+  height: 30px;
+  margin-right: 18px;
 }
 
 .result-card-info-box .info-box-text {

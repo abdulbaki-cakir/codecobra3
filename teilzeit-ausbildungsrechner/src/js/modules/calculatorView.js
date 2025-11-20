@@ -21,10 +21,12 @@ export function getFormInputs() {
       document.getElementById("ausbildungsdauer").value,
       10,
     ),
+
     fullTimeHours:
-      parseInt(document.getElementById("vollzeitstunden").value, 10) || 40,
+      parseFloat(document.getElementById("vollzeitstunden").value) || 40,
+
     partTimeHours:
-      parseInt(document.getElementById("wochenstunden").value, 10) || 0,
+      parseFloat(document.getElementById("wochenstunden").value) || 0,
     initialFullTimeMonths:
       parseInt(document.getElementById("vollzeit-monate").value, 10) || 0,
     selections,
@@ -261,9 +263,9 @@ export function renderResults(data) {
     partTimeDetailsDiv.innerHTML = "";
 
     if (finalExtensionMonths === 0) {
-      partTimeDetailsDiv.innerHTML = `<p class="detailed-part-time-item">Die Reduzierung auf <strong>${partTimeHours}h</strong> führt zu einer geringfügigen Verlängerung von ≤ ${gracePeriod} Monaten, die in der Praxis oft ignoriert wird.</p>`;
+      partTimeDetailsDiv.innerHTML = `<p class="detailed-part-time-item">Die Reduzierung auf <strong>${partTimeHours.toFixed(1)}h</strong> führt zu einer geringfügigen Verlängerung von ≤ ${gracePeriod} Monaten, die in der Praxis oft ignoriert wird.</p>`;
     } else {
-      partTimeDetailsDiv.innerHTML = `<p class="detailed-part-time-item">Die Reduzierung der wöchentlichen Arbeitszeit von <strong>${fullTimeHours}h</strong> auf <strong>${partTimeHours}h</strong> für die verbleibende Dauer führt zu einer Verlängerung <strong>um ${finalExtensionMonths} Monate</strong>.</p>`;
+      partTimeDetailsDiv.innerHTML = `<p class="detailed-part-time-item">Die Reduzierung der wöchentlichen Arbeitszeit von <strong>${fullTimeHours.toFixed(1)}h</strong> auf <strong>${partTimeHours.toFixed(1)}h</strong> für die verbleibende Dauer führt zu einer Verlängerung <strong>um ${finalExtensionMonths} Monate</strong>.</p>`;
     }
 
     document.getElementById("final-duration-result").textContent =

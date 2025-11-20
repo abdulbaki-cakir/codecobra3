@@ -47,9 +47,9 @@
 }
 
 /* 4. Inhalt des Popups (Icon und Text) */
-.validation-popup .fa-exclamation-triangle {
-  color: #f39c12;
-  font-size: 1.1rem;
+.validation-popup .icon-warning {
+  width: 18px;
+  height: 18px;
   margin-right: 8px;
   flex-shrink: 0; /* Verhindert, dass das Icon schrumpft */
 }

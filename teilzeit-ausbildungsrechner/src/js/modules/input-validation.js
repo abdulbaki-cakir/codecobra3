@@ -24,9 +24,20 @@ export function validateVollzeitstunden(showErrorIfEmpty = false) {
       isValid = false;
     }
   } else {
-    const numValue = parseInt(value, 10);
-    if (isNaN(numValue) || numValue < 35 || numValue > 40) {
+    const numValue = parseFloat(value.replace(",", "."));
+
+    // Prüfen, ob der Wert ein Vielfaches von 0.5 ist: (Wert * 100) muss durch 50 teilbar sein
+    const isMultipleOfHalf = Math.round(numValue * 100) % 50 === 0;
+
+    if (isNaN(numValue)) {
+      errorMessage = "Bitte eine gültige Zahl eingeben.";
+      isValid = false;
+    } else if (numValue < 35 || numValue > 40) {
       errorMessage = "Wert muss zwischen 35 und 40 liegen.";
+      isValid = false;
+    } else if (!isMultipleOfHalf) {
+      // 💡 HIER AKTUALISIERT
+      errorMessage = "Nur 0,5er Schritte (z.B. 37, 37,5 oder 38) sind erlaubt.";
       isValid = false;
     }
   }
@@ -56,7 +67,7 @@ export function validateWochenstunden(showErrorIfEmpty = false) {
     return false;
   }
 
-  const vollzeitNum = parseInt(vollzeitInput.value.trim(), 10);
+  const vollzeitNum = parseFloat(vollzeitInput.value.trim().replace(",", "."));
   const isVollzeitValueValid =
     !isNaN(vollzeitNum) && vollzeitNum >= 35 && vollzeitNum <= 40;
 
@@ -72,7 +83,9 @@ export function validateWochenstunden(showErrorIfEmpty = false) {
       isValid = false;
     }
   } else {
-    const numValue = parseInt(value, 10);
+    const numValue = parseFloat(value.replace(",", "."));
+
+    const isMultipleOfHalf = Math.round(numValue * 100) % 50 === 0;
 
     if (isNaN(numValue)) {
       errorMessage = "Bitte eine Zahl eingeben.";
@@ -82,6 +95,10 @@ export function validateWochenstunden(showErrorIfEmpty = false) {
       isValid = false;
     } else if (numValue < 20 || numValue > 35) {
       errorMessage = "Wert muss zwischen 20 und 35 liegen.";
+      isValid = false;
+    } else if (!isMultipleOfHalf) {
+      // 💡 HIER AKTUALISIERT
+      errorMessage = "Nur 0,5er Schritte (z.B. 20, 20,5 oder 21) sind erlaubt.";
       isValid = false;
     }
   }
