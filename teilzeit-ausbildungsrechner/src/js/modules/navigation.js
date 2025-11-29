@@ -30,7 +30,6 @@ export function initializeNavigation() {
       }
       // 2. HOCH SCROLLEN
       else {
-        // Entferne die "hidden"-Klasse
         header.classList.remove("header-hidden");
       }
 

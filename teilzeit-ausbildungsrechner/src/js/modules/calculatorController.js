@@ -1,7 +1,6 @@
 // Importiere die getrennten Module
 import * as View from "./calculatorView.js";
 import * as Validation from "./input-validation.js";
-import { initializeTooltips } from "./tooltips.js";
 import { scrollToCalculator } from "./navigation.js";
 import * as Service from "./calculatorService.js";
 
@@ -87,7 +86,6 @@ export function initializeCalculator() {
   // --- 3. Initialen Zustand setzen ---
   View.showStep(currentStep);
   View.setupPartTimeSwitch();
-  initializeTooltips();
 
   // --- 4. VALIDIERUNGS-LISTENER ---
   const vollzeitInput = document.getElementById("vollzeitstunden");

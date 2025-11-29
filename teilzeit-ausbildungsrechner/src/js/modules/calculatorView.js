@@ -1,5 +1,8 @@
 import { resetVollzeitMonateValidation } from "./input-validation.js";
 
+// --- NEU: Globale Variable für das Chart ---
+let myResultsChart = null;
+
 export function getFormInputs() {
   const selections = {};
   const reasonIds = [
@@ -135,6 +138,7 @@ export function renderResults(data) {
     capWasHitShortening,
     legalMinimumDuration,
     remainingFullTimeEquivalent,
+    newFullTimeDuration, // <--- HINZUGEFÜGT für das Diagramm
     finalExtensionMonths,
     finalTotalDuration,
     extensionCapWasHit,
@@ -236,20 +240,16 @@ export function renderResults(data) {
       '<p class="no-shortening-message">Keine Verkürzungsgründe ausgewählt.</p>';
   }
 
-if (capWasHitShortening) {
-  const capMessage = document.createElement("p");
-  capMessage.classList.add("cap-message");
+  if (capWasHitShortening) {
+    const capMessage = document.createElement("p");
+    capMessage.classList.add("cap-message");
 
-  capMessage.innerHTML = `
-    <i><strong>Hinweis: Maximal zulässige Verkürzung erreicht.</strong></i><br>
-    <strong style="color: #A50000;">
-      ⚠️ Achtung: Die Ausbildung darf höchstens um die Hälfte der Gesamtdauer verkürzt werden.
-    </strong>
-  `;
+    capMessage.innerHTML = `
+    <i><strong>Hinweis: Maximal zulässige Verkürzung erreicht.</strong></i><br>`;
 
-  detailedShorteningsDiv.appendChild(capMessage);
-}
-    
+    detailedShorteningsDiv.appendChild(capMessage);
+  }
+
   // 3. Neue Vollzeit-Karte
   const newFullTimeCard = document.querySelector(".new-full-time-card");
   const newFullTimeValue = document.getElementById("new-full-time-card-value");
@@ -275,22 +275,24 @@ if (capWasHitShortening) {
       partTimeDetailsDiv.innerHTML = `<p class="detailed-part-time-item">Die Reduzierung der wöchentlichen Arbeitszeit von <strong>${fullTimeHours.toFixed(1)}h</strong> auf <strong>${partTimeHours.toFixed(1)}h</strong> führt zu einer geringfügigen Verlängerung von ≤ ${gracePeriod} Monaten, die in der Praxis oft ignoriert wird.</p>`;
     } else {
       partTimeDetailsDiv.innerHTML = `<p class="detailed-part-time-item">Die Reduzierung der wöchentlichen Arbeitszeit von <strong>${fullTimeHours.toFixed(1)}h</strong> auf <strong>${partTimeHours.toFixed(1)}h</strong> für die verbleibende Dauer führt zu einer Verlängerung <strong>um ${finalExtensionMonths} Monate</strong>.</p>`;
-  }
-
-  if (extensionCapWasHit) {
-    const capMessage = document.createElement('p');
-    capMessage.classList.add('cap-message--error');
-    capMessage.innerHTML = '<strong style="color: #A50000;">⚠️ Achtung: Die Gesamtdauer darf höchstens um die Hälfte der Regelausbildungszeit verlängert werden. Lösung: Erhöhe die wöchentliche Teilzeit-Arbeitszeit.</strong>';
-
-    if (partTimeCardLeft) partTimeCardLeft.style.backgroundColor = '#f05670';
-    if (finalResultBox) finalResultBox.style.backgroundColor = '#f05670';
-
-    } else {
-        if (partTimeCardLeft) partTimeCardLeft.style.backgroundColor = '#1a1a1a'; 
-        if (finalResultBox) finalResultBox.style.backgroundColor = '#000'; 
     }
-    
-    document.getElementById("final-duration-result").textContent = `${finalTotalDuration} Monate`;
+
+    if (extensionCapWasHit) {
+      const capMessage = document.createElement("p");
+      capMessage.classList.add("cap-message-error");
+      capMessage.innerHTML =
+        '<strong style="color: #A50000;">⚠️ Achtung: Die Gesamtdauer darf höchstens um die Hälfte der Regelausbildungszeit verlängert werden. Lösung: Erhöhe die wöchentliche Teilzeit-Arbeitszeit.</strong>';
+      partTimeDetailsDiv.appendChild(capMessage);
+
+      if (partTimeCardLeft) partTimeCardLeft.style.backgroundColor = "#f05670";
+      if (finalResultBox) finalResultBox.style.backgroundColor = "#f05670";
+    } else {
+      if (partTimeCardLeft) partTimeCardLeft.style.backgroundColor = "#1a1a1a";
+      if (finalResultBox) finalResultBox.style.backgroundColor = "#000";
+    }
+
+    document.getElementById("final-duration-result").textContent =
+      `${finalTotalDuration} Monate`;
   } else {
     partTimeCard.style.display = "none";
     document.getElementById("final-duration-result").textContent =
@@ -299,50 +301,49 @@ if (capWasHitShortening) {
     if (partTimeCardLeft) partTimeCardLeft.style.backgroundColor = "#1a1a1a";
     if (finalResultBox) finalResultBox.style.backgroundColor = "#000";
   }
-  // 5. Box für Durchschnittliche Arbeitszeit pro Tag
-  const resultsContainer = document.querySelector('.results-container');
-  const existingBox = document.getElementById('average-hours-box');
 
-  if (existingBox) existingBox.remove();
+  // 5. Box für Durchschnittliche Arbeitszeit pro Tag
+  const resultsContainer = document.querySelector(".results-container");
+  const existingBox = document.getElementById("average-hours-box");
+
   if (existingBox) existingBox.remove();
 
   if (partTimeHoursAvailable && !extensionCapWasHit) {
-      const averageBox = document.createElement('div');
-      averageBox.id = 'average-hours-box';
-      averageBox.classList.add('result-card-info-box');
+    const averageBox = document.createElement("div");
+    averageBox.id = "average-hours-box";
+    averageBox.classList.add("result-card-info-box");
 
-      const icon = document.createElement('img');
-      icon.src = './src/assets/icons/user-time.svg';
-      icon.alt = 'Info Icon';
-      icon.classList.add('info-icon');
+    const icon = document.createElement("img");
+    icon.src = "./src/assets/icons/user-time.svg";
+    icon.alt = "Info Icon";
+    icon.classList.add("info-icon");
 
-      const textBox = document.createElement('div');
-      textBox.classList.add('info-box-text');
+    const textBox = document.createElement("div");
+    textBox.classList.add("info-box-text");
 
-      const avgFtText = document.createElement('p');
-      const avgPtText = document.createElement('p');
+    const avgFtText = document.createElement("p");
+    const avgPtText = document.createElement("p");
 
-      const avgFtDaily = (fullTimeHours / 5).toFixed(1).replace('.', ',');
-      const avgPtDaily = (partTimeHours / 5).toFixed(1).replace('.', ',');
+    const avgFtDaily = (fullTimeHours / 5).toFixed(1).replace(".", ",");
+    const avgPtDaily = (partTimeHours / 5).toFixed(1).replace(".", ",");
 
-      avgFtText.innerHTML = 
-          `Durchschnittliche Arbeitszeit pro Tag (Vollzeit): <strong>${avgFtDaily} Stunden</strong>`;
-      avgPtText.innerHTML = 
-          `Durchschnittliche Arbeitszeit pro Tag (Teilzeit): <strong>${avgPtDaily} Stunden</strong>`;
+    avgFtText.innerHTML = `Durchschnittliche Arbeitszeit pro Tag (Vollzeit): <strong>${avgFtDaily} Stunden</strong>`;
+    avgPtText.innerHTML = `Durchschnittliche Arbeitszeit pro Tag (Teilzeit): <strong>${avgPtDaily} Stunden</strong>`;
 
-      textBox.appendChild(avgFtText);
-      textBox.appendChild(avgPtText);
+    textBox.appendChild(avgFtText);
+    textBox.appendChild(avgPtText);
 
-      averageBox.appendChild(icon);
-      averageBox.appendChild(textBox);
+    averageBox.appendChild(icon);
+    averageBox.appendChild(textBox);
 
-      if (resultsContainer) {
-          resultsContainer.appendChild(averageBox);
-      }
+    if (resultsContainer) {
+      resultsContainer.appendChild(averageBox);
+    }
   }
-    // 6. Box für Vorzeitige Zulassung
-    const existingEarlyBox = document.getElementById("early-admission-box");
-    if (existingEarlyBox) existingEarlyBox.remove();
+
+  // 6. Box für Vorzeitige Zulassung
+  const existingEarlyBox = document.getElementById("early-admission-box");
+  if (existingEarlyBox) existingEarlyBox.remove();
 
   // Zeige nur, wenn FinalDuration - 6 >= LegalMinimumDuration
   const earlyAdmissionAllowed = finalTotalDuration - 6 >= legalMinimumDuration;
@@ -363,7 +364,7 @@ if (capWasHitShortening) {
     const earlyInfoText = document.createElement("p");
 
     earlyInfoText.innerHTML =
-      "<strong>Hinweis zur vorzeitigen Zulassung:</strong><br>Eine zusätzliche Verkürzung um 6 Monate ist bei guten Leistungen <i>während</i> der Ausbildung möglich. Diese wird bei der zuständigen Stelle (z.B. IHK/HWK) beantragt und ist unabhängig von den hier berechneten Gründen.";
+      "<strong>Hinweis zur vorzeitigen Zulassung:</strong><br>Gute Leistungen können eine Verkürzung um 6 Monate ermöglichen. Der Antrag erfolgt bei der zuständigen Stelle (z. B. IHK/HWK) und ist unabhängig von den hier berechneten Gründen.";
 
     earlyTextBox.appendChild(earlyInfoText);
     earlyAdmissionBox.appendChild(icon);
@@ -371,6 +372,69 @@ if (capWasHitShortening) {
 
     if (resultsContainer) {
       resultsContainer.appendChild(earlyAdmissionBox);
+    }
+  }
+
+  //BALKENDIAGRAMM
+
+  const canvas = document.getElementById("results-chart");
+
+  if (canvas) {
+    if (typeof Chart !== "undefined") {
+      try {
+        const ctx = canvas.getContext("2d");
+
+        if (myResultsChart) myResultsChart.destroy();
+
+        myResultsChart = new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: [
+              ["Regulär", "(Vollzeit)"],
+              ["Verkürzt", "(Vollzeit)"],
+              ["Final", "(Teilzeit)"],
+            ],
+            datasets: [
+              {
+                label: "Dauer in Monaten",
+                data: [
+                  originalDuration,
+                  newFullTimeDuration,
+                  finalTotalDuration,
+                ],
+
+                backgroundColor: [
+                  "#6EC6C5",
+                  "#2A5D67",
+                  "rgba(15, 15, 15, 0.8)",
+                ],
+                borderColor: ["#6EC6C5", "#2A5D67", "rgba(15, 15, 15, 1)"],
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            animation: false,
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              title: { display: true, text: "Ausbildungsdauer im Überblick" },
+            },
+            scales: {
+              x: { ticks: { autoSkip: false } },
+              y: {
+                beginAtZero: true,
+                title: { display: true, text: "Monate" },
+              },
+            },
+          },
+        });
+      } catch (error) {
+        console.error("Fehler beim Erstellen des Diagramms:", error);
+      }
+    } else {
+      console.warn("Chart.js ist nicht geladen.");
     }
   }
 }

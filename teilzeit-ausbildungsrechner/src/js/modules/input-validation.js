@@ -36,7 +36,6 @@ export function validateVollzeitstunden(showErrorIfEmpty = false) {
       errorMessage = "Wert muss zwischen 35 und 40 liegen.";
       isValid = false;
     } else if (!isMultipleOfHalf) {
-      // 💡 HIER AKTUALISIERT
       errorMessage = "Nur 0,5er Schritte (z.B. 37, 37,5 oder 38) sind erlaubt.";
       isValid = false;
     }
@@ -97,7 +96,6 @@ export function validateWochenstunden(showErrorIfEmpty = false) {
       errorMessage = "Wert muss zwischen 20 und 35 liegen.";
       isValid = false;
     } else if (!isMultipleOfHalf) {
-      // 💡 HIER AKTUALISIERT
       errorMessage = "Nur 0,5er Schritte (z.B. 20, 20,5 oder 21) sind erlaubt.";
       isValid = false;
     }

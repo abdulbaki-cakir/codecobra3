@@ -42,7 +42,7 @@
       <input
         type="number"
         id="vollzeitstunden"
-        value="40"
+        placeholder="40"
         min="35"
         max="40"
         step="0.5"
@@ -605,6 +605,9 @@
       </div>
     </div>
 
+    <div class="chart-container">
+      <canvas id="results-chart"></canvas>
+    </div>
     <div class="final-result-box">
       <span class="result-label">Gesamtausbildungsdauer ab Beginn</span>
       <span class="result-value" id="final-duration-result">-- Monate</span>
@@ -612,12 +615,9 @@
   </div>
 
   <p class="disclaimer">
-    <strong>Bitte beachten Sie:</strong> Die Ergebnisse dieses Rechners sind
-    unverbindlich und dienen lediglich als Orientierung. Ein Rechtsanspruch kann
-    daraus nicht abgeleitet werden.<br /><br />
-    Auch bei der Kombination mehrerer Gründe darf die gesetzliche
-    Mindestausbildungsdauer nicht unterschritten werden. Eine detaillierte
-    Erklärung zur Berechnung finden Sie auf unserer Seite
+    <strong>Bitte beachten Sie:</strong> Die Ergebnisse dienen lediglich zur
+    Orientierung und begründen keinen Rechtsanspruch.<br /><br />
+    Eine detaillierte Erklärung zur Berechnung finden Sie auf unserer Seite
     <a href="how-it-works.html">„So funktioniert's“</a>.<br />
   </p>
 

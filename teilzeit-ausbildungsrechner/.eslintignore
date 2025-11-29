@@ -5,3 +5,6 @@ public/
 node_modules/
 
 dist/
+
+# Ignoriere minifizierte Dateien (wie chart.min.js)
+*.min.js
