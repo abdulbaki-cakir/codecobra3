@@ -284,8 +284,8 @@ export function renderResults(data) {
         '<strong style="color: #A50000;">⚠️ Achtung: Die Gesamtdauer darf höchstens um die Hälfte der Regelausbildungszeit verlängert werden. Lösung: Erhöhe die wöchentliche Teilzeit-Arbeitszeit.</strong>';
       partTimeDetailsDiv.appendChild(capMessage);
 
-      if (partTimeCardLeft) partTimeCardLeft.style.backgroundColor = "#f05670";
-      if (finalResultBox) finalResultBox.style.backgroundColor = "#f05670";
+      if (partTimeCardLeft) partTimeCardLeft.style.backgroundColor = "#1a1a1a";
+      if (finalResultBox) finalResultBox.style.backgroundColor = "#000";
     } else {
       if (partTimeCardLeft) partTimeCardLeft.style.backgroundColor = "#1a1a1a";
       if (finalResultBox) finalResultBox.style.backgroundColor = "#000";
