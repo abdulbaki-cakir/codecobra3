@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <header>
   <h1>Teilzeit-Ausbildungs&shy;rechner</h1>
   <p>Wie lange dauert deine Ausbildung? Finde es hier sofort heraus.</p>
@@ -33,11 +33,7 @@
   <div class="input-group">
     <div class="input-container-nested">
       <div class="input-prefix">
-        <img
-          src="/src/assets/icons/business-time.svg"
-          alt=""
-          class="icon icon-inline"
-        />Übliche Stunden pro Woche (Vollzeit)
+        Übliche Stunden pro Woche (Vollzeit)
       </div>
       <input
         type="number"
@@ -55,8 +51,8 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        💬 Wie viele Stunden pro Woche wird in Ihrem Unternehmen gearbeitet,
-        wenn man vollzeitbeschäftigt ist?.
+        Gib die vertraglichen Vollzeitstunden deiner Firma ein (meist 38–40).
+        Damit berechnet der Rechner deinen Teilzeit-Prozentsatz.
       </div>
     </div>
     <div class="validation-popup" id="vollzeitstunden-error">
@@ -72,11 +68,7 @@
   <div class="input-group">
     <div class="input-container-nested">
       <div class="input-prefix">
-        <img
-          src="/src/assets/icons/user-time.svg"
-          alt=""
-          class="icon icon-inline"
-        />Gewünschte Stunden pro Woche (Teilzeit)
+        Gewünschte Stunden pro Woche (Teilzeit)
       </div>
       <input
         type="number"
@@ -94,8 +86,8 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        💬 Wie viele Stunden pro Woche möchten Sie während Ihrer
-        Teilzeitausbildung arbeiten?
+        Trage ein, wie viele Stunden du pro Woche in Teilzeit arbeiten willst.
+        So sieht der Rechner, wie stark sich deine Ausbildung verlängert.
       </div>
     </div>
     <div class="validation-popup" id="wochenstunden-error">
@@ -111,11 +103,7 @@
   <div class="input-group">
     <div class="input-container-nested">
       <div class="input-prefix">
-        <img
-          src="/src/assets/icons/calendar.svg"
-          alt=""
-          class="icon icon-inline"
-        />Dauer der Ausbildung in Monate (Vollzeit)
+        Dauer der Ausbildung in Monate (Vollzeit)
       </div>
       <select id="ausbildungsdauer">
         <option value="24">24</option>
@@ -130,7 +118,7 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        💬 Wie viele Monate dauert Ihre Ausbildung insgesamt normalerweise?
+        Wähle die übliche Vollzeit-Gesamtdauer deiner Ausbildung (z. B. laut Vertrag 24, 36 oder 42 Monate).
       </div>
     </div>
   </div>
@@ -138,11 +126,6 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <img
-          src="/src/assets/icons/time-quarter-to.svg"
-          alt=""
-          class="icon icon-inline"
-        />
         <h4>Wie möchtest du deine Ausbildung absolvieren?</h4>
       </div>
       <div class="radio-card-body">
@@ -169,11 +152,6 @@
 
       <div class="input-container-nested hidden" id="vollzeit-monate-input">
         <div class="input-prefix">
-          <img
-            src="/src/assets/icons/calendar.svg"
-            alt=""
-            class="icon icon-inline"
-          />
           Monate in Vollzeit
         </div>
         <input
@@ -200,8 +178,8 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        💬 Wie viele Monate in Vollzeit möchten sie zuerst absolvieren bzw.
-        haben Sie bereits hinter sich?
+        Planst du zuerst Vollzeit? Trag hier die Anzahl dieser Monate ein.
+        Lass 0, wenn du direkt in Teilzeit startest.
       </div>
     </div>
     <select
@@ -226,11 +204,6 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <img
-          src="/src/assets/icons/cake-birthday.svg"
-          alt=""
-          class="icon icon-inline"
-        />
         <h4>Bist du älter als 21?</h4>
       </div>
       <div class="radio-card-body">
@@ -252,8 +225,8 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        💬 Eine Verkürzung ist möglich, wenn Sie zu Beginn der Ausbildung über
-        21 Jahre alt sind.
+        Bist du zu Beginn der Ausbildung über 21 Jahre alt?
+        In vielen Fällen kannst du dann bis zu 12 Monate kürzen.
       </div>
     </div>
     <select name="age" id="age-select" style="display: none">
@@ -265,11 +238,6 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <img
-          src="/src/assets/icons/school.svg"
-          alt=""
-          class="icon icon-inline"
-        />
         <h4>Was ist dein höchster Schulabschluss?</h4>
       </div>
       <div class="radio-card-body">
@@ -302,8 +270,8 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        💬 Höhere Abschlüsse können eine Verkürzung ermöglichen – wähle deinen
-        höchsten Abschluss.
+        Je höher dein Schulabschluss, desto eher kann eine Verkürzung möglich sein.
+        Wähle den höchsten Abschluss, den du hast.
       </div>
     </div>
     <select id="school-finish" style="display: none">
@@ -316,11 +284,6 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <img
-          src="/src/assets/icons/corporate-alt.svg"
-          alt=""
-          class="icon icon-inline"
-        />
         <h4>
           Hast du schon erste relevante Berufserfahrungen gesammelt (z. B. in
           einem Praktikum)?
@@ -345,8 +308,8 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        💬 Praktische Erfahrungen, z. B. aus Praktika, können auf die
-        Ausbildungszeit angerechnet werden.
+        Relevante Praktika oder Jobs können angerechnet werden,
+        wenn sie zum Ausbildungsberuf passen.
       </div>
     </div>
     <select name="experience" id="experience-select" style="display: none">
@@ -358,11 +321,6 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <img
-          src="/src/assets/icons/tools.svg"
-          alt=""
-          class="icon icon-inline"
-        />
         <h4>Hast du bereits eine Ausbildung abgeschlossen?</h4>
       </div>
       <div class="radio-card-body">
@@ -384,8 +342,8 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        💬 Eine passende, abgeschlossene Ausbildung kann die Dauer deutlich
-        reduzieren.
+        Eine passende, bereits abgeschlossene Ausbildung kann deine neue Ausbildung
+        deutlich verkürzen (oft bis zu 12 Monate).
       </div>
     </div>
     <select
@@ -401,11 +359,6 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <img
-          src="/src/assets/icons/graduation-cap.svg"
-          alt=""
-          class="icon icon-inline"
-        />
         <h4>
           Hast du im Studium Kurse belegt, die für die Ausbildung relevant sind?
         </h4>
@@ -429,9 +382,8 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        💬 Beispiel: Informatik-Kurse, wie z. B. Programmierung oder
-        Webentwicklung können für die Fachinformatiker-Ausbildung anerkannt
-        werden.
+        Hast du im Studium passende Inhalte (z. B. Programmierung, BWL)?
+        Solche Leistungen lassen sich manchmal anerkennen.
       </div>
     </div>
     <select name="study" id="study-select" style="display: none">
@@ -443,11 +395,6 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <img
-          src="/src/assets/icons/child.svg"
-          alt=""
-          class="icon icon-inline"
-        />
         <h4>Hast du Kinder, um die du dich kümmerst?</h4>
       </div>
       <div class="radio-card-body">
@@ -469,8 +416,8 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        💬 Elternschaft oder die Betreuung von Kindern kann die Ausbildung unter
-        Umständen verkürzen.
+        Wenn du Kinder betreust, kann die Kammer eher einer Teilzeit-Ausbildung
+        zustimmen oder die Dauer anpassen.
       </div>
     </div>
     <select name="child-care" id="child-care-select" style="display: none">
@@ -482,11 +429,6 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <img
-          src="/src/assets/icons/old-people.svg"
-          alt=""
-          class="icon icon-inline"
-        />
         <h4>Pflegst du Angehörige (z. B. deine Großeltern)?</h4>
       </div>
       <div class="radio-card-body">
@@ -508,9 +450,8 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        💬 Als Angehörige gelten Personen, die auf Pflege oder Unterstützung
-        angewiesen sind, z. B. ältere Menschen, Menschen mit Behinderung oder
-        sonst hilfsbedürftige Personen.
+        Pflegst du regelmäßig Angehörige (z. B. Eltern, Großeltern)?
+        Das kann für eine Teilzeit-Ausbildung berücksichtigt werden.
       </div>
     </div>
     <select name="family-care" id="family-care-select" style="display: none">
@@ -624,7 +565,6 @@
   <div class="form-buttons">
     <button class="secondary" id="back-btn-3">Zurück</button>
     <button class="primary pdf-btn">
-      <img src="/src/assets/icons/tools.svg" alt="" class="icon icon-inline" />
       Als PDF ausdrucken
     </button>
   </div>
@@ -635,3 +575,10 @@
     display: none !important;
   }
 </style>
+
+
+
+
+
+
+
