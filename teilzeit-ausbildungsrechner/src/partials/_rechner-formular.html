@@ -55,8 +55,8 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        Bitte geben Sie hier die vertraglichen Vollzeitstunden Ihrer Firma ein (meist 38–40).
-        Damit berechnet der Rechner Ihren Teilzeit-Prozentsatz.
+        Bitte geben Sie hier die vertraglichen Vollzeitstunden Ihrer Firma ein
+        (meist 38–40). Damit berechnet der Rechner Ihren Teilzeit-Prozentsatz.
       </div>
     </div>
     <div class="validation-popup" id="vollzeitstunden-error">
@@ -72,7 +72,7 @@
   <div class="input-group">
     <div class="input-container-nested">
       <div class="input-prefix">
-        Wie viele Stunden möchten Sie pro Woche arbeiten?
+        Wie viele Stunden möchten Sie pro Woche in Teilzeit arbeiten?
       </div>
       <input
         type="number"
@@ -90,8 +90,9 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        Bitte tragen Sie hier ein, wie viele Stunden Sie pro Woche in Teilzeit arbeiten wollen.
-        So sieht der Rechner, wie stark sich Ihre Ausbildung verlängert.
+        Bitte tragen Sie hier ein, wie viele Stunden Sie pro Woche in Teilzeit
+        arbeiten wollen. So sieht der Rechner, wie stark sich Ihre Ausbildung
+        verlängert.
       </div>
     </div>
     <div class="validation-popup" id="wochenstunden-error">
@@ -122,7 +123,8 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        Bitte wählen Sie die übliche Vollzeit-Gesamtdauer Ihrer Ausbildung (z. B. laut Vertrag 24, 36 oder 42 Monate).
+        Bitte wählen Sie die übliche Vollzeit-Gesamtdauer Ihrer Ausbildung (z.
+        B. laut Vertrag 24, 36 oder 42 Monate).
       </div>
     </div>
   </div>
@@ -155,9 +157,7 @@
       ></div>
 
       <div class="input-container-nested hidden" id="vollzeit-monate-input">
-        <div class="input-prefix">
-          Monate in Vollzeit
-        </div>
+        <div class="input-prefix">Monate in Vollzeit</div>
         <input
           type="number"
           id="vollzeit-monate"
@@ -182,7 +182,8 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        Planen Sie zuerst Vollzeit? Tragen Sie hier die Anzahl dieser Monate ein.<br />
+        Planen Sie zuerst Vollzeit? Tragen Sie hier die Anzahl dieser Monate
+        ein.<br />
         Oder haben Sie schon Vollzeit geleistet? Dann geben Sie hier die bereits
         geleisteten Monate an.<br />
         Lassen Sie 0, wenn Sie direkt in Teilzeit starten.
@@ -210,7 +211,7 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <h4> Sind Sie älter als 21?</h4>
+        <h4>Sind Sie älter als 21?</h4>
       </div>
       <div class="radio-card-body">
         <label class="radio-card-option">
@@ -231,8 +232,8 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        Sind Sie zu Beginn der Ausbildung über 21 Jahre alt?
-        In vielen Fällen können Sie dann bis zu 12 Monate kürzen.
+        Sind Sie zu Beginn der Ausbildung über 21 Jahre alt? In vielen Fällen
+        können Sie dann bis zu 12 Monate kürzen.
       </div>
     </div>
     <select name="age" id="age-select" style="display: none">
@@ -276,8 +277,8 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        Je höher Ihr Schulabschluss, desto eher kann eine Verkürzung möglich sein.
-        Wählen Sie den höchsten Abschluss, den Sie haben.
+        Je höher Ihr Schulabschluss, desto eher kann eine Verkürzung möglich
+        sein. Wählen Sie den höchsten Abschluss, den Sie haben.
       </div>
     </div>
     <select id="school-finish" style="display: none">
@@ -314,8 +315,8 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        Relevante Praktika oder Jobs können angerechnet werden,
-        wenn sie zum Ausbildungsberuf passen.
+        Relevante Praktika oder Jobs können angerechnet werden, wenn sie zum
+        Ausbildungsberuf passen.
       </div>
     </div>
     <select name="experience" id="experience-select" style="display: none">
@@ -348,8 +349,8 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        Eine passende, bereits abgeschlossene Ausbildung kann Ihre neue Ausbildung
-        deutlich verkürzen (oft bis zu 12 Monate).
+        Eine passende, bereits abgeschlossene Ausbildung kann Ihre neue
+        Ausbildung deutlich verkürzen (oft bis zu 12 Monate).
       </div>
     </div>
     <select
@@ -366,7 +367,8 @@
     <div class="radio-card-container">
       <div class="radio-card-header">
         <h4>
-          Haben Sie im Studium Kurse belegt, die für die Ausbildung relevant sind?
+          Haben Sie im Studium Kurse belegt, die für die Ausbildung relevant
+          sind?
         </h4>
       </div>
       <div class="radio-card-body">
@@ -456,8 +458,8 @@
         class="icon info-icon"
       />
       <div class="info-box">
-        Pflegen Sie regelmäßig Angehörige (z. B. Eltern, Großeltern)?
-        Das kann für eine Teilzeit-Ausbildung berücksichtigt werden.
+        Pflegen Sie regelmäßig Angehörige (z. B. Eltern, Großeltern)? Das kann
+        für eine Teilzeit-Ausbildung berücksichtigt werden.
       </div>
     </div>
     <select name="family-care" id="family-care-select" style="display: none">
@@ -474,90 +476,120 @@
 
 <main class="calculator-form hidden" id="step-3">
   <h2>3. Ergebnisse</h2>
+
   <div class="results-container">
-    <div class="result-card served-time-card" style="display: none">
-      <div class="result-card-left">
-        <span class="result-card-title">geplante<br />Vollzeit-Phase</span>
-        <span class="result-card-number" id="served-card-value">--</span>
-        <span class="result-card-unit">Monate</span>
-      </div>
-      <div class="result-card-right">
-        <p class="result-card-header-info">
-          <strong>Vollzeit am Anfang Ihrer Ausbildung</strong>
-        </p>
-        <hr class="card-divider" />
-        <div id="detailed-served-time-card">
-          <p>
-            Diese Monate planen Sie am Anfang in Vollzeit, bevor Sie in Teilzeit
-            wechseln.
-          </p>
-        </div>
-      </div>
-    </div>
+    <p
+      id="global-cap-error"
+      class="cap-message-error hidden"
+      style="margin-bottom: 15px"
+    >
+      <strong>⚠️ Achtung:</strong> Die Gesamtdauer darf höchstens um die Hälfte
+      der regulären Ausbildungsdauer verlängert werden. <br />Lösung: Erhöhe die
+      Teilzeit-Stunden pro Woche.
+    </p>
 
-    <div class="result-card">
-      <div class="result-card-left">
-        <span class="result-card-title">Gesamte<br />Verkürzung</span>
-        <span class="result-card-number" id="shortening-card-value">--</span>
-        <span class="result-card-unit">Monate</span>
-      </div>
-      <div class="result-card-right">
-        <p class="result-card-header-info">
-          Reguläre Dauer (Vollzeit):
-          <strong id="original-duration-header">-- Monate</strong>
-        </p>
-        <hr class="card-divider" />
-        <div id="detailed-shortenings-card">
-          <p>Hier werden die Gründe für die Verkürzung aufgelistet.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="result-card new-full-time-card" style="display: none">
-      <div class="result-card-left">
-        <span class="result-card-title"
-          >Verbleibende<br />Dauer (Vollzeit)</span
-        >
-        <span class="result-card-number" id="new-full-time-card-value">--</span>
-        <span class="result-card-unit">Monate</span>
-      </div>
-      <div class="result-card-right">
-        <p class="result-card-header-info">
-          <strong>Restliche Dauer in Vollzeit</strong>
-        </p>
-        <hr class="card-divider" />
-        <div id="detailed-new-full-time-card">
-          <p>
-            Dies ist die verbleibende Restdauer in Vollzeit (nach Anrechnung und
-            Abzug der geleisteten Zeit).
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="result-card part-time-card">
-      <div class="result-card-left">
-        <span class="result-card-title">Verlängerung durch Teilzeit</span>
-        <span class="result-card-number" id="extension-card-value">--</span>
-        <span class="result-card-unit">Monate</span>
-      </div>
-      <div class="result-card-right">
-        <p class="result-card-header-info">
-          <strong>Anpassung der Restlaufzeit</strong>
-        </p>
-        <hr class="card-divider" />
-        <div id="detailed-part-time-card">
-          <p>Hier steht die Erklärung zur Teilzeit-Anpassung.</p>
-        </div>
-      </div>
+    <div class="final-result-box">
+      <span class="result-label">Gesamtausbildungsdauer ab Beginn</span>
+      <span class="result-value" id="final-duration-result">-- Monate</span>
+      <span
+        id="final-daily-hours"
+        style="
+          font-size: 0.8rem;
+          font-weight: normal;
+          margin-top: 5px;
+          display: none;
+        "
+      ></span>
     </div>
 
     <div class="chart-container">
       <canvas id="results-chart"></canvas>
     </div>
-    <div class="final-result-box">
-      <span class="result-label">Gesamtausbildungsdauer ab Beginn</span>
-      <span class="result-value" id="final-duration-result">-- Monate</span>
+
+    <div class="details-container" id="details-container">
+      <button type="button" id="toggle-details-btn" class="details-toggle-btn">
+        Detaillierte Erklärung anzeigen ▼
+      </button>
+
+      <div id="details-wrapper" class="hidden">
+        <div class="result-card served-time-card" style="display: none">
+          <div class="result-card-left">
+            <span class="result-card-title">geplante<br />Vollzeit-Phase</span>
+            <span class="result-card-number" id="served-card-value">--</span>
+            <span class="result-card-unit">Monate</span>
+          </div>
+          <div class="result-card-right">
+            <p class="result-card-header-info">
+              <strong>Vollzeit am Anfang Ihrer Ausbildung</strong>
+            </p>
+            <hr class="card-divider" />
+            <div id="detailed-served-time-card">
+              <p>
+                Diese Monate planen Sie am Anfang in Vollzeit, bevor Sie in
+                Teilzeit wechselsn.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-left">
+            <span class="result-card-title">Gesamte<br />Verkürzung</span>
+            <span class="result-card-number" id="shortening-card-value"
+              >--</span
+            >
+            <span class="result-card-unit">Monate</span>
+          </div>
+          <div class="result-card-right">
+            <p class="result-card-header-info">
+              Reguläre Dauer (Vollzeit):
+              <strong id="original-duration-header">-- Monate</strong>
+            </p>
+            <hr class="card-divider" />
+            <div id="detailed-shortenings-card">
+              <p>Hier werden die Gründe für die Verkürzung aufgelistet.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card new-full-time-card" style="display: none">
+          <div class="result-card-left">
+            <span class="result-card-title"
+              >Verbleibende<br />Dauer (Vollzeit)</span
+            >
+            <span class="result-card-number" id="new-full-time-card-value"
+              >--</span
+            >
+            <span class="result-card-unit">Monate</span>
+          </div>
+          <div class="result-card-right">
+            <p class="result-card-header-info">
+              <strong>Restliche Dauer in Vollzeit</strong>
+            </p>
+            <hr class="card-divider" />
+            <div id="detailed-new-full-time-card">
+              <p>Dies ist die verbleibende Restdauer in Vollzeit.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card part-time-card">
+          <div class="result-card-left">
+            <span class="result-card-title">Verlängerung durch Teilzeit</span>
+            <span class="result-card-number" id="extension-card-value">--</span>
+            <span class="result-card-unit">Monate</span>
+          </div>
+          <div class="result-card-right">
+            <p class="result-card-header-info">
+              <strong>Anpassung der Restlaufzeit</strong>
+            </p>
+            <hr class="card-divider" />
+            <div id="detailed-part-time-card">
+              <p>Hier steht die Erklärung zur Teilzeit-Anpassung.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -570,9 +602,7 @@
 
   <div class="form-buttons">
     <button class="secondary" id="back-btn-3">Zurück</button>
-    <button class="primary pdf-btn">
-      Als PDF ausdrucken
-    </button>
+    <button class="primary pdf-btn">Als PDF ausdrucken</button>
   </div>
 </main>
 
@@ -581,10 +611,3 @@
     display: none !important;
   }
 </style>
-
-
-
-
-
-
-

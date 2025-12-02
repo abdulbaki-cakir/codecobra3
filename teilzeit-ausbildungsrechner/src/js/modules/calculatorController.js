@@ -3,6 +3,7 @@ import * as View from "./calculatorView.js";
 import * as Validation from "./input-validation.js";
 import { scrollToCalculator } from "./navigation.js";
 import * as Service from "./calculatorService.js";
+import { setupDetailsToggle } from "./calculatorView.js";
 
 let currentStep = 1;
 
@@ -150,3 +151,5 @@ export function initializeCalculator() {
     });
   });
 }
+
+setupDetailsToggle();
