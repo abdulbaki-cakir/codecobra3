@@ -165,6 +165,7 @@ export function calculateFinalResults(inputs) {
     finalExtensionMonths,
     finalTotalDuration,
     extensionCapWasHit,
+    maxAllowedTotalDuration,
     gracePeriod,
   };
 }
