@@ -1,8 +1,6 @@
-/* Basiseinstellungen + lokale Custom Properties in EINEM Block */
 #calculator-section {
   padding: 5rem 2rem;
 
-  /* Lokale Custom Properties für konsistente Abstände/Größen */
   --rc-radius: 20px;
   --rc-gap: 0.8rem;
   --rc-padding-y: 1.2rem;
@@ -17,8 +15,6 @@
   --rc-focus: 0 0 0 3px rgba(255, 255, 255, 0.35);
   --rc-shadow: 0 6px 24px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.12);
   --rc-transition: 160ms ease;
-
-  /* Farben für Result Cards, falls sie in der alten Datei anders definiert waren */
   --calculator-input-bg: #1a1a1a;
   --bg-color: #fff;
 }
@@ -127,14 +123,11 @@
   filter: brightness(0) invert(1);
 }
 #calculator-section .calculator-form {
-  /* --- Das ist der Card-Look --- */
   background: #fff;
   border: 2px solid #e1e1e1;
   border-radius: 28px;
   padding: 2.25rem 1.75rem;
   box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.35);
-
-  /* --- Zentrierung der Karte selbst --- */
   max-width: 700px;
   margin: 3rem auto;
 }
@@ -316,17 +309,11 @@
   transform: translateY(-1px);
 }
 
-/* ==========================================================================
-   Calculator – Radio Card
-   ========================================================================== */
-
-/* Gruppe */
 #calculator-section .radio-card-group {
   align-items: center;
   padding-top: 10px;
 }
 
-/* Karte / Container */
 #calculator-section .radio-card-container {
   width: 100%;
   background-color: var(--calculator-input-bg);
@@ -338,7 +325,6 @@
   backdrop-filter: saturate(120%) blur(2px);
 }
 
-/* Header */
 #calculator-section .radio-card-header {
   display: flex;
   align-items: center;
@@ -353,14 +339,12 @@
   margin: 0;
 }
 
-/* Body */
 #calculator-section .radio-card-body {
   display: flex;
   flex-direction: column;
   gap: var(--rc-gap);
 }
 
-/* Option */
 #calculator-section .radio-card-option {
   display: flex;
   align-items: center;
@@ -376,7 +360,6 @@
   background-color: rgba(255, 255, 255, 0.04);
 }
 
-/* Originalen Radio-Button verstecken, aber zugänglich halten */
 #calculator-section .radio-card-option input[type="radio"] {
   position: absolute;
   opacity: 0;
@@ -384,7 +367,6 @@
   height: 0;
 }
 
-/* Benutzerdefinierter Radio-Button (äußerer Kreis) */
 #calculator-section .radio-card-option .radio-custom {
   display: inline-block;
   width: var(--rc-size);
@@ -401,7 +383,6 @@
   will-change: transform;
 }
 
-/* Innerer Punkt (aktiv) */
 #calculator-section .radio-card-option .radio-custom::after {
   content: "";
   position: absolute;
@@ -415,7 +396,6 @@
   transition: transform var(--rc-transition);
 }
 
-/* Checked-State */
 #calculator-section
   .radio-card-option
   input[type="radio"]:checked
@@ -430,7 +410,6 @@
   transform: translate(-50%, -50%) scale(1);
 }
 
-/* Fokus für Tastatur-Nutzer (WCAG) */
 #calculator-section
   .radio-card-option
   input[type="radio"]:focus-visible
@@ -439,12 +418,10 @@
   outline: none;
 }
 
-/* Hover-State für den Kreis */
 #calculator-section .radio-card-option:hover .radio-custom {
   border-color: var(--rc-hover);
 }
 
-/* Disabled-State */
 #calculator-section
   .radio-card-option
   input[type="radio"]:disabled
@@ -460,7 +437,6 @@
   cursor: not-allowed;
 }
 
-/* Label / Subtext */
 #calculator-section .radio-label {
   display: inline-flex;
   align-items: baseline;
@@ -472,7 +448,6 @@
   margin-left: 2px;
 }
 
-/* --- HANDY-FIX FÜR RADIO-BUTTON-LABEL --- */
 @media (max-width: 500px) {
   #calculator-section .radio-label {
     display: inline;
@@ -483,7 +458,6 @@
   }
 }
 
-/* Trennlinie in der Card */
 #calculator-section .card-line-separator {
   width: 100%;
   height: 1px;
@@ -492,7 +466,6 @@
   border-radius: 1px;
 }
 
-/* High Contrast Nutzer-Präferenzen */
 @media (prefers-contrast: more) {
   #calculator-section .radio-card-option .radio-custom {
     border-width: 3px;
@@ -505,7 +478,6 @@
   }
 }
 
-/* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   #calculator-section .radio-card-option,
   #calculator-section .radio-card-option .radio-custom,
@@ -514,7 +486,6 @@
   }
 }
 
-/* Mobile Layout Anpassungen */
 @media (max-width: 1024px) {
   #calculator-section .container {
     padding: 0;
@@ -544,11 +515,6 @@
   }
 }
 
-/* -------------------------------------------------------------------------- */
-/* --- RESULT CARD STYLES (INTEGRATED & OPTIMIZED) -------------------------- */
-/* -------------------------------------------------------------------------- */
-
-/* Stile für die detaillierte Verkürzungsanzeige (innerhalb der .calculator-form) */
 .result-item-group {
   margin-bottom: 1rem;
   padding-bottom: 1rem;
@@ -633,7 +599,6 @@
   padding: 1.5rem;
   border-radius: 12px;
   text-align: center;
-  margin-top: 2.5rem;
   margin-bottom: 2.5rem;
 }
 
@@ -645,6 +610,7 @@
 }
 
 .final-result-box .result-value {
+  display: block;
   font-size: 2.5em;
   font-weight: 700;
   line-height: 1.2;
@@ -657,28 +623,25 @@
   margin: 2.5rem 0;
 }
 
-/* --- Stile für die neuen Ergebnis-Karten (Result Cards) --- */
 .result-card {
-  /* Desktop-Anordnung: Horizontal (links und rechts) */
   display: flex;
-  background-color: #f4f4f4; /* Hellgrauer Hintergrund für die rechte Seite */
+  background-color: #f4f4f4;
   border-radius: 12px;
   margin-bottom: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  /* HINZUGEFÜGT: Leichte Umrandung für bessere Abgrenzung */
   border: 1px solid #ccc;
 }
 
 .result-card-left {
-  background-color: #1a1a1a; /* Dunkler Hintergrund für die linke Seite */
+  background-color: #1a1a1a;
   color: #fff;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 180px; /* Feste Mindestbreite für Desktop */
+  min-width: 180px;
   text-align: center;
 }
 
@@ -707,36 +670,29 @@
   color: #333;
 }
 
-/* ------------------------------------------- */
-/* --- MOBILE OPTIMIERUNG FÜR RESULT CARDS --- */
 @media (max-width: 600px) {
   .result-card {
-    /* Ändert die Anordnung von horizontal zu vertikal (stapeln) */
     flex-direction: column;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   }
 
   .result-card-left {
-    /* Macht die linke Seite voll breit, wenn gestapelt */
     width: 100%;
-    min-width: 0; /* Entfernt die feste Mindestbreite, die Probleme macht */
+    min-width: 0;
     padding: 1rem;
-    border-radius: 12px 12px 0 0; /* Abgerundete Ecken nur oben */
+    border-radius: 12px 12px 0 0;
   }
 
   .result-card-right {
     padding: 1rem;
-    border-radius: 0 0 12px 12px; /* Abgerundete Ecken nur unten */
+    border-radius: 0 0 12px 12px;
   }
 
-  /* Optimiert die Größe der Ergebnis-Zahl, damit sie nicht zu groß wirkt */
   .result-card-number {
     font-size: 3em;
   }
 }
-/* ------------------------------------------- */
 
-/* Spezifische Stile für die Detail-Listen in den Karten */
 .result-card-right .detailed-shortening-item,
 .result-card-right .detailed-part-time-item {
   margin-bottom: 0.5rem;
@@ -746,7 +702,6 @@
   color: #000;
 }
 
-/* --- Stile für die Header-Zeile in den Ergebnis-Karten --- */
 .result-card-header-info {
   font-size: 1.1em;
   font-weight: 500;
@@ -772,7 +727,6 @@
   font-style: italic;
 }
 
-/* WURDE UMBENANNT VON .cap-message--error (BEM) ZU .cap-message-error (Kebab-Case) */
 .cap-message-error {
   margin-top: 15px;
   padding: 10px 15px;
@@ -782,15 +736,14 @@
   border: 2px solid #a50000;
   background-color: #ffe6e6;
   border-radius: 8px;
+  color: #a50000;
 }
 
-/* * NEUER STIL FÜR DIE DURCHSCHNITTS-STUNDEN-BOX
- */
 .result-card-info-box {
   display: flex;
   align-items: center;
-  background-color: transparent;
-  color: #000;
+  background-color: #1a1a1a;
+  color: #fff;
   padding: 16px 20px;
   border-radius: 8px;
   margin-top: 20px;
@@ -819,19 +772,79 @@
 }
 
 .result-card-info-box .info-box-text strong {
-  color: #000;
+  color: #fff;
   font-weight: 700;
 }
 #average-hours-box img.info-icon {
-  width: 32px;
-  height: 32px;
-  margin-right: 16px;
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
   opacity: 1;
-  filter: none;
+  filter: brightness(0) invert(1);
 }
 #early-admission-box img.info-icon {
-  width: 32px;
-  height: 32px;
-  margin-right: 16px;
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
   opacity: 1;
+}
+/* --- Styles für den Detail-Container --- */
+
+.details-container {
+  margin-top: 2rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent; /* Platzhalter für Border */
+}
+
+/* Status: GEÖFFNET -> Stärkeres Grau */
+.details-container.open {
+  background-color: #dee2e6; /* Deutlich stärkeres Grau */
+  border: 1px solid #adb5bd; /* Rand ebenfalls etwas dunkler */
+  padding-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08); /* Schatten leicht verstärkt */
+}
+
+/* Der Button selbst (Geschlossen) */
+.details-toggle-btn {
+  width: 100%;
+  padding: 14px; /* Etwas mehr Fläche */
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  background-color: #f8f9fa; /* Sehr helles Grau, fast Weiß */
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+}
+
+.details-toggle-btn:hover {
+  background-color: #e2e6ea; /* Hover-Effekt */
+  border-color: #adb5bd;
+}
+
+/* Der Button (Wenn GEÖFFNET) */
+.details-container.open .details-toggle-btn {
+  /* Farbe passt sich dem Container an, wirkt wie ein "Reiter" */
+  background-color: #ced4da; /* Dunkler, passend zum neuen BG */
+  border-bottom: 1px solid #adb5bd; /* Trennlinie zum Inhalt */
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  color: #212529; /* Text etwas dunkler */
+}
+
+/* Der Wrapper für die Karten innen */
+#details-wrapper {
+  padding: 20px 20px 0;
+}
+
+/* Abstand der Karten im Wrapper */
+#details-wrapper .result-card {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Karten heben sich vom grauen BG ab */
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
