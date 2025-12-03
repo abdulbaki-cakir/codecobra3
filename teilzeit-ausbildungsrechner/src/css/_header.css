@@ -23,9 +23,9 @@ nav {
 /* KORREKTUR: Die erste, veraltete .logo-link Regel wurde entfernt, um Konflikte zu vermeiden */
 
 .logo {
-  height: 100%;
-  width: auto;
-  max-height: 80px;
+  height: auto;
+  width: 125px;
+  max-height: 55px;
   display: block;
 }
 
@@ -180,10 +180,11 @@ nav {
 }
 
 @media (max-width: 450px) {
-  .logo-link {
-    font-size: 21px;
-    max-width: 55%;
-  }
+    .logo {
+        width: 125px;   /* ensure crisp scaling */
+        height: auto;
+        max-height: 50px;
+    }
 
   .nav-buttons {
     transform: translateX(15px);
@@ -193,7 +194,6 @@ nav {
     padding: 8px 15px;
     font-size: 14px;
   }
-
 }
 
 .nav-btn .nav-icon {
