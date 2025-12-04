@@ -32,8 +32,8 @@ export function validateVollzeitstunden(showErrorIfEmpty = false) {
     if (isNaN(numValue)) {
       errorMessage = "Bitte eine gültige Zahl eingeben.";
       isValid = false;
-    } else if (numValue < 35 || numValue > 40) {
-      errorMessage = "Wert muss zwischen 35 und 40 liegen.";
+    } else if (numValue < 35 || numValue > 48) {
+      errorMessage = "Wert muss zwischen 35 und 48 liegen.";
       isValid = false;
     } else if (!isMultipleOfHalf) {
       errorMessage = "Nur 0,5er Schritte (z.B. 37, 37,5 oder 38) sind erlaubt.";
@@ -66,9 +66,11 @@ export function validateWochenstunden(showErrorIfEmpty = false) {
     return false;
   }
 
+  // Vollzeit-Wert holen
   const vollzeitNum = parseFloat(vollzeitInput.value.trim().replace(",", "."));
-  const isVollzeitValueValid =
-    !isNaN(vollzeitNum) && vollzeitNum >= 35 && vollzeitNum <= 40;
+
+  // Prüfen, ob wir einen validen Vergleichswert haben (Zahl und > 0)
+  const hasValidVollzeit = !isNaN(vollzeitNum) && vollzeitNum > 0;
 
   let isValid = true;
   let errorMessage = "";
@@ -83,19 +85,28 @@ export function validateWochenstunden(showErrorIfEmpty = false) {
     }
   } else {
     const numValue = parseFloat(value.replace(",", "."));
-
     const isMultipleOfHalf = Math.round(numValue * 100) % 50 === 0;
+
+    // Berechnung der 50%-Grenze
+    const minFiftyPercent = hasValidVollzeit ? vollzeitNum * 0.5 : 0;
 
     if (isNaN(numValue)) {
       errorMessage = "Bitte eine Zahl eingeben.";
       isValid = false;
-    } else if (isVollzeitValueValid && numValue >= vollzeitNum) {
-      errorMessage = "Es muss weniger als Vollzeit sein";
+    }
+    // NEU: Prüfung auf 50% der Vollzeit (statt starrer 20-36 Grenze)
+    else if (hasValidVollzeit && numValue < minFiftyPercent) {
+      const minString = minFiftyPercent.toString().replace(".", ",");
+      errorMessage = `Teilzeit muss mind. 50% der Vollzeit sein (mind. ${minString} Std.).`;
       isValid = false;
-    } else if (numValue < 20 || numValue > 35) {
-      errorMessage = "Wert muss zwischen 20 und 35 liegen.";
+    }
+    // Prüfung: Darf nicht mehr oder gleich Vollzeit sein
+    else if (hasValidVollzeit && numValue >= vollzeitNum) {
+      errorMessage = "Es muss weniger als Vollzeit sein.";
       isValid = false;
-    } else if (!isMultipleOfHalf) {
+    }
+    // Prüfung: 0,5er Schritte
+    else if (!isMultipleOfHalf) {
       errorMessage = "Nur 0,5er Schritte (z.B. 20, 20,5 oder 21) sind erlaubt.";
       isValid = false;
     }
@@ -123,7 +134,7 @@ export function validateVollzeitMonate(showErrorIfEmpty = false) {
   );
 
   if (!isSwitchLaterRadio || isSwitchLaterRadio.value !== "1") {
-    return true; // Feld ist nicht aktiv, also gültig
+    return true;
   }
 
   // 2. Elemente holen
