@@ -2,9 +2,6 @@ import { resetVollzeitMonateValidation } from "./input-validation.js";
 
 let myResultsChart = null;
 
-/* ---------------------------------------------------------
-   FORMULAREINGABEN
---------------------------------------------------------- */
 export function getFormInputs() {
   const selections = {};
   const reasonIds = [
@@ -36,9 +33,6 @@ export function getFormInputs() {
   };
 }
 
-/* ---------------------------------------------------------
-   RADIO → SELECT
---------------------------------------------------------- */
 export const linkRadiosToSelect = (radioGroupName, selectElementId) => {
   const radios = document.querySelectorAll(`input[name="${radioGroupName}"]`);
   const hiddenSelect = document.getElementById(selectElementId);
@@ -51,9 +45,6 @@ export const linkRadiosToSelect = (radioGroupName, selectElementId) => {
   }
 };
 
-/* ---------------------------------------------------------
-   STEPS + PROGRESSBAR
---------------------------------------------------------- */
 export function showStep(stepNumber) {
   const allStepForms = [
     document.getElementById("step-1"),
@@ -70,29 +61,6 @@ export function showStep(stepNumber) {
   updateProgress(stepNumber);
 }
 
-function updateProgress(currentStep) {
-  const progressLine = document.getElementById("progress-line");
-  const progressSteps = document.querySelectorAll(".progress-container .step");
-
-  progressSteps.forEach((step) => {
-    const stepNum = parseInt(step.dataset.step, 10);
-    step.classList.toggle("active", stepNum <= currentStep);
-  });
-
-  let progressPercentage = 0;
-
-  if (currentStep === 1) progressPercentage = 20;
-  else if (currentStep === 2) progressPercentage = 50;
-  else progressPercentage = 100;
-
-  if (progressLine) {
-    progressLine.style.width = `${progressPercentage}%`;
-  }
-}
-
-/* ---------------------------------------------------------
-   PART-TIME SWITCH (VOLLZEIT → TEILZEIT)
---------------------------------------------------------- */
 export const setupPartTimeSwitch = () => {
   const radios = document.querySelectorAll(
     'input[name="part-time-start-radio"]',
@@ -135,9 +103,25 @@ export const setupPartTimeSwitch = () => {
   }
 };
 
-/* ---------------------------------------------------------
-   RENDER RESULTS
---------------------------------------------------------- */
+function updateProgress(currentStep) {
+  const progressLine = document.getElementById("progress-line");
+  const progressSteps = document.querySelectorAll(".progress-container .step");
+
+  progressSteps.forEach((step) => {
+    const stepNum = parseInt(step.dataset.step, 10);
+    step.classList.toggle("active", stepNum <= currentStep);
+  });
+
+  let progressPercentage = 0;
+  if (currentStep === 1) progressPercentage = 20;
+  else if (currentStep === 2) progressPercentage = 50;
+  else progressPercentage = 100;
+
+  if (progressLine) {
+    progressLine.style.width = `${progressPercentage}%`;
+  }
+}
+
 export function renderResults(data) {
   const {
     originalDuration,
@@ -165,10 +149,8 @@ export function renderResults(data) {
   const finalResultBox = document.querySelector(".final-result-box");
   const dailyHoursEl = document.getElementById("final-daily-hours");
 
-  // Globale Warnung
   const topErrorMsg = document.getElementById("global-cap-error");
 
-  // Vollzeit-Phase (geleistete Zeit / geplante Vollzeit)
   const servedTimeCard = document.querySelector(".served-time-card");
   const servedTimeValue = document.getElementById("served-card-value");
   const servedTimeDetailsDiv = document.getElementById(
@@ -193,7 +175,6 @@ export function renderResults(data) {
     }
   }
 
-  // Verkürzungskarte
   document.getElementById("original-duration-header").textContent =
     `${originalDuration} Monate`;
   document.getElementById("shortening-card-value").textContent =
@@ -255,14 +236,11 @@ export function renderResults(data) {
   if (capWasHitShortening) {
     const capMessage = document.createElement("p");
     capMessage.classList.add("cap-message");
-
-    capMessage.innerHTML = `
-    <i><strong>Hinweis: Maximal zulässige Verkürzung erreicht.</strong></i><br>`;
-
+    capMessage.innerHTML =
+      "<i><strong>Hinweis: Maximal zulässige Verkürzung erreicht.</strong></i><br>";
     detailedShorteningsDiv.appendChild(capMessage);
   }
 
-  // Verbleibende Vollzeitdauer
   const newFullTimeCard = document.querySelector(".new-full-time-card");
   const newFullTimeValue = document.getElementById("new-full-time-card-value");
   if (newFullTimeCard && newFullTimeValue) {
@@ -272,7 +250,6 @@ export function renderResults(data) {
       "<p>Dies ist die verbleibende Restdauer in Vollzeit (nach Anrechnung aller Verkürzungsgründe und Abzug der bereits geleisteten Zeit).</p>";
   }
 
-  // Teilzeitkarte
   if (partTimeHoursAvailable) {
     if (partTimeCard) partTimeCard.style.display = "flex";
     document.getElementById("extension-card-value").textContent =
@@ -337,7 +314,6 @@ export function renderResults(data) {
     if (dailyHoursEl) dailyHoursEl.style.display = "none";
   }
 
-  // Hinweis zur vorzeitigen Zulassung
   const existingEarlyBox = document.getElementById("early-admission-box");
   if (existingEarlyBox) existingEarlyBox.remove();
 
@@ -372,7 +348,6 @@ export function renderResults(data) {
     }
   }
 
-  // CHART
   const canvas = document.getElementById("results-chart");
 
   if (canvas) {
@@ -435,9 +410,6 @@ export function renderResults(data) {
   }
 }
 
-/* ---------------------------------------------------------
-   DETAILS TOGGLE
---------------------------------------------------------- */
 export function setupDetailsToggle() {
   const btn = document.getElementById("toggle-details-btn");
   const wrapper = document.getElementById("details-wrapper");
