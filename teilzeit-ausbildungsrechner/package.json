@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test:tzr": "node src/__tests__/selenium/tzr-test.js",
+    "test:selenium:tzr": "node src/selenium/tzr.test.js",
+    "test:selenium:lisa": "node src/selenium/tzr-scenario1-lisa.test.js",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
