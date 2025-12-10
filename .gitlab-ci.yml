@@ -75,9 +75,6 @@ selenium-test-job:
     - echo "Starte Selenium-Tests..."
     - npm run test:selenium:lisa
     - npm run test:selenium:tzr
-  rules:
-    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
-
 
 # --- STAGE: DOCKERHUB ---
 
