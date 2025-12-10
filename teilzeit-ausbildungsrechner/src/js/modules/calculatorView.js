@@ -1,4 +1,5 @@
 import { resetVollzeitMonateValidation } from "./input-validation.js";
+import infoIcon from "../../assets/icons/information.svg";
 
 // Globaler Chart-State, damit wir das Diagramm beim Neu-Rendern zerstören können
 let myResultsChart = null;
@@ -381,7 +382,7 @@ export function renderResults(data) {
     earlyAdmissionBox.classList.add("result-card-info-box");
 
     const icon = document.createElement("img");
-    icon.src = "/src/assets/icons/information.svg";
+    icon.src = infoIcon;
     icon.alt = "Info Icon";
     icon.classList.add("info-icon");
 
