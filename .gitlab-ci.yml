@@ -64,16 +64,26 @@ selenium-test-job:
       alias: selenium
 
   variables:
-    TZR_BASE_URL: "http://127.0.0.1:4173"
     SELENIUM_REMOTE_URL: "http://selenium:4444/wd/hub"
-
+  
   script:
+    # Wir sind dank before_script bereits in teilzeit-ausbildungsrechner
     - echo "Baue Projekt für Selenium-E2E..."
     - npm run build
+
     - echo "Starte Vite Preview auf Port 4173..."
     - npx vite preview --host 0.0.0.0 --port 4173 &
-    - echo "Warte, bis die App erreichbar ist..."
+
+    - echo "Warte, bis die App im Job-Container erreichbar ist..."
     - npx wait-on http://127.0.0.1:4173 --timeout 60000
+
+    - echo "Ermittle Job-Container-IP..."
+    - export HOST_IP="$(hostname -I | awk '{print $1}')"
+    - echo "Job-Container-IP ist ${HOST_IP}"
+
+    - export TZR_BASE_URL="http://$HOST_IP:4173"
+    - echo "Verwende TZR_BASE_URL=${TZR_BASE_URL} für Selenium-Tests"
+
     - echo "Starte Selenium-Tests..."
     - npm run test:selenium:lisa
 
