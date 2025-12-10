@@ -55,6 +55,30 @@ unit-test-job:
   script:
     - npm test
 
+selenium-test-job:
+  <<: *setup
+  stage: test
+  image: node:20
+  services:
+    - name: selenium/standalone-chrome:4.25.0
+      alias: selenium
+  variables:
+    TZR_BASE_URL: "http://127.0.0.1:4173"
+    SELENIUM_REMOTE_URL: "http://selenium:4444/wd/hub"
+  script:
+    - echo "Baue Projekt für Selenium-E2E..."
+    - npm run build
+    - echo "Starte Vite Preview auf Port 4173..."
+    - npx vite preview --host 0.0.0.0 --port 4173 &
+    - echo "Warte, bis die App erreichbar ist..."
+    - npx wait-on http://127.0.0.1:4173
+    - echo "Starte Selenium-Tests..."
+    - npm run test:selenium:lisa
+    - npm run test:selenium:tzr
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+
+
 # --- STAGE: DOCKERHUB ---
 
 deploy-job:
