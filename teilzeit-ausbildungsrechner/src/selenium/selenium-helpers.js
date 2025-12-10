@@ -1,4 +1,5 @@
-import { By, until } from 'selenium-webdriver';
+import { Builder, By, until } from 'selenium-webdriver';
+
 
 const DEFAULT_TIMEOUT = 10_000;
 
