@@ -6,12 +6,12 @@
     <title data-translate-key="page_title">Teilzeit-Ausbildungsrechner</title>
 
     <!-- html2canvas (für PDF-Screenshot) -->
-    <script src="/src/js/html2canvas.min.js"></script>
+    <script src="/js/html2canvas.min.js"></script>
 
     <!-- jsPDF (UMD – wird über window.jspdf.jsPDF verwendet) -->
-    <script src="/src/js/chart.min.js"></script>
+    <script src="/js/chart.min.js"></script>
 
-    <script src="/src/js/jspdf.umd.min.js.map"></script>
+    <script src="/js/jspdf.umd.min.js.map"></script>
 
     <!-- Styles -->
     <link rel="stylesheet" href="/src/css/_base.css" />
@@ -27,9 +27,7 @@
 
     <main>
       <section id="calculator-section">
-        <div class="container">
-          {{> _rechner-formular }}
-        </div>
+        <div class="container">{{> _rechner-formular }}</div>
       </section>
     </main>
 
