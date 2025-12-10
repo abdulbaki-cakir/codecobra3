@@ -81,7 +81,6 @@ selenium-test-job:
     SELENIUM_REMOTE_URL: "http://selenium:4444/wd/hub"
 
   script:
-    - cd teilzeit-ausbildungsrechner
     - echo "Warte, bis die App (Service 'app') erreichbar ist..."
     - npx wait-on http://app:4173
     - echo "Starte Selenium-Tests..."
