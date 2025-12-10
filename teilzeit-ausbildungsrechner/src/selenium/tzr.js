@@ -5,11 +5,11 @@ import {
   typeNumberById,
   clickRadioByNameAndValue,
   clickButtonById,
-} from './selenium-helpers.test.js';
+} from './selenium-helpers.js';
 
 const BASE_URL = process.env.TZR_BASE_URL ?? 'http://localhost:5173';
 
-async function runTzrE2eTest() {
+export async function runTzrE2eTest() {
   const driver = await new Builder().forBrowser('MicrosoftEdge').build();
   
   try {
