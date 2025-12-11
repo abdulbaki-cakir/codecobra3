@@ -99,6 +99,7 @@ export async function runScenarioLisa() {
   }
 }
 
+
 runScenarioLisa().catch((err) => {
   console.error('Szenario 1 – Unbehandelter Fehler:', err);
   process.exitCode = 1;
