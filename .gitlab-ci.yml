@@ -85,9 +85,8 @@ selenium-test-job:
     - echo "Verwende TZR_BASE_URL=${TZR_BASE_URL} für Selenium-Tests"
 
     - echo "Starte Selenium-Tests..."
-    - npm run test:selenium:lisa
     - npm run test:selenium:tzr
-
+    - npm run test:selenium:lisa
 
 # --- STAGE: DOCKERHUB ---
 
