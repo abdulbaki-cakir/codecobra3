@@ -47,7 +47,7 @@ docker rm CodeCobra-TZR
 ```
 ### 4. Neuen Container mit dem neuen Image starten
 ```bash
-docker run -d -p 8080:80 --name CodeCobra-TZR abcakir/codecobra-docker:latest
+docker run -d -p 8080:8080 --name CodeCobra-TZR abcakir/codecobra-docker:latest
 ```
 
 
