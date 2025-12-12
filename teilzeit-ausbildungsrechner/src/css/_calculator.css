@@ -871,16 +871,14 @@
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0; /* Fix: Replaced top/left/right/bottom with inset */
   background-color: #ccc; /* Grau wenn aus */
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
-.slider:before {
+.slider::before {
+  /* Fix: Used double colon */
   position: absolute;
   content: "";
   height: 16px;
@@ -901,7 +899,8 @@ input:focus + .slider {
   box-shadow: 0 0 1px #4caf50;
 }
 
-input:checked + .slider:before {
+input:checked + .slider::before {
+  /* Fix: Used double colon */
   -webkit-transform: translateX(18px);
   -ms-transform: translateX(18px);
   transform: translateX(18px);
@@ -912,10 +911,10 @@ input:checked + .slider:before {
   border-radius: 34px;
 }
 
-.slider.round:before {
+.slider.round::before {
+  /* Fix: Used double colon */
   border-radius: 50%;
 }
-
 /* Container, um den Button mittig unter die anderen zu setzen */
 #calculator-section .reset-container {
   display: flex;
