@@ -23,16 +23,21 @@ export function calculateShortening(selections, originalDuration) {
     if (currentValue === 0) continue;
 
     let reasonText = "";
+    let translationKey = "";
     if (id === "school-finish") {
-      reasonText = config.options[currentValue]?.text || "Schulabschluss";
+      const optionConfig = config.options[currentValue];
+      reasonText = optionConfig?.text || "Schulabschluss";
+      translationKey = optionConfig?.translationKey || "";
     } else {
       reasonText = config.text;
+      translationKey = config.translationKey || "";
     }
 
     const isVariable = config.isVariable || false;
 
     const currentReason = {
       reason: reasonText,
+      translationKey,
       months: currentValue,
       isVariable,
     };

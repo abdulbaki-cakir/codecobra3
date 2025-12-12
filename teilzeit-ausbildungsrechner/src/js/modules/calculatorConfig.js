@@ -10,39 +10,57 @@ export const RULES = {
   reasons: {
     "age-select": {
       text: "Alter über 21 Jahre",
+      translationKey: "reason_age_over21",
       value: 12,
       isVariable: false, // Fest
     },
     "school-finish": {
       isVariable: false, // Fest
       options: {
-        0: { text: "Kein/Hauptschulabschluss", value: 0 },
-        6: { text: "Mittlere Reife / Realschulabschluss", value: 6 },
-        12: { text: "Fachhochschulreife / Abitur", value: 12 },
+        0: {
+          text: "Kein/Hauptschulabschluss",
+          translationKey: "reason_school_none",
+          value: 0,
+        },
+        6: {
+          text: "Mittlere Reife / Realschulabschluss",
+          translationKey: "reason_school_mid",
+          value: 6,
+        },
+        12: {
+          text: "Fachhochschulreife / Abitur",
+          translationKey: "reason_school_high",
+          value: 12,
+        },
       },
     },
     "experience-select": {
       text: "Erste Berufserfahrung / EQ",
+      translationKey: "reason_experience_eq",
       value: 12,
       isVariable: true, // Variabel
     },
     "apprenticeship-select": {
       text: "Abgeschlossene Berufsausbildung",
+      translationKey: "reason_apprenticeship",
       value: 12,
       isVariable: false, // Fest?
     },
     "study-select": {
       text: "Passende Studienleistungen",
+      translationKey: "reason_study",
       value: 12,
       isVariable: true, // Variabel
     },
     "child-care-select": {
       text: "Betreuung eigener Kinder",
+      translationKey: "reason_childcare",
       value: 12,
       isVariable: true, // Variabel
     },
     "family-care-select": {
       text: "Pflege naher Angehöriger",
+      translationKey: "reason_familycare",
       value: 12,
       isVariable: true, // Variabel
     },

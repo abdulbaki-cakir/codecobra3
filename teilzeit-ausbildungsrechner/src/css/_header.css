@@ -72,6 +72,11 @@ nav {
   transform: translateY(-2px);
 }
 
+.nav-btn.active {
+  background-color: var(--primary-dark);
+  box-shadow: 0 0 0 2px var(--primary-soft);
+}
+
 .nav-btn svg {
   fill: #fff;
   width: 18px;

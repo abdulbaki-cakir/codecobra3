@@ -1,7 +1,7 @@
 ﻿<!doctype html>
 <header>
-  <h1>Teilzeit-Ausbildungs&shy;rechner</h1>
-  <p>
+  <h1 data-translate-key="calc_title">Teilzeit-Ausbildungs&shy;rechner</h1>
+  <p data-translate-key="calc_intro" data-translate-mode="html">
     Sie möchten Ihre Ausbildung in Teilzeit absolvieren?<br />
     Dann sind Sie hier genau richtig.<br />
     Finden Sie sofort heraus, wie lange Ihre Ausbildung in Teilzeit dauert.
@@ -15,34 +15,36 @@
     <span class="icon-step" aria-hidden="true">
       <img src="/src/assets/icons/house.svg" alt="" class="icon" />
     </span>
-    <p>Start</p>
+    <p data-translate-key="progress_start">Start</p>
   </div>
   <div class="step" data-step="2">
     <span class="icon-step" aria-hidden="true">
       <img src="/src/assets/icons/settings-sliders.svg" alt="" class="icon" />
     </span>
-    <p>Dauer anpassen</p>
+    <p data-translate-key="progress_adjust">Dauer anpassen</p>
   </div>
   <div class="step" data-step="3">
     <span class="icon-step" aria-hidden="true">
       <img src="/src/assets/icons/chat-arrow-grow.svg" alt="" class="icon" />
     </span>
-    <p>Ergebnisse</p>
+    <p data-translate-key="progress_results">Ergebnisse</p>
   </div>
 </div>
 
 <main class="calculator-form" id="step-1">
-  <h2>1. Basis Daten</h2>
+  <h2 data-translate-key="step1_title">1. Basis Daten</h2>
 
   <div class="input-group">
     <div class="input-container-nested">
-      <div class="input-prefix">
+      <div class="input-prefix" data-translate-key="label_fulltime_hours">
         Wie viele Stunden pro Woche hat Ihre Ausbildung in Vollzeit?
       </div>
       <input
         type="number"
         id="vollzeitstunden"
         placeholder="40"
+        data-translate-key="placeholder_fulltime_hours"
+        data-translate-attr="placeholder"
         min="35"
         max="40"
         step="0.5"
@@ -54,9 +56,9 @@
         alt=""
         class="icon info-icon"
       />
-      <div class="info-box">
+      <div class="info-box" data-translate-key="info_fulltime_hours">
         Bitte geben Sie hier die vertraglichen Vollzeitstunden Ihrer Firma ein
-        (meist 38–40). Damit berechnet der Rechner Ihren Teilzeit-Prozentsatz.
+        (meist 38-40). Damit berechnet der Rechner Ihren Teilzeit-Prozentsatz.
       </div>
     </div>
     <div class="validation-popup" id="vollzeitstunden-error">
@@ -71,13 +73,15 @@
 
   <div class="input-group">
     <div class="input-container-nested">
-      <div class="input-prefix">
+      <div class="input-prefix" data-translate-key="label_parttime_hours">
         Wie viele Stunden möchten Sie pro Woche in Teilzeit arbeiten?
       </div>
       <input
         type="number"
         id="wochenstunden"
         placeholder="20"
+        data-translate-key="placeholder_parttime_hours"
+        data-translate-attr="placeholder"
         min="20"
         max="35"
         step="0.5"
@@ -89,7 +93,7 @@
         alt=""
         class="icon info-icon"
       />
-      <div class="info-box">
+      <div class="info-box" data-translate-key="info_parttime_hours">
         Bitte tragen Sie hier ein, wie viele Stunden Sie pro Woche in Teilzeit
         arbeiten wollen. So sieht der Rechner, wie stark sich Ihre Ausbildung
         verlängert.
@@ -107,7 +111,7 @@
 
   <div class="input-group">
     <div class="input-container-nested">
-      <div class="input-prefix">
+      <div class="input-prefix" data-translate-key="label_training_duration">
         Wie lange dauert Ihre Ausbildung in Vollzeit?
       </div>
       <select id="ausbildungsdauer">
@@ -122,9 +126,9 @@
         alt=""
         class="icon info-icon"
       />
-      <div class="info-box">
-        Bitte wählen Sie die übliche Vollzeit-Gesamtdauer Ihrer Ausbildung (z.
-        B. laut Vertrag 24, 36 oder 42 Monate).
+      <div class="info-box" data-translate-key="info_training_duration">
+        Bitte wählen Sie die übliche Vollzeit-Gesamtdauer Ihrer
+        Ausbildung (z. B. laut Vertrag 24, 36 oder 42 Monate).
       </div>
     </div>
   </div>
@@ -132,20 +136,28 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <h4>Wie möchten Sie Ihre Ausbildung absolvieren?</h4>
+        <h4 data-translate-key="question_parttime_start">
+          Wie möchten Sie Ihre Ausbildung absolvieren?
+        </h4>
       </div>
       <div class="radio-card-body">
         <label class="radio-card-option">
           <input type="radio" name="part-time-start-radio" value="0" checked />
           <span class="radio-custom"></span
-          ><span class="radio-label"
+          ><span
+            class="radio-label"
+            data-translate-key="option_parttime_direct"
+            data-translate-mode="html"
             >Ich beginne <strong>direkt in Teilzeit</strong></span
           >
         </label>
         <label class="radio-card-option">
           <input type="radio" name="part-time-start-radio" value="1" />
           <span class="radio-custom"></span
-          ><span class="radio-label"
+          ><span
+            class="radio-label"
+            data-translate-key="option_parttime_later"
+            data-translate-mode="html"
             >Erst Vollzeit, <strong>später Teilzeit</strong></span
           >
         </label>
@@ -157,11 +169,18 @@
       ></div>
 
       <div class="input-container-nested hidden" id="vollzeit-monate-input">
-        <div class="input-prefix">Monate in Vollzeit</div>
+        <div
+          class="input-prefix"
+          data-translate-key="label_fulltime_months"
+        >
+          Monate in Vollzeit
+        </div>
         <input
           type="number"
           id="vollzeit-monate"
           placeholder="6"
+          data-translate-key="placeholder_fulltime_months"
+          data-translate-attr="placeholder"
           style="width: 80px"
           min="1"
         />
@@ -181,7 +200,11 @@
         alt=""
         class="icon info-icon"
       />
-      <div class="info-box">
+      <div
+        class="info-box"
+        data-translate-key="info_parttime_start"
+        data-translate-mode="html"
+      >
         Planen Sie zuerst Vollzeit? Tragen Sie hier die Anzahl dieser Monate
         ein.<br />
         Oder haben Sie schon Vollzeit geleistet? Dann geben Sie hier die bereits
@@ -200,28 +223,33 @@
   </div>
 
   <div class="form-buttons">
-    <button class="secondary" disabled>Zurück</button>
-    <button class="primary" id="next-btn-1">Weiter</button>
+    <button class="secondary" disabled data-translate-key="btn_back">
+      Zurück
+    </button>
+    <button class="primary" id="next-btn-1" data-translate-key="btn_next">
+      Weiter
+    </button>
   </div>
 </main>
 
 <main class="calculator-form hidden" id="step-2">
-  <h2>2. Prüfe deine mögliche Verkürzung</h2>
+  <h2 data-translate-key="step2_title">2. Prüfe deine mögliche Verkürzung</h2>
 
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <h4>Sind Sie älter als 21?</h4>
+        <h4 data-translate-key="question_age">Sind Sie älter als 21?</h4>
       </div>
       <div class="radio-card-body">
         <label class="radio-card-option">
           <input type="radio" name="age-radio" value="0" checked />
           <span class="radio-custom"></span
-          ><span class="radio-label">Nein</span>
+          ><span class="radio-label" data-translate-key="answer_no">Nein</span>
         </label>
         <label class="radio-card-option">
           <input type="radio" name="age-radio" value="12" />
-          <span class="radio-custom"></span><span class="radio-label">Ja</span>
+          <span class="radio-custom"></span
+          ><span class="radio-label" data-translate-key="answer_yes">Ja</span>
         </label>
       </div>
     </div>
@@ -231,9 +259,9 @@
         alt=""
         class="icon info-icon"
       />
-      <div class="info-box">
-        Sind Sie zu Beginn der Ausbildung über 21 Jahre alt? In vielen Fällen
-        können Sie dann bis zu 12 Monate kürzen.
+      <div class="info-box" data-translate-key="info_age">
+        Sind Sie zu Beginn der Ausbildung über 21 Jahre alt? In vielen
+        Fällen können Sie dann bis zu 12 Monate kürzen.
       </div>
     </div>
     <select name="age" id="age-select" style="display: none">
@@ -245,28 +273,40 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <h4>Was ist Ihr höchster Schulabschluss?</h4>
+        <h4 data-translate-key="question_school">
+          Was ist Ihr höchster Schulabschluss?
+        </h4>
       </div>
       <div class="radio-card-body">
         <label class="radio-card-option">
           <input type="radio" name="school-finish-radio" value="0" checked />
-          <span class="radio-custom"></span
-          ><span class="radio-label">Keinen der genannten</span>
+          <span
+            class="radio-custom"
+          ></span><span class="radio-label" data-translate-key="option_school_none">Keinen der genannten</span>
         </label>
         <label class="radio-card-option">
           <input type="radio" name="school-finish-radio" value="0" />
           <span class="radio-custom"></span
-          ><span class="radio-label">Hauptschulabschluss</span>
+          ><span
+            class="radio-label"
+            data-translate-key="option_school_basic"
+          >
+            Hauptschulabschluss
+          </span>
         </label>
         <label class="radio-card-option">
           <input type="radio" name="school-finish-radio" value="6" />
           <span class="radio-custom"></span
-          ><span class="radio-label">Mittlere Reife</span>
+          ><span class="radio-label" data-translate-key="option_school_mid">
+            Mittlere Reife
+          </span>
         </label>
         <label class="radio-card-option">
           <input type="radio" name="school-finish-radio" value="12" />
           <span class="radio-custom"></span
-          ><span class="radio-label">Fachhochschulreife / Abitur</span>
+          ><span class="radio-label" data-translate-key="option_school_high">
+            Fachhochschulreife / Abitur
+          </span>
         </label>
       </div>
     </div>
@@ -276,9 +316,10 @@
         alt=""
         class="icon info-icon"
       />
-      <div class="info-box">
-        Je höher Ihr Schulabschluss, desto eher kann eine Verkürzung möglich
-        sein. Wählen Sie den höchsten Abschluss, den Sie haben.
+      <div class="info-box" data-translate-key="info_school">
+        Je höher Ihr Schulabschluss, desto eher kann eine Verkürzung
+        möglich sein. Wählen Sie den höchsten Abschluss, den Sie
+        haben.
       </div>
     </div>
     <select id="school-finish" style="display: none">
@@ -291,7 +332,7 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <h4>
+        <h4 data-translate-key="question_experience">
           Haben Sie schon erste relevante Berufserfahrungen gesammelt (z. B. in
           einem Praktikum)?
         </h4>
@@ -300,11 +341,12 @@
         <label class="radio-card-option">
           <input type="radio" name="experience-radio" value="0" checked />
           <span class="radio-custom"></span
-          ><span class="radio-label">Nein</span>
+          ><span class="radio-label" data-translate-key="answer_no">Nein</span>
         </label>
         <label class="radio-card-option">
           <input type="radio" name="experience-radio" value="12" />
-          <span class="radio-custom"></span><span class="radio-label">Ja</span>
+          <span class="radio-custom"></span
+          ><span class="radio-label" data-translate-key="answer_yes">Ja</span>
         </label>
       </div>
     </div>
@@ -314,7 +356,7 @@
         alt=""
         class="icon info-icon"
       />
-      <div class="info-box">
+      <div class="info-box" data-translate-key="info_experience">
         Relevante Praktika oder Jobs können angerechnet werden, wenn sie zum
         Ausbildungsberuf passen.
       </div>
@@ -328,17 +370,20 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <h4>Haben Sie bereits eine relevante Ausbildung abgeschlossen?</h4>
+        <h4 data-translate-key="question_apprenticeship">
+          Haben Sie bereits eine relevante Ausbildung abgeschlossen?
+        </h4>
       </div>
       <div class="radio-card-body">
         <label class="radio-card-option">
           <input type="radio" name="apprenticeship-radio" value="0" checked />
           <span class="radio-custom"></span
-          ><span class="radio-label">Nein</span>
+          ><span class="radio-label" data-translate-key="answer_no">Nein</span>
         </label>
         <label class="radio-card-option">
           <input type="radio" name="apprenticeship-radio" value="12" />
-          <span class="radio-custom"></span><span class="radio-label">Ja</span>
+          <span class="radio-custom"></span
+          ><span class="radio-label" data-translate-key="answer_yes">Ja</span>
         </label>
       </div>
     </div>
@@ -348,7 +393,7 @@
         alt=""
         class="icon info-icon"
       />
-      <div class="info-box">
+      <div class="info-box" data-translate-key="info_apprenticeship">
         Eine passende, bereits abgeschlossene Ausbildung kann Ihre neue
         Ausbildung deutlich verkürzen (oft bis zu 12 Monate).
       </div>
@@ -366,7 +411,7 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <h4>
+        <h4 data-translate-key="question_study">
           Haben Sie im Studium Kurse belegt, die für die Ausbildung relevant
           sind?
         </h4>
@@ -375,11 +420,12 @@
         <label class="radio-card-option">
           <input type="radio" name="study-radio" value="0" checked />
           <span class="radio-custom"></span
-          ><span class="radio-label">Nein</span>
+          ><span class="radio-label" data-translate-key="answer_no">Nein</span>
         </label>
         <label class="radio-card-option">
           <input type="radio" name="study-radio" value="12" />
-          <span class="radio-custom"></span><span class="radio-label">Ja</span>
+          <span class="radio-custom"></span
+          ><span class="radio-label" data-translate-key="answer_yes">Ja</span>
         </label>
       </div>
     </div>
@@ -389,7 +435,7 @@
         alt=""
         class="icon info-icon"
       />
-      <div class="info-box">
+      <div class="info-box" data-translate-key="info_study">
         Haben Sie im Studium passende Inhalte (z. B. Programmierung, BWL)?
         Solche Leistungen lassen sich manchmal anerkennen.
       </div>
@@ -403,17 +449,20 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <h4>Haben Sie Kinder, um die Sie sich kümmern?</h4>
+        <h4 data-translate-key="question_childcare">
+          Haben Sie Kinder, um die Sie sich kümmern?
+        </h4>
       </div>
       <div class="radio-card-body">
         <label class="radio-card-option">
           <input type="radio" name="child-care-radio" value="0" checked />
           <span class="radio-custom"></span
-          ><span class="radio-label">Nein</span>
+          ><span class="radio-label" data-translate-key="answer_no">Nein</span>
         </label>
         <label class="radio-card-option">
           <input type="radio" name="child-care-radio" value="12" />
-          <span class="radio-custom"></span><span class="radio-label">Ja</span>
+          <span class="radio-custom"></span
+          ><span class="radio-label" data-translate-key="answer_yes">Ja</span>
         </label>
       </div>
     </div>
@@ -423,7 +472,7 @@
         alt=""
         class="icon info-icon"
       />
-      <div class="info-box">
+      <div class="info-box" data-translate-key="info_childcare">
         Wenn Sie Kinder betreuen, kann die Kammer eher einer Teilzeit-Ausbildung
         zustimmen oder die Dauer anpassen.
       </div>
@@ -437,17 +486,20 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <h4>Pflegen Sie Angehörige (z. B. Ihre Großeltern)?</h4>
+        <h4 data-translate-key="question_familycare">
+          Pflegen Sie Angehörige (z. B. Ihre Großeltern)?
+        </h4>
       </div>
       <div class="radio-card-body">
         <label class="radio-card-option">
           <input type="radio" name="family-care-radio" value="0" checked />
           <span class="radio-custom"></span
-          ><span class="radio-label">Nein</span>
+          ><span class="radio-label" data-translate-key="answer_no">Nein</span>
         </label>
         <label class="radio-card-option">
           <input type="radio" name="family-care-radio" value="12" />
-          <span class="radio-custom"></span><span class="radio-label">Ja</span>
+          <span class="radio-custom"></span
+          ><span class="radio-label" data-translate-key="answer_yes">Ja</span>
         </label>
       </div>
     </div>
@@ -457,9 +509,10 @@
         alt=""
         class="icon info-icon"
       />
-      <div class="info-box">
-        Pflegen Sie regelmäßig Angehörige (z. B. Eltern, Großeltern)? Das kann
-        für eine Teilzeit-Ausbildung berücksichtigt werden.
+      <div class="info-box" data-translate-key="info_familycare">
+        Pflegen Sie regelmäßig Angehörige (z. B. Eltern,
+        Großeltern)? Das kann für eine Teilzeit-Ausbildung
+        berücksichtigt werden.
       </div>
     </div>
     <select name="family-care" id="family-care-select" style="display: none">
@@ -469,13 +522,22 @@
   </div>
 
   <div class="form-buttons">
-    <button class="secondary" type="button" id="back-btn-2">Zurück</button>
-    <button class="primary" id="next-btn-2">Weiter</button>
+    <button
+      class="secondary"
+      type="button"
+      id="back-btn-2"
+      data-translate-key="btn_back"
+    >
+      Zurück
+    </button>
+    <button class="primary" id="next-btn-2" data-translate-key="btn_next">
+      Weiter
+    </button>
   </div>
 </main>
 
 <main class="calculator-form hidden" id="step-3">
-  <h2>3. Ergebnisse</h2>
+  <h2 data-translate-key="step3_title">3. Ergebnisse</h2>
 
   <div class="results-container">
     <p
@@ -485,7 +547,12 @@
     ></p>
 
     <div class="final-result-box">
-      <span class="result-label">Gesamtausbildungsdauer ab Beginn</span>
+      <span
+        class="result-label"
+        data-translate-key="label_final_duration"
+      >
+        Gesamtausbildungsdauer ab Beginn
+      </span>
       <span class="result-value" id="final-duration-result">-- Monate</span>
       <span
         id="final-daily-hours"
@@ -503,26 +570,38 @@
     </div>
 
     <div class="details-container" id="details-container">
-      <button type="button" id="toggle-details-btn" class="details-toggle-btn">
-        Detaillierte Erklärung anzeigen ▼
+      <button
+        type="button"
+        id="toggle-details-btn"
+        class="details-toggle-btn"
+        data-translate-key="details_toggle_closed"
+      >
+        Detaillierte Erklärung anzeigen
       </button>
 
       <div id="details-wrapper" class="hidden">
         <div class="result-card served-time-card" style="display: none">
           <div class="result-card-left">
-            <span class="result-card-title">geplante<br />Vollzeit-Phase</span>
+            <span
+              class="result-card-title"
+              data-translate-key="result_served_title"
+              data-translate-mode="html"
+              >geplante<br />Vollzeit-Phase</span
+            >
             <span class="result-card-number" id="served-card-value">--</span>
             <span class="result-card-unit">Monate</span>
           </div>
           <div class="result-card-right">
             <p class="result-card-header-info">
-              <strong>Vollzeit am Anfang Ihrer Ausbildung</strong>
+              <strong data-translate-key="result_served_header">
+                Vollzeit am Anfang Ihrer Ausbildung
+              </strong>
             </p>
             <hr class="card-divider" />
             <div id="detailed-served-time-card">
-              <p>
+              <p data-translate-key="result_served_copy">
                 Diese Monate planen Sie am Anfang in Vollzeit, bevor Sie in
-                Teilzeit wechselsn.
+                Teilzeit wechseln.
               </p>
             </div>
           </div>
@@ -530,7 +609,12 @@
 
         <div class="result-card">
           <div class="result-card-left">
-            <span class="result-card-title">Gesamte<br />Verkürzung</span>
+            <span
+              class="result-card-title"
+              data-translate-key="result_shortening_title"
+              data-translate-mode="html"
+              >Gesamte<br />Verkürzung</span
+            >
             <span class="result-card-number" id="shortening-card-value"
               >--</span
             >
@@ -538,19 +622,27 @@
           </div>
           <div class="result-card-right">
             <p class="result-card-header-info">
-              Reguläre Dauer (Vollzeit):
+              <span data-translate-key="result_regular_duration_label">
+                Reguläre Dauer (Vollzeit):
+              </span>
               <strong id="original-duration-header">-- Monate</strong>
             </p>
             <hr class="card-divider" />
             <div id="detailed-shortenings-card">
-              <p>Hier werden die Gründe für die Verkürzung aufgelistet.</p>
+              <p data-translate-key="result_shortening_copy">
+                Hier werden die Gründe für die Verkürzung
+                aufgelistet.
+              </p>
             </div>
           </div>
         </div>
 
         <div class="result-card new-full-time-card" style="display: none">
           <div class="result-card-left">
-            <span class="result-card-title"
+            <span
+              class="result-card-title"
+              data-translate-key="result_remaining_title"
+              data-translate-mode="html"
               >Verbleibende<br />Dauer (Vollzeit)</span
             >
             <span class="result-card-number" id="new-full-time-card-value"
@@ -560,28 +652,41 @@
           </div>
           <div class="result-card-right">
             <p class="result-card-header-info">
-              <strong>Restliche Dauer in Vollzeit</strong>
+              <strong data-translate-key="result_remaining_duration_header">
+                Restliche Dauer in Vollzeit
+              </strong>
             </p>
             <hr class="card-divider" />
             <div id="detailed-new-full-time-card">
-              <p>Dies ist die verbleibende Restdauer in Vollzeit.</p>
+              <p data-translate-key="result_remaining_copy">
+                Dies ist die verbleibende Restdauer in Vollzeit.
+              </p>
             </div>
           </div>
         </div>
 
         <div class="result-card part-time-card">
           <div class="result-card-left">
-            <span class="result-card-title">Verlängerung durch Teilzeit</span>
+            <span
+              class="result-card-title"
+              data-translate-key="result_extension_title"
+              data-translate-mode="html"
+              >Verlängerung durch Teilzeit</span
+            >
             <span class="result-card-number" id="extension-card-value">--</span>
             <span class="result-card-unit">Monate</span>
           </div>
           <div class="result-card-right">
             <p class="result-card-header-info">
-              <strong>Anpassung der Restlaufzeit</strong>
+              <strong data-translate-key="result_parttime_header">
+                Anpassung der Restlaufzeit
+              </strong>
             </p>
             <hr class="card-divider" />
             <div id="detailed-part-time-card">
-              <p>Hier steht die Erklärung zur Teilzeit-Anpassung.</p>
+              <p data-translate-key="result_parttime_copy">
+                Hier steht die Erklärung zur Teilzeit-Anpassung.
+              </p>
             </div>
           </div>
         </div>
@@ -590,15 +695,27 @@
   </div>
 
   <p class="disclaimer">
-    <strong>Bitte beachten Sie:</strong> Die Ergebnisse dienen lediglich zur
-    Orientierung und begründen keinen Rechtsanspruch.<br /><br />
-    Eine detaillierte Erklärung zur Berechnung finden Sie auf unserer Seite
-    <a href="how-it-works.html">„So funktioniert's“</a>.<br />
+    <strong data-translate-key="disclaimer_intro">Bitte beachten Sie:</strong>
+    <span data-translate-key="disclaimer_text">
+      Die Ergebnisse dienen lediglich zur Orientierung und begründen keinen
+      Rechtsanspruch.
+    </span>
+    <br /><br />
+    <span data-translate-key="disclaimer_more">
+      Eine detaillierte Erklärung zur Berechnung finden Sie auf unserer
+      Seite
+    </span>
+    <a href="how-it-works.html" data-translate-key="link_how_it_works">So funktioniert's</a>
+    .
   </p>
 
   <div class="form-buttons">
-    <button class="secondary" id="back-btn-3">Zurück</button>
-    <button class="primary pdf-btn">Als PDF ausdrucken</button>
+    <button class="secondary" id="back-btn-3" data-translate-key="btn_back">
+      Zurück
+    </button>
+    <button class="primary pdf-btn" data-translate-key="btn_pdf">
+      Als PDF ausdrucken
+    </button>
   </div>
 </main>
 
@@ -607,3 +724,4 @@
     display: none !important;
   }
 </style>
+

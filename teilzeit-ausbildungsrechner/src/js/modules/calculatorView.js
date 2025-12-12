@@ -1,8 +1,20 @@
-import { resetVollzeitMonateValidation } from "./input-validation.js";
+﻿import { resetVollzeitMonateValidation } from "./input-validation.js";
+import { getTranslation, onLanguageChange } from "./language.js";
 import infoIcon from "../../assets/icons/information.svg";
 
 // Globaler Chart-State, damit wir das Diagramm beim Neu-Rendern zerstören können
 let myResultsChart = null;
+let lastRenderedResults = null;
+
+const formatTranslation = (key, replacements = {}) => {
+  const template = getTranslation(key);
+  if (!template) return "";
+  return template.replace(/\{(\w+)\}/g, (match, k) =>
+    Object.prototype.hasOwnProperty.call(replacements, k)
+      ? replacements[k]
+      : match,
+  );
+};
 
 /**
  * Sammelt alle Benutzereingaben aus dem DOM für die Berechnung.
@@ -157,6 +169,7 @@ function updateProgress(currentStep) {
  * und befüllt damit die Ergebniskarten, Listen und das Diagramm im DOM.
  */
 export function renderResults(data) {
+  lastRenderedResults = data;
   // 1. Daten entpacken
   const {
     originalDuration,
@@ -230,8 +243,9 @@ export function renderResults(data) {
   );
   detailedShorteningsDiv.innerHTML = ""; // Reset
 
-  // Workaround: Hauptschulabschluss explizit anzeigen, auch wenn er 0 Monate bringt
-  const hasSchoolEntry = shorteningResult.details.some(
+  const shorteningDetails = [...shorteningResult.details];
+// Workaround: Hauptschulabschluss explizit anzeigen, auch wenn er 0 Monate bringt
+  const hasSchoolEntry = shorteningDetails.some(
     (d) =>
       d.reason.toLowerCase().includes("schulabschluss") ||
       d.reason.toLowerCase().includes("hauptschule"),
@@ -248,7 +262,7 @@ export function renderResults(data) {
         .querySelector(".radio-label");
       const reasonText = labelSpan ? labelSpan.textContent.trim() : "";
       if (reasonText === "Hauptschulabschluss") {
-        shorteningResult.details.unshift({
+        shorteningDetails.unshift({
           reason: reasonText,
           months: 0,
           isVariable: false,
@@ -258,17 +272,20 @@ export function renderResults(data) {
   }
 
   // Liste aufbauen
-  if (shorteningResult.details.length > 0) {
-    shorteningResult.details.forEach((detail) => {
+  if (shorteningDetails.length > 0) {
+    shorteningDetails.forEach((detail) => {
       const p = document.createElement("p");
       p.classList.add("detailed-shortening-item");
+      const reasonLabel = detail.translationKey
+        ? getTranslation(detail.translationKey) || detail.reason
+        : detail.reason;
 
       if (detail.months === 0) {
-        p.innerHTML = `${detail.reason}: <strong>0 Monate Verkürzung</strong>`;
+        p.innerHTML = `${reasonLabel}: <strong>0 Monate Verkürzung</strong>`;
         p.style.color = "#555";
       } else {
         const prefix = detail.isVariable ? "bis zu " : "";
-        p.innerHTML = `${detail.reason}: <strong>${prefix}${detail.months} Monate Verkürzung</strong>`;
+        p.innerHTML = `${reasonLabel}: <strong>${prefix}${detail.months} Monate Verkürzung</strong>`;
       }
       detailedShorteningsDiv.appendChild(p);
     });
@@ -281,8 +298,10 @@ export function renderResults(data) {
   if (capWasHitShortening) {
     const capMessage = document.createElement("p");
     capMessage.classList.add("cap-message");
-    capMessage.innerHTML =
-      "<i><strong>Hinweis: Maximal zulässige Verkürzung erreicht.</strong></i><br>";
+    const capText =
+      getTranslation("result_shortening_cap") ||
+      "Hinweis: Maximal zulaessige Verkuerzung erreicht.";
+    capMessage.innerHTML = `<i><strong>${capText}</strong></i><br>`;
     detailedShorteningsDiv.appendChild(capMessage);
   }
 
@@ -294,8 +313,7 @@ export function renderResults(data) {
     newFullTimeCard.style.display = "flex";
     document.getElementById("new-full-time-card-value").textContent =
       remainingFullTimeEquivalent;
-    document.getElementById("detailed-new-full-time-card").innerHTML =
-      "<p>Dies ist die verbleibende Restdauer in Vollzeit (nach Anrechnung aller Verkürzungsgründe und Abzug der bereits geleisteten Zeit).</p>";
+    document.getElementById("detailed-new-full-time-card").innerHTML = `<p>${getTranslation("result_remaining_detail")}</p>`;
   }
 
   // Falls Teilzeit gewählt wurde
@@ -311,17 +329,23 @@ export function renderResults(data) {
       partTimeDetailsDiv.innerHTML = "";
 
       if (finalExtensionMonths === 0) {
-        partTimeDetailsDiv.innerHTML = `<p class="detailed-part-time-item">Die Reduzierung der wöchentlichen Arbeitszeit von <strong>${fullTimeHours.toFixed(
-          1,
-        )}h</strong> auf <strong>${partTimeHours.toFixed(
-          1,
-        )}h</strong> führt zu einer geringfügigen Verlängerung von ≤ ${gracePeriod} Monaten, die in der Praxis oft ignoriert wird.</p>`;
+        partTimeDetailsDiv.innerHTML = `<p class="detailed-part-time-item">${formatTranslation(
+          "result_parttime_detail_zero",
+          {
+            full: fullTimeHours.toFixed(1),
+            part: partTimeHours.toFixed(1),
+            grace: gracePeriod,
+          },
+        )}</p>`;
       } else {
-        partTimeDetailsDiv.innerHTML = `<p class="detailed-part-time-item">Die Reduzierung der wöchentlichen Arbeitszeit von <strong>${fullTimeHours.toFixed(
-          1,
-        )}h</strong> auf <strong>${partTimeHours.toFixed(
-          1,
-        )}h</strong> für die verbleibende Dauer führt zu einer Verlängerung <strong>um ${finalExtensionMonths} Monate</strong>.</p>`;
+        partTimeDetailsDiv.innerHTML = `<p class="detailed-part-time-item">${formatTranslation(
+          "result_parttime_detail_extend",
+          {
+            full: fullTimeHours.toFixed(1),
+            part: partTimeHours.toFixed(1),
+            months: finalExtensionMonths,
+          },
+        )}</p>`;
       }
     }
 
@@ -389,8 +413,12 @@ export function renderResults(data) {
     const earlyTextBox = document.createElement("div");
     earlyTextBox.classList.add("info-box-text");
     const earlyInfoText = document.createElement("p");
-    earlyInfoText.innerHTML =
-      "<strong>Hinweis zur vorzeitigen Zulassung:</strong><br>Gute Leistungen können eine Verkürzung um 6 Monate ermöglichen. Der Antrag erfolgt bei der zuständigen Stelle (z. B. IHK/HWK) und ist unabhängig von den hier berechneten Gründen.";
+    const earlyTitle =
+      getTranslation("result_early_title") || "Hinweis zur vorzeitigen Zulassung";
+    const earlyBody =
+      getTranslation("result_early_body") ||
+      "Gute Leistungen koennen eine Verkuerzung um 6 Monate ermoeglichen. Der Antrag erfolgt bei der zustaendigen Stelle (z. B. IHK/HWK) und ist unabhaengig von den hier berechneten Gruenden.";
+    earlyInfoText.innerHTML = `<strong>${earlyTitle}:</strong><br>${earlyBody}`;
 
     earlyTextBox.appendChild(earlyInfoText);
     earlyAdmissionBox.appendChild(icon);
@@ -474,18 +502,44 @@ export function setupDetailsToggle() {
   const container = document.getElementById("details-container");
 
   if (btn && wrapper && container) {
+    const setButtonLabel = (isOpen) => {
+      const key = isOpen ? "details_toggle_open" : "details_toggle_closed";
+      const translation = getTranslation(key);
+      if (translation) {
+        btn.textContent = translation;
+      }
+    };
+
     btn.addEventListener("click", () => {
       const isHidden = wrapper.classList.contains("hidden");
 
       if (isHidden) {
         wrapper.classList.remove("hidden");
         container.classList.add("open");
-        btn.textContent = "Detaillierte Erklärung einklappen ▲";
+        setButtonLabel(true);
       } else {
         wrapper.classList.add("hidden");
         container.classList.remove("open");
-        btn.textContent = "Detaillierte Erklärung anzeigen ▼";
+        setButtonLabel(false);
       }
     });
+
+    const isInitiallyOpen = !wrapper.classList.contains("hidden");
+    setButtonLabel(isInitiallyOpen);
+    onLanguageChange(() =>
+      setButtonLabel(!wrapper.classList.contains("hidden")),
+    );
   }
 }
+
+onLanguageChange(() => {
+  if (lastRenderedResults) {
+    renderResults(lastRenderedResults);
+  }
+});
+
+
+
+
+
+
