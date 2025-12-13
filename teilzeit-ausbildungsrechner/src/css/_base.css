@@ -5,8 +5,8 @@
 :root {
     --primary: #b93137;
     --primary-dark: #a02a2f;
-    --primary-soft: #f4eded;
-    --bg-color: #fcf9f9;
+    --primary-soft: #ecd6d6;
+    --bg-color: #faf4f4;
     --text-color: #1f1f1f;
     --text-light: #555;
     --primary-button-bg: var(--primary);
@@ -14,7 +14,7 @@
     --card-bg: #fff;
     --card-shadow: 0 18px 45px -20px rgba(0, 0, 0, 0.3);
     --card-border: rgba(185, 49, 55, 0.15);
-    --calculator-input-bg: #f4eded;
+    --calculator-input-bg: #ecd6d6;
 }
 
 * {
