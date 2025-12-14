@@ -1,0 +1,119 @@
+{
+  "page_title": "Rechner für Teilzeit-Ausbildung",
+  "header_title": "Rechner für Teilzeit-Ausbildung",
+  "nav_language_button": "Deutsch",
+  "nav_easy_language": "Leichte Sprache",
+
+  "calc_title": "Rechner für Teilzeit-Ausbildung",
+  "calc_intro": "Sie machen eine Ausbildung in Teilzeit. Dieser Rechner hilft Ihnen. Er zeigt, wie lange die Ausbildung dauert.",
+
+  "progress_start": "Start",
+  "progress_adjust": "Dauer prüfen",
+  "progress_results": "Ergebnis",
+
+  "step1_title": "1. Grund-Daten",
+  "label_fulltime_hours": "Stunden pro Woche bei Vollzeit",
+  "placeholder_fulltime_hours": "40",
+  "info_fulltime_hours": "Tragen Sie die Stunden aus Ihrem Vertrag ein. Meist sind es 38 bis 40 Stunden.",
+
+  "label_parttime_hours": "Stunden pro Woche bei Teilzeit",
+  "placeholder_parttime_hours": "20",
+  "info_parttime_hours": "Tragen Sie ein, wie viele Stunden Sie pro Woche arbeiten wollen.",
+
+  "label_training_duration": "Dauer der Ausbildung bei Vollzeit",
+  "info_training_duration": "Wählen Sie die normale Dauer der Ausbildung in Monaten.",
+
+  "question_parttime_start": "Wann beginnt Ihre Teilzeit?",
+  "option_parttime_direct": "Ich beginne direkt mit Teilzeit",
+  "option_parttime_later": "Ich beginne mit Vollzeit und wechsle später zu Teilzeit",
+  "label_fulltime_months": "Monate in Vollzeit",
+  "placeholder_fulltime_months": "6",
+  "info_parttime_start": "Tragen Sie die Monate in Vollzeit ein. Schreiben Sie 0, wenn Sie sofort Teilzeit machen.",
+
+  "btn_back": "Zurück",
+  "btn_next": "Weiter",
+
+  "step2_title": "2. Kürzere Ausbildung prüfen",
+  "question_age": "Sind Sie älter als 21 Jahre?",
+  "answer_no": "Nein",
+  "answer_yes": "Ja",
+  "info_age": "Manche Menschen über 21 können die Ausbildung verkürzen.",
+
+  "question_school": "Welchen Schul-Abschluss haben Sie?",
+  "option_school_none": "Keinen",
+  "option_school_basic": "Hauptschule",
+  "option_school_mid": "Realschule",
+  "option_school_high": "Abitur oder Fach-Abitur",
+  "info_school": "Ein höherer Abschluss kann helfen, Zeit zu sparen.",
+
+  "question_experience": "Haben Sie schon passende Arbeits-Erfahrung?",
+  "info_experience": "Zum Beispiel ein Praktikum oder ein Job.",
+
+  "question_apprenticeship": "Haben Sie schon eine Ausbildung gemacht?",
+  "info_apprenticeship": "Eine passende Ausbildung kann Zeit sparen.",
+
+  "question_study": "Haben Sie passende Kurse im Studium gemacht?",
+  "info_study": "Zum Beispiel Computer oder Wirtschaft.",
+
+  "question_childcare": "Kümmern Sie sich um eigene Kinder?",
+  "info_childcare": "Das kann für Teilzeit wichtig sein.",
+
+  "question_familycare": "Pflegen Sie andere Menschen?",
+  "info_familycare": "Zum Beispiel Eltern oder Groß-Eltern.",
+
+  "reason_age_over21": "Über 21 Jahre alt",
+  "reason_school_none": "Kein Schul-Abschluss",
+  "reason_school_mid": "Realschule",
+  "reason_school_high": "Abitur oder Fach-Abitur",
+  "reason_experience_eq": "Arbeits-Erfahrung",
+  "reason_apprenticeship": "Ausbildung abgeschlossen",
+  "reason_study": "Kurse aus dem Studium",
+  "reason_childcare": "Betreuung von Kindern",
+  "reason_familycare": "Pflege von Angehörigen",
+
+  "step3_title": "3. Ergebnis",
+  "label_final_duration": "Gesamte Dauer der Ausbildung",
+  "details_toggle_closed": "Erklärung anzeigen",
+  "details_toggle_open": "Erklärung schließen",
+
+  "result_served_title": "Vollzeit am Anfang",
+  "result_served_header": "Zeit in Vollzeit",
+  "result_served_copy": "So viele Monate arbeiten Sie zuerst in Vollzeit.",
+
+  "result_shortening_title": "Zeit gespart",
+  "result_regular_duration_label": "Normale Dauer:",
+  "result_shortening_copy": "Diese Gründe verkürzen die Ausbildung.",
+  "result_shortening_cap": "Die maximale Verkürzung ist erreicht.",
+
+  "result_remaining_title": "Rest-Zeit",
+  "result_remaining_duration_header": "Rest in Vollzeit",
+  "result_remaining_copy": "Diese Zeit bleibt noch übrig.",
+
+  "result_extension_title": "Verlängerung durch Teilzeit",
+  "result_parttime_header": "Neue Dauer",
+  "result_parttime_copy": "Teilzeit verlängert die Ausbildung.",
+  "result_parttime_detail_zero": "Die Verlängerung ist sehr klein.",
+  "result_parttime_detail_extend": "Die Ausbildung dauert mehrere Monate länger.",
+
+  "result_early_title": "Hinweis",
+  "result_early_body": "Sehr gute Leistungen können die Ausbildung verkürzen. Fragen Sie bei der zuständigen Stelle nach.",
+
+  "disclaimer_intro": "Wichtig",
+  "disclaimer_text": "Das Ergebnis ist nur eine Hilfe. Es ist keine rechtliche Entscheidung.",
+  "disclaimer_more": "Mehr Infos finden Sie hier:",
+  "link_how_it_works": "So funktioniert es",
+
+  "btn_pdf": "Als PDF speichern",
+
+  "footer_nav_title": "Navigation",
+  "footer_nav_calculator": "Rechner",
+  "footer_nav_faq": "Fragen",
+  "footer_nav_how_it_works": "Erklärung",
+  "footer_legal_title": "Rechtliches",
+  "footer_legal_imprint": "Impressum",
+  "footer_legal_privacy": "Datenschutz",
+  "footer_about_text": "Dieser Rechner hilft bei Teilzeit-Ausbildung.",
+  "footer_disclaimer": "Alle Angaben sind ohne Gewähr.",
+  "footer_copyright": "Team CodeCobra",
+  "footer_project_credit": "Projekt aus dem Studium"
+}

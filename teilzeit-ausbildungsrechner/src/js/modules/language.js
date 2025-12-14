@@ -27,17 +27,22 @@ export function onLanguageChange(callback) {
 
 /**
  * Main Logic: Fetches JSON and updates the DOM
- * (Combined approach: Simple Fetch + Robust UI Updates)
  */
 export async function applyTranslations(lang = currentLanguage) {
   try {
-    // 1. Fetch Data (Logic from your short code, with added caching)
+    // 1. Fetch Data
     let translations = loadedLanguages[lang];
 
     if (!translations) {
-      const response = await fetch(`lang/${lang}.json`);
+      // NOTE: Using /lang/ to ensure absolute path
+      const response = await fetch(`/lang/${lang}.json`);
       if (!response.ok) {
-        console.error(`Language file not found: lang/${lang}.json`);
+        console.error(`Language file not found: /lang/${lang}.json`);
+        // Optional: If en_easy is missing, fallback to en
+        if (lang.includes("_easy")) {
+          console.warn("Easy language missing, falling back to base language.");
+          return applyTranslations(lang.split("_")[0]);
+        }
         return;
       }
       translations = await response.json();
@@ -49,7 +54,7 @@ export async function applyTranslations(lang = currentLanguage) {
     currentTranslations = translations;
     sessionStorage.setItem(LANGUAGE_STORAGE_KEY, currentLanguage);
 
-    // 3. Update DOM (Logic from your new code to handle attributes/HTML)
+    // 3. Update DOM
     document.querySelectorAll("[data-translate-key]").forEach((el) => {
       const key = el.dataset.translateKey;
       const translation = translations[key];
@@ -60,25 +65,23 @@ export async function applyTranslations(lang = currentLanguage) {
       const mode = el.dataset.translateMode;
 
       if (attrTarget) {
-        // e.g. placeholder="Search..."
         el.setAttribute(attrTarget, translation);
       } else if (mode === "html") {
-        // e.g. <b>Bold</b> text
         el.innerHTML = translation;
       } else {
-        // Standard text
         el.textContent = translation;
       }
     });
 
-    // 4. Update HTML Lang Attribute
-    const htmlLang = currentLanguage.startsWith("de") ? "de" : "en";
+    // 4. Update HTML Lang Attribute (remove _easy for browser)
+    const htmlLang = currentLanguage.split("_")[0];
     document.documentElement.setAttribute("lang", htmlLang);
 
-    // 5. Update Easy Language Checkbox (Specific to your app)
+    // 5. Update Easy Language Checkbox State
     const easyCheckbox = document.getElementById("easy-language-checkbox");
     if (easyCheckbox) {
-      easyCheckbox.checked = currentLanguage === "de_easy";
+      // Checkbox is ON if the current language string contains "_easy"
+      easyCheckbox.checked = currentLanguage.includes("_easy");
     }
 
     // 6. Notify other parts of the app
@@ -119,10 +122,25 @@ export function initializeLanguageSwitcher() {
     languageOptions.forEach((option) => {
       option.addEventListener("click", function (e) {
         e.preventDefault();
-        // Grabs text inside span (e.g., "en" or "de")
-        const langSpan = this.querySelector("span");
-        if (langSpan) {
-          applyTranslations(langSpan.textContent.toLowerCase().trim());
+
+        // 1. Get the new base language (e.g., "en" or "de")
+        // NOTE: Relying on data-lang attribute is safer than span content
+        let newBaseLang = this.getAttribute("data-lang");
+
+        // Fallback to text content if data attribute is missing
+        if (!newBaseLang) {
+          const langSpan = this.querySelector("span");
+          if (langSpan) newBaseLang = langSpan.textContent.toLowerCase().trim();
+        }
+
+        if (newBaseLang) {
+          // 2. Check if Easy Mode is currently ON
+          const isEasyMode = easyCheckbox ? easyCheckbox.checked : false;
+
+          // 3. Combine them (e.g. "en" + "_easy" -> "en_easy")
+          const finalLang = isEasyMode ? `${newBaseLang}_easy` : newBaseLang;
+
+          applyTranslations(finalLang);
         }
         langMenu.classList.remove("show");
       });
@@ -141,7 +159,15 @@ export function initializeLanguageSwitcher() {
     easyMenu.addEventListener("click", (e) => e.stopPropagation());
 
     easyCheckbox.addEventListener("change", (e) => {
-      const nextLanguage = e.target.checked ? "de_easy" : "de";
+      const isChecked = e.target.checked;
+
+      // 1. Get current base language (strip _easy if it exists)
+      // e.g. "en_easy" -> "en", "de" -> "de"
+      const currentBase = currentLanguage.split("_")[0];
+
+      // 2. Append _easy only if checked
+      const nextLanguage = isChecked ? `${currentBase}_easy` : currentBase;
+
       applyTranslations(nextLanguage);
     });
   }
