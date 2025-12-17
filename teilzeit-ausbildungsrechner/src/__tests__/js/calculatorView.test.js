@@ -33,7 +33,6 @@ jest.mock("../../assets/icons/information.svg", () => "info.svg", {
 describe("calculatorView", () => {
   let view;
   let resetValidation;
-  let getTranslation;
   let onLanguageChange;
 
   beforeEach(async () => {
@@ -45,9 +44,7 @@ describe("calculatorView", () => {
     ({ resetVollzeitMonateValidation: resetValidation } = await import(
       "../../js/modules/input-validation.js"
     ));
-    ({ getTranslation, onLanguageChange } = await import(
-      "../../js/modules/language.js"
-    ));
+    ({ onLanguageChange } = await import("../../js/modules/language.js"));
 
     // Chart.js Stub, damit renderResults ohne echtes Canvas laeuft
     global.window.Chart = jest.fn().mockImplementation(() => ({
