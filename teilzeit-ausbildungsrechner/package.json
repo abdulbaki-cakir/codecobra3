@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "test:selenium:tzr": "node src/selenium/tzr.e2e.js",
     "test:selenium:lisa": "node src/selenium/tzr-scenario1-lisa.e2e.js",
     "test:selenium:lukas": "node src/selenium/tzr-scenario2-lukas.e2e.js",
