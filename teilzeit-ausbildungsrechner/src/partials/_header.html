@@ -22,17 +22,14 @@
             <span data-translate-key="nav_language_button">Deutsch</span>
           </a>
           <div class="language-dropdown" id="language-menu">
-            <a href="#" class="language-option"
-              ><img src="/src/assets/icons/de.svg" alt="Deutsche Flagge" /><span
-                >DE</span
-              ></a
-            >
-            <a href="#" class="language-option"
-              ><img
-                src="/src/assets/icons/gb.svg"
-                alt="Englische Flagge"
-              /><span>EN</span></a
-            >
+            <a href="#" class="language-option">
+              <img src="/src/assets/icons/de.svg" alt="Deutsche Flagge" />
+              <span data-translate-key="nav_language_de">DE</span>
+            </a>
+            <a href="#" class="language-option">
+              <img src="/src/assets/icons/gb.svg" alt="Englische Flagge" />
+              <span data-translate-key="nav_language_en">EN</span>
+            </a>
           </div>
         </div>
 
@@ -52,7 +49,13 @@
             id="easy-language-menu"
           >
             <div class="easy-language-control">
-              <span class="easy-label">Leichte Sprache<br />aktivieren</span>
+              <span
+                class="easy-label"
+                data-translate-key="easy_language_toggle_label"
+                data-translate-mode="html"
+              >
+                Leichte Sprache<br />aktivieren
+              </span>
 
               <label class="switch">
                 <input type="checkbox" id="easy-language-checkbox" />
