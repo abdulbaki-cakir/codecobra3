@@ -1,3 +1,4 @@
+import { applyTranslations, getTranslation } from "./language.js";
 // =====================================================================
 // --- VALIDIERUNGSFUNKTIONEN FÜR STEP 1 ---
 // =====================================================================
@@ -14,13 +15,13 @@ export function validateVollzeitstunden(showErrorIfEmpty = false) {
   if (!vollzeitInput || !errorPopup || !errorTextSpan) return false;
 
   let isValid = true;
-  let errorMessage = "";
+  let errorKey = "";
   const value = vollzeitInput.value.trim();
 
   // Leeres Feld prüfen
   if (value === "") {
     if (showErrorIfEmpty) {
-      errorMessage = "Bitte die Vollzeitstunden eingeben.";
+      errorKey = "error_fulltime_required";
       isValid = false;
     } else {
       isValid = false;
@@ -33,20 +34,20 @@ export function validateVollzeitstunden(showErrorIfEmpty = false) {
     const isMultipleOfHalf = Math.round(numValue * 100) % 50 === 0;
 
     if (isNaN(numValue)) {
-      errorMessage = "Bitte eine gültige Zahl eingeben.";
+      errorKey = "error_fulltime_invalid";
       isValid = false;
     } else if (numValue < 35 || numValue > 48) {
-      errorMessage = "Wert muss zwischen 35 und 48 liegen.";
+      errorKey = "error_fulltime_range";
       isValid = false;
     } else if (!isMultipleOfHalf) {
-      errorMessage = "Nur 0,5er Schritte (z.B. 37, 37,5 oder 38) sind erlaubt.";
+      errorKey = "error_half_steps";
       isValid = false;
     }
   }
 
   // UI-Update: Fehler anzeigen oder entfernen
-  if (!isValid && errorMessage) {
-    errorTextSpan.textContent = errorMessage;
+  if (!isValid && errorKey) {
+    errorTextSpan.textContent = getTranslation(errorKey);
     errorPopup.classList.add("visible");
     vollzeitInput.classList.add("invalid");
   } else {
@@ -78,12 +79,12 @@ export function validateWochenstunden(showErrorIfEmpty = false) {
   const hasValidVollzeit = !isNaN(vollzeitNum) && vollzeitNum > 0;
 
   let isValid = true;
-  let errorMessage = "";
+  let errorKey = "";
   const value = wochenstundenInput.value.trim();
 
   if (value === "") {
     if (showErrorIfEmpty) {
-      errorMessage = "Bitte die gewünschten Stunden eingeben.";
+      errorKey = "error_parttime_required";
       isValid = false;
     } else {
       isValid = false;
@@ -96,30 +97,30 @@ export function validateWochenstunden(showErrorIfEmpty = false) {
     const minFiftyPercent = hasValidVollzeit ? vollzeitNum * 0.5 : 0;
 
     if (isNaN(numValue)) {
-      errorMessage = "Bitte eine Zahl eingeben.";
+      errorKey = "error_parttime_minimum";
       isValid = false;
     }
     // Prüfung auf Mindeststunden (50% Regel)
     else if (hasValidVollzeit && numValue < minFiftyPercent) {
       const minString = minFiftyPercent.toString().replace(".", ",");
-      errorMessage = `Teilzeit muss mind. 50% der Vollzeit sein (mind. ${minString} Std.).`;
+      errorKey = "error_parttime_minimum";
       isValid = false;
     }
     // Prüfung: Darf nicht mehr oder gleich Vollzeit sein
     else if (hasValidVollzeit && numValue >= vollzeitNum) {
-      errorMessage = "Es muss weniger als Vollzeit sein.";
+      errorKey = "error_parttime_less_than_full";
       isValid = false;
     }
     // Prüfung: 0,5er Schritte
     else if (!isMultipleOfHalf) {
-      errorMessage = "Nur 0,5er Schritte (z.B. 20, 20,5 oder 21) sind erlaubt.";
+      errorKey = "error_half_steps";
       isValid = false;
     }
   }
 
   // UI-Update
-  if (!isValid && errorMessage) {
-    errorTextSpan.textContent = errorMessage;
+  if (!isValid && errorKey) {
+    errorTextSpan.textContent = getTranslation(errorKey);
     errorPopup.classList.add("visible");
     wochenstundenInput.classList.add("invalid");
   } else {
@@ -158,11 +159,10 @@ export function validateVollzeitMonate(showErrorIfEmpty = false) {
   const dauerNum = parseInt(dauerSelect.value, 10);
 
   let isValid = true;
-  let errorMessage = "";
-
+  let errorKey = "";
   if (monateValue === "") {
     if (showErrorIfEmpty) {
-      errorMessage = "Bitte Monate eingeben.";
+      errorKey = "error_months_required";
       isValid = false;
     } else {
       isValid = false;
@@ -172,10 +172,10 @@ export function validateVollzeitMonate(showErrorIfEmpty = false) {
 
     // Logik: Muss > 0 sein und kleiner als die Gesamtdauer
     if (isNaN(monateNum) || monateNum <= 0) {
-      errorMessage = "Bitte eine gültige Zahl > 0 eingeben.";
+      errorKey = "error_number_positive";
       isValid = false;
     } else if (monateNum >= dauerNum) {
-      errorMessage = `Muss kleiner als ${dauerNum} Monate sein.`;
+      errorKey = `error_months_less_than${dauerNum}`;
       isValid = false;
     }
   }
