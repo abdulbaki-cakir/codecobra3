@@ -1,4 +1,4 @@
-import { applyTranslations, getTranslation } from "./language.js";
+import {getTranslation } from "./language.js";
 // =====================================================================
 // --- VALIDIERUNGSFUNKTIONEN FÜR STEP 1 ---
 // =====================================================================
@@ -102,7 +102,6 @@ export function validateWochenstunden(showErrorIfEmpty = false) {
     }
     // Prüfung auf Mindeststunden (50% Regel)
     else if (hasValidVollzeit && numValue < minFiftyPercent) {
-      const minString = minFiftyPercent.toString().replace(".", ",");
       errorKey = "error_parttime_minimum";
       isValid = false;
     }
@@ -175,14 +174,13 @@ export function validateVollzeitMonate(showErrorIfEmpty = false) {
       errorKey = "error_number_positive";
       isValid = false;
     } else if (monateNum >= dauerNum) {
-      errorKey = `error_months_less_than${dauerNum}`;
       isValid = false;
     }
   }
 
   // UI-Update
-  if (!isValid && errorMessage) {
-    errorTextSpan.textContent = errorMessage;
+  if (!isValid && errorKey) {
+    errorTextSpan.textContent = getTranslation(errorKey);
     errorPopup.classList.add("visible");
     monateInput.classList.add("invalid");
   } else {
