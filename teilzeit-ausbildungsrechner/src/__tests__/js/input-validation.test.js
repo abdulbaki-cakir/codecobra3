@@ -1,32 +1,13 @@
 /** @jest-environment jsdom */
 
-// Mock language module so getTranslation works without fetch/json
-jest.mock("../../js/modules/language.js", () => ({
-  getTranslation: (key) => {
-    const map = {
-      error_fulltime_required: "Bitte die Vollzeitstunden eingeben.",
-      error_number_invalid: "Bitte eine gültige Zahl eingeben.",
-      error_fulltime_range: "Wert muss zwischen 35 und 48 liegen.",
-      error_half_steps:
-        "Nur 0,5er Schritte (z.B. 37, 37,5 oder 38) sind erlaubt.",
-      error_parttime_required: "Bitte die gewünschten Stunden eingeben.",
-      error_parttime_minimum:
-        "Teilzeit muss mind. 50% der Vollzeit sein (mind. {min} Std.).",
-      error_parttime_less_than_full: "Es muss weniger als Vollzeit sein.",
-      error_months_required: "Bitte Monate eingeben.",
-      error_number_positive: "Bitte eine gültige Zahl > 0 eingeben.",
-      error_months_less_than: "Muss kleiner als {max} Monate sein."
-    };
-    return map[key] ?? "";
-  }
-}));
-
 import {
   validateVollzeitstunden,
   validateWochenstunden,
   validateVollzeitMonate,
   resetVollzeitMonateValidation
 } from "../../js/modules/input-validation.js";
+
+import { __setTranslationsForTests } from "../../js/modules/language.js";
 
 const buildErrorBlock = (id) => `
   <div id="${id}" class="error"><span></span></div>
@@ -50,9 +31,27 @@ const expectHiddenValid = (inputId, errorId) => {
   expect(error.classList.contains("visible")).toBe(false);
   expect(input.classList.contains("invalid")).toBe(false);
   expect(span.textContent).toBe("");
+  expect(span.dataset.translateKey || "").toBe("");
 };
 
 describe("input-validation (i18n-safe)", () => {
+  beforeEach(() => {
+    __setTranslationsForTests("de", {
+      error_fulltime_required: "Bitte die Vollzeitstunden eingeben.",
+      error_number_invalid: "Bitte eine gültige Zahl eingeben.",
+      error_fulltime_range: "Wert muss zwischen 35 und 48 liegen.",
+      error_half_steps:
+        "Nur 0,5er Schritte (z.B. 37, 37,5 oder 38) sind erlaubt.",
+      error_parttime_required: "Bitte die gewünschten Stunden eingeben.",
+      error_parttime_minimum:
+        "Teilzeit muss mind. 50% der Vollzeit sein (mind. {min} Std.).",
+      error_parttime_less_than_full: "Es muss weniger als Vollzeit sein.",
+      error_months_required: "Bitte Monate eingeben.",
+      error_number_positive: "Bitte eine gültige Zahl > 0 eingeben.",
+      error_months_less_than: "Muss kleiner als {max} Monate sein."
+    });
+  });
+
   afterEach(() => {
     document.body.innerHTML = "";
   });
