@@ -232,6 +232,43 @@
 <main class="calculator-form hidden" id="step-2">
   <h2 data-translate-key="step2_title">2. Prüfe deine mögliche Verkürzung</h2>
 
+    <div class="input-group radio-card-group">
+    <div class="radio-card-container">
+      <div class="radio-card-header">
+        <h4 data-translate-key="question_childcare">
+          Haben Sie Kinder, um die Sie sich kümmern?
+        </h4>
+      </div>
+      <div class="radio-card-body">
+        <label class="radio-card-option">
+          <input type="radio" name="child-care-radio" value="0" checked />
+          <span class="radio-custom"></span
+          ><span class="radio-label" data-translate-key="answer_no">Nein</span>
+        </label>
+        <label class="radio-card-option">
+          <input type="radio" name="child-care-radio" value="12" />
+          <span class="radio-custom"></span
+          ><span class="radio-label" data-translate-key="answer_yes">Ja</span>
+        </label>
+      </div>
+    </div>
+    <div class="info-icon-wrapper">
+      <img
+        src="/src/assets/icons/information.svg"
+        alt=""
+        class="icon info-icon"
+      />
+      <div class="info-box" data-translate-key="info_childcare">
+        Wenn Sie Kinder betreuen, kann die Kammer eher einer Teilzeit-Ausbildung
+        zustimmen oder die Dauer anpassen.
+      </div>
+    </div>
+    <select name="child-care" id="child-care-select" style="display: none">
+      <option value="0" selected>Nein</option>
+      <option value="12">Ja</option>
+    </select>
+  </div>
+
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
@@ -435,43 +472,6 @@
       </div>
     </div>
     <select name="study" id="study-select" style="display: none">
-      <option value="0" selected>Nein</option>
-      <option value="12">Ja</option>
-    </select>
-  </div>
-
-  <div class="input-group radio-card-group">
-    <div class="radio-card-container">
-      <div class="radio-card-header">
-        <h4 data-translate-key="question_childcare">
-          Haben Sie Kinder, um die Sie sich kümmern?
-        </h4>
-      </div>
-      <div class="radio-card-body">
-        <label class="radio-card-option">
-          <input type="radio" name="child-care-radio" value="0" checked />
-          <span class="radio-custom"></span
-          ><span class="radio-label" data-translate-key="answer_no">Nein</span>
-        </label>
-        <label class="radio-card-option">
-          <input type="radio" name="child-care-radio" value="12" />
-          <span class="radio-custom"></span
-          ><span class="radio-label" data-translate-key="answer_yes">Ja</span>
-        </label>
-      </div>
-    </div>
-    <div class="info-icon-wrapper">
-      <img
-        src="/src/assets/icons/information.svg"
-        alt=""
-        class="icon info-icon"
-      />
-      <div class="info-box" data-translate-key="info_childcare">
-        Wenn Sie Kinder betreuen, kann die Kammer eher einer Teilzeit-Ausbildung
-        zustimmen oder die Dauer anpassen.
-      </div>
-    </div>
-    <select name="child-care" id="child-care-select" style="display: none">
       <option value="0" selected>Nein</option>
       <option value="12">Ja</option>
     </select>
