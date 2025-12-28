@@ -131,7 +131,7 @@
   "error_fulltime_range": "Wert muss zwischen 35 und 48 liegen.",
   "error_half_steps": "Nur 0,5er Schritte (z.B. 37, 37,5 oder 38) sind erlaubt.",
   "error_parttime_required": "Bitte geben Sie die gewünschten Stunden in Teilzeit ein.",
-  "error_parttime_minimum": "Teilzeit mindestens 50% von Vollzeit (min. {min} Std.).",
+  "error_parttime_minimum": "Teilzeit muss mindestens 50% von Vollzeit.",
   "error_parttime_less_than_full": "Teilzeit muss weniger als Vollzeit sein.",
   "error_months_required": "Bitte Monate eingeben.",
   "error_number_positive": "Bitte Zahl > 0 eingeben.",
