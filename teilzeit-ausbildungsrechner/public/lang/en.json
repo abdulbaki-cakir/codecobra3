@@ -60,7 +60,7 @@
 
   "question_apprenticeship": "Have you already completed a relevant apprenticeship?",
   "info_apprenticeship": "A suitable, already completed training program can significantly shorten your new training program.",
-  "question_study": "Have you taken courses during your studies that are relevant to the training program?",
+  "question_study": "Did you study at a college or university and earn at least 30 ECTS (credit points) there?",
   "info_study": "Have you already taken courses during your studies that are relevant to the training program? If you have earned 30 ECTS credits or more, the training program can be shortened.",
 
   "question_childcare": "Do you have children to care for?",

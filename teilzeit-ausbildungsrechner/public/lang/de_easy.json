@@ -60,8 +60,8 @@
 
   "question_apprenticeship": "Haben Sie schon eine Ausbildung abgeschlossen?",
   "info_apprenticeship": "Eine passende, bereits abgeschlossene Ausbildung kann Ihre neue Ausbildung deutlich verkürzen.",
-
-  "question_study": "Haben Sie passende Kurse im Studium gemacht?",
+  
+  "question_study": "Haben Sie an einer Hochschule oder Universität studiert und dort mindestens 30 ECTS (Studienpunkte) erreicht?",
   "info_study": "Haben Sie bereits Kurse im Studium belegt, die für die Ausbildung relevant sind? Ab einer Anzahl von 30 ECTS kann die Ausbildung verkürzt werden.",
 
  "question_childcare": "Haben Sie Kinder, um die Sie sich kümmern?",
