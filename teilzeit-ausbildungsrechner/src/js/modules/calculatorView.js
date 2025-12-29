@@ -271,27 +271,41 @@ export function renderResults(data) {
     }
   }
 
-  // Liste aufbauen
+    // Liste aufbauen
   if (shorteningDetails.length > 0) {
     shorteningDetails.forEach((detail) => {
       const p = document.createElement("p");
       p.classList.add("detailed-shortening-item");
+
       const reasonLabel = detail.translationKey
         ? getTranslation(detail.translationKey) || detail.reason
         : detail.reason;
 
+      let text;
+
       if (detail.months === 0) {
-        p.innerHTML = `${reasonLabel}: <strong>0 Monate Verkürzung</strong>`;
+        text = getTranslation("shortening_zero")
+          .replace("{reason}", reasonLabel);
         p.style.color = "#555";
+      } else if (detail.isVariable) {
+        text = getTranslation("shortening_variable")
+          .replace("{reason}", reasonLabel)
+          .replace("{months}", detail.months);
       } else {
-        const prefix = detail.isVariable ? "bis zu " : "";
-        p.innerHTML = `${reasonLabel}: <strong>${prefix}${detail.months} Monate Verkürzung</strong>`;
+        text = getTranslation("shortening_fixed")
+          .replace("{reason}", reasonLabel)
+          .replace("{months}", detail.months);
       }
+
+      p.innerHTML = text;
       detailedShorteningsDiv.appendChild(p);
     });
   } else {
-    detailedShorteningsDiv.innerHTML =
-      '<p class="no-shortening-message">Keine Verkürzungsgründe ausgewählt.</p>';
+    detailedShorteningsDiv.innerHTML = `
+      <p class="no-shortening-message">
+        ${getTranslation("shortening_none")}
+      </p>
+    `;
   }
 
   // Warnung, wenn Max-Verkürzung (Mindestdauer) erreicht wurde

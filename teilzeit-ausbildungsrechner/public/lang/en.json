@@ -82,6 +82,7 @@
   "result_shortening_title": " Total<br />reduction",
   "result_regular_duration_label": "Regular duration (full-time):",
   "result_shortening_copy": "The reasons for the reduction are listed here.",
+  "original-duration-header": "–- Months",
   "result_shortening_cap": "Note: Maximum permissible reduction reached.",
 
   "result_remaining_title": "Remaining<br />Duration (Full-time)",
@@ -164,5 +165,10 @@
   "imprint_page_title": "Imprint",
   "imprint_heading": "Imprint",
   "easy_language_page_title": "Easy Language",
-  "easy_language_heading": "Easy Language"
+  "easy_language_heading": "Easy Language",
+
+  "shortening_zero": "{reason}: <strong>0 months reduction</strong>",
+  "shortening_fixed": "{reason}: <strong>{months} months reduction</strong>",
+  "shortening_variable": "{reason}: <strong>up to {months} months reduction</strong>",
+  "shortening_none": "No shortening reasons selected."
 }

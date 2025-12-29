@@ -83,6 +83,7 @@
   "result_shortening_title": "Gesamte Verkürzung der Ausbildung",
   "result_regular_duration_label": "Normale Dauer:",
   "result_shortening_copy": "Diese Gründe verkürzen die Ausbildung.",
+  "original-duration-header": "–- Monate",
   "result_shortening_cap": "Die maximale Verkürzung ist erreicht.",
 
   "result_remaining_title": "Restdauer in Vollzeit",
@@ -164,5 +165,10 @@
   "imprint_page_title": "Impressum",
   "imprint_heading": "Impressum",
   "easy_language_page_title": "Leichte Sprache",
-  "easy_language_heading": "Leichte Sprache"
+  "easy_language_heading": "Leichte Sprache",
+
+  "shortening_zero": "{reason}: <strong>0 Monate Verkürzung</strong>",
+  "shortening_fixed": "{reason}: <strong>{months} Monate Verkürzung</strong>",
+  "shortening_variable": "{reason}: <strong>bis zu {months} Monate Verkürzung</strong>",
+  "shortening_none": "Keine Verkürzungsgründe ausgewählt."
 }

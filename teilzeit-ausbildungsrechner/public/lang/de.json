@@ -82,6 +82,7 @@
 
   "result_shortening_title": "Gesamte<br />Verkürzung",
   "result_regular_duration_label": "Reguläre Dauer (Vollzeit):",
+  "original-duration-header": "–- Monate",
   "result_shortening_copy": "Hier werden die Gründe für die Verkürzung aufgelistet.",
   "result_shortening_cap": "Hinweis: Maximal zulässige Verkürzung erreicht.",
 
@@ -164,5 +165,12 @@
   "imprint_page_title": "Impressum",
   "imprint_heading": "Impressum",
   "easy_language_page_title": "Leichte Sprache",
-  "easy_language_heading": "Leichte Sprache"
+  "easy_language_heading": "Leichte Sprache",
+
+  "shortening_zero": "{reason}: <strong>0 Monate Verkürzung</strong>",
+  "shortening_fixed": "{reason}: <strong>{months} Monate Verkürzung</strong>",
+  "shortening_variable": "{reason}: <strong>bis zu {months} Monate Verkürzung</strong>",
+  "shortening_none": "Keine Verkürzungsgründe ausgewählt."
+
+
 }

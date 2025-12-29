@@ -83,6 +83,7 @@
   "result_shortening_title": "Shortening",
   "result_regular_duration_label": "Normal duration:",
   "result_shortening_copy": "These reasons shorten your training.",
+  "original-duration-header": "–- Months",
   "result_shortening_cap": "The maximum shortening is reached.",
 
   "result_remaining_title": "Remaining time",
@@ -164,5 +165,12 @@
   "imprint_page_title": "Imprint",
   "imprint_heading": "Imprint",
   "easy_language_page_title": "Easy Language",
-  "easy_language_heading": "Easy Language"
+  "easy_language_heading": "Easy Language",
+
+  "shortening_zero": "{reason}: <strong>0 months reduction</strong>",
+  "shortening_fixed": "{reason}: <strong>{months} months reduction</strong>",
+  "shortening_variable": "{reason}: <strong>up to {months} months reduction</strong>",
+  "shortening_none": "No shortening reasons selected."
+
+
 }
