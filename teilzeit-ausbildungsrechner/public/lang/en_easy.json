@@ -4,7 +4,7 @@
   "nav_language_de": "DE",
   "nav_language_en": "EN",
   "nav_easy_language": "Easy Language",
-  "easy_language_toggle_label": "Turn on easy language",
+  "easy_language_toggle_label": "Enable easy language",
 
   "footer_nav_title": "Navigation",
   "footer_nav_calculator": "Calculator",
@@ -170,7 +170,9 @@
   "shortening_zero": "{reason}: <strong>0 months reduction</strong>",
   "shortening_fixed": "{reason}: <strong>{months} months reduction</strong>",
   "shortening_variable": "{reason}: <strong>up to {months} months reduction</strong>",
-  "shortening_none": "No shortening reasons selected."
+  "shortening_none": "No shortening reasons selected.",
+
+  "duration_months": "{months} months"
 
 
 }

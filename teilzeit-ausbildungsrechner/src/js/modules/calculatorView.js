@@ -234,7 +234,8 @@ export function renderResults(data) {
        VERKÜRZUNGSGRÜNDE (Liste generieren)
     ----------------------------------------------------------- */
   document.getElementById("original-duration-header").textContent =
-    `${originalDuration} Monate`;
+  formatTranslation("duration_months", { months: originalDuration });
+
   document.getElementById("shortening-card-value").textContent =
     officialShorteningMonths;
 
@@ -244,32 +245,27 @@ export function renderResults(data) {
   detailedShorteningsDiv.innerHTML = ""; // Reset
 
   const shorteningDetails = [...shorteningResult.details];
-// Workaround: Hauptschulabschluss explizit anzeigen, auch wenn er 0 Monate bringt
+
+  // Workaround: Hauptschulabschluss explizit anzeigen, auch wenn er 0 Monate bringt
   const hasSchoolEntry = shorteningDetails.some(
-    (d) =>
-      d.reason.toLowerCase().includes("schulabschluss") ||
-      d.reason.toLowerCase().includes("hauptschule"),
+    (d) => d.translationKey === "reason_school_hauptschule",
   );
 
   if (!hasSchoolEntry) {
     const selectedRadio = document.querySelector(
       'input[name="school-finish-radio"]:checked',
     );
+
     if (selectedRadio && selectedRadio.value === "0") {
-      // 0 = Hauptschule
-      const labelSpan = selectedRadio
-        .closest(".radio-card-option")
-        .querySelector(".radio-label");
-      const reasonText = labelSpan ? labelSpan.textContent.trim() : "";
-      if (reasonText === "Hauptschulabschluss") {
-        shorteningDetails.unshift({
-          reason: reasonText,
-          months: 0,
-          isVariable: false,
-        });
-      }
+      shorteningDetails.unshift({
+        translationKey: "reason_school_hauptschule",
+        reason: getTranslation("reason_school_hauptschule"), // Fallback
+        months: 0,
+        isVariable: false,
+      });
     }
   }
+
 
     // Liste aufbauen
   if (shorteningDetails.length > 0) {

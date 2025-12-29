@@ -24,17 +24,20 @@ export function calculateShortening(selections, originalDuration) {
 
     let reasonText = "";
     let translationKey = "";
+    let months = 0;
+    let isVariable = !!config.isVariable;
+    
     if (id === "school-finish") {
       const optionConfig = config.options[currentValue];
       reasonText = optionConfig?.text || "Schulabschluss";
       translationKey = optionConfig?.translationKey || "";
+      months = optionConfig?.value || 0;
     } else {
       reasonText = config.text;
       translationKey = config.translationKey || "";
+      months = config.value || selected;
     }
-
-    const isVariable = config.isVariable || false;
-
+    
     const currentReason = {
       reason: reasonText,
       translationKey,

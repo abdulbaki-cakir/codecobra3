@@ -170,5 +170,8 @@
   "shortening_zero": "{reason}: <strong>0 months reduction</strong>",
   "shortening_fixed": "{reason}: <strong>{months} months reduction</strong>",
   "shortening_variable": "{reason}: <strong>up to {months} months reduction</strong>",
-  "shortening_none": "No shortening reasons selected."
+  "shortening_none": "No shortening reasons selected.",
+
+  "duration_months": "{months} months"
+
 }
