@@ -25,7 +25,7 @@ export function calculateShortening(selections, originalDuration) {
     let reasonText = "";
     let translationKey = "";
     let months = 0;
-    let isVariable = !!config.isVariable;
+    const isVariable = !!config.isVariable;
     
     if (id === "school-finish") {
       const optionConfig = config.options[currentValue];
@@ -35,7 +35,7 @@ export function calculateShortening(selections, originalDuration) {
     } else {
       reasonText = config.text;
       translationKey = config.translationKey || "";
-      months = config.value || selected;
+      months = config.value ?? currentValue;
     }
     
     const currentReason = {
