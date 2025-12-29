@@ -41,7 +41,7 @@ export function calculateShortening(selections, originalDuration) {
     const currentReason = {
       reason: reasonText,
       translationKey,
-      months: currentValue,
+      months,
       isVariable,
     };
 
