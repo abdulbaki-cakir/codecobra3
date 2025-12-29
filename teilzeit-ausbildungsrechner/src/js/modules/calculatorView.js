@@ -353,11 +353,12 @@ export function renderResults(data) {
     if (extensionCapWasHit) {
       if (topErrorMsg) {
         topErrorMsg.classList.remove("hidden");
-        topErrorMsg.innerHTML = getTranslation("result_extension_cap" ).replace(
-          "${maxAllowedTotalDuration}",
-          maxAllowedTotalDuration,
-        );
-      }
+        topErrorMsg.innerHTML = getTranslation("result_extension_cap").replace(
+        "{maxAllowedTotalDuration}",
+        maxAllowedTotalDuration,
+      );
+    }
+
       // UI rot färben
       if (partTimeCardLeft) partTimeCardLeft.style.backgroundColor = "#B93137";
       if (finalResultBox) finalResultBox.style.backgroundColor = "#B93137";
