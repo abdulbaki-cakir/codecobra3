@@ -432,64 +432,56 @@ export function renderResults(data) {
   /* -----------------------------------------------------------
        DIAGRAMM (Chart.js)
     ----------------------------------------------------------- */
-  const canvas = document.getElementById("results-chart");
-  if (canvas) {
-    if (typeof window.Chart !== "undefined") {
-      try {
-        const ctx = canvas.getContext("2d");
+const canvas = document.getElementById("results-chart");
+  if (!canvas) return;
 
-        // Altes Chart löschen, sonst flackert es beim Hover
-        if (myResultsChart) myResultsChart.destroy();
+  if (typeof window.Chart === "undefined") {
+    console.warn("Chart.js ist nicht geladen.");
+    return;
+  }
 
-        // eslint-disable-next-line new-cap
-        myResultsChart = new window.Chart(ctx, {
-          type: "bar",
-          data: {
-            labels: [
-              ["Regulär", "(Vollzeit)"],
-              ["Verkürzt", "(Vollzeit)"],
-              ["Final", "(Teilzeit)"],
-            ],
-            datasets: [
-              {
-                label: "Dauer in Monaten",
-                data: [
-                  originalDuration,
-                  newFullTimeDuration,
-                  finalTotalDuration,
-                ],
-                backgroundColor: [
-                  "#6EC6C5",
-                  "#2A5D67",
-                  "rgba(15, 15, 15, 0.8)",
-                ],
-                borderColor: ["#6EC6C5", "#2A5D67", "rgba(15, 15, 15, 1)"],
-                borderWidth: 1,
-              },
-            ],
+  try {
+    const ctx = canvas.getContext("2d");
+
+    // Altes Chart löschen, sonst flackert es beim Hover
+    if (window.myResultsChart) window.myResultsChart.destroy();
+
+    window.myResultsChart = new window.Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: [
+          [getTranslation("chart_label_regular"), getTranslation("chart_label_fulltime")],
+          [getTranslation("chart_label_shortened"), getTranslation("chart_label_fulltime")],
+          [getTranslation("chart_label_final"), getTranslation("chart_label_parttime")],
+        ],
+        datasets: [
+          {
+            label: getTranslation("chart_label_duration"),
+            data: [originalDuration, newFullTimeDuration, finalTotalDuration],
+            backgroundColor: ["#6EC6C5", "#2A5D67", "rgba(15, 15, 15, 0.8)"],
+            borderColor: ["#6EC6C5", "#2A5D67", "rgba(15, 15, 15, 1)"],
+            borderWidth: 1,
           },
-          options: {
-            animation: false,
-            responsive: true,
-            maintainAspectRatio: false, // Wichtig für responsive Canvas
-            plugins: {
-              legend: { display: false },
-              title: { display: true, text: "Ausbildungsdauer im Überblick" },
-            },
-            scales: {
-              y: {
-                beginAtZero: true,
-                title: { display: true, text: "Monate" },
-              },
-            },
+        ],
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          title: { display: true, text: getTranslation("chart_title_overview") },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: getTranslation("chart_axis_months") },
           },
-        });
-      } catch (error) {
-        console.error("Fehler beim Erstellen des Diagramms:", error);
-      }
-    } else {
-      console.warn("Chart.js ist nicht geladen.");
-    }
+        },
+      },
+    });
+  } catch (error) {
+    console.error("Fehler beim Erstellen des Diagramms:", error);
   }
 }
 

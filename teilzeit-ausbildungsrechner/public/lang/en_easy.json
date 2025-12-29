@@ -102,18 +102,18 @@
   "disclaimer_intro": "Important:",
   "disclaimer_text": "The result is only for guidance.",
   "disclaimer_more": "You can find a detailed explanation on our page.",
-  "result_extension_cap": "<strong>⚠️ Warning:</strong> The total duration may only be extended by half of the regular training duration (max. ${maxAllowedTotalDuration} months). <br />Solution: Increase the part-time hours per week.",
+  "result_extension_cap": "<strong>⚠️ Warning:</strong> The total duration may only be extended by half of the regular training duration (max. {maxAllowedTotalDuration} months). <br />Solution: Increase the part-time hours per week.",
   
   "btn_pdf": "Save as PDF",
   "btn_restart": "Reset",
-
-  "chart_regular": "Normal",
-  "chart_shortened": "Shortened",
-  "chart_final": "Final",
-  "chart_fulltime": "(Full-time)",
-  "chart_parttime": "(Part-time)",
-  "chart_label_duration": "Months",
-  "chart_title": "Training duration overview",
+  
+  "chart_label_regular": "Regular",
+  "chart_label_shortened": "Shortened",
+  "chart_label_final": "Final",
+  "chart_label_fulltime": "(Full-time)",
+  "chart_label_parttime": "(Part-time)",
+  "chart_label_duration": "Duration in months",
+  "chart_title_overview": "Training duration at a glance",
   "chart_axis_months": "Months",
 
   "pdf_button": "Download PDF",
