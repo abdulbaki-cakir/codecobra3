@@ -1,6 +1,5 @@
 {
   "page_title": "Part-Time Training Calculator",
-
   "nav_language_button": "English",
   "nav_language_de": "DE",
   "nav_language_en": "EN",
@@ -13,9 +12,7 @@
   "footer_legal_title": "Legal",
   "footer_legal_imprint": "Legal notice",
   "footer_legal_privacy": "Data protection",
-
   "header_title": "Part-Time Training Calculator",
-
   "footer_about_text": "This tool helps you calculate how long your part-time training takes.",
   "footer_disclaimer": "Note: The result is only a guide. It is not legally binding.",
   "footer_project_credit": "A student project in the SEB study program",
@@ -23,37 +20,29 @@
 
   "calc_title": "Part-Time Training Calculator",
   "calc_intro": "Do you want to do your training part-time?\nThis calculator helps you.\nYou can see how long your training will take.",
-
   "progress_start": "Start",
   "progress_adjust": "Check duration",
   "progress_results": "Result",
 
   "step1_title": "Step 1: Basic information",
-
   "label_fulltime_hours": "How many hours per week is full-time?",
   "placeholder_fulltime_hours": "40",
   "info_fulltime_hours": "Full-time is usually 38 to 40 hours per week.",
-
   "label_parttime_hours": "How many hours per week do you want to work?",
   "placeholder_parttime_hours": "20",
   "info_parttime_hours": "Part-time means fewer hours than full-time.",
-
   "label_training_duration": "How long is the training in full-time?",
   "info_training_duration": "For example: 24, 36 or 42 months.",
-
   "question_parttime_start": "How do you start your training?",
   "option_parttime_direct": "I start part-time right away",
   "option_parttime_later": "I start full-time and change to part-time later",
-
   "label_fulltime_months": "Months in full-time",
   "placeholder_fulltime_months": "6",
   "info_parttime_start": "Enter 0 if you start part-time right away.",
-
   "btn_back": "Back",
   "btn_next": "Next",
 
   "step2_title": "Step 2: Can your training be shorter?",
-
   "question_age": "Are you older than 21?",
   "answer_no": "No",
   "answer_yes": "Yes",
@@ -82,9 +71,8 @@
   "info_familycare": "For example parents or grandparents.",
 
   "step3_title": "Step 3: Result",
-
   "label_final_duration": "Total training time",
-
+  "result_months": "Months",
   "details_toggle_closed": "Show explanation",
   "details_toggle_open": "Hide explanation",
 
@@ -114,7 +102,8 @@
   "disclaimer_intro": "Important:",
   "disclaimer_text": "The result is only for guidance.",
   "disclaimer_more": "You can find a detailed explanation on our page.",
-
+  "result_extension_cap": "<strong>⚠️ Warning:</strong> The total duration may only be extended by half of the regular training duration (max. ${maxAllowedTotalDuration} months). <br />Solution: Increase the part-time hours per week.",
+  
   "btn_pdf": "Save as PDF",
   "btn_restart": "Reset",
 

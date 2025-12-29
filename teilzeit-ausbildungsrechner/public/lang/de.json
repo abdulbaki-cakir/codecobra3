@@ -42,7 +42,6 @@
   "btn_back": "Zurück",
   "btn_next": "Weiter",
 
-
   "step2_title": "2. Prüfe deine mögliche Verkürzung",
   "question_age": "Sind Sie älter als 21?",
   "answer_no": "Nein",
@@ -73,6 +72,7 @@
 
   "step3_title": "3. Ergebnisse",
   "label_final_duration": "Gesamtausbildungsdauer ab Beginn",
+  "result_months": "Monate",
   "details_toggle_closed": "Detaillierte Erklärung anzeigen",
   "details_toggle_open": "Detaillierte Erklärung einklappen",
 
@@ -102,7 +102,8 @@
   "disclaimer_intro": "Bitte beachten Sie:",
   "disclaimer_text": "Die Ergebnisse dienen lediglich zur Orientierung und begründen keinen Rechtsanspruch.",
   "disclaimer_more": "Die endgültige Entscheidung trifft immer die zuständige Stelle (z. B. IHK, HWK). Für eine verbindliche Auskunft wenden Sie sich bitte an Ihre Kammer oder Beratungsstellen wie die Agentur für Arbeit.",
-
+  "result_extension_cap": "<strong>⚠️ Achtung:</strong> Die Gesamtdauer darf höchstens um die Hälfte der regulären Ausbildungsdauer verlängert werden (max. ${maxAllowedTotalDuration} Monate). <br />Lösung: Erhöhe die Teilzeit-Stunden pro Woche.",
+  
   "btn_pdf": "Als PDF ausdrucken",
   "btn_restart": "Zürücksetzen und neu berechnen",
 

@@ -72,6 +72,7 @@
 
   "step3_title": "3. Ergebnisse",
   "label_final_duration": "Gesamte Dauer der Ausbildung",
+  "result_months": "Monate",
   "details_toggle_closed": "Erklärung anzeigen",
   "details_toggle_open": "Erklärung schließen",
 
@@ -101,7 +102,8 @@
   "disclaimer_intro": "Wichtig",
   "disclaimer_text": "Das Ergebnis ist nur eine Hilfe. Es ist keine rechtliche Entscheidung.",
   "disclaimer_more": "Die endgültige Entscheidung trifft immer die zuständige Stelle (z. B. IHK, HWK). Für eine verbindliche Auskunft wenden Sie sich bitte an Ihre Kammer oder Beratungsstellen wie die Agentur für Arbeit.",
-
+  "result_extension_cap": "<strong>⚠️ Achtung:</strong> Die Gesamtdauer darf höchstens um die Hälfte der regulären Ausbildungsdauer verlängert werden (max. ${maxAllowedTotalDuration} Monate). <br />Lösung: Erhöhe die Teilzeit-Stunden pro Woche.",
+  
   "btn_pdf": "Als PDF drucken",
   "btn_restart": "Zürücksetzen und neu berechnen",
 

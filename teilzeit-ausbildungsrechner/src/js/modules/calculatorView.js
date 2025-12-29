@@ -353,11 +353,10 @@ export function renderResults(data) {
     if (extensionCapWasHit) {
       if (topErrorMsg) {
         topErrorMsg.classList.remove("hidden");
-        topErrorMsg.innerHTML = `
-          <strong>⚠️ Achtung:</strong> Die Gesamtdauer darf höchstens um die Hälfte
-          der regulären Ausbildungsdauer verlängert werden (max. ${maxAllowedTotalDuration} Monate). <br />Lösung: Erhöhe die
-          Teilzeit-Stunden pro Woche.
-        `;
+        topErrorMsg.innerHTML = getTranslation("result_extension_cap" ).replace(
+          "${maxAllowedTotalDuration}",
+          maxAllowedTotalDuration,
+        );
       }
       // UI rot färben
       if (partTimeCardLeft) partTimeCardLeft.style.backgroundColor = "#B93137";
@@ -376,7 +375,7 @@ export function renderResults(data) {
       }
     }
     document.getElementById("final-duration-result").textContent =
-      `${finalTotalDuration} Monate`;
+      `${finalTotalDuration} ${getTranslation("result_months")}`;
   } else {
     // Keine Teilzeit (Vollzeit-Berechnung)
     if (partTimeCard) partTimeCard.style.display = "none";
