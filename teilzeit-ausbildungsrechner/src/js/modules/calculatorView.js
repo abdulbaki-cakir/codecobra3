@@ -458,9 +458,9 @@ const canvas = document.getElementById("results-chart");
     const ctx = canvas.getContext("2d");
 
     // Altes Chart löschen, sonst flackert es beim Hover
-    if (window.myResultsChart) window.myResultsChart.destroy();
+    if (myResultsChart) myResultsChart.destroy();
 
-    window.myResultsChart = new window.Chart(ctx, {
+    myResultsChart = new window.Chart(ctx, {
       type: "bar",
       data: {
         labels: [
