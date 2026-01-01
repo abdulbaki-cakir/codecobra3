@@ -6,18 +6,6 @@
   "nav_easy_language": "Easy Language",
   "easy_language_toggle_label": "Enable easy language",
 
-  "footer_nav_title": "Navigation",
-  "footer_nav_calculator": "Calculator",
-  "footer_nav_easy_language": "Easy Language",
-  "footer_legal_title": "Legal",
-  "footer_legal_imprint": "Legal notice",
-  "footer_legal_privacy": "Data protection",
-  "header_title": "Part-Time Training Calculator",
-  "footer_about_text": "This tool helps you calculate how long your part-time training takes.",
-  "footer_disclaimer": "Note: The result is only a guide. It is not legally binding.",
-  "footer_project_credit": "A student project in the SEB study program",
-  "footer_copyright": "Team CodeCobra. All rights reserved.",
-
   "calc_title": "Part-Time Training Calculator",
   "calc_intro": "Do you want to do your training part-time?\nThis calculator helps you.\nYou can see how long your training will take.",
   "progress_start": "Start",
@@ -173,6 +161,5 @@
   "shortening_none": "No shortening reasons selected.",
 
   "duration_months": "{months} months"
-
 
 }

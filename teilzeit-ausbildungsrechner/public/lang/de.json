@@ -6,18 +6,6 @@
   "nav_easy_language": "Leichte Sprache",
   "easy_language_toggle_label": "Leichte Sprache<br />aktivieren",
 
-  "footer_nav_title": "Navigation",
-  "footer_nav_calculator": "Rechner",
-  "footer_nav_easy_language": "Leichte Sprache",
-  "footer_legal_title": "Rechtliches",
-  "footer_legal_imprint": "Impressum",
-  "footer_legal_privacy": "Datenschutz",
-  "header_title": "Teilzeit-Ausbildungsrechner",
-  "footer_about_text": "Ein Service zur einfachen Berechnung der Ausbildungsdauer in Teilzeit.",
-  "footer_disclaimer": "Hinweis: Die Ergebnisse dieses Rechners sind unverbindlich und dienen lediglich der Orientierung.",
-  "footer_project_credit": "Ein Laborprojekt im Rahmen des SEB-Studiengangs",
-  "footer_copyright": "Team CodeCobra. Alle Rechte vorbehalten.",
-
   "calc_title": "Teilzeit-Ausbildungsrechner",
   "calc_intro": "Sie möchten Ihre Ausbildung in Teilzeit absolvieren?<br />Dann sind Sie hier genau richtig.<br />Finden Sie sofort heraus, wie lange Ihre Ausbildung in Teilzeit dauert.",
   "progress_start": "Start",
