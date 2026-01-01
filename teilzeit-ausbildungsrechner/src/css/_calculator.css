@@ -68,20 +68,6 @@
   background-color: rgba(185, 49, 55, 0.12);
   width: 100%;
 }
-#calculator-section .progress-line-bg,
-#calculator-section .progress-line-fill {
-  content: "";
-  position: absolute;
-  top: calc(1rem + 21px);
-  left: 0;
-  height: 2px;
-  z-index: 0;
-  transition: width 0.4s ease-in-out;
-}
-#calculator-section .progress-line-fill {
-  background-color: var(--primary);
-  width: 0%;
-}
 #calculator-section .step {
   display: flex;
   flex-direction: column;
