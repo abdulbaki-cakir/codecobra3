@@ -866,11 +866,9 @@
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-rows: auto auto;
-
   margin-top: 3rem;
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-
   background-color: transparent;
   border: none;
   box-shadow: none;
