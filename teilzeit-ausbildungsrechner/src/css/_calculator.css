@@ -329,7 +329,7 @@
   width: 100%;
   background-color: var(--primary-soft);
   border-radius: var(--rc-radius);
-  padding: 0px var(--rc-padding-x);
+  padding: 0 var(--rc-padding-x);
   color: var(--rc-fg);
   box-shadow: none;
   border: none;
