@@ -144,10 +144,10 @@
 
   "privacy_title": "Datenschutz",
   "privacy_subtitle_storage": "Verarbeitung Ihrer Eingaben",
-  "privacy_text_1": "Der Schutz Ihrer Daten ist uns wichtig. Alle Eingaben, die Sie in diesem Teilzeit-Ausbildungsrechner tätigen, sowie die daraus resultierenden Berechnungsergebnisse, werden <strong>ausschließlich temporär</strong> in der sogenannten \"Session Storage\" Ihres Webbrowsers gespeichert.",
-  "privacy_text_2": "<strong>Dies bedeutet im Detail:</strong>",
-  "privacy_point_1": "<strong>Keine Übermittlung:</strong> Ihre Daten werden zu keinem Zeitpunkt an einen Server oder an Dritte übermittelt. Die gesamte Verarbeitung findet ausschließlich lokal auf Ihrem Gerät statt.",
-  "privacy_point_2": "<strong>Automatisches Löschen:</strong> Sobald Sie den Browser-Tab oder das Browser-Fenster schließen, in dem Sie den Rechner verwenden, werden <strong>alle Ihre Eingaben und Ergebnisse automatisch und unwiderruflich gelöscht</strong>.",
+  "privacy_text_1": "Der Schutz Ihrer Daten ist uns wichtig. Alle Eingaben, die Sie in diesem Teilzeit-Ausbildungsrechner tätigen, sowie die daraus resultierenden Berechnungsergebnisse, werden ausschließlich temporär in der sogenannten \"Session Storage\" Ihres Webbrowsers gespeichert.",
+  "privacy_text_2": "Dies bedeutet im Detail:",
+  "privacy_point_1": "Keine Übermittlung: Ihre Daten werden zu keinem Zeitpunkt an einen Server oder an Dritte übermittelt. Die gesamte Verarbeitung findet ausschließlich lokal auf Ihrem Gerät statt.",
+  "privacy_point_2": "Automatisches Löschen: Sobald Sie den Browser-Tab oder das Browser-Fenster schließen, in dem Sie den Rechner verwenden, werden alle Ihre Eingaben und Ergebnisse automatisch und unwiderruflich gelöscht.",
   "privacy_text_3": "Diese kurzfristige Speicherung dient lediglich dazu, die Funktionalität des Rechners während Ihrer aktuellen Sitzung sicherzustellen, damit Ihre Eingaben beim Navigieren innerhalb der Seite nicht verloren gehen.",
 
   "imprint_page_title": "Impressum",

@@ -18,6 +18,16 @@
     <link rel="stylesheet" href="/src/css/_base.css" />
     <link rel="stylesheet" href="/src/css/_calculator.css" />
     <link rel="stylesheet" href="/src/css/_input-validation.css" />
+    <script>
+      // Mark page when loaded inside an iframe to allow conditional styling
+      try {
+        if (window.self !== window.top) {
+          document.documentElement.classList.add("is-embedded");
+        }
+      } catch (err) {
+        document.documentElement.classList.add("is-embedded");
+      }
+    </script>
   </head>
 
   <body>
@@ -27,6 +37,13 @@
         <div class="container">{{> _rechner-formular }}</div>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="container footer-links">
+        <a href="/impressum.html">Impressum</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+      </div>
+    </footer>
 
     <!-- Main Script (ES Module) -->
     <script src="/src/js/main.js" type="module"></script>

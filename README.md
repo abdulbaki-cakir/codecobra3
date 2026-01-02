@@ -74,3 +74,23 @@ npm run dev
 
 
 
+---
+
+## Einbettung als iFrame
+
+Die Anwendung kann als iFrame in andere Seiten eingebettet werden. Im ausgelieferten Build liegt dafür `public/embed.html`, das die App vollflächig in einem iFrame rendert.
+
+### iFrame-Snippet
+
+```html
+<iframe
+  src="https://<deine-domain>/embed.html"
+  style="border:0;width:100%;min-height:900px;"
+  loading="lazy"
+  allowfullscreen
+></iframe>
+```
+
+- Bei lokalem Dev-Server: `src` auf `http://localhost:5173/embed.html` setzen.
+- Bei Docker/Nginx: `src` auf `http://localhost:8080/embed.html` setzen.
+- Hoehe/Breite nach Bedarf anpassen, ggf. `min-height` erhohen, damit das Formular ohne Scrollen sichtbar ist.

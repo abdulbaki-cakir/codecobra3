@@ -144,10 +144,10 @@
 
   "privacy_title": "Data Protection",
   "privacy_subtitle_storage": "Processing your entries",
-  "privacy_text_1": "Protecting your data is important to us. All inputs you make in this part-time training calculator and the resulting calculation results are stored <strong>only temporarily</strong> in your browser's session storage.",
-  "privacy_text_2": "<strong>This means in detail:</strong>",
-  "privacy_point_1": "<strong>No transmission:</strong> Your data is never sent to a server or third parties. All processing happens locally on your device.",
-  "privacy_point_2": "<strong>Automatic deletion:</strong> As soon as you close the browser tab or window in which you use the calculator, <strong>all your entries and results are automatically and permanently deleted</strong>.",
+  "privacy_text_1": "Protecting your data is important to us. All inputs you make in this part-time training calculator and the resulting calculation results are stored only temporarily in your browser's session storage.",
+  "privacy_text_2": "This means in detail:",
+  "privacy_point_1": "No transmission: Your data is never sent to a server or third parties. All processing happens locally on your device.",
+  "privacy_point_2": "Automatic deletion: As soon as you close the browser tab or window in which you use the calculator, all your entries and results are automatically and permanently deleted.",
   "privacy_text_3": "This short-term storage only ensures that your inputs are kept while you navigate within the page during your current session.",
 
   "imprint_page_title": "Imprint",
