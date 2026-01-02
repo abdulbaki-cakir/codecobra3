@@ -97,9 +97,9 @@
 
   <div class="input-group">
     <div class="input-container-nested">
-      <div class="input-prefix" data-translate-key="label_fulltime_hours">
+      <h4 class="input-prefix" data-translate-key="label_fulltime_hours">
         Wie viele Stunden pro Woche hat Ihre Ausbildung in Vollzeit?
-      </div>
+      </h4>
       <input
         type="number"
         id="vollzeitstunden"
@@ -134,9 +134,9 @@
 
   <div class="input-group">
     <div class="input-container-nested">
-      <div class="input-prefix" data-translate-key="label_parttime_hours">
+      <h4 class="input-prefix" data-translate-key="label_parttime_hours">
         Wie viele Stunden möchten Sie pro Woche in Teilzeit arbeiten?
-      </div>
+      </h4>
       <input
         type="number"
         id="wochenstunden"
@@ -172,9 +172,12 @@
 
   <div class="input-group">
     <div class="input-container-nested">
-      <div class="input-prefix" data-translate-key="label_training_duration">
+      <h4
+        class="input-prefix"
+        data-translate-key="label_training_duration"
+      >
         Wie lange dauert Ihre Ausbildung in Vollzeit?
-      </div>
+      </h4>
       <select id="ausbildungsdauer">
         <option value="24">24</option>
         <option value="36" selected>36</option>
@@ -197,9 +200,9 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <div class="input-prefix" data-translate-key="question_parttime_start">
+        <h4 class="input-prefix" data-translate-key="question_parttime_start">
           Wie möchten Sie Ihre Ausbildung absolvieren?
-        </div>
+        </h4>
       </div>
       <div class="radio-card-body">
         <label class="radio-card-option">
@@ -230,9 +233,9 @@
       ></div>
 
       <div class="input-container-nested hidden" id="vollzeit-monate-input">
-        <div class="input-prefix" data-translate-key="label_fulltime_months">
+        <h4 class="input-prefix" data-translate-key="label_fulltime_months">
           Monate in Vollzeit
-        </div>
+        </h4>
         <input
           type="number"
           id="vollzeit-monate"
@@ -762,8 +765,9 @@
   </div>
 
   <div class="reset-container">
-    <button data-translate-key="btn_restart" class="reset-btn" onclick="window.location.href='index.html'">
-      Zurücksetzen
+    <button class="reset-btn" onclick="window.location.href='index.html'">
+      <img src="/src/assets/icons/trash.svg" alt="" aria-hidden="true" class="icon-inline reset-icon" />
+      <span data-translate-key="btn_restart" class="reset-label">Zurücksetzen</span>
     </button>
   </div>
 </main>

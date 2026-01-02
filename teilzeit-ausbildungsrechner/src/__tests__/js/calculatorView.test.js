@@ -117,7 +117,7 @@ describe("calculatorView", () => {
     expect(document.getElementById("step-3").classList.contains("hidden")).toBe(
       true,
     );
-    expect(document.getElementById("progress-line").style.width).toBe("50%");
+    expect(document.getElementById("progress-line").style.width).toBe("33.33%");
 
     const activeSteps = Array.from(
       document.querySelectorAll(".progress-container .step.active"),

@@ -6,6 +6,43 @@ import infoIcon from "../../assets/icons/information.svg";
 let myResultsChart = null;
 let lastRenderedResults = null;
 
+const DEFAULT_PRIMARY_COLOR = "#b93137";
+const DEFAULT_PRIMARY_RGB = { r: 185, g: 49, b: 55 };
+
+const getPrimaryColor = () => {
+  const value = getComputedStyle(document.documentElement).getPropertyValue(
+    "--primary",
+  );
+  return value ? value.trim() : DEFAULT_PRIMARY_COLOR;
+};
+
+const hexToRgb = (hex) => {
+  if (!hex) return DEFAULT_PRIMARY_RGB;
+  const normalized = hex.replace("#", "");
+  const full =
+    normalized.length === 3
+      ? normalized
+          .split("")
+          .map((c) => c + c)
+          .join("")
+      : normalized;
+
+  if (full.length !== 6) return DEFAULT_PRIMARY_RGB;
+  const intVal = parseInt(full, 16);
+  if (Number.isNaN(intVal)) return DEFAULT_PRIMARY_RGB;
+
+  return {
+    r: (intVal >> 16) & 255,
+    g: (intVal >> 8) & 255,
+    b: intVal & 255,
+  };
+};
+
+const getPrimaryRgba = (alpha = 1) => {
+  const { r, g, b } = hexToRgb(getPrimaryColor());
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+};
+
 const formatTranslation = (key, replacements = {}) => {
   const template = getTranslation(key);
   if (!template) return "";
@@ -146,6 +183,7 @@ export const setupPartTimeSwitch = () => {
 function updateProgress(currentStep) {
   const progressLine = document.getElementById("progress-line");
   const progressSteps = document.querySelectorAll(".progress-container .step");
+  const trackFactor = 2 / 3; // visually align the line with the three step icons
 
   // Aktiven Status der Kreise setzen
   progressSteps.forEach((step) => {
@@ -160,7 +198,8 @@ function updateProgress(currentStep) {
   else progressPercentage = 100;
 
   if (progressLine) {
-    progressLine.style.width = `${progressPercentage}%`;
+    const adjustedWidth = (progressPercentage * trackFactor).toFixed(2);
+    progressLine.style.width = `${adjustedWidth}%`;
   }
 }
 
@@ -189,6 +228,8 @@ export function renderResults(data) {
     gracePeriod,
     maxAllowedTotalDuration,
   } = data;
+
+  const primaryColor = getPrimaryColor();
 
   // DOM-Elemente cachen
   const partTimeCard = document.querySelector(".part-time-card");
@@ -329,6 +370,7 @@ export function renderResults(data) {
   // Falls Teilzeit gewählt wurde
   if (partTimeHoursAvailable) {
     if (partTimeCard) partTimeCard.style.display = "flex";
+    if (finalResultBox) finalResultBox.style.backgroundColor = primaryColor;
     document.getElementById("extension-card-value").textContent =
       finalExtensionMonths;
 
@@ -370,14 +412,14 @@ export function renderResults(data) {
     }
 
       // UI rot färben
-      if (partTimeCardLeft) partTimeCardLeft.style.backgroundColor = "#B93137";
-      if (finalResultBox) finalResultBox.style.backgroundColor = "#B93137";
+      if (partTimeCardLeft) partTimeCardLeft.style.backgroundColor = primaryColor;
+      if (finalResultBox) finalResultBox.style.backgroundColor = primaryColor;
       if (dailyHoursEl) dailyHoursEl.style.display = "none";
     } else {
       // Alles OK
       if (topErrorMsg) topErrorMsg.classList.add("hidden");
       if (partTimeCardLeft) partTimeCardLeft.style.backgroundColor = "#1a1a1a";
-      if (finalResultBox) finalResultBox.style.backgroundColor = "#000";
+      if (finalResultBox) finalResultBox.style.backgroundColor = primaryColor;
 
       if (dailyHoursEl) {
         const avgPtDaily = (partTimeHours / 5).toFixed(1).replace(".", ",");
@@ -394,7 +436,7 @@ export function renderResults(data) {
       `${finalTotalDuration} Monate`;
     // Styles resetten
     if (partTimeCardLeft) partTimeCardLeft.style.backgroundColor = "#1a1a1a";
-    if (finalResultBox) finalResultBox.style.backgroundColor = "#000";
+    if (finalResultBox) finalResultBox.style.backgroundColor = primaryColor;
     if (dailyHoursEl) dailyHoursEl.style.display = "none";
   }
 
@@ -456,6 +498,13 @@ const canvas = document.getElementById("results-chart");
     // Altes Chart löschen, sonst flackert es beim Hover
     if (myResultsChart) myResultsChart.destroy();
 
+    const primaryShades = [
+      getPrimaryRgba(0.35),
+      getPrimaryRgba(0.6),
+      getPrimaryRgba(0.85),
+    ];
+    const primaryStroke = getPrimaryRgba(1);
+
     myResultsChart = new window.Chart(ctx, {
       type: "bar",
       data: {
@@ -468,8 +517,8 @@ const canvas = document.getElementById("results-chart");
           {
             label: getTranslation("chart_label_duration"),
             data: [originalDuration, newFullTimeDuration, finalTotalDuration],
-            backgroundColor: ["#6EC6C5", "#2A5D67", "rgba(15, 15, 15, 0.8)"],
-            borderColor: ["#6EC6C5", "#2A5D67", "rgba(15, 15, 15, 1)"],
+            backgroundColor: primaryShades,
+            borderColor: [primaryStroke, primaryStroke, primaryStroke],
             borderWidth: 1,
           },
         ],
