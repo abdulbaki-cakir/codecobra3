@@ -184,3 +184,13 @@ function t(key, fallback = "") {
   const v = getTranslation(key);
   return v && v.trim() ? v : fallback;
 }
+function tp(key, template, params = {}) {
+  let v = getTranslation(key);
+  if (!v || !v.trim()) {
+    v = template;
+  }
+  for (const [k, val] of Object.entries(params)) {
+    v = v.replaceAll(`{${k}}`, String(val));
+  }
+  return v;
+}
