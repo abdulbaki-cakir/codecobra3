@@ -184,10 +184,3 @@ function t(key, fallback = "") {
   const v = getTranslation(key);
   return v && v.trim() ? v : fallback;
 }
-
-// optional: Platzhalter ersetzen, OHNE language.js zu ändern
-function tp(key, fallback, params = {}) {
-  let s = t(key, fallback);
-  return s.replace(/\{(\w+)\}/g, (_, k) => (params[k] ?? `{${k}}`));
-}
-
