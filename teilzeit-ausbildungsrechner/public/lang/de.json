@@ -107,15 +107,15 @@
 
   "pdf_button": "Download PDF",
   "pdf_title": "Ausbildungsrechner – Analysebericht",
+  "pdf_summary_heading": "Zusammenfassung",
+  "pdf_summary_total": "Gesamtausbildungsdauer: {duration}",
+  "pdf_summary_shortening": "Gesamte Verkürzung: {shortening} Monate",
+  "pdf_summary_remaining": "Restdauer nach Verkürzung: {remaining} Monate",
+  "pdf_summary_extension": "Verlängerung durch Teilzeit: {extension} Monate",
   "pdf_details_heading": "Detaillierte Erklärung",
   "pdf_chart_heading": "Grafische Übersicht",
-  "pdf_summary_heading": "Zusammenfassung",
-  "pdf_summary_total": "Gesamtausbildungsdauer: {value}",
-  "pdf_summary_shortening": "Gesamte Verkürzung: {value} Monate",
-  "pdf_summary_remaining": "Restdauer nach Verkürzung: {value} Monate",
-  "pdf_summary_extension": "Verlängerung durch Teilzeit: {value} Monate",
   "pdf_footer_note": "Hinweis: Diese Berechnung dient der Orientierung und stellt keine Rechtsberatung dar.",
-  "pdf_filename": "Ausbildungsrechner.pdf",
+
 
   "error_fulltime_required": "Bitte geben Sie die Vollzeitstunden ein.",
   "error_number_invalid": "Bitte eine gültige Zahl eingeben.",
