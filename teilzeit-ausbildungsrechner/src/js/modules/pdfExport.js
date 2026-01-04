@@ -179,7 +179,6 @@ export function setupPdfExport() {
     setTimeout(() => URL.revokeObjectURL(pdfUrl), 10000);
   });
 }
-
 function t(key, fallback = "") {
   const v = getTranslation(key);
   return v && v.trim() ? v : fallback;
