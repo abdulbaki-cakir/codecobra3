@@ -199,11 +199,12 @@ function updateProgress(currentStep) {
     step.classList.toggle("active", stepNum <= currentStep);
   });
 
-  // Balkenbreite berechnen
-  let progressPercentage = 0;
-  if (currentStep === 1) progressPercentage = 20;
-  else if (currentStep === 2) progressPercentage = 50;
-  else progressPercentage = 100;
+  // Balkenbreite berechnen (0 -> 50 -> 100 bei drei Schritten)
+  const totalSteps = progressSteps.length || 1;
+  const clampedStep = Math.min(Math.max(currentStep, 1), totalSteps);
+  const relativeProgress =
+    totalSteps > 1 ? (clampedStep - 1) / (totalSteps - 1) : 0;
+  const progressPercentage = relativeProgress * 100;
 
   if (progressLine) {
     const adjustedWidth = (progressPercentage * trackFactor).toFixed(2);
