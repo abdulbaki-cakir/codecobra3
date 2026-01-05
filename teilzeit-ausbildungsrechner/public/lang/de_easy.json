@@ -5,6 +5,8 @@
   "nav_language_en": "EN",
   "nav_easy_language": "Leichte Sprache",
   "easy_language_toggle_label": "Leichte Sprache<br />aktivieren",
+  "footer_imprint": "Impressum",
+  "footer_privacy": "Datenschutz",
 
   "calc_title": "Teilzeit-Ausbildungsrechner",
   "calc_intro": "Sie möchten Ihre Ausbildung in Teilzeit absolvieren?<br />Dann sind Sie hier genau richtig.<br />Finden Sie sofort heraus, wie lange Ihre Ausbildung in Teilzeit dauert.",
@@ -84,6 +86,7 @@
   "result_parttime_copy": "Hier steht die Erklärung zur Verlängerung durch Teilzeit.",
   "result_parttime_detail_zero": "Die Reduzierung der wöchentlichen Arbeitszeit von <strong>{full}h</strong> auf <strong>{part}h</strong> führt zu einer geringfügigen Verlängerung von {grace} Monaten, die oft ignoriert wird.",
   "result_parttime_detail_extend": "Die Reduzierung der wöchentlichen Arbeitszeit von <strong>{full}h</strong> auf <strong>{part}h</strong> für die verbleibende Dauer führt zu einer Verlängerung <strong>um {months} Monate</strong>.",
+  "result_daily_hours": "⌀ {hours} Stunden pro Tag (Teilzeit)",
 
   "result_early_title": "Hinweis zur vorzeitigen Zulassung zur Prüfung",
   "result_early_body": "Sehr gute Leistungen können die Ausbildung verkürzen. Fragen Sie bei der zuständigen Stelle nach.",

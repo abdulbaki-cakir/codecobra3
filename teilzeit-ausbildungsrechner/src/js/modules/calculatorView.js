@@ -53,6 +53,14 @@ const formatTranslation = (key, replacements = {}) => {
   );
 };
 
+const formatOneDecimal = (value) => {
+  const lang = document.documentElement.getAttribute("lang") || "de";
+  return new Intl.NumberFormat(lang, {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  }).format(value);
+};
+
 /**
  * Sammelt alle Benutzereingaben aus dem DOM für die Berechnung.
  * Rückgabe ist ein sauberes Objekt, das der Service direkt verarbeiten kann.
@@ -422,8 +430,13 @@ export function renderResults(data) {
       if (finalResultBox) finalResultBox.style.backgroundColor = primaryColor;
 
       if (dailyHoursEl) {
-        const avgPtDaily = (partTimeHours / 5).toFixed(1).replace(".", ",");
-        dailyHoursEl.textContent = `⌀ ${avgPtDaily} Stunden pro Tag (Teilzeit)`;
+        const avgPtDaily = partTimeHours / 5;
+        const formattedAvgDaily = formatOneDecimal(avgPtDaily);
+        const dailyHoursText =
+          formatTranslation("result_daily_hours", {
+            hours: formattedAvgDaily,
+          }) || `⌀ ${formattedAvgDaily} Stunden pro Tag (Teilzeit)`;
+        dailyHoursEl.textContent = dailyHoursText;
         dailyHoursEl.style.display = "block";
       }
     }
