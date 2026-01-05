@@ -51,12 +51,9 @@
   
   "question_study": "Haben Sie an einer Hochschule oder Universität studiert und dort mindestens 30 ECTS (Studienpunkte) erreicht?",
   "info_study": "Haben Sie bereits Kurse im Studium belegt, die für die Ausbildung relevant sind? Ab einer Anzahl von 30 ECTS kann die Ausbildung verkürzt werden.",
-
- "question_childcare": "Haben Sie Kinder, um die Sie sich kümmern?",
-  "info_childcare": "Wenn Sie Kinder betreuen, kann die Kammer eher einer Teilzeit-Ausbildung zustimmen oder die Dauer anpassen.",
  
-  "question_familycare": "Pflegen Sie Angehörige (z.B. Ihre Großeltern)?",
-  "info_familycare": "Pflegen Sie regelmäßig Angehörige (z.B. Eltern, Großeltern)? Das kann für eine Teilzeit-Ausbildung berücksichtigt werden.",
+  "question_familycare": "Betreuen Sie derzeit ein Kind oder pflegen Sie einen Familienangehörigen?",
+  "info_familycare": "Die Betreuung eigener Kinder oder die Pflege naher Angehöriger kann ein Grund für eine Verkürzung der Ausbildungsdauer sein.",
 
   "step3_title": "3. Ergebnisse",
   "label_final_duration": "Gesamte Dauer der Ausbildung",
@@ -136,8 +133,7 @@
   "reason_experience": "Erste Berufserfahrung / EQ",
   "reason_apprenticeship": "Abgeschlossene Berufsausbildung",
   "reason_study": "Passende Studienleistungen",
-  "reason_child_care": "Betreuung eigener Kinder",
-  "reason_family_care": "Pflege naher Angehöriger",
+  "reason_family_care": "Betreuung eigener Kinder oder Pflege naher Angehöriger",
   "reason_generic": "Anrechnungsgrund",
 
 

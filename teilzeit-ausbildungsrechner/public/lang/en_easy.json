@@ -52,11 +52,8 @@
   "question_study": "Did you study at a college or university and earn at least 30 ECTS (credit points) there?",
   "info_study": "Some study courses can be counted.",
 
-  "question_childcare": "Do you take care of children?",
-  "info_childcare": "Child care can be a reason for part-time training.",
-
-  "question_familycare": "Do you take care of relatives?",
-  "info_familycare": "For example parents or grandparents.",
+  "question_familycare": "Are you currently caring for a child or a family member?",
+  "info_familycare": "Caring for your own children or close relatives can be a reason for shortening the training period.",
 
   "step3_title": "Step 3: Result",
   "label_final_duration": "Total training time",
@@ -138,9 +135,7 @@
   "reason_experience": "Work experience",
   "reason_apprenticeship": "Finished training",
   "reason_study": "Relevant study courses",
-  "reason_child_care": "Care for children",
-  "reason_childcare": "Care for children",
-  "reason_family_care": "Care for relatives",
+  "reason_family_care": "Caring for one's own children or close relatives",
   "reason_generic": "Reason",
 
   "privacy_title": "Data protection",

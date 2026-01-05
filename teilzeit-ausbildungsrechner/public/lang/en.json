@@ -51,11 +51,8 @@
   "question_study": "Did you study at a college or university and earn at least 30 ECTS (credit points) there?",
   "info_study": "Have you already taken courses during your studies that are relevant to the training program? If you have earned 30 ECTS credits or more, the training program can be shortened.",
 
-  "question_childcare": "Do you have children to care for?",
-  "info_childcare": "If you are caring for children, the chamber may be more likely to approve a part-time training program or adjust the duration.",
-
-  "question_familycare": "Do you care for relatives (e.g., your grandparents)?",
-  "info_familycare": "Do you regularly care for relatives (e.g., parents, grandparents)? This can be taken into account for part-time training.",
+  "question_familycare": "Are you currently caring for a child or a family member?",
+  "info_familycare": "Caring for your own children or close relatives can be a reason for shortening the training period.",
 
   "step3_title": "3. Results",
   "label_final_duration": "Total training duration from start",
@@ -136,9 +133,7 @@
   "reason_experience": "Initial work experience / EQ",
   "reason_apprenticeship": "Completed vocational training",
   "reason_study": "Relevant university courses",
-  "reason_child_care": "Care for own children",
-  "reason_childcare": "Care for own children",
-  "reason_family_care": "Care for relatives",
+  "reason_family_care": "Caring for one's own children or close relatives",
   "reason_generic": "Reason for credit",
 
   "privacy_title": "Data Protection",

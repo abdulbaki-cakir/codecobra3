@@ -336,16 +336,16 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <h4 data-translate-key="question_age">Sind Sie älter als 21?</h4>
+        <h4 data-translate-key="question_familycare">Betreuen Sie derzeit ein Kind oder pflegen Sie einen Familienangehörigen?</h4>
       </div>
       <div class="radio-card-body">
         <label class="radio-card-option">
-          <input type="radio" name="age-radio" value="0" checked />
+          <input type="radio" name="family-care-radio" value="0" checked />
           <span class="radio-custom"></span
           ><span class="radio-label" data-translate-key="answer_no">Nein</span>
         </label>
         <label class="radio-card-option">
-          <input type="radio" name="age-radio" value="12" />
+          <input type="radio" name="family-care-radio" value="12" />
           <span class="radio-custom"></span
           ><span class="radio-label" data-translate-key="answer_yes">Ja</span>
         </label>
@@ -357,12 +357,12 @@
         alt=""
         class="icon info-icon"
       />
-      <div class="info-box" data-translate-key="info_age">
-        Sind Sie zu Beginn der Ausbildung über 21 Jahre alt? In vielen Fällen
-        können Sie dann bis zu 12 Monate kürzen.
+      <div class="info-box" data-translate-key="info_familycare">
+        Die Betreuung eigener Kinder oder die Pflege naher Angehöriger kann ein
+        Grund für eine Verkürzung der Ausbildungsdauer sein.
       </div>
     </div>
-    <select name="age" id="age-select" style="display: none">
+    <select name="family-care" id="family-care-select" style="display: none">
       <option value="0" selected>Nein</option>
       <option value="12">Ja</option>
     </select>
@@ -540,43 +540,7 @@
       <option value="12">Ja</option>
     </select>
   </div>
-
-  <div class="input-group radio-card-group">
-    <div class="radio-card-container">
-      <div class="radio-card-header">
-        <h4 data-translate-key="question_familycare">
-          Pflegen Sie Angehörige (z. B. Ihre Großeltern)?
-        </h4>
-      </div>
-      <div class="radio-card-body">
-        <label class="radio-card-option">
-          <input type="radio" name="family-care-radio" value="0" checked />
-          <span class="radio-custom"></span
-          ><span class="radio-label" data-translate-key="answer_no">Nein</span>
-        </label>
-        <label class="radio-card-option">
-          <input type="radio" name="family-care-radio" value="12" />
-          <span class="radio-custom"></span
-          ><span class="radio-label" data-translate-key="answer_yes">Ja</span>
-        </label>
-      </div>
-    </div>
-    <div class="info-icon-wrapper">
-      <img
-        src="/src/assets/icons/information.svg"
-        alt=""
-        class="icon info-icon"
-      />
-      <div class="info-box" data-translate-key="info_familycare">
-        Pflegen Sie regelmäßig Angehörige (z. B. Eltern, Großeltern)? Das kann
-        für eine Teilzeit-Ausbildung berücksichtigt werden.
-      </div>
-    </div>
-    <select name="family-care" id="family-care-select" style="display: none">
-      <option value="0" selected>Nein</option>
-      <option value="12">Ja</option>
-    </select>
-  </div>
+  
 
   <div class="form-buttons">
     <button
