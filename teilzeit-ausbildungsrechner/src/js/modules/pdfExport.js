@@ -8,43 +8,46 @@ export function setupPdfExport() {
     const detailsWrapper = document.getElementById("details-wrapper");
     const chartCanvas = document.getElementById("results-chart");
 
-    // 1. Aktuelle Sprache merken
+    // 1. Aktuelle Sprache ermitteln
     const currentLangAttribute = document.documentElement.lang || "de";
-    // Wir schauen: Ist es Deutsch? Falls nein, wollen wir für das PDF Englisch erzwingen.
+
+    // Prüfen: Ist es Deutsch (de, de_easy)?
     const isGerman = currentLangAttribute.startsWith("de");
-    const targetLang = isGerman ? currentLangAttribute : "en";
 
-    // Originalsprache speichern, damit wir zurückwechseln können (falls wir wechseln müssen)
-    const originalLang = currentLangAttribute.includes("de")
-      ? currentLangAttribute
-      : sessionStorage.getItem("tzr-language") || "en";
+    // Originalsprache speichern für den Reset später
+    // (Falls session storage leer ist, fallback auf HTML Attribut oder 'en')
+    const originalLang =
+      sessionStorage.getItem("tzr-language") || currentLangAttribute;
 
-    // 2. TEMPORÄRER SPRACHWECHSEL (Der "Ghost Switch")
-    // Wenn wir z.B. auf UA sind, wechseln wir jetzt kurz hart auf EN.
+    /* ---------------------------------------------------------
+           2. GHOST SWITCH: Temporärer Sprachwechsel
+           Wenn NICHT Deutsch (z.B. UA, TR), wechseln wir kurz auf Englisch.
+           Dadurch lädt die App die englischen Texte und füllt alle Zahlen neu.
+        --------------------------------------------------------- */
     if (!isGerman) {
-      // Wir nutzen deine applyTranslations Funktion aus language.js
       await applyTranslations("en");
 
-      // WICHTIG: Kurze Pause (50ms), damit deine App Zeit hat,
-      // auf das 'app:language-changed' Event zu reagieren und die Zahlen/Texte neu zu rendern.
+      // Kurze Pause (50ms), damit der Browser das DOM aktualisieren kann
       await new Promise((resolve) => setTimeout(resolve, 50));
     }
 
-    // --- PDF GENERIERUNG START ---
-    // Ab hier ist der DOM (die Seite) entweder Deutsch oder Englisch.
-    // Wir können jetzt einfach alles "abschreiben" (textContent), wie in der deutschen Version.
+    /* ---------------------------------------------------------
+           3. PDF GENERIERUNG
+           Der Browser zeigt jetzt entweder Deutsch oder Englisch an.
+           Wir lesen einfach ab, was da steht.
+        --------------------------------------------------------- */
 
     // eslint-disable-next-line new-cap
     const pdf = new window.jspdf.jsPDF("p", "mm", "a4");
     const pageWidth = pdf.internal.pageSize.getWidth();
     let y = 20;
 
-    // Helper: Liest Text direkt aus der (jetzt übersetzten) Datenbank
+    // Helper für einfache Übersetzungen (liest direkt aus dem Speicher)
     function t(key, fallback = "") {
       return getTranslation(key) || fallback;
     }
 
-    // Helper: Ersetzt Platzhalter (nutzt auch die Datenbank)
+    // Helper für Template-Strings (z.B. "Dauer: {duration}")
     function tp(key, template, params = {}) {
       let v = getTranslation(key);
       if (!v) v = template;
@@ -54,7 +57,7 @@ export function setupPdfExport() {
       return v;
     }
 
-    // --- 1) HEADER ---
+    // --- HEADER ---
     pdf.setFontSize(22);
     pdf.setFont("helvetica", "bold");
     pdf.text(t("pdf_title", "Ausbildungsrechner"), pageWidth / 2, y, {
@@ -66,7 +69,7 @@ export function setupPdfExport() {
     pdf.line(15, y, pageWidth - 15, y);
     y += 10;
 
-    // Werte aus dem DOM holen (Diese sind jetzt entweder DE oder EN aktualisiert)
+    // Werte holen (jetzt garantiert in DE oder EN formatiert)
     const duration =
       document.getElementById("final-duration-result")?.textContent ?? "--";
     const shortening =
@@ -76,7 +79,7 @@ export function setupPdfExport() {
     const extension =
       document.getElementById("extension-card-value")?.textContent ?? "--";
 
-    // --- 2) ZUSAMMENFASSUNG ---
+    // --- ZUSAMMENFASSUNG ---
     pdf.setFontSize(16);
     pdf.setFont("helvetica", "bold");
     pdf.text(t("pdf_summary_heading", "Zusammenfassung"), 15, y);
@@ -85,7 +88,6 @@ export function setupPdfExport() {
     pdf.setFontSize(12);
     pdf.setFont("helvetica", "normal");
 
-    // Da wir die Sprache gewechselt haben, gibt tp() jetzt den englischen Satz zurück!
     pdf.text(
       tp("pdf_summary_total", "Gesamt: {duration}", { duration }),
       15,
@@ -114,7 +116,7 @@ export function setupPdfExport() {
     pdf.line(15, y, pageWidth - 15, y);
     y += 10;
 
-    // --- 3) DETAILLIERTE ERKLÄRUNG ---
+    // --- DETAILS ---
     pdf.setFont("helvetica", "bold");
     pdf.setFontSize(16);
     pdf.text(t("pdf_details_heading", "Details"), 15, y);
@@ -128,17 +130,12 @@ export function setupPdfExport() {
         y = 20;
       }
 
-      // Titel & Nummer holen
-      // Da die App jetzt auf Englisch steht, ist textContent bereits Englisch!
-      // Wir müssen keine komplizierte Logik mehr anwenden.
+      // Titel & Nummer holen (textContent ist jetzt sauber, da Sprache gewechselt wurde)
       const titleText =
         card.querySelector(".result-card-title")?.textContent.trim() || "";
       const numberText =
         card.querySelector(".result-card-number")?.textContent.trim() || "";
 
-      // Das hier ist der Schlüssel für die Details:
-      // Wir holen uns einfach alle Paragraphen. Da die App auf Englisch steht,
-      // beinhalten diese Paragraphen den vollen englischen Text ("You plan to work full-time...").
       const paragraphs = [...card.querySelectorAll("p")].map((p) =>
         p.textContent.trim(),
       );
@@ -167,7 +164,7 @@ export function setupPdfExport() {
       y += 6;
     });
 
-    // --- 4) CHART ---
+    // --- CHART ---
     if (chartCanvas) {
       pdf.addPage();
       y = 20;
@@ -190,18 +187,20 @@ export function setupPdfExport() {
       y += imgHeight + 12;
     }
 
-    // --- 5) FOOTER ---
+    // --- FOOTER ---
     pdf.setFontSize(10);
     pdf.text(t("pdf_footer_note", "Hinweis..."), pageWidth / 2, 290, {
       align: "center",
     });
 
-    // --- 6) FERTIGSTELLEN & ZURÜCKSETZEN ---
+    // --- AUSGABE ---
     const pdfBlob = pdf.output("blob");
     const pdfUrl = URL.createObjectURL(pdfBlob);
     window.open(pdfUrl, "_blank");
 
-    // GANZ WICHTIG: Wenn wir die Sprache geändert haben, stellen wir sie sofort wieder her!
+    /* ---------------------------------------------------------
+           4. RESET: Zurück zur Originalsprache
+        --------------------------------------------------------- */
     if (!isGerman && originalLang) {
       await applyTranslations(originalLang);
     }
