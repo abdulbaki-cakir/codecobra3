@@ -1,4 +1,4 @@
-import { getTranslation } from "./language";
+import { getTranslation, applyTranslations } from "./language";
 
 export function setupPdfExport() {
   const btn = document.querySelector(".pdf-btn");
@@ -8,29 +8,68 @@ export function setupPdfExport() {
     const detailsWrapper = document.getElementById("details-wrapper");
     const chartCanvas = document.getElementById("results-chart");
 
-    // jsPDF aus CDN holen
+    // 1. Aktuelle Sprache ermitteln
+    const currentLangAttribute = document.documentElement.lang || "de";
+
+    // Prüfen: Ist es Deutsch (de, de_easy)?
+    const isGerman = currentLangAttribute.startsWith("de");
+
+    // Originalsprache speichern für den Reset später
+    // (Falls session storage leer ist, fallback auf HTML Attribut oder 'en')
+    const originalLang =
+      sessionStorage.getItem("tzr-language") || currentLangAttribute;
+
+    /* ---------------------------------------------------------
+           2. GHOST SWITCH: Temporärer Sprachwechsel
+           Wenn NICHT Deutsch (z.B. UA, TR), wechseln wir kurz auf Englisch.
+           Dadurch lädt die App die englischen Texte und füllt alle Zahlen neu.
+        --------------------------------------------------------- */
+    if (!isGerman) {
+      await applyTranslations("en");
+
+      // Kurze Pause (50ms), damit der Browser das DOM aktualisieren kann
+      await new Promise((resolve) => setTimeout(resolve, 50));
+    }
+
+    /* ---------------------------------------------------------
+           3. PDF GENERIERUNG
+           Der Browser zeigt jetzt entweder Deutsch oder Englisch an.
+           Wir lesen einfach ab, was da steht.
+        --------------------------------------------------------- */
+
     // eslint-disable-next-line new-cap
     const pdf = new window.jspdf.jsPDF("p", "mm", "a4");
     const pageWidth = pdf.internal.pageSize.getWidth();
     let y = 20;
 
-    /* ---------------------------------------------------------
-                 1) HEADER – OFFIZIELLER LOOK
-              --------------------------------------------------------- */
+    // Helper für einfache Übersetzungen (liest direkt aus dem Speicher)
+    function t(key, fallback = "") {
+      return getTranslation(key) || fallback;
+    }
+
+    // Helper für Template-Strings (z.B. "Dauer: {duration}")
+    function tp(key, template, params = {}) {
+      let v = getTranslation(key);
+      if (!v) v = template;
+      for (const [k, val] of Object.entries(params)) {
+        v = v.replaceAll(`{${k}}`, String(val));
+      }
+      return v;
+    }
+
+    // --- HEADER ---
     pdf.setFontSize(22);
     pdf.setFont("helvetica", "bold");
-    pdf.text(
-      t("pdf_title", "Ausbildungsrechner – Analysebericht"),
-      pageWidth / 2,
-      y,
-      { align: "center" }
-    );
+    pdf.text(t("pdf_title", "Ausbildungsrechner"), pageWidth / 2, y, {
+      align: "center",
+    });
     y += 8;
 
     pdf.setLineWidth(0.5);
     pdf.line(15, y, pageWidth - 15, y);
     y += 10;
 
+    // Werte holen (jetzt garantiert in DE oder EN formatiert)
     const duration =
       document.getElementById("final-duration-result")?.textContent ?? "--";
     const shortening =
@@ -40,50 +79,47 @@ export function setupPdfExport() {
     const extension =
       document.getElementById("extension-card-value")?.textContent ?? "--";
 
-    // Reihenfolge: Zusammenfassung, Detaillierte Erklärung, Balkendiagramm
-
+    // --- ZUSAMMENFASSUNG ---
     pdf.setFontSize(16);
     pdf.setFont("helvetica", "bold");
     pdf.text(t("pdf_summary_heading", "Zusammenfassung"), 15, y);
-
     y += 10;
 
     pdf.setFontSize(12);
     pdf.setFont("helvetica", "normal");
-    pdf.text(
-      tp("pdf_summary_total", `Gesamtausbildungsdauer: ${duration}`, { duration }),
-      15,
-      y
-    );
-    y += 6;
 
     pdf.text(
-      tp("pdf_summary_shortening", `Gesamte Verkürzung: ${shortening} Monate`, { shortening }),
+      tp("pdf_summary_total", "Gesamt: {duration}", { duration }),
       15,
-      y
+      y,
     );
     y += 6;
-
     pdf.text(
-      tp("pdf_summary_remaining", `Restdauer nach Verkürzung: ${remaining} Monate`, { remaining }),
+      tp("pdf_summary_shortening", "Verkürzung: {shortening}", { shortening }),
       15,
-      y
+      y,
     );
     y += 6;
-
     pdf.text(
-      tp("pdf_summary_extension", `Verlängerung durch Teilzeit: ${extension} Monate`, { extension }),
+      tp("pdf_summary_remaining", "Restdauer: {remaining}", { remaining }),
       15,
-      y
+      y,
+    );
+    y += 6;
+    pdf.text(
+      tp("pdf_summary_extension", "Verlängerung: {extension}", { extension }),
+      15,
+      y,
     );
     y += 10;
 
-    pdf.line(15, y, pageWidth - 15, y); // Trennlinie
+    pdf.line(15, y, pageWidth - 15, y);
     y += 10;
 
+    // --- DETAILS ---
     pdf.setFont("helvetica", "bold");
     pdf.setFontSize(16);
-    pdf.text(t("pdf_details_heading", "Detaillierte Erklärung"), 15, y);
+    pdf.text(t("pdf_details_heading", "Details"), 15, y);
     y += 10;
 
     const detailCards = detailsWrapper.querySelectorAll(".result-card");
@@ -94,10 +130,12 @@ export function setupPdfExport() {
         y = 20;
       }
 
+      // Titel & Nummer holen (textContent ist jetzt sauber, da Sprache gewechselt wurde)
       const titleText =
-        card.querySelector(".result-card-title")?.textContent ?? "";
+        card.querySelector(".result-card-title")?.textContent.trim() || "";
       const numberText =
-        card.querySelector(".result-card-number")?.textContent ?? "";
+        card.querySelector(".result-card-number")?.textContent.trim() || "";
+
       const paragraphs = [...card.querySelectorAll("p")].map((p) =>
         p.textContent.trim(),
       );
@@ -111,6 +149,7 @@ export function setupPdfExport() {
       pdf.setFontSize(11);
 
       paragraphs.forEach((text) => {
+        if (!text) return;
         const lines = pdf.splitTextToSize(text, pageWidth - 30);
 
         if (y + lines.length * 6 > 280) {
@@ -125,20 +164,18 @@ export function setupPdfExport() {
       y += 6;
     });
 
+    // --- CHART ---
     if (chartCanvas) {
       pdf.addPage();
       y = 20;
-
       pdf.setFont("helvetica", "bold");
       pdf.setFontSize(16);
-      pdf.text(t("pdf_chart_heading", "Grafische Übersicht"), 15, y);
-
+      pdf.text(t("pdf_chart_heading", "Chart"), 15, y);
       y += 10;
 
       const chartIMG = chartCanvas.toDataURL("image/png", 1.0);
       const imgWidth = 170;
       const imgHeight = (chartCanvas.height / chartCanvas.width) * imgWidth;
-
       pdf.addImage(
         chartIMG,
         "PNG",
@@ -150,46 +187,24 @@ export function setupPdfExport() {
       y += imgHeight + 12;
     }
 
-    /* ---------------------------------------------------------
-                 5) FOOTER
-              --------------------------------------------------------- */
+    // --- FOOTER ---
     pdf.setFontSize(10);
-    pdf.text(
-      t(
-        "pdf_footer_note",
-        "Hinweis: Diese Berechnung dient der Orientierung und stellt keine Rechtsberatung dar."
-      ),
-      pageWidth / 2,
-      290,
-      { align: "center" }
-    );
+    pdf.text(t("pdf_footer_note", "Hinweis..."), pageWidth / 2, 290, {
+      align: "center",
+    });
 
-
-    // 5a) PDF als Blob generieren
+    // --- AUSGABE ---
     const pdfBlob = pdf.output("blob");
-
-    // 5b) Temporäre URL für den Blob erzeugen
     const pdfUrl = URL.createObjectURL(pdfBlob);
-
-    // 5c) URL in einem neuen Tab öffnen
     window.open(pdfUrl, "_blank");
 
-    // Optional: Die temporäre URL nach einer kurzen Verzögerung freigeben
-    // (Der Browser kümmert sich meist selbst darum, aber es ist guter Stil)
+    /* ---------------------------------------------------------
+           4. RESET: Zurück zur Originalsprache
+        --------------------------------------------------------- */
+    if (!isGerman && originalLang) {
+      await applyTranslations(originalLang);
+    }
+
     setTimeout(() => URL.revokeObjectURL(pdfUrl), 10000);
   });
-}
-function t(key, fallback = "") {
-  const v = getTranslation(key);
-  return v && v.trim() ? v : fallback;
-}
-function tp(key, template, params = {}) {
-  let v = getTranslation(key);
-  if (!v || !v.trim()) {
-    v = template;
-  }
-  for (const [k, val] of Object.entries(params)) {
-    v = v.replaceAll(`{${k}}`, String(val));
-  }
-  return v;
 }
