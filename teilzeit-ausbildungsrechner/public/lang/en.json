@@ -81,7 +81,7 @@
   "result_parttime_detail_zero": "Reducing weekly hours from <strong>{full}h</strong> to <strong>{part}h</strong> leads to a minor extension of {grace} months that is often ignored in practice.",
   "result_parttime_detail_extend": "Reducing weekly hours from <strong>{full}h</strong> to <strong>{part}h</strong> for the remaining duration extends the training by <strong>{months} months</strong>.",
   "result_daily_hours": "⌀ {hours} hours per day (part-time)",
-  
+
   "result_early_title": "Note on early admission",
   "result_early_body": "Good performance can enable a shortening of 6 months. The application is made to the competent body (e.g. IHK/HWK) and is independent of the reasons calculated here.",
 
@@ -89,10 +89,9 @@
   "disclaimer_text": "The results are for guidance only and create no legal claim.",
   "disclaimer_more": "A detailed explanation of the calculation can be found on our page",
   "result_extension_cap": "<strong>⚠️ Warning:</strong> The total duration may only be extended by half of the regular training duration (max. {maxAllowedTotalDuration} months). <br />Solution: Increase the part-time hours per week.",
-  
+
   "btn_pdf": "Print as PDF",
   "btn_restart": "Reset",
-
 
   "chart_label_regular": "Regular",
   "chart_label_shortened": "Shortened",
@@ -150,11 +149,10 @@
   "easy_language_page_title": "Easy Language",
   "easy_language_heading": "Easy Language",
 
-  "shortening_zero": "{reason}: <strong>0 months reduction</strong>",
+  "shortening_zero": "secondary school diploma: <strong>0 months reduction</strong>",
   "shortening_fixed": "{reason}: <strong>{months} months reduction</strong>",
   "shortening_variable": "{reason}: <strong>up to {months} months reduction</strong>",
   "shortening_none": "No shortening reasons selected.",
 
   "duration_months": "{months} months"
-
 }

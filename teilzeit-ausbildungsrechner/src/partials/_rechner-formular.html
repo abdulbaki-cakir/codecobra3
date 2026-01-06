@@ -55,18 +55,16 @@
         </div>
       </div>
     </div>
-    </div>
-      <div class="header-text">
-      <h1 data-translate-key="calc_title">
-        Teilzeit-Ausbildungs&shy;rechner
-      </h1>
+  </div>
+  <div class="header-text">
+    <h1 data-translate-key="calc_title">Teilzeit-Ausbildungs&shy;rechner</h1>
 
-      <p data-translate-key="calc_intro" data-translate-mode="html">
-        Sie möchten Ihre Ausbildung in Teilzeit absolvieren?<br />
-        Dann sind Sie hier genau richtig.<br />
-        Finden Sie sofort heraus, wie lange Ihre Ausbildung in Teilzeit dauert.
-      </p>
-    </div>
+    <p data-translate-key="calc_intro" data-translate-mode="html">
+      Sie möchten Ihre Ausbildung in Teilzeit absolvieren?<br />
+      Dann sind Sie hier genau richtig.<br />
+      Finden Sie sofort heraus, wie lange Ihre Ausbildung in Teilzeit dauert.
+    </p>
+  </div>
 </header>
 
 <div class="progress-container">
@@ -128,7 +126,7 @@
         alt="Warnung"
         class="icon icon-warning"
       />
-       <span data-translate-key="error_fulltime_required"></span>
+      <span data-translate-key="error_fulltime_required"></span>
     </div>
   </div>
 
@@ -172,10 +170,7 @@
 
   <div class="input-group">
     <div class="input-container-nested">
-      <h4
-        class="input-prefix"
-        data-translate-key="label_training_duration"
-      >
+      <h4 class="input-prefix" data-translate-key="label_training_duration">
         Wie lange dauert Ihre Ausbildung in Vollzeit?
       </h4>
       <select id="ausbildungsdauer">
@@ -300,7 +295,8 @@
     <div class="radio-card-container">
       <div class="radio-card-header">
         <h4 data-translate-key="question_familycare">
-          Betreuen Sie derzeit ein Kind oder pflegen Sie einen Familienangehörigen?
+          Betreuen Sie derzeit ein Kind oder pflegen Sie einen
+          Familienangehörigen?
         </h4>
       </div>
       <div class="radio-card-body">
@@ -336,7 +332,9 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <h4 data-translate-key="question_age">Sind Sie zu Ausbildungsbeginn über 21 Jahre alt?</h4>
+        <h4 data-translate-key="question_age">
+          Sind Sie zu Ausbildungsbeginn über 21 Jahre alt?
+        </h4>
       </div>
       <div class="radio-card-body">
         <label class="radio-card-option">
@@ -377,7 +375,7 @@
       </div>
       <div class="radio-card-body">
         <label class="radio-card-option">
-          <input type="radio" name="school-finish-radio" value="0" checked />
+          <input type="radio" name="school-finish-radio" value="-1" checked />
           <span class="radio-custom"></span
           ><span class="radio-label" data-translate-key="option_school_none"
             >Keinen der genannten</span
@@ -428,7 +426,8 @@
     <div class="radio-card-container">
       <div class="radio-card-header">
         <h4 data-translate-key="question_experience">
-          Haben Sie eine fachlich passende beruflichen Grundbildung oder Arbeitserfahrung?
+          Haben Sie eine fachlich passende beruflichen Grundbildung oder
+          Arbeitserfahrung?
         </h4>
       </div>
       <div class="radio-card-body">
@@ -506,7 +505,8 @@
     <div class="radio-card-container">
       <div class="radio-card-header">
         <h4 data-translate-key="question_study">
-          Haben Sie mindestens 30 ECTS-Punkte aus einer fachlich passenden Hochschulausbildung?
+          Haben Sie mindestens 30 ECTS-Punkte aus einer fachlich passenden
+          Hochschulausbildung?
         </h4>
       </div>
       <div class="radio-card-body">
@@ -568,7 +568,12 @@
       <span class="result-label" data-translate-key="label_final_duration">
         Gesamtausbildungsdauer ab Beginn
       </span>
-      <span data-translate-key="result_months" class="result-value" id="final-duration-result">-- Monate</span>
+      <span
+        data-translate-key="result_months"
+        class="result-value"
+        id="final-duration-result"
+        >-- Monate</span
+      >
       <span
         id="final-daily-hours"
         style="
@@ -604,7 +609,9 @@
               >geplante<br />Vollzeit-Phase</span
             >
             <span class="result-card-number" id="served-card-value">--</span>
-            <span data-translate-key="result_months" class="result-card-unit">Monate</span>
+            <span data-translate-key="result_months" class="result-card-unit"
+              >Monate</span
+            >
           </div>
           <div class="result-card-right">
             <p class="result-card-header-info">
@@ -633,14 +640,20 @@
             <span class="result-card-number" id="shortening-card-value"
               >--</span
             >
-            <span data-translate-key="result_months" class="result-card-unit">Monate</span>
+            <span data-translate-key="result_months" class="result-card-unit"
+              >Monate</span
+            >
           </div>
           <div class="result-card-right">
             <p class="result-card-header-info">
               <span data-translate-key="result_regular_duration_label">
                 Reguläre Dauer (Vollzeit):
               </span>
-              <strong data-translate-key="original-duration-header" id="original-duration-header">-- Monate</strong>
+              <strong
+                data-translate-key="original-duration-header"
+                id="original-duration-header"
+                >-- Monate</strong
+              >
             </p>
             <hr class="card-divider" />
             <div id="detailed-shortenings-card">
@@ -662,7 +675,9 @@
             <span class="result-card-number" id="new-full-time-card-value"
               >--</span
             >
-            <span data-translate-key="result_months" class="result-card-unit">Monate</span>
+            <span data-translate-key="result_months" class="result-card-unit"
+              >Monate</span
+            >
           </div>
           <div class="result-card-right">
             <p class="result-card-header-info">
@@ -688,7 +703,9 @@
               >Verlängerung durch Teilzeit</span
             >
             <span class="result-card-number" id="extension-card-value">--</span>
-            <span data-translate-key="result_months" class="result-card-unit">Monate</span>
+            <span data-translate-key="result_months" class="result-card-unit"
+              >Monate</span
+            >
           </div>
           <div class="result-card-right">
             <p class="result-card-header-info">
@@ -721,14 +738,25 @@
   </p>
 
   <div class="form-buttons">
-    <button data-translate-key="btn_back" class="secondary" id="back-btn-3">Zurück</button>
-    <button data-translate-key="btn_pdf" class="primary pdf-btn">Als PDF ausdrucken</button>
+    <button data-translate-key="btn_back" class="secondary" id="back-btn-3">
+      Zurück
+    </button>
+    <button data-translate-key="btn_pdf" class="primary pdf-btn">
+      Als PDF ausdrucken
+    </button>
   </div>
 
   <div class="reset-container">
     <button class="reset-btn" onclick="window.location.href='index.html'">
-      <img src="/src/assets/icons/trash.svg" alt="" aria-hidden="true" class="icon-inline reset-icon" />
-      <span data-translate-key="btn_restart" class="reset-label">Zurücksetzen</span>
+      <img
+        src="/src/assets/icons/trash.svg"
+        alt=""
+        aria-hidden="true"
+        class="icon-inline reset-icon"
+      />
+      <span data-translate-key="btn_restart" class="reset-label"
+        >Zurücksetzen</span
+      >
     </button>
   </div>
 </main>

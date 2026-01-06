@@ -250,8 +250,8 @@ export function renderResults(data) {
   const topErrorMsg = document.getElementById("global-cap-error");
 
   /* -----------------------------------------------------------
-       BEREITS GELEISTETE ZEIT (Vollzeit vor Teilzeit)
-    ----------------------------------------------------------- */
+         BEREITS GELEISTETE ZEIT (Vollzeit vor Teilzeit)
+      ----------------------------------------------------------- */
   const servedTimeCard = document.querySelector(".served-time-card");
   const servedTimeValue = document.getElementById("served-card-value");
   const servedTimeDetailsDiv = document.getElementById(
@@ -281,10 +281,10 @@ export function renderResults(data) {
   }
 
   /* -----------------------------------------------------------
-       VERKÜRZUNGSGRÜNDE (Liste generieren)
-    ----------------------------------------------------------- */
+         VERKÜRZUNGSGRÜNDE (Liste generieren)
+      ----------------------------------------------------------- */
   document.getElementById("original-duration-header").textContent =
-  formatTranslation("duration_months", { months: originalDuration });
+    formatTranslation("duration_months", { months: originalDuration });
 
   document.getElementById("shortening-card-value").textContent =
     officialShorteningMonths;
@@ -294,9 +294,16 @@ export function renderResults(data) {
   );
   detailedShorteningsDiv.innerHTML = ""; // Reset
 
-  const shorteningDetails = [...shorteningResult.details];
+  // 1. Array kopieren, um es zu manipulieren
+  let shorteningDetails = [...shorteningResult.details];
 
-  // Workaround: Hauptschulabschluss explizit anzeigen, auch wenn er 0 Monate bringt
+  // 2. "Keinen der genannten" (-1 / reason_school_none) herausfiltern.
+  // Wir wollen diesen Eintrag NICHT in der Liste anzeigen.
+  shorteningDetails = shorteningDetails.filter(
+    (d) => d.translationKey !== "reason_school_none",
+  );
+
+  // 3. Hauptschulabschluss explizit prüfen und hinzufügen, falls er fehlt (0 Monate)
   const hasSchoolEntry = shorteningDetails.some(
     (d) => d.translationKey === "reason_school_hauptschule",
   );
@@ -306,6 +313,8 @@ export function renderResults(data) {
       'input[name="school-finish-radio"]:checked',
     );
 
+    // Hier prüfen wir nur auf "0" (Hauptschule).
+    // "Keinen" ist jetzt "-1", fällt also hier durch.
     if (selectedRadio && selectedRadio.value === "0") {
       shorteningDetails.unshift({
         translationKey: "reason_school_hauptschule",
@@ -316,8 +325,7 @@ export function renderResults(data) {
     }
   }
 
-
-    // Liste aufbauen
+  // 4. Liste aufbauen
   if (shorteningDetails.length > 0) {
     shorteningDetails.forEach((detail) => {
       const p = document.createElement("p");
@@ -330,23 +338,27 @@ export function renderResults(data) {
       let text;
 
       if (detail.months === 0) {
-        text = getTranslation("shortening_zero")
-          .replace("{reason}", reasonLabel);
+        // Dieser Fall tritt jetzt nur noch für Hauptschule (0) auf, nicht für Keinen (-1)
+        text = formatTranslation("shortening_zero", { reason: reasonLabel });
         p.style.color = "#555";
       } else if (detail.isVariable) {
-        text = getTranslation("shortening_variable")
-          .replace("{reason}", reasonLabel)
-          .replace("{months}", detail.months);
+        text = formatTranslation("shortening_variable", {
+          reason: reasonLabel,
+          months: detail.months,
+        });
       } else {
-        text = getTranslation("shortening_fixed")
-          .replace("{reason}", reasonLabel)
-          .replace("{months}", detail.months);
+        text = formatTranslation("shortening_fixed", {
+          reason: reasonLabel,
+          months: detail.months,
+        });
       }
 
       p.innerHTML = text;
       detailedShorteningsDiv.appendChild(p);
     });
   } else {
+    // 5. Wenn Liste leer ist (z.B. User wählte "Keinen" -> Liste wurde oben geleert),
+    // zeige "Keine Verkürzung".
     detailedShorteningsDiv.innerHTML = `
       <p class="no-shortening-message">
         ${getTranslation("shortening_none")}
@@ -366,14 +378,15 @@ export function renderResults(data) {
   }
 
   /* -----------------------------------------------------------
-       RESTDAUER & TEILZEIT-VERLÄNGERUNG
-    ----------------------------------------------------------- */
+         RESTDAUER & TEILZEIT-VERLÄNGERUNG
+      ----------------------------------------------------------- */
   const newFullTimeCard = document.querySelector(".new-full-time-card");
   if (newFullTimeCard) {
     newFullTimeCard.style.display = "flex";
     document.getElementById("new-full-time-card-value").textContent =
       remainingFullTimeEquivalent;
-    document.getElementById("detailed-new-full-time-card").innerHTML = `<p>${getTranslation("result_remaining_detail")}</p>`;
+    document.getElementById("detailed-new-full-time-card").innerHTML =
+      `<p>${getTranslation("result_remaining_detail")}</p>`;
   }
 
   // Falls Teilzeit gewählt wurde
@@ -415,13 +428,14 @@ export function renderResults(data) {
       if (topErrorMsg) {
         topErrorMsg.classList.remove("hidden");
         topErrorMsg.innerHTML = getTranslation("result_extension_cap").replace(
-        "{maxAllowedTotalDuration}",
-        maxAllowedTotalDuration,
-      );
-    }
+          "{maxAllowedTotalDuration}",
+          maxAllowedTotalDuration,
+        );
+      }
 
       // UI rot färben
-      if (partTimeCardLeft) partTimeCardLeft.style.backgroundColor = primaryColor;
+      if (partTimeCardLeft)
+        partTimeCardLeft.style.backgroundColor = primaryColor;
       if (finalResultBox) finalResultBox.style.backgroundColor = primaryColor;
       if (dailyHoursEl) dailyHoursEl.style.display = "none";
     } else {
@@ -455,8 +469,8 @@ export function renderResults(data) {
   }
 
   /* -----------------------------------------------------------
-       HINWEIS-BOX: VORZEITIGE ZULASSUNG
-    ----------------------------------------------------------- */
+         HINWEIS-BOX: VORZEITIGE ZULASSUNG
+      ----------------------------------------------------------- */
   const existingEarlyBox = document.getElementById("early-admission-box");
   if (existingEarlyBox) existingEarlyBox.remove();
 
@@ -480,7 +494,8 @@ export function renderResults(data) {
     earlyTextBox.classList.add("info-box-text");
     const earlyInfoText = document.createElement("p");
     const earlyTitle =
-      getTranslation("result_early_title") || "Hinweis zur vorzeitigen Zulassung";
+      getTranslation("result_early_title") ||
+      "Hinweis zur vorzeitigen Zulassung";
     const earlyBody =
       getTranslation("result_early_body") ||
       "Gute Leistungen koennen eine Verkuerzung um 6 Monate ermoeglichen. Der Antrag erfolgt bei der zustaendigen Stelle (z. B. IHK/HWK) und ist unabhaengig von den hier berechneten Gruenden.";
@@ -496,9 +511,9 @@ export function renderResults(data) {
   }
 
   /* -----------------------------------------------------------
-       DIAGRAMM (Chart.js)
-    ----------------------------------------------------------- */
-const canvas = document.getElementById("results-chart");
+         DIAGRAMM (Chart.js)
+      ----------------------------------------------------------- */
+  const canvas = document.getElementById("results-chart");
   if (!canvas) return;
 
   if (typeof window.Chart === "undefined") {
@@ -523,9 +538,18 @@ const canvas = document.getElementById("results-chart");
       type: "bar",
       data: {
         labels: [
-          [getTranslation("chart_label_regular"), getTranslation("chart_label_fulltime")],
-          [getTranslation("chart_label_shortened"), getTranslation("chart_label_fulltime")],
-          [getTranslation("chart_label_final"), getTranslation("chart_label_parttime")],
+          [
+            getTranslation("chart_label_regular"),
+            getTranslation("chart_label_fulltime"),
+          ],
+          [
+            getTranslation("chart_label_shortened"),
+            getTranslation("chart_label_fulltime"),
+          ],
+          [
+            getTranslation("chart_label_final"),
+            getTranslation("chart_label_parttime"),
+          ],
         ],
         datasets: [
           {
@@ -543,7 +567,10 @@ const canvas = document.getElementById("results-chart");
         maintainAspectRatio: false,
         plugins: {
           legend: { display: false },
-          title: { display: true, text: getTranslation("chart_title_overview") },
+          title: {
+            display: true,
+            text: getTranslation("chart_title_overview"),
+          },
         },
         scales: {
           y: {
@@ -602,9 +629,3 @@ onLanguageChange(() => {
     renderResults(lastRenderedResults);
   }
 });
-
-
-
-
-
-

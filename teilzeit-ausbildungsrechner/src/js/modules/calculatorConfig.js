@@ -17,7 +17,7 @@ export const RULES = {
     "school-finish": {
       isVariable: false, // Fest
       options: {
-        0: {
+        "-1": {
           text: "Kein/Hauptschulabschluss",
           translationKey: "reason_school_none",
           value: 0,

@@ -35,23 +35,23 @@
   "answer_no": "Nein",
   "answer_yes": "Ja",
   "info_age": "Sind Sie zu Beginn der Ausbildung über 21 Jahre alt? In vielen Fällen können Sie dann bis zu 12 Monate kürzen.",
-  
+
   "question_school": "Welchen Schulabschluss haben Sie?",
   "option_school_none": "Keinen der genannten",
   "option_school_basic": "Hauptschulabschluss",
   "option_school_mid": "Mittlere Reife",
   "option_school_high": "Fachhochschulreife / Abitur",
   "info_school": "Je höher Ihr Schulabschluss, desto eher kann eine Verkürzung möglich sein. Wählen Sie den höchsten Abschluss, den Sie haben.",
- 
+
   "question_experience": "Haben Sie eine fachlich passende berufliche Grundbildung oder Arbeitserfahrung?",
   "info_experience": "Relevante Praktika oder Jobs können angerechnet werden, wenn sie zum Ausbildungsberuf passen.",
-  
+
   "question_apprenticeship": "Haben Sie eine abgeschlossene Berufsausbildung?",
   "info_apprenticeship": "Eine passende, bereits abgeschlossene Ausbildung kann Ihre neue Ausbildung deutlich verkürzen.",
- 
+
   "question_study": "Haben Sie mindestens 30 ECTS-Punkte aus einer fachlich passenden Hochschulausbildung?",
   "info_study": "Haben Sie bereits Kurse im Studium belegt, die für die Ausbildung relevant sind? Ab einer Anzahl von 30 ECTS kann die Ausbildung verkürzt werden.",
- 
+
   "question_familycare": "Betreuen Sie derzeit ein Kind oder pflegen Sie einen Familienangehörigen?",
   "info_familycare": "Die Betreuung eigener Kinder oder die Pflege naher Angehöriger kann ein Grund für eine Verkürzung der Ausbildungsdauer sein.",
 
@@ -82,7 +82,7 @@
   "result_parttime_detail_zero": "Die Reduzierung der wöchentlichen Arbeitszeit von <strong>{full}h</strong> auf <strong>{part}h</strong> führt zu einer geringfügigen Verlängerung von {grace} Monaten, die oft ignoriert wird.",
   "result_parttime_detail_extend": "Die Reduzierung der wöchentlichen Arbeitszeit von <strong>{full}h</strong> auf <strong>{part}h</strong> für die verbleibende Dauer führt zu einer Verlängerung <strong>um {months} Monate</strong>.",
   "result_daily_hours": "⌀ {hours} Stunden pro Tag (Teilzeit)",
- 
+
   "result_early_title": "Hinweis zur vorzeitigen Zulassung zur Prüfung",
   "result_early_body": "Gute Leistungen können eine Verkürzung um 6 Monate ermöglichen. Der Antrag erfolgt bei der zuständigen Stelle (z. B. IHK/HWK) und ist unabhängig von den hier berechneten Gründen.",
 
@@ -90,7 +90,7 @@
   "disclaimer_text": "Die Ergebnisse dienen lediglich zur Orientierung und begründen keinen Rechtsanspruch.",
   "disclaimer_more": "Die endgültige Entscheidung trifft immer die zuständige Stelle (z. B. IHK, HWK). Für eine verbindliche Auskunft wenden Sie sich bitte an Ihre Kammer oder Beratungsstellen wie die Agentur für Arbeit.",
   "result_extension_cap": "<strong>⚠️ Achtung:</strong> Die Gesamtdauer darf höchstens um die Hälfte der regulären Ausbildungsdauer verlängert werden (max. {maxAllowedTotalDuration} Monate). <br />Lösung: Erhöhe die Teilzeit-Stunden pro Woche.",
-  
+
   "btn_pdf": "Als PDF ausdrucken",
   "btn_restart": "Zurücksetzen und neu berechnen",
 
@@ -113,7 +113,6 @@
   "pdf_details_heading": "Detaillierte Erklärung",
   "pdf_chart_heading": "Grafische Übersicht",
   "pdf_footer_note": "Hinweis: Diese Berechnung dient der Orientierung und stellt keine Rechtsberatung dar.",
-
 
   "error_fulltime_required": "Bitte geben Sie die Vollzeitstunden ein.",
   "error_number_invalid": "Bitte eine gültige Zahl eingeben.",
@@ -151,11 +150,10 @@
   "easy_language_page_title": "Leichte Sprache",
   "easy_language_heading": "Leichte Sprache",
 
-  "shortening_zero": "{reason}: <strong>0 Monate Verkürzung</strong>",
+  "shortening_zero": "Hauptschulabschluss: <strong>0 Monate Verkürzung</strong>",
   "shortening_fixed": "{reason}: <strong>{months} Monate Verkürzung</strong>",
   "shortening_variable": "{reason}: <strong>bis zu {months} Monate Verkürzung</strong>",
   "shortening_none": "Keine Verkürzungsgründe ausgewählt.",
 
   "duration_months": "{months} Monate"
-
 }
