@@ -425,44 +425,6 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <h4 data-translate-key="question_experience">
-          Haben Sie eine fachlich passende beruflichen Grundbildung oder
-          Arbeitserfahrung?
-        </h4>
-      </div>
-      <div class="radio-card-body">
-        <label class="radio-card-option">
-          <input type="radio" name="experience-radio" value="0" checked />
-          <span class="radio-custom"></span
-          ><span class="radio-label" data-translate-key="answer_no">Nein</span>
-        </label>
-        <label class="radio-card-option">
-          <input type="radio" name="experience-radio" value="12" />
-          <span class="radio-custom"></span
-          ><span class="radio-label" data-translate-key="answer_yes">Ja</span>
-        </label>
-      </div>
-    </div>
-    <div class="info-icon-wrapper">
-      <img
-        src="/src/assets/icons/information.svg"
-        alt=""
-        class="icon info-icon"
-      />
-      <div class="info-box" data-translate-key="info_experience">
-        Relevante Praktika oder Jobs können angerechnet werden, wenn sie zum
-        Ausbildungsberuf passen.
-      </div>
-    </div>
-    <select name="experience" id="experience-select" style="display: none">
-      <option value="0" selected>Nein</option>
-      <option value="12">Ja</option>
-    </select>
-  </div>
-
-  <div class="input-group radio-card-group">
-    <div class="radio-card-container">
-      <div class="radio-card-header">
         <h4 data-translate-key="question_apprenticeship">
           Haben Sie eine abgeschlossene Berufsausbildung?
         </h4>
@@ -496,6 +458,44 @@
       id="apprenticeship-select"
       style="display: none"
     >
+      <option value="0" selected>Nein</option>
+      <option value="12">Ja</option>
+    </select>
+  </div>
+
+  <div class="input-group radio-card-group">
+    <div class="radio-card-container">
+      <div class="radio-card-header">
+        <h4 data-translate-key="question_experience">
+          Haben Sie eine fachlich passende beruflichen Grundbildung oder
+          Arbeitserfahrung?
+        </h4>
+      </div>
+      <div class="radio-card-body">
+        <label class="radio-card-option">
+          <input type="radio" name="experience-radio" value="0" checked />
+          <span class="radio-custom"></span
+          ><span class="radio-label" data-translate-key="answer_no">Nein</span>
+        </label>
+        <label class="radio-card-option">
+          <input type="radio" name="experience-radio" value="12" />
+          <span class="radio-custom"></span
+          ><span class="radio-label" data-translate-key="answer_yes">Ja</span>
+        </label>
+      </div>
+    </div>
+    <div class="info-icon-wrapper">
+      <img
+        src="/src/assets/icons/information.svg"
+        alt=""
+        class="icon info-icon"
+      />
+      <div class="info-box" data-translate-key="info_experience">
+        Relevante Praktika oder Jobs können angerechnet werden, wenn sie zum
+        Ausbildungsberuf passen.
+      </div>
+    </div>
+    <select name="experience" id="experience-select" style="display: none">
       <option value="0" selected>Nein</option>
       <option value="12">Ja</option>
     </select>

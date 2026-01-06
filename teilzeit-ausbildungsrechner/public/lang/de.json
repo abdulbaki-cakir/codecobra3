@@ -58,8 +58,8 @@
   "step3_title": "3. Ergebnisse",
   "label_final_duration": "Gesamtausbildungsdauer ab Beginn",
   "result_months": "Monate",
-  "details_toggle_closed": "Detaillierte Erklärung anzeigen",
-  "details_toggle_open": "Detaillierte Erklärung einklappen",
+  "details_toggle_closed": "Detaillierte Erklärung anzeigen ▼",
+  "details_toggle_open": "Detaillierte Erklärung einklappen ▲",
 
   "result_served_title": "geplante<br />Vollzeit-Phase",
   "result_served_header": "Vollzeit am Anfang Ihrer Ausbildung",

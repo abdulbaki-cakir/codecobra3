@@ -58,8 +58,8 @@
   "step3_title": "Step 3: Result",
   "label_final_duration": "Total training time",
   "result_months": "Months",
-  "details_toggle_closed": "Show explanation",
-  "details_toggle_open": "Hide explanation",
+  "details_toggle_closed": "Show explanation ▼",
+  "details_toggle_open": "Hide explanation ▲",
 
   "result_served_title": "Full-time at start",
   "result_served_header": "Full-time at the beginning",

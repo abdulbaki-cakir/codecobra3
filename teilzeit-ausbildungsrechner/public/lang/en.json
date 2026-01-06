@@ -57,8 +57,8 @@
   "step3_title": "3. Results",
   "label_final_duration": "Total training duration from start",
   "result_months": "Months",
-  "details_toggle_closed": "Show detailed explanation",
-  "details_toggle_open": "Hide detailed explanation",
+  "details_toggle_closed": "Show detailed explanation ▼",
+  "details_toggle_open": "Hide detailed explanation ▲",
 
   "result_served_title": "planned<br />full-time phase",
   "result_served_header": "Full-time at the beginning of your training",
