@@ -31,25 +31,25 @@
   "btn_next": "Weiter",
 
   "step2_title": "2. Kann Ihre Ausbildung verkürzt werden?",
-  "question_age": "Sind Sie älter als 21 Jahre?",
+  "question_age": "Sind Sie zu Ausbildungsbeginn über 21 Jahre alt?",
   "answer_no": "Nein",
   "answer_yes": "Ja",
   "info_age": "Sie sind über 21 Jahre alt, wenn Sie am ersten Tag der Ausbildung das 22. Lebensjahr vollendet haben.",
 
-  "question_school": "Welchen Schul-Abschluss haben Sie?",
+  "question_school": "Welchen Schulabschluss haben Sie?",
   "option_school_none": "Keiner von diesen",
   "option_school_basic": "Hauptschule",
   "option_school_mid": "Realschule",
   "option_school_high": "Abitur oder Fach-Abitur",
   "info_school": "Ein höherer Schul-Abschluss kann die Ausbildung verkürzen.",
 
-  "question_experience": "Haben Sie schon passende Berufserfahrung gesammelt?",
+  "question_experience": "Haben Sie eine fachlich passende berufliche Grundbildung oder Arbeitserfahrung?",
   "info_experience": "Zum Beispiel ein Praktikum oder ein Job in dem Bereich der Ausbildung.",
 
-  "question_apprenticeship": "Haben Sie schon eine Ausbildung abgeschlossen?",
+  "question_apprenticeship": "Haben Sie eine abgeschlossene Berufsausbildung?",
   "info_apprenticeship": "Eine passende, bereits abgeschlossene Ausbildung kann Ihre neue Ausbildung deutlich verkürzen.",
   
-  "question_study": "Haben Sie an einer Hochschule oder Universität studiert und dort mindestens 30 ECTS (Studienpunkte) erreicht?",
+  "question_study": "Haben Sie mindestens 30 ECTS-Punkte aus einer fachlich passenden Hochschulausbildung?",
   "info_study": "Haben Sie bereits Kurse im Studium belegt, die für die Ausbildung relevant sind? Ab einer Anzahl von 30 ECTS kann die Ausbildung verkürzt werden.",
  
   "question_familycare": "Betreuen Sie derzeit ein Kind oder pflegen Sie einen Familienangehörigen?",
