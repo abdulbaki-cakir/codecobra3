@@ -856,7 +856,6 @@
   border: 1px solid rgba(185, 49, 55, 0.12);
 }
 
-
 /* Container, um den Button mittig unter die anderen zu setzen */
 #calculator-section .reset-container {
   display: flex;
@@ -883,7 +882,8 @@
 #calculator-section button.reset-btn .reset-icon {
   width: 18px;
   height: 18px;
-  filter: invert(22%) sepia(89%) saturate(1618%) hue-rotate(340deg) brightness(92%) contrast(90%);
+  filter: invert(22%) sepia(89%) saturate(1618%) hue-rotate(340deg)
+    brightness(92%) contrast(90%);
 }
 
 #calculator-section .calc-top {
@@ -918,24 +918,31 @@
   padding-right: 5px;
 }
 
+/* --- Aktualisierter Button Style --- */
 .nav-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   background-color: var(--primary);
   color: #fff;
-  border-radius: 50px;
-  padding: 10px 20px;
+
+  /* ÄNDERUNG: Rechteckiger (8px statt 50px) */
+  border-radius: 8px;
+
+  /* ÄNDERUNG: Größer (vorher 10px 20px) */
+  padding: 12px 24px;
+
+  /* ÄNDERUNG: Kanten dunkler (Rahmen hinzugefügt) */
+  border: 2px solid var(--primary-dark);
   font-size: 16px;
   font-weight: 700;
   text-decoration: none;
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .nav-btn:hover {
   background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
   transform: translateY(-2px);
 }
 
@@ -948,6 +955,74 @@
   fill: #fff;
   width: 18px;
   height: 18px;
+  transition: fill 0.2s ease;
+}
+
+/* --- LEICHTE SPRACHE BUTTON LOGIK (BEREINIGT) --- */
+
+/* 1. GRUNDZUSTAND (Inaktiv): Weiß, Rot, Roter Rand */
+.nav-btn.btn-white {
+  background-color: #fff;
+  color: var(--primary);
+  border-color: var(--primary-dark);
+}
+/* Icon rot färben */
+.nav-btn.btn-white .nav-icon {
+  filter: invert(24%) sepia(58%) saturate(3546%) hue-rotate(339deg)
+    brightness(92%) contrast(95%);
+  transition: filter 0.2s ease;
+}
+
+/* 2. INAKTIV HOVER (Maus drauf, aber noch aus): Hellrot & Schweben */
+.nav-btn.btn-white:not(.active):hover {
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-2px); /* Kleines Anheben */
+}
+.nav-btn.btn-white:not(.active):hover .nav-icon {
+  /* Icon bleibt rot */
+  filter: invert(24%) sepia(58%) saturate(3546%) hue-rotate(339deg)
+    brightness(92%) contrast(95%);
+}
+
+/* 3. AKTIV ZUSTAND (Eingeschaltet): Rot, Weiß, Puls */
+.nav-btn.btn-white.active {
+  background-color: var(--primary);
+  color: #fff;
+  border-color: var(--primary-dark);
+  box-shadow: 0 0 0 2px rgba(185, 49, 55, 0.15);
+
+  /* WICHTIG: KEIN 'forwards' hier, damit die Transform-Eigenschaft nach 0.3s wieder frei ist */
+  animation: subtle-pulse 0.3s ease-out;
+}
+/* Icon weiß färben */
+.nav-btn.btn-white.active .nav-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* 4. AKTIV HOVER (Maus drauf, wenn an): Dunkelrot & Schweben */
+.nav-btn.btn-white.active:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+  /* !important erzwingt das Schweben, auch wenn Animationen noch laufen */
+  transform: translateY(-2px) !important;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+/* --- ANIMATION DEFINITION --- */
+@keyframes subtle-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02); /* Nur 2% größer - sehr dezent */
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* --- Dropdown Styles --- */
@@ -1039,11 +1114,11 @@
 }
 
 @media (max-width: 450px) {
-    .logo {
-        width: 125px;
-        height: auto;
-        max-height: 50px;
-    }
+  .logo {
+    width: 125px;
+    height: auto;
+    max-height: 50px;
+  }
 
   .nav-btn {
     padding: 8px 15px;
@@ -1076,5 +1151,3 @@
     height: 20px;
   }
 }
-
-

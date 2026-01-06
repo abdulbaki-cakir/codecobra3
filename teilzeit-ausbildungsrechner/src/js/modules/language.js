@@ -3,7 +3,7 @@
 const LANGUAGE_STORAGE_KEY = "tzr-language";
 const LANGUAGE_EVENT = "app:language-changed";
 
-// Simple memory cache to avoid network requests if we switch back and forth
+// Simple memory cache
 const loadedLanguages = {};
 
 let currentLanguage = "de";
@@ -34,13 +34,12 @@ export async function applyTranslations(lang = currentLanguage) {
     let translations = loadedLanguages[lang];
 
     if (!translations) {
-      // NOTE: Using /lang/ to ensure absolute path
       const response = await fetch(`/lang/${lang}.json`);
       if (!response.ok) {
         console.error(`Language file not found: /lang/${lang}.json`);
-        // Optional: If en_easy is missing, fallback to en
+        // Fallback safety
         if (lang.includes("_easy")) {
-          console.warn("Easy language missing, falling back to base language.");
+          console.warn("Easy language file missing, falling back to base.");
           return applyTranslations(lang.split("_")[0]);
         }
         return;
@@ -54,7 +53,7 @@ export async function applyTranslations(lang = currentLanguage) {
     currentTranslations = translations;
     sessionStorage.setItem(LANGUAGE_STORAGE_KEY, currentLanguage);
 
-    // 3. Update DOM
+    // 3. Update DOM Text
     document.querySelectorAll("[data-translate-key]").forEach((el) => {
       const key = el.dataset.translateKey;
       const translation = translations[key];
@@ -73,16 +72,12 @@ export async function applyTranslations(lang = currentLanguage) {
       }
     });
 
-    // 4. Update HTML Lang Attribute (remove _easy for browser)
+    // 4. Update HTML Lang Attribute
     const htmlLang = currentLanguage.split("_")[0];
     document.documentElement.setAttribute("lang", htmlLang);
 
-    // 5. Update Easy Language Checkbox State
-    const easyCheckbox = document.getElementById("easy-language-checkbox");
-    if (easyCheckbox) {
-      // Checkbox is ON if the current language string contains "_easy"
-      easyCheckbox.checked = currentLanguage.includes("_easy");
-    }
+    // 5. Update UI Button States (Visual Feedback)
+    updateButtonStates(currentLanguage);
 
     // 6. Notify other parts of the app
     const event = new CustomEvent(LANGUAGE_EVENT, {
@@ -95,7 +90,25 @@ export async function applyTranslations(lang = currentLanguage) {
 }
 
 /**
- * Initializes the dropdowns and click listeners
+ * Helper to visually toggle the buttons
+ */
+function updateButtonStates(lang) {
+  // 1. Update "Leichte Sprache" Button Appearance
+  const easyBtn = document.getElementById("easy-language-toggle");
+  if (easyBtn) {
+    if (lang === "de_easy") {
+      easyBtn.classList.add("active"); // Wird rot (basierend auf CSS)
+    } else {
+      easyBtn.classList.remove("active"); // Wird weiß (basierend auf CSS)
+    }
+  }
+
+  // 2. Optional: Reset standard language active state if needed
+  // (Standard logic usually highlights the current flag, handled below)
+}
+
+/**
+ * Initializes the listeners
  */
 export function initializeLanguageSwitcher() {
   const langToggle = document.getElementById("language-toggle");
@@ -103,19 +116,16 @@ export function initializeLanguageSwitcher() {
   const languageOptions = document.querySelectorAll(".language-option");
 
   const easyToggle = document.getElementById("easy-language-toggle");
-  const easyMenu = document.getElementById("easy-language-menu");
-  const easyCheckbox = document.getElementById("easy-language-checkbox");
 
   // Load stored language on startup
   const storedLang = sessionStorage.getItem(LANGUAGE_STORAGE_KEY);
   applyTranslations(storedLang || "de");
 
-  // --- Standard Language Menu ---
+  // --- Standard Language Menu (Dropdown für Flaggen) ---
   if (langToggle && langMenu) {
     langToggle.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
-      if (easyMenu) easyMenu.classList.remove("show");
       langMenu.classList.toggle("show");
     });
 
@@ -124,55 +134,66 @@ export function initializeLanguageSwitcher() {
         e.preventDefault();
 
         // 1. Get the new base language (e.g., "en" or "de")
-        // NOTE: Relying on data-lang attribute is safer than span content
         let newBaseLang = this.getAttribute("data-lang");
 
-        // Fallback to text content if data attribute is missing
+        // Fallback if data-lang is missing (getting text content)
+        if (!newBaseLang) {
+          const span = this.querySelector("span");
+          if (span && span.dataset.translateKey) {
+            // Mapping keys like nav_language_en to 'en'
+            const key = span.dataset.translateKey;
+            newBaseLang = key.split("_").pop(); // e.g. "en" from "nav_language_en"
+          }
+        }
+
+        // Hardcoded fix if mapping fails, assuming standard structure
+        if (!newBaseLang) {
+          // Try to guess from text or ensure your HTML has data-lang attributes
+          console.warn(
+            "Please add data-lang='en' etc to your dropdown links for safety",
+          );
+        }
+
+        // Just reload logic based on context (assuming standard click behavior)
+        // If data-lang is missing in HTML, ensure it is added or rely on text logic from before.
+        // For now, let's keep the previous robust logic:
         if (!newBaseLang) {
           const langSpan = this.querySelector("span");
-          if (langSpan) newBaseLang = langSpan.textContent.toLowerCase().trim();
+          if (langSpan) {
+            const text = langSpan.textContent.toLowerCase().trim();
+            // Map text like "en", "de" directly if they match filenames
+            newBaseLang = text;
+          }
         }
 
         if (newBaseLang) {
-          // 2. Check if Easy Mode is currently ON
-          const isEasyMode = easyCheckbox ? easyCheckbox.checked : false;
-
-          // 3. Combine them (e.g. "en" + "_easy" -> "en_easy")
-          const finalLang = isEasyMode ? `${newBaseLang}_easy` : newBaseLang;
-
-          applyTranslations(finalLang);
+          applyTranslations(newBaseLang);
         }
         langMenu.classList.remove("show");
       });
     });
   }
 
-  // --- Easy Language Menu ---
-  if (easyToggle && easyMenu && easyCheckbox) {
+  // --- Easy Language Toggle (Direkter Klick, kein Dropdown) ---
+  if (easyToggle) {
     easyToggle.addEventListener("click", (e) => {
       e.preventDefault();
+      // Dropdown-Events stoppen, falls Menü offen war
       e.stopPropagation();
       if (langMenu) langMenu.classList.remove("show");
-      easyMenu.classList.toggle("show");
-    });
 
-    easyMenu.addEventListener("click", (e) => e.stopPropagation());
-
-    easyCheckbox.addEventListener("change", (e) => {
-      const isChecked = e.target.checked;
-
-      // 1. Get current base language (strip _easy if it exists)
-      // e.g. "en_easy" -> "en", "de" -> "de"
-      const currentBase = currentLanguage.split("_")[0];
-
-      // 2. Append _easy only if checked
-      const nextLanguage = isChecked ? `${currentBase}_easy` : currentBase;
-
-      applyTranslations(nextLanguage);
+      // LOGIC: Toggle Switch
+      // Wenn wir schon in de_easy sind -> zurück zu de
+      // Wenn wir woanders sind -> zu de_easy
+      if (currentLanguage === "de_easy") {
+        applyTranslations("de");
+      } else {
+        applyTranslations("de_easy");
+      }
     });
   }
 
-  // --- Global Click to Close ---
+  // --- Global Click to Close (Only for standard lang menu) ---
   window.addEventListener("click", (e) => {
     if (
       langMenu &&
@@ -181,20 +202,12 @@ export function initializeLanguageSwitcher() {
     ) {
       langMenu.classList.remove("show");
     }
-    if (
-      easyMenu &&
-      !easyToggle.contains(e.target) &&
-      !easyMenu.contains(e.target)
-    ) {
-      easyMenu.classList.remove("show");
-    }
   });
 }
-  // --- Test/Bootstrap helper (no fetch required) ---
+
+// --- Test/Bootstrap helper ---
 export function __setTranslationsForTests(lang, translations) {
   loadedLanguages[lang] = translations || {};
   currentLanguage = lang;
   currentTranslations = loadedLanguages[lang];
 }
-
-
