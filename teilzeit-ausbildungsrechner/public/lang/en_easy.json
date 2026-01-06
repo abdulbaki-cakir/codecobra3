@@ -81,6 +81,7 @@
   "result_parttime_copy": "Working fewer hours can make training longer.",
   "result_parttime_detail_zero": "Changing from <strong>{full}h</strong> to <strong>{part}h</strong> per week leads to only a small extension.",
   "result_parttime_detail_extend": "Changing from <strong>{full}h</strong> to <strong>{part}h</strong> per week makes the training <strong>{months} months longer</strong>.",
+  "result_daily_hours": "⌀ {hours} hours per day (part-time)",
 
   "result_early_title": "Important note",
   "result_early_body": "Very good performance can shorten training by 6 months.",

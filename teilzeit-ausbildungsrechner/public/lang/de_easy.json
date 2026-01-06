@@ -81,6 +81,7 @@
   "result_parttime_copy": "Hier steht die Erklärung zur Verlängerung durch Teilzeit.",
   "result_parttime_detail_zero": "Die Reduzierung der wöchentlichen Arbeitszeit von <strong>{full}h</strong> auf <strong>{part}h</strong> führt zu einer geringfügigen Verlängerung von {grace} Monaten, die oft ignoriert wird.",
   "result_parttime_detail_extend": "Die Reduzierung der wöchentlichen Arbeitszeit von <strong>{full}h</strong> auf <strong>{part}h</strong> für die verbleibende Dauer führt zu einer Verlängerung <strong>um {months} Monate</strong>.",
+  "result_daily_hours": "⌀ {hours} Stunden pro Tag (Teilzeit)",
 
   "result_early_title": "Hinweis zur vorzeitigen Zulassung zur Prüfung",
   "result_early_body": "Sehr gute Leistungen können die Ausbildung verkürzen. Fragen Sie bei der zuständigen Stelle nach.",

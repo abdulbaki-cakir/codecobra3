@@ -53,6 +53,14 @@ const formatTranslation = (key, replacements = {}) => {
   );
 };
 
+const formatOneDecimal = (value) => {
+  const lang = document.documentElement.getAttribute("lang") || "de";
+  return new Intl.NumberFormat(lang, {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  }).format(value);
+};
+
 /**
  * Sammelt alle Benutzereingaben aus dem DOM für die Berechnung.
  * Rückgabe ist ein sauberes Objekt, das der Service direkt verarbeiten kann.
@@ -191,11 +199,12 @@ function updateProgress(currentStep) {
     step.classList.toggle("active", stepNum <= currentStep);
   });
 
-  // Balkenbreite berechnen
-  let progressPercentage = 0;
-  if (currentStep === 1) progressPercentage = 20;
-  else if (currentStep === 2) progressPercentage = 50;
-  else progressPercentage = 100;
+  // Balkenbreite berechnen (0 -> 50 -> 100 bei drei Schritten)
+  const totalSteps = progressSteps.length || 1;
+  const clampedStep = Math.min(Math.max(currentStep, 1), totalSteps);
+  const relativeProgress =
+    totalSteps > 1 ? (clampedStep - 1) / (totalSteps - 1) : 0;
+  const progressPercentage = relativeProgress * 100;
 
   if (progressLine) {
     const adjustedWidth = (progressPercentage * trackFactor).toFixed(2);
@@ -422,8 +431,13 @@ export function renderResults(data) {
       if (finalResultBox) finalResultBox.style.backgroundColor = primaryColor;
 
       if (dailyHoursEl) {
-        const avgPtDaily = (partTimeHours / 5).toFixed(1).replace(".", ",");
-        dailyHoursEl.textContent = `⌀ ${avgPtDaily} Stunden pro Tag (Teilzeit)`;
+        const avgPtDaily = partTimeHours / 5;
+        const formattedAvgDaily = formatOneDecimal(avgPtDaily);
+        const dailyHoursText =
+          formatTranslation("result_daily_hours", {
+            hours: formattedAvgDaily,
+          }) || `⌀ ${formattedAvgDaily} Stunden pro Tag (Teilzeit)`;
+        dailyHoursEl.textContent = dailyHoursText;
         dailyHoursEl.style.display = "block";
       }
     }

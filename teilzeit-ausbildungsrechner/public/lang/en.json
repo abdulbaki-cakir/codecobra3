@@ -80,6 +80,7 @@
   "result_parttime_copy": "Explanation of the part-time adjustment is shown here.",
   "result_parttime_detail_zero": "Reducing weekly hours from <strong>{full}h</strong> to <strong>{part}h</strong> leads to a minor extension of {grace} months that is often ignored in practice.",
   "result_parttime_detail_extend": "Reducing weekly hours from <strong>{full}h</strong> to <strong>{part}h</strong> for the remaining duration extends the training by <strong>{months} months</strong>.",
+  "result_daily_hours": "⌀ {hours} hours per day (part-time)",
   
   "result_early_title": "Note on early admission",
   "result_early_body": "Good performance can enable a shortening of 6 months. The application is made to the competent body (e.g. IHK/HWK) and is independent of the reasons calculated here.",
