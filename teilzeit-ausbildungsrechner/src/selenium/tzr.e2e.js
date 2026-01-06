@@ -45,13 +45,12 @@ export async function runTzrE2eTest() {
     await waitVisibleById(driver, 'step-2');
 
     // Beispiel-Auswahl: über 21, mittlere Reife, Praktikum; Rest "Nein"
+    await clickRadioByNameAndValue(driver, 'family-care-radio', '0');
     await clickRadioByNameAndValue(driver, 'age-radio', '12');
     await clickRadioByNameAndValue(driver, 'school-finish-radio', '6');
     await clickRadioByNameAndValue(driver, 'experience-radio', '12');
     await clickRadioByNameAndValue(driver, 'apprenticeship-radio', '0');
     await clickRadioByNameAndValue(driver, 'study-radio', '0');
-    await clickRadioByNameAndValue(driver, 'child-care-radio', '0');
-    await clickRadioByNameAndValue(driver, 'family-care-radio', '0');
 
     // Weiter zu Step 3
     await clickButtonById(driver, 'next-btn-2');

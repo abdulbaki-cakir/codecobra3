@@ -10,13 +10,19 @@
   --rc-dot-size: 10px;
   --rc-fg: #1f1f1f;
   --rc-fg-muted: #6a6a6a;
-  --rc-sep: rgba(185, 49, 55, 0.18);
+  --rc-sep: #e4e4e4;
   --rc-hover: rgba(185, 49, 55, 0.9);
   --rc-focus: 0 0 0 3px rgba(185, 49, 55, 0.25);
   --rc-shadow: 0 12px 24px rgba(185, 49, 55, 0.16);
   --rc-transition: 160ms ease;
   --calculator-input-bg: #ecd6d6;
   --bg-color: #fff;
+  --step-icon-bg: #fff;
+  --step-icon-border: #c5c5c5;
+  --step-icon-inactive-filter: grayscale(1) brightness(0.6);
+  --step-icon-active-bg: var(--primary);
+  --step-icon-active-border: var(--primary);
+  --step-icon-active-filter: brightness(0) invert(1);
 }
 
 #calculator-section .container {
@@ -28,7 +34,6 @@
   position: static;
   text-align: center;
   margin-bottom: 2rem;
-  margin-top: 3rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid #ddd;
   border: none !important;
@@ -58,28 +63,27 @@
 #calculator-section .progress-line-fill {
   content: "";
   position: absolute;
-  top: calc(1rem + 21px);
-  left: 0;
+  top: calc(1.2rem + 21px);
+  left: calc(100% / 6);
   height: 2px;
   z-index: 0;
   transition: width 0.4s ease-in-out;
 }
 #calculator-section .progress-line-bg {
-  background-color: rgba(185, 49, 55, 0.12);
-  width: 100%;
+  background-color: rgba(69, 69, 69, 0.12);
+  width: calc(100% * 2 / 3);
 }
 #calculator-section .progress-line-fill {
+  width: 0;
   background-color: var(--primary);
-  width: 0%;
 }
-
 #calculator-section .step {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   z-index: 1;
-  color: #a87376;
+  color: #5f5f5f;
   transition: color 0.4s ease-in-out;
   flex: 1;
 }
@@ -91,9 +95,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
+  background-color: #f2f2ff;
   border-radius: 50%;
-  border: 2px solid rgba(185, 49, 55, 0.25);
+  border: 1px solid var(--step-icon-border);
   padding: 10px;
   transition:
     background-color 0.4s ease-in-out,
@@ -103,28 +107,27 @@
   width: 24px;
   height: 24px;
   border-radius: 0;
-  filter: grayscale(0.2);
+  filter: var(--step-icon-inactive-filter);
   transition: filter 0.4s ease-in-out;
 }
 #calculator-section .step p {
   font-size: 0.8rem;
   white-space: nowrap;
-  background-color: var(--bg-color);
   padding: 0 5px;
 }
 #calculator-section .step.active p {
   color: var(--text-color);
 }
 #calculator-section .step.active .icon-step {
-  background-color: var(--primary);
-  border-color: var(--primary);
+  background-color: var(--step-icon-active-bg);
+  border-color: var(--step-icon-active-border);
 }
 #calculator-section .step.active .icon-step img {
-  filter: brightness(0) invert(1);
+  filter: var(--step-icon-active-filter);
 }
 #calculator-section .calculator-form {
   background: #fff;
-  border: 2px solid rgba(185, 49, 55, 0.18);
+  border: 1px solid #c5c5c5;
   border-radius: 28px;
   padding: 2.25rem 1.75rem;
   box-shadow: none;
@@ -145,14 +148,18 @@
   margin: 0 auto 1.5rem;
   position: relative;
 }
+#calculator-section .input-group:not(:last-of-type) {
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid #e4e4e4;
+}
 #calculator-section .input-container-nested {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   min-height: 50px;
-  background-color: var(--calculator-input-bg);
-  border: 1px solid rgba(185, 49, 55, 0.16);
+  background-color: transparent;
   border-radius: 50px;
   padding: 6px 6px 6px 1.5rem;
 }
@@ -164,6 +171,7 @@
   color: var(--text-color);
   font-size: 1rem;
   white-space: normal;
+  margin: 0;
 }
 #calculator-section .input-prefix .icon-inline,
 #calculator-section .radio-card-container .icon-inline {
@@ -184,7 +192,7 @@
   flex-shrink: 0;
   background-color: #fff;
   color: #1f1f1f;
-  border: none;
+  border: 1px solid #c5c5c5;
   outline: none;
   border-radius: 50px;
   font-size: 1.05rem;
@@ -224,13 +232,11 @@
   color: #1f1f1f;
   padding: 0.9rem 1rem;
   border-radius: 10px;
-  border: 1px solid rgba(185, 49, 55, 0.18);
+  border: 1px solid #c5c5c5;
   font-size: 0.92rem;
   line-height: 1.4;
   text-align: left;
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.25),
-    0 2px 10px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
   z-index: 10;
   overflow: visible;
   overflow-wrap: anywhere;
@@ -265,8 +271,11 @@
   gap: 1rem;
   margin-top: 3rem;
 }
+#step-1 .form-buttons .secondary {
+  display: none;
+}
 #calculator-section button {
-  padding: 0.6rem 1.25rem;
+  padding: 0.6rem 2.25rem;
   border-radius: 8px;
   border: 1px solid var(--primary);
   font-size: 1rem;
@@ -302,7 +311,7 @@
 #calculator-section button.secondary {
   background-color: #fff;
   color: var(--text-color);
-  border-color: var(--primary);
+  border-color: var(--text-color);
 }
 #calculator-section button.secondary:hover {
   background-color: var(--primary-soft);
@@ -313,15 +322,18 @@
   align-items: center;
   padding-top: 10px;
 }
+#calculator-section .radio-card-group:not(:last-of-type) {
+  border-bottom: 1px solid #e4e4e4;
+}
 
 #calculator-section .radio-card-container {
   width: 100%;
   background-color: var(--primary-soft);
   border-radius: var(--rc-radius);
-  padding: var(--rc-padding-y) var(--rc-padding-x);
+  padding: 0 var(--rc-padding-x);
   color: var(--rc-fg);
   box-shadow: none;
-  border: 1px solid rgba(185, 49, 55, 0.16);
+  border: none;
   backdrop-filter: saturate(120%) blur(1px);
 }
 
@@ -371,7 +383,7 @@
   display: inline-block;
   width: var(--rc-size);
   height: var(--rc-size);
-  border: var(--rc-stroke) solid var(--rc-fg);
+  border: var(--rc-stroke) solid #c5c5c5;
   border-radius: 50%;
   margin-right: 12px;
   position: relative;
@@ -494,7 +506,7 @@
     padding: 0;
   }
   #calculator-section {
-    padding: 7rem 1rem;
+    padding: 6rem 1rem;
   }
   #calculator-section .calculator-form {
     padding: 2rem 1rem;
@@ -597,12 +609,13 @@
 }
 
 .final-result-box {
-  background: #000;
+  background: var(--primary);
   color: #fff;
   padding: 1.5rem;
   border-radius: 12px;
   text-align: center;
   margin-bottom: 2.5rem;
+  box-shadow: 0 10px 24px rgba(185, 49, 55, 0.18);
 }
 
 .final-result-box .result-label {
@@ -783,7 +796,6 @@
   height: 24px;
   margin-right: 12px;
   opacity: 1;
-  filter: none;
 }
 #early-admission-box img.info-icon {
   width: 24px;
@@ -853,16 +865,216 @@
   width: 100%;
 }
 
-/* Der grüne Reset Button */
+/* Reset Button im Primär-Rot */
 #calculator-section button.reset-btn {
-  background-color: #64aba5;
-  color: #fff;
-  border-color: #64aba5;
+  background-color: #fff;
+  color: var(--primary);
+  border-color: var(--primary);
+  box-shadow: none;
 }
 
 /* Hover Effekt für den Reset Button */
 #calculator-section button.reset-btn:hover {
-  background-color: #218838;
-  border-color: #1e7e34;
+  background-color: rgba(185, 49, 55, 0.06);
+  border-color: var(--primary);
   transform: translateY(-1px);
 }
+
+#calculator-section button.reset-btn .reset-icon {
+  width: 18px;
+  height: 18px;
+  filter: invert(22%) sepia(89%) saturate(1618%) hue-rotate(340deg) brightness(92%) contrast(90%);
+}
+
+#calculator-section .calc-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  text-align: center;
+}
+#calculator-section .calc-top .nav-buttons {
+  grid-column: 1;
+  justify-self: center;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+#calculator-section .calc-top .header-text {
+  grid-column: 1;
+  margin-top: 2rem;
+  justify-self: center;
+  text-align: center;
+}
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+  margin-right: 0;
+  padding-right: 5px;
+}
+
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--primary);
+  color: #fff;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.nav-btn.active {
+  background-color: var(--primary-dark);
+  box-shadow: 0 0 0 2px var(--primary-soft);
+}
+
+.nav-btn svg {
+  fill: #fff;
+  width: 18px;
+  height: 18px;
+}
+
+/* --- Dropdown Styles --- */
+.language-selector {
+  position: relative;
+  display: inline-block;
+}
+
+.language-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background-color: #fff;
+  border: 1px solid #c5c5c5;
+  border-radius: 8px;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+  min-width: 160px;
+  z-index: 101;
+  padding: 5px 0;
+  overflow: hidden;
+}
+
+.language-dropdown.show {
+  display: block;
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+}
+
+.language-option:hover {
+  background-color: var(--primary-soft);
+}
+
+.language-option img {
+  width: 24px;
+  height: auto;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn .icon,
+.nav-btn .bi-book {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.nav-btn .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    max-height: 50px;
+  }
+  .nav-btn {
+    padding: 10px 15px;
+  }
+
+  .nav-buttons {
+    flex-shrink: 0;
+    padding-right: 5px;
+  }
+
+  .logo-link {
+    white-space: normal;
+    font-size: 20px;
+    line-height: 1.2;
+    max-width: 60%;
+    height: auto;
+    flex-shrink: 1;
+  }
+
+  .header-hidden {
+    transform: translateY(-100%);
+  }
+}
+
+@media (max-width: 450px) {
+    .logo {
+        width: 125px;
+        height: auto;
+        max-height: 50px;
+    }
+
+  .nav-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+}
+
+.nav-btn .nav-icon {
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 600px) {
+  #calculator-section .progress-container {
+    padding: 0.75rem 12px;
+    margin: 2.5rem auto;
+  }
+  #calculator-section .progress-line-bg,
+  #calculator-section .progress-line-fill {
+    left: calc(100% / 6);
+    width: calc(100% * 2 / 3);
+    top: calc(0.5rem + 25px);
+  }
+  #calculator-section .step .icon-step {
+    width: 44px;
+    height: 44px;
+    padding: 8px;
+  }
+  #calculator-section .step .icon-step img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+

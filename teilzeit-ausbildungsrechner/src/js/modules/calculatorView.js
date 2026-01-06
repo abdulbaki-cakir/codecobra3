@@ -6,6 +6,43 @@ import infoIcon from "../../assets/icons/information.svg";
 let myResultsChart = null;
 let lastRenderedResults = null;
 
+const DEFAULT_PRIMARY_COLOR = "#b93137";
+const DEFAULT_PRIMARY_RGB = { r: 185, g: 49, b: 55 };
+
+const getPrimaryColor = () => {
+  const value = getComputedStyle(document.documentElement).getPropertyValue(
+    "--primary",
+  );
+  return value ? value.trim() : DEFAULT_PRIMARY_COLOR;
+};
+
+const hexToRgb = (hex) => {
+  if (!hex) return DEFAULT_PRIMARY_RGB;
+  const normalized = hex.replace("#", "");
+  const full =
+    normalized.length === 3
+      ? normalized
+          .split("")
+          .map((c) => c + c)
+          .join("")
+      : normalized;
+
+  if (full.length !== 6) return DEFAULT_PRIMARY_RGB;
+  const intVal = parseInt(full, 16);
+  if (Number.isNaN(intVal)) return DEFAULT_PRIMARY_RGB;
+
+  return {
+    r: (intVal >> 16) & 255,
+    g: (intVal >> 8) & 255,
+    b: intVal & 255,
+  };
+};
+
+const getPrimaryRgba = (alpha = 1) => {
+  const { r, g, b } = hexToRgb(getPrimaryColor());
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+};
+
 const formatTranslation = (key, replacements = {}) => {
   const template = getTranslation(key);
   if (!template) return "";
@@ -14,6 +51,14 @@ const formatTranslation = (key, replacements = {}) => {
       ? replacements[k]
       : match,
   );
+};
+
+const formatOneDecimal = (value) => {
+  const lang = document.documentElement.getAttribute("lang") || "de";
+  return new Intl.NumberFormat(lang, {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  }).format(value);
 };
 
 /**
@@ -146,6 +191,7 @@ export const setupPartTimeSwitch = () => {
 function updateProgress(currentStep) {
   const progressLine = document.getElementById("progress-line");
   const progressSteps = document.querySelectorAll(".progress-container .step");
+  const trackFactor = 2 / 3; // visually align the line with the three step icons
 
   // Aktiven Status der Kreise setzen
   progressSteps.forEach((step) => {
@@ -153,14 +199,16 @@ function updateProgress(currentStep) {
     step.classList.toggle("active", stepNum <= currentStep);
   });
 
-  // Balkenbreite berechnen
-  let progressPercentage = 0;
-  if (currentStep === 1) progressPercentage = 20;
-  else if (currentStep === 2) progressPercentage = 50;
-  else progressPercentage = 100;
+  // Balkenbreite berechnen (0 -> 50 -> 100 bei drei Schritten)
+  const totalSteps = progressSteps.length || 1;
+  const clampedStep = Math.min(Math.max(currentStep, 1), totalSteps);
+  const relativeProgress =
+    totalSteps > 1 ? (clampedStep - 1) / (totalSteps - 1) : 0;
+  const progressPercentage = relativeProgress * 100;
 
   if (progressLine) {
-    progressLine.style.width = `${progressPercentage}%`;
+    const adjustedWidth = (progressPercentage * trackFactor).toFixed(2);
+    progressLine.style.width = `${adjustedWidth}%`;
   }
 }
 
@@ -190,6 +238,8 @@ export function renderResults(data) {
     maxAllowedTotalDuration,
   } = data;
 
+  const primaryColor = getPrimaryColor();
+
   // DOM-Elemente cachen
   const partTimeCard = document.querySelector(".part-time-card");
   const partTimeCardLeft = partTimeCard
@@ -200,8 +250,8 @@ export function renderResults(data) {
   const topErrorMsg = document.getElementById("global-cap-error");
 
   /* -----------------------------------------------------------
-       BEREITS GELEISTETE ZEIT (Vollzeit vor Teilzeit)
-    ----------------------------------------------------------- */
+         BEREITS GELEISTETE ZEIT (Vollzeit vor Teilzeit)
+      ----------------------------------------------------------- */
   const servedTimeCard = document.querySelector(".served-time-card");
   const servedTimeValue = document.getElementById("served-card-value");
   const servedTimeDetailsDiv = document.getElementById(
@@ -231,10 +281,11 @@ export function renderResults(data) {
   }
 
   /* -----------------------------------------------------------
-       VERKÜRZUNGSGRÜNDE (Liste generieren)
-    ----------------------------------------------------------- */
+         VERKÜRZUNGSGRÜNDE (Liste generieren)
+      ----------------------------------------------------------- */
   document.getElementById("original-duration-header").textContent =
-    `${originalDuration} Monate`;
+    formatTranslation("duration_months", { months: originalDuration });
+
   document.getElementById("shortening-card-value").textContent =
     officialShorteningMonths;
 
@@ -243,55 +294,76 @@ export function renderResults(data) {
   );
   detailedShorteningsDiv.innerHTML = ""; // Reset
 
-  const shorteningDetails = [...shorteningResult.details];
-// Workaround: Hauptschulabschluss explizit anzeigen, auch wenn er 0 Monate bringt
+  // 1. Array kopieren, um es zu manipulieren
+  let shorteningDetails = [...shorteningResult.details];
+
+  // 2. "Keinen der genannten" (-1 / reason_school_none) herausfiltern.
+  // Wir wollen diesen Eintrag NICHT in der Liste anzeigen.
+  shorteningDetails = shorteningDetails.filter(
+    (d) => d.translationKey !== "reason_school_none",
+  );
+
+  // 3. Hauptschulabschluss explizit prüfen und hinzufügen, falls er fehlt (0 Monate)
   const hasSchoolEntry = shorteningDetails.some(
-    (d) =>
-      d.reason.toLowerCase().includes("schulabschluss") ||
-      d.reason.toLowerCase().includes("hauptschule"),
+    (d) => d.translationKey === "reason_school_hauptschule",
   );
 
   if (!hasSchoolEntry) {
     const selectedRadio = document.querySelector(
       'input[name="school-finish-radio"]:checked',
     );
+
+    // Hier prüfen wir nur auf "0" (Hauptschule).
+    // "Keinen" ist jetzt "-1", fällt also hier durch.
     if (selectedRadio && selectedRadio.value === "0") {
-      // 0 = Hauptschule
-      const labelSpan = selectedRadio
-        .closest(".radio-card-option")
-        .querySelector(".radio-label");
-      const reasonText = labelSpan ? labelSpan.textContent.trim() : "";
-      if (reasonText === "Hauptschulabschluss") {
-        shorteningDetails.unshift({
-          reason: reasonText,
-          months: 0,
-          isVariable: false,
-        });
-      }
+      shorteningDetails.unshift({
+        translationKey: "reason_school_hauptschule",
+        reason: getTranslation("reason_school_hauptschule"), // Fallback
+        months: 0,
+        isVariable: false,
+      });
     }
   }
 
-  // Liste aufbauen
+  // 4. Liste aufbauen
   if (shorteningDetails.length > 0) {
     shorteningDetails.forEach((detail) => {
       const p = document.createElement("p");
       p.classList.add("detailed-shortening-item");
+
       const reasonLabel = detail.translationKey
         ? getTranslation(detail.translationKey) || detail.reason
         : detail.reason;
 
+      let text;
+
       if (detail.months === 0) {
-        p.innerHTML = `${reasonLabel}: <strong>0 Monate Verkürzung</strong>`;
+        // Dieser Fall tritt jetzt nur noch für Hauptschule (0) auf, nicht für Keinen (-1)
+        text = formatTranslation("shortening_zero", { reason: reasonLabel });
         p.style.color = "#555";
+      } else if (detail.isVariable) {
+        text = formatTranslation("shortening_variable", {
+          reason: reasonLabel,
+          months: detail.months,
+        });
       } else {
-        const prefix = detail.isVariable ? "bis zu " : "";
-        p.innerHTML = `${reasonLabel}: <strong>${prefix}${detail.months} Monate Verkürzung</strong>`;
+        text = formatTranslation("shortening_fixed", {
+          reason: reasonLabel,
+          months: detail.months,
+        });
       }
+
+      p.innerHTML = text;
       detailedShorteningsDiv.appendChild(p);
     });
   } else {
-    detailedShorteningsDiv.innerHTML =
-      '<p class="no-shortening-message">Keine Verkürzungsgründe ausgewählt.</p>';
+    // 5. Wenn Liste leer ist (z.B. User wählte "Keinen" -> Liste wurde oben geleert),
+    // zeige "Keine Verkürzung".
+    detailedShorteningsDiv.innerHTML = `
+      <p class="no-shortening-message">
+        ${getTranslation("shortening_none")}
+      </p>
+    `;
   }
 
   // Warnung, wenn Max-Verkürzung (Mindestdauer) erreicht wurde
@@ -306,19 +378,21 @@ export function renderResults(data) {
   }
 
   /* -----------------------------------------------------------
-       RESTDAUER & TEILZEIT-VERLÄNGERUNG
-    ----------------------------------------------------------- */
+         RESTDAUER & TEILZEIT-VERLÄNGERUNG
+      ----------------------------------------------------------- */
   const newFullTimeCard = document.querySelector(".new-full-time-card");
   if (newFullTimeCard) {
     newFullTimeCard.style.display = "flex";
     document.getElementById("new-full-time-card-value").textContent =
       remainingFullTimeEquivalent;
-    document.getElementById("detailed-new-full-time-card").innerHTML = `<p>${getTranslation("result_remaining_detail")}</p>`;
+    document.getElementById("detailed-new-full-time-card").innerHTML =
+      `<p>${getTranslation("result_remaining_detail")}</p>`;
   }
 
   // Falls Teilzeit gewählt wurde
   if (partTimeHoursAvailable) {
     if (partTimeCard) partTimeCard.style.display = "flex";
+    if (finalResultBox) finalResultBox.style.backgroundColor = primaryColor;
     document.getElementById("extension-card-value").textContent =
       finalExtensionMonths;
 
@@ -353,30 +427,36 @@ export function renderResults(data) {
     if (extensionCapWasHit) {
       if (topErrorMsg) {
         topErrorMsg.classList.remove("hidden");
-        topErrorMsg.innerHTML = `
-          <strong>⚠️ Achtung:</strong> Die Gesamtdauer darf höchstens um die Hälfte
-          der regulären Ausbildungsdauer verlängert werden (max. ${maxAllowedTotalDuration} Monate). <br />Lösung: Erhöhe die
-          Teilzeit-Stunden pro Woche.
-        `;
+        topErrorMsg.innerHTML = getTranslation("result_extension_cap").replace(
+          "{maxAllowedTotalDuration}",
+          maxAllowedTotalDuration,
+        );
       }
+
       // UI rot färben
-      if (partTimeCardLeft) partTimeCardLeft.style.backgroundColor = "#B93137";
-      if (finalResultBox) finalResultBox.style.backgroundColor = "#B93137";
+      if (partTimeCardLeft)
+        partTimeCardLeft.style.backgroundColor = primaryColor;
+      if (finalResultBox) finalResultBox.style.backgroundColor = primaryColor;
       if (dailyHoursEl) dailyHoursEl.style.display = "none";
     } else {
       // Alles OK
       if (topErrorMsg) topErrorMsg.classList.add("hidden");
       if (partTimeCardLeft) partTimeCardLeft.style.backgroundColor = "#1a1a1a";
-      if (finalResultBox) finalResultBox.style.backgroundColor = "#000";
+      if (finalResultBox) finalResultBox.style.backgroundColor = "#1a1a1a";
 
       if (dailyHoursEl) {
-        const avgPtDaily = (partTimeHours / 5).toFixed(1).replace(".", ",");
-        dailyHoursEl.textContent = `⌀ ${avgPtDaily} Stunden pro Tag (Teilzeit)`;
+        const avgPtDaily = partTimeHours / 5;
+        const formattedAvgDaily = formatOneDecimal(avgPtDaily);
+        const dailyHoursText =
+          formatTranslation("result_daily_hours", {
+            hours: formattedAvgDaily,
+          }) || `⌀ ${formattedAvgDaily} Stunden pro Tag (Teilzeit)`;
+        dailyHoursEl.textContent = dailyHoursText;
         dailyHoursEl.style.display = "block";
       }
     }
     document.getElementById("final-duration-result").textContent =
-      `${finalTotalDuration} Monate`;
+      `${finalTotalDuration} ${getTranslation("result_months")}`;
   } else {
     // Keine Teilzeit (Vollzeit-Berechnung)
     if (partTimeCard) partTimeCard.style.display = "none";
@@ -384,13 +464,13 @@ export function renderResults(data) {
       `${finalTotalDuration} Monate`;
     // Styles resetten
     if (partTimeCardLeft) partTimeCardLeft.style.backgroundColor = "#1a1a1a";
-    if (finalResultBox) finalResultBox.style.backgroundColor = "#000";
+    if (finalResultBox) finalResultBox.style.backgroundColor = primaryColor;
     if (dailyHoursEl) dailyHoursEl.style.display = "none";
   }
 
   /* -----------------------------------------------------------
-       HINWEIS-BOX: VORZEITIGE ZULASSUNG
-    ----------------------------------------------------------- */
+         HINWEIS-BOX: VORZEITIGE ZULASSUNG
+      ----------------------------------------------------------- */
   const existingEarlyBox = document.getElementById("early-admission-box");
   if (existingEarlyBox) existingEarlyBox.remove();
 
@@ -414,7 +494,8 @@ export function renderResults(data) {
     earlyTextBox.classList.add("info-box-text");
     const earlyInfoText = document.createElement("p");
     const earlyTitle =
-      getTranslation("result_early_title") || "Hinweis zur vorzeitigen Zulassung";
+      getTranslation("result_early_title") ||
+      "Hinweis zur vorzeitigen Zulassung";
     const earlyBody =
       getTranslation("result_early_body") ||
       "Gute Leistungen koennen eine Verkuerzung um 6 Monate ermoeglichen. Der Antrag erfolgt bei der zustaendigen Stelle (z. B. IHK/HWK) und ist unabhaengig von den hier berechneten Gruenden.";
@@ -430,66 +511,77 @@ export function renderResults(data) {
   }
 
   /* -----------------------------------------------------------
-       DIAGRAMM (Chart.js)
-    ----------------------------------------------------------- */
+         DIAGRAMM (Chart.js)
+      ----------------------------------------------------------- */
   const canvas = document.getElementById("results-chart");
-  if (canvas) {
-    if (typeof window.Chart !== "undefined") {
-      try {
-        const ctx = canvas.getContext("2d");
+  if (!canvas) return;
 
-        // Altes Chart löschen, sonst flackert es beim Hover
-        if (myResultsChart) myResultsChart.destroy();
+  if (typeof window.Chart === "undefined") {
+    console.warn("Chart.js ist nicht geladen.");
+    return;
+  }
 
-        // eslint-disable-next-line new-cap
-        myResultsChart = new window.Chart(ctx, {
-          type: "bar",
-          data: {
-            labels: [
-              ["Regulär", "(Vollzeit)"],
-              ["Verkürzt", "(Vollzeit)"],
-              ["Final", "(Teilzeit)"],
-            ],
-            datasets: [
-              {
-                label: "Dauer in Monaten",
-                data: [
-                  originalDuration,
-                  newFullTimeDuration,
-                  finalTotalDuration,
-                ],
-                backgroundColor: [
-                  "#6EC6C5",
-                  "#2A5D67",
-                  "rgba(15, 15, 15, 0.8)",
-                ],
-                borderColor: ["#6EC6C5", "#2A5D67", "rgba(15, 15, 15, 1)"],
-                borderWidth: 1,
-              },
-            ],
+  try {
+    const ctx = canvas.getContext("2d");
+
+    // Altes Chart löschen, sonst flackert es beim Hover
+    if (myResultsChart) myResultsChart.destroy();
+
+    const primaryShades = [
+      getPrimaryRgba(0.35),
+      getPrimaryRgba(0.6),
+      getPrimaryRgba(0.85),
+    ];
+    const primaryStroke = getPrimaryRgba(1);
+
+    myResultsChart = new window.Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: [
+          [
+            getTranslation("chart_label_regular"),
+            getTranslation("chart_label_fulltime"),
+          ],
+          [
+            getTranslation("chart_label_shortened"),
+            getTranslation("chart_label_fulltime"),
+          ],
+          [
+            getTranslation("chart_label_final"),
+            getTranslation("chart_label_parttime"),
+          ],
+        ],
+        datasets: [
+          {
+            label: getTranslation("chart_label_duration"),
+            data: [originalDuration, newFullTimeDuration, finalTotalDuration],
+            backgroundColor: primaryShades,
+            borderColor: [primaryStroke, primaryStroke, primaryStroke],
+            borderWidth: 1,
           },
-          options: {
-            animation: false,
-            responsive: true,
-            maintainAspectRatio: false, // Wichtig für responsive Canvas
-            plugins: {
-              legend: { display: false },
-              title: { display: true, text: "Ausbildungsdauer im Überblick" },
-            },
-            scales: {
-              y: {
-                beginAtZero: true,
-                title: { display: true, text: "Monate" },
-              },
-            },
+        ],
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: getTranslation("chart_title_overview"),
           },
-        });
-      } catch (error) {
-        console.error("Fehler beim Erstellen des Diagramms:", error);
-      }
-    } else {
-      console.warn("Chart.js ist nicht geladen.");
-    }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: getTranslation("chart_axis_months") },
+          },
+        },
+      },
+    });
+  } catch (error) {
+    console.error("Fehler beim Erstellen des Diagramms:", error);
   }
 }
 
@@ -537,9 +629,3 @@ onLanguageChange(() => {
     renderResults(lastRenderedResults);
   }
 });
-
-
-
-
-
-

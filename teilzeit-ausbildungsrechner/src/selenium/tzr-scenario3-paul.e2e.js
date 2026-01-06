@@ -58,9 +58,6 @@ export async function runScenarioPaul() {
     // Studium mit relevanten Kursen: Ja
     await clickRadioByNameAndValue(driver, 'study-radio', '12');
 
-    // Kinder: Nein
-    await clickRadioByNameAndValue(driver, 'child-care-radio', '0');
-
     // Pflege Angehörige (Großmutter): Ja
     await clickRadioByNameAndValue(driver, 'family-care-radio', '12');
 

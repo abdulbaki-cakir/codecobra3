@@ -1,11 +1,83 @@
 ﻿<!doctype html>
-<header>
-  <h1 data-translate-key="calc_title">Teilzeit-Ausbildungs&shy;rechner</h1>
-  <p data-translate-key="calc_intro" data-translate-mode="html">
-    Sie möchten Ihre Ausbildung in Teilzeit absolvieren?<br />
-    Dann sind Sie hier genau richtig.<br />
-    Finden Sie sofort heraus, wie lange Ihre Ausbildung in Teilzeit dauert.
-  </p>
+<header class="calc-top">
+  <div class="nav-buttons">
+    <div class="language-selector">
+      <a href="#" class="nav-btn" id="language-toggle">
+        <img
+          src="/src/assets/icons/globe.svg"
+          alt=""
+          aria-hidden="true"
+          class="icon nav-icon"
+        />
+        <span data-translate-key="nav_language_button">Deutsch</span>
+      </a>
+
+      <div class="language-dropdown" id="language-menu">
+        <a href="#" class="language-option">
+          <img src="/src/assets/icons/de.svg" alt="Deutsche Flagge" />
+          <span data-translate-key="nav_language_de">DE</span>
+        </a>
+        <a href="#" class="language-option">
+          <img src="/src/assets/icons/gb.svg" alt="Englische Flagge" />
+          <span data-translate-key="nav_language_en">EN</span>
+        </a>
+
+        <a href="#" class="language-option">
+          <img src="/src/assets/icons/tr.svg" alt="Türkische Flagge" />
+          <span data-translate-key="nav_language_tr">TR</span>
+        </a>
+        <a href="#" class="language-option">
+          <img src="/src/assets/icons/ua.svg" alt="Ukrainische Flagge" />
+          <span data-translate-key="nav_language_ua">UA</span>
+        </a>
+        <a href="#" class="language-option">
+          <img src="/src/assets/icons/ar.svg" alt="Arabische Flagge" />
+          <span data-translate-key="nav_language_ar">AR</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="language-selector">
+      <a href="#" class="nav-btn" id="easy-language-toggle">
+        <img
+          src="/src/assets/icons/book-alt.svg"
+          alt=""
+          aria-hidden="true"
+          class="icon nav-icon"
+        />
+        <span data-translate-key="nav_easy_language">Leichte Sprache</span>
+      </a>
+
+      <div
+        class="language-dropdown easy-language-dropdown"
+        id="easy-language-menu"
+      >
+        <div class="easy-language-control">
+          <span
+            class="easy-label"
+            data-translate-key="easy_language_toggle_label"
+            data-translate-mode="html"
+          >
+            Leichte Sprache<br />aktivieren
+          </span>
+
+          <label class="switch">
+            <input type="checkbox" id="easy-language-checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-text">
+    <h1 data-translate-key="calc_title">Teilzeit-Ausbildungs&shy;rechner</h1>
+
+    <p data-translate-key="calc_intro" data-translate-mode="html">
+      Sie möchten Ihre Ausbildung in Teilzeit absolvieren?<br />
+      Dann sind Sie hier genau richtig.<br />
+      Finden Sie sofort heraus, wie lange Ihre Ausbildung in Teilzeit dauert.
+    </p>
+  </div>
 </header>
 
 <div class="progress-container">
@@ -36,9 +108,9 @@
 
   <div class="input-group">
     <div class="input-container-nested">
-      <div class="input-prefix" data-translate-key="label_fulltime_hours">
+      <h4 class="input-prefix" data-translate-key="label_fulltime_hours">
         Wie viele Stunden pro Woche hat Ihre Ausbildung in Vollzeit?
-      </div>
+      </h4>
       <input
         type="number"
         id="vollzeitstunden"
@@ -46,7 +118,7 @@
         data-translate-key="placeholder_fulltime_hours"
         data-translate-attr="placeholder"
         min="35"
-        max="40"
+        max="48"
         step="0.5"
       />
     </div>
@@ -63,19 +135,19 @@
     </div>
     <div class="validation-popup" id="vollzeitstunden-error">
       <img
-        src="/src/assets/icons/time-quarter-to.svg"
-        alt=""
+        src="/src/assets/icons/exclamation.svg"
+        alt="Warnung"
         class="icon icon-warning"
       />
-      <span></span>
+      <span data-translate-key="error_fulltime_required"></span>
     </div>
   </div>
 
   <div class="input-group">
     <div class="input-container-nested">
-      <div class="input-prefix" data-translate-key="label_parttime_hours">
+      <h4 class="input-prefix" data-translate-key="label_parttime_hours">
         Wie viele Stunden möchten Sie pro Woche in Teilzeit arbeiten?
-      </div>
+      </h4>
       <input
         type="number"
         id="wochenstunden"
@@ -101,19 +173,19 @@
     </div>
     <div class="validation-popup" id="wochenstunden-error">
       <img
-        src="/src/assets/icons/time-quarter-to.svg"
-        alt=""
+        src="/src/assets/icons/exclamation.svg"
+        alt="Warnung"
         class="icon icon-warning"
       />
-      <span></span>
+      <span data-translate-key="error_parttime_required"></span>
     </div>
   </div>
 
   <div class="input-group">
     <div class="input-container-nested">
-      <div class="input-prefix" data-translate-key="label_training_duration">
+      <h4 class="input-prefix" data-translate-key="label_training_duration">
         Wie lange dauert Ihre Ausbildung in Vollzeit?
-      </div>
+      </h4>
       <select id="ausbildungsdauer">
         <option value="24">24</option>
         <option value="36" selected>36</option>
@@ -136,7 +208,7 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <h4 data-translate-key="question_parttime_start">
+        <h4 class="input-prefix" data-translate-key="question_parttime_start">
           Wie möchten Sie Ihre Ausbildung absolvieren?
         </h4>
       </div>
@@ -169,9 +241,9 @@
       ></div>
 
       <div class="input-container-nested hidden" id="vollzeit-monate-input">
-        <div class="input-prefix" data-translate-key="label_fulltime_months">
+        <h4 class="input-prefix" data-translate-key="label_fulltime_months">
           Monate in Vollzeit
-        </div>
+        </h4>
         <input
           type="number"
           id="vollzeit-monate"
@@ -184,11 +256,11 @@
       </div>
       <div class="validation-popup" id="vollzeit-monate-error">
         <img
-          src="/src/assets/icons/time-quarter-to.svg"
-          alt=""
+          src="/src/assets/icons/exclamation.svg"
+          alt="Warnung"
           class="icon icon-warning"
         />
-        <span></span>
+        <span data-translate-key="error_vollzeit_monate_required"></span>
       </div>
     </div>
     <div class="info-icon-wrapper">
@@ -235,7 +307,47 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <h4 data-translate-key="question_age">Sind Sie älter als 21?</h4>
+        <h4 data-translate-key="question_familycare">
+          Betreuen Sie derzeit ein Kind oder pflegen Sie einen
+          Familienangehörigen?
+        </h4>
+      </div>
+      <div class="radio-card-body">
+        <label class="radio-card-option">
+          <input type="radio" name="family-care-radio" value="0" checked />
+          <span class="radio-custom"></span
+          ><span class="radio-label" data-translate-key="answer_no">Nein</span>
+        </label>
+        <label class="radio-card-option">
+          <input type="radio" name="family-care-radio" value="12" />
+          <span class="radio-custom"></span
+          ><span class="radio-label" data-translate-key="answer_yes">Ja</span>
+        </label>
+      </div>
+    </div>
+    <div class="info-icon-wrapper">
+      <img
+        src="/src/assets/icons/information.svg"
+        alt=""
+        class="icon info-icon"
+      />
+      <div class="info-box" data-translate-key="info_familycare">
+        Pflegen Sie regelmäßig Angehörige (z. B. Eltern, Großeltern)? Das kann
+        für eine Teilzeit-Ausbildung berücksichtigt werden.
+      </div>
+    </div>
+    <select name="family-care" id="family-care-select" style="display: none">
+      <option value="0" selected>Nein</option>
+      <option value="12">Ja</option>
+    </select>
+  </div>
+
+  <div class="input-group radio-card-group">
+    <div class="radio-card-container">
+      <div class="radio-card-header">
+        <h4 data-translate-key="question_age">
+          Sind Sie zu Ausbildungsbeginn über 21 Jahre alt?
+        </h4>
       </div>
       <div class="radio-card-body">
         <label class="radio-card-option">
@@ -271,12 +383,12 @@
     <div class="radio-card-container">
       <div class="radio-card-header">
         <h4 data-translate-key="question_school">
-          Was ist Ihr höchster Schulabschluss?
+          Welchen Schulabschluss haben Sie?
         </h4>
       </div>
       <div class="radio-card-body">
         <label class="radio-card-option">
-          <input type="radio" name="school-finish-radio" value="0" checked />
+          <input type="radio" name="school-finish-radio" value="-1" checked />
           <span class="radio-custom"></span
           ><span class="radio-label" data-translate-key="option_school_none"
             >Keinen der genannten</span
@@ -326,46 +438,8 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
-        <h4 data-translate-key="question_experience">
-          Haben Sie schon erste relevante Berufserfahrungen gesammelt (z. B. in
-          einem Praktikum)?
-        </h4>
-      </div>
-      <div class="radio-card-body">
-        <label class="radio-card-option">
-          <input type="radio" name="experience-radio" value="0" checked />
-          <span class="radio-custom"></span
-          ><span class="radio-label" data-translate-key="answer_no">Nein</span>
-        </label>
-        <label class="radio-card-option">
-          <input type="radio" name="experience-radio" value="12" />
-          <span class="radio-custom"></span
-          ><span class="radio-label" data-translate-key="answer_yes">Ja</span>
-        </label>
-      </div>
-    </div>
-    <div class="info-icon-wrapper">
-      <img
-        src="/src/assets/icons/information.svg"
-        alt=""
-        class="icon info-icon"
-      />
-      <div class="info-box" data-translate-key="info_experience">
-        Relevante Praktika oder Jobs können angerechnet werden, wenn sie zum
-        Ausbildungsberuf passen.
-      </div>
-    </div>
-    <select name="experience" id="experience-select" style="display: none">
-      <option value="0" selected>Nein</option>
-      <option value="12">Ja</option>
-    </select>
-  </div>
-
-  <div class="input-group radio-card-group">
-    <div class="radio-card-container">
-      <div class="radio-card-header">
         <h4 data-translate-key="question_apprenticeship">
-          Haben Sie bereits eine relevante Ausbildung abgeschlossen?
+          Haben Sie eine abgeschlossene Berufsausbildung?
         </h4>
       </div>
       <div class="radio-card-body">
@@ -405,9 +479,47 @@
   <div class="input-group radio-card-group">
     <div class="radio-card-container">
       <div class="radio-card-header">
+        <h4 data-translate-key="question_experience">
+          Haben Sie eine fachlich passende beruflichen Grundbildung oder
+          Arbeitserfahrung?
+        </h4>
+      </div>
+      <div class="radio-card-body">
+        <label class="radio-card-option">
+          <input type="radio" name="experience-radio" value="0" checked />
+          <span class="radio-custom"></span
+          ><span class="radio-label" data-translate-key="answer_no">Nein</span>
+        </label>
+        <label class="radio-card-option">
+          <input type="radio" name="experience-radio" value="12" />
+          <span class="radio-custom"></span
+          ><span class="radio-label" data-translate-key="answer_yes">Ja</span>
+        </label>
+      </div>
+    </div>
+    <div class="info-icon-wrapper">
+      <img
+        src="/src/assets/icons/information.svg"
+        alt=""
+        class="icon info-icon"
+      />
+      <div class="info-box" data-translate-key="info_experience">
+        Relevante Praktika oder Jobs können angerechnet werden, wenn sie zum
+        Ausbildungsberuf passen.
+      </div>
+    </div>
+    <select name="experience" id="experience-select" style="display: none">
+      <option value="0" selected>Nein</option>
+      <option value="12">Ja</option>
+    </select>
+  </div>
+
+  <div class="input-group radio-card-group">
+    <div class="radio-card-container">
+      <div class="radio-card-header">
         <h4 data-translate-key="question_study">
-          Haben Sie im Studium Kurse belegt, die für die Ausbildung relevant
-          sind?
+          Haben Sie mindestens 30 ECTS-Punkte aus einer fachlich passenden
+          Hochschulausbildung?
         </h4>
       </div>
       <div class="radio-card-body">
@@ -435,80 +547,6 @@
       </div>
     </div>
     <select name="study" id="study-select" style="display: none">
-      <option value="0" selected>Nein</option>
-      <option value="12">Ja</option>
-    </select>
-  </div>
-
-  <div class="input-group radio-card-group">
-    <div class="radio-card-container">
-      <div class="radio-card-header">
-        <h4 data-translate-key="question_childcare">
-          Haben Sie Kinder, um die Sie sich kümmern?
-        </h4>
-      </div>
-      <div class="radio-card-body">
-        <label class="radio-card-option">
-          <input type="radio" name="child-care-radio" value="0" checked />
-          <span class="radio-custom"></span
-          ><span class="radio-label" data-translate-key="answer_no">Nein</span>
-        </label>
-        <label class="radio-card-option">
-          <input type="radio" name="child-care-radio" value="12" />
-          <span class="radio-custom"></span
-          ><span class="radio-label" data-translate-key="answer_yes">Ja</span>
-        </label>
-      </div>
-    </div>
-    <div class="info-icon-wrapper">
-      <img
-        src="/src/assets/icons/information.svg"
-        alt=""
-        class="icon info-icon"
-      />
-      <div class="info-box" data-translate-key="info_childcare">
-        Wenn Sie Kinder betreuen, kann die Kammer eher einer Teilzeit-Ausbildung
-        zustimmen oder die Dauer anpassen.
-      </div>
-    </div>
-    <select name="child-care" id="child-care-select" style="display: none">
-      <option value="0" selected>Nein</option>
-      <option value="12">Ja</option>
-    </select>
-  </div>
-
-  <div class="input-group radio-card-group">
-    <div class="radio-card-container">
-      <div class="radio-card-header">
-        <h4 data-translate-key="question_familycare">
-          Pflegen Sie Angehörige (z. B. Ihre Großeltern)?
-        </h4>
-      </div>
-      <div class="radio-card-body">
-        <label class="radio-card-option">
-          <input type="radio" name="family-care-radio" value="0" checked />
-          <span class="radio-custom"></span
-          ><span class="radio-label" data-translate-key="answer_no">Nein</span>
-        </label>
-        <label class="radio-card-option">
-          <input type="radio" name="family-care-radio" value="12" />
-          <span class="radio-custom"></span
-          ><span class="radio-label" data-translate-key="answer_yes">Ja</span>
-        </label>
-      </div>
-    </div>
-    <div class="info-icon-wrapper">
-      <img
-        src="/src/assets/icons/information.svg"
-        alt=""
-        class="icon info-icon"
-      />
-      <div class="info-box" data-translate-key="info_familycare">
-        Pflegen Sie regelmäßig Angehörige (z. B. Eltern, Großeltern)? Das kann
-        für eine Teilzeit-Ausbildung berücksichtigt werden.
-      </div>
-    </div>
-    <select name="family-care" id="family-care-select" style="display: none">
       <option value="0" selected>Nein</option>
       <option value="12">Ja</option>
     </select>
@@ -543,7 +581,12 @@
       <span class="result-label" data-translate-key="label_final_duration">
         Gesamtausbildungsdauer ab Beginn
       </span>
-      <span class="result-value" id="final-duration-result">-- Monate</span>
+      <span
+        data-translate-key="result_months"
+        class="result-value"
+        id="final-duration-result"
+        >-- Monate</span
+      >
       <span
         id="final-daily-hours"
         style="
@@ -579,7 +622,9 @@
               >geplante<br />Vollzeit-Phase</span
             >
             <span class="result-card-number" id="served-card-value">--</span>
-            <span class="result-card-unit">Monate</span>
+            <span data-translate-key="result_months" class="result-card-unit"
+              >Monate</span
+            >
           </div>
           <div class="result-card-right">
             <p class="result-card-header-info">
@@ -608,14 +653,20 @@
             <span class="result-card-number" id="shortening-card-value"
               >--</span
             >
-            <span class="result-card-unit">Monate</span>
+            <span data-translate-key="result_months" class="result-card-unit"
+              >Monate</span
+            >
           </div>
           <div class="result-card-right">
             <p class="result-card-header-info">
               <span data-translate-key="result_regular_duration_label">
                 Reguläre Dauer (Vollzeit):
               </span>
-              <strong id="original-duration-header">-- Monate</strong>
+              <strong
+                data-translate-key="original-duration-header"
+                id="original-duration-header"
+                >-- Monate</strong
+              >
             </p>
             <hr class="card-divider" />
             <div id="detailed-shortenings-card">
@@ -637,7 +688,9 @@
             <span class="result-card-number" id="new-full-time-card-value"
               >--</span
             >
-            <span class="result-card-unit">Monate</span>
+            <span data-translate-key="result_months" class="result-card-unit"
+              >Monate</span
+            >
           </div>
           <div class="result-card-right">
             <p class="result-card-header-info">
@@ -663,7 +716,9 @@
               >Verlängerung durch Teilzeit</span
             >
             <span class="result-card-number" id="extension-card-value">--</span>
-            <span class="result-card-unit">Monate</span>
+            <span data-translate-key="result_months" class="result-card-unit"
+              >Monate</span
+            >
           </div>
           <div class="result-card-right">
             <p class="result-card-header-info">
@@ -689,24 +744,47 @@
       Die Ergebnisse dienen lediglich zur Orientierung und begründen keinen
       Rechtsanspruch.
     </span>
+
     <br /><br />
     <span data-translate-key="disclaimer_more">
-      Eine detaillierte Erklärung zur Berechnung finden Sie auf unserer Seite
+      Eine detaillierte Erklärung zur Berechnung finden Sie auf:
     </span>
-    <a href="how-it-works.html" data-translate-key="link_how_it_works"
-      >So funktioniert's</a
+    <a
+      href="https://www.bibb.de/dokumente/pdf/HA174.pdf"
+      target="_blank"
+      rel="noopener"
     >
-    .
+      HA 174,
+    </a>
+    <a
+      href="https://www.bibb.de/dokumente/pdf/HA129.pdf"
+      target="_blank"
+      rel="noopener"
+    >
+      HA 129
+    </a>
   </p>
 
   <div class="form-buttons">
-    <button class="secondary" id="back-btn-3">Zurück</button>
-    <button class="primary pdf-btn">Als PDF ausdrucken</button>
+    <button data-translate-key="btn_back" class="secondary" id="back-btn-3">
+      Zurück
+    </button>
+    <button data-translate-key="btn_pdf" class="primary pdf-btn">
+      Als PDF ausdrucken
+    </button>
   </div>
 
   <div class="reset-container">
     <button class="reset-btn" onclick="window.location.href='index.html'">
-      Zurücksetzen
+      <img
+        src="/src/assets/icons/trash.svg"
+        alt=""
+        aria-hidden="true"
+        class="icon-inline reset-icon"
+      />
+      <span data-translate-key="btn_restart" class="reset-label"
+        >Zurücksetzen</span
+      >
     </button>
   </div>
 </main>

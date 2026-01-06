@@ -24,6 +24,7 @@ export function calculateShortening(selections, originalDuration) {
 
     let reasonText = "";
     let translationKey = "";
+    
     if (id === "school-finish") {
       const optionConfig = config.options[currentValue];
       reasonText = optionConfig?.text || "Schulabschluss";
@@ -34,7 +35,7 @@ export function calculateShortening(selections, originalDuration) {
     }
 
     const isVariable = config.isVariable || false;
-
+    
     const currentReason = {
       reason: reasonText,
       translationKey,

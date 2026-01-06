@@ -10,14 +10,14 @@ export const RULES = {
   reasons: {
     "age-select": {
       text: "Alter über 21 Jahre",
-      translationKey: "reason_age_over21",
+      translationKey: "reason_age",
       value: 12,
       isVariable: false, // Fest
     },
     "school-finish": {
       isVariable: false, // Fest
       options: {
-        0: {
+        "-1": {
           text: "Kein/Hauptschulabschluss",
           translationKey: "reason_school_none",
           value: 0,
@@ -36,7 +36,7 @@ export const RULES = {
     },
     "experience-select": {
       text: "Erste Berufserfahrung / EQ",
-      translationKey: "reason_experience_eq",
+      translationKey: "reason_experience",
       value: 12,
       isVariable: true, // Variabel
     },

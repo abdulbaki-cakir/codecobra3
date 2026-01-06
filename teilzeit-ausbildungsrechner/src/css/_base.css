@@ -4,8 +4,8 @@
 :root {
   --primary: #b93137;
   --primary-dark: #a02a2f;
-  --primary-soft: #ecd6d6;
-  --bg-color: #faf4f4;
+  --primary-soft: #fff;
+  --bg-color: #f2f2ff;
   --text-color: #1f1f1f;
   --text-light: #555;
   --primary-button-bg: var(--primary);
@@ -55,46 +55,6 @@ main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-}
-
-.content-section {
-  padding-top: 150px;
-  padding-bottom: 50px;
-  min-height: 50vh;
-}
-
-/* ==========================================================================
-    Datenschutz.html
-==========================================================================
-*/
-
-.content-section h2 {
-  margin-top: 2em;
-  margin-bottom: 1.5em;
-}
-
-.content-section h3 {
-  margin-top: 2em;
-  margin-bottom: 1em;
-}
-
-.content-section p {
-  margin-bottom: 1.5em;
-}
-
-.content-section ul {
-  margin-left: 20px;
-  padding-left: 1em;
-  margin-bottom: 1.5em;
-}
-
-.content-section li {
-  margin-bottom: 1em;
-}
-
-.content-section li:last-child,
-.content-section p:last-child {
-  margin-bottom: 0;
 }
 
 /* --- Toggle Switch CSS --- */

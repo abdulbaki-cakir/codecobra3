@@ -1,3 +1,5 @@
+import { getTranslation } from "./language";
+
 export function setupPdfExport() {
   const btn = document.querySelector(".pdf-btn");
   if (!btn) return;
@@ -17,9 +19,12 @@ export function setupPdfExport() {
               --------------------------------------------------------- */
     pdf.setFontSize(22);
     pdf.setFont("helvetica", "bold");
-    pdf.text("Ausbildungsrechner – Analysebericht", pageWidth / 2, y, {
-      align: "center",
-    });
+    pdf.text(
+      t("pdf_title", "Ausbildungsrechner – Analysebericht"),
+      pageWidth / 2,
+      y,
+      { align: "center" }
+    );
     y += 8;
 
     pdf.setLineWidth(0.5);
@@ -39,18 +44,38 @@ export function setupPdfExport() {
 
     pdf.setFontSize(16);
     pdf.setFont("helvetica", "bold");
-    pdf.text("Zusammenfassung", 15, y);
+    pdf.text(t("pdf_summary_heading", "Zusammenfassung"), 15, y);
+
     y += 10;
 
     pdf.setFontSize(12);
     pdf.setFont("helvetica", "normal");
-    pdf.text(`Gesamtausbildungsdauer: ${duration}`, 15, y);
+    pdf.text(
+      tp("pdf_summary_total", `Gesamtausbildungsdauer: ${duration}`, { duration }),
+      15,
+      y
+    );
     y += 6;
-    pdf.text(`Gesamte Verkürzung: ${shortening} Monate`, 15, y);
+
+    pdf.text(
+      tp("pdf_summary_shortening", `Gesamte Verkürzung: ${shortening} Monate`, { shortening }),
+      15,
+      y
+    );
     y += 6;
-    pdf.text(`Restdauer nach Verkürzung: ${remaining} Monate`, 15, y);
+
+    pdf.text(
+      tp("pdf_summary_remaining", `Restdauer nach Verkürzung: ${remaining} Monate`, { remaining }),
+      15,
+      y
+    );
     y += 6;
-    pdf.text(`Verlängerung durch Teilzeit: ${extension} Monate`, 15, y);
+
+    pdf.text(
+      tp("pdf_summary_extension", `Verlängerung durch Teilzeit: ${extension} Monate`, { extension }),
+      15,
+      y
+    );
     y += 10;
 
     pdf.line(15, y, pageWidth - 15, y); // Trennlinie
@@ -58,7 +83,7 @@ export function setupPdfExport() {
 
     pdf.setFont("helvetica", "bold");
     pdf.setFontSize(16);
-    pdf.text("Detaillierte Erklärung", 15, y);
+    pdf.text(t("pdf_details_heading", "Detaillierte Erklärung"), 15, y);
     y += 10;
 
     const detailCards = detailsWrapper.querySelectorAll(".result-card");
@@ -106,7 +131,8 @@ export function setupPdfExport() {
 
       pdf.setFont("helvetica", "bold");
       pdf.setFontSize(16);
-      pdf.text("Grafische Übersicht", 15, y);
+      pdf.text(t("pdf_chart_heading", "Grafische Übersicht"), 15, y);
+
       y += 10;
 
       const chartIMG = chartCanvas.toDataURL("image/png", 1.0);
@@ -129,11 +155,15 @@ export function setupPdfExport() {
               --------------------------------------------------------- */
     pdf.setFontSize(10);
     pdf.text(
-      "Hinweis: Diese Berechnung dient der Orientierung und stellt keine Rechtsberatung dar.",
+      t(
+        "pdf_footer_note",
+        "Hinweis: Diese Berechnung dient der Orientierung und stellt keine Rechtsberatung dar."
+      ),
       pageWidth / 2,
       290,
-      { align: "center" },
+      { align: "center" }
     );
+
 
     // 5a) PDF als Blob generieren
     const pdfBlob = pdf.output("blob");
@@ -148,4 +178,18 @@ export function setupPdfExport() {
     // (Der Browser kümmert sich meist selbst darum, aber es ist guter Stil)
     setTimeout(() => URL.revokeObjectURL(pdfUrl), 10000);
   });
+}
+function t(key, fallback = "") {
+  const v = getTranslation(key);
+  return v && v.trim() ? v : fallback;
+}
+function tp(key, template, params = {}) {
+  let v = getTranslation(key);
+  if (!v || !v.trim()) {
+    v = template;
+  }
+  for (const [k, val] of Object.entries(params)) {
+    v = v.replaceAll(`{${k}}`, String(val));
+  }
+  return v;
 }

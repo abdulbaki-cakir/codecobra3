@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "test:selenium:tzr": "node src/selenium/tzr.e2e.js",
     "test:selenium:lisa": "node src/selenium/tzr-scenario1-lisa.e2e.js",
     "test:selenium:lukas": "node src/selenium/tzr-scenario2-lukas.e2e.js",
@@ -33,6 +34,7 @@
     "glob": "^11.0.3",
     "htmlhint": "^1.0.0",
     "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
     "prettier": "^3.6.2",
     "selenium-webdriver": "^4.39.0",
     "stylelint": "^15.0.0",

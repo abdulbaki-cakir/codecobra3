@@ -49,6 +49,8 @@ export async function runScenarioLukas() {
     // Sicherstellen, dass Step 2 sichtbar ist
     await waitVisibleById(driver, 'step-2');
 
+    // Keine Pflege von Angehörigen oder Kindern
+    await clickRadioByNameAndValue(driver, 'family-care-radio', '0');
     // Lukas ist 19 → nicht über 21
     await clickRadioByNameAndValue(driver, 'age-radio', '0');
 
@@ -63,12 +65,6 @@ export async function runScenarioLukas() {
 
     // Kein Studium (im Szenario nicht vorhanden)
     await clickRadioByNameAndValue(driver, 'study-radio', '0');
-
-    // Keine Kinder
-    await clickRadioByNameAndValue(driver, 'child-care-radio', '0');
-
-    // Keine Pflege von Angehörigen
-    await clickRadioByNameAndValue(driver, 'family-care-radio', '0');
 
     // Wechsel zu Step 3
     await clickButtonById(driver, 'next-btn-2');

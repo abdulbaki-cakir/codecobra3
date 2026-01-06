@@ -10,3 +10,6 @@ dist/
 
 # Systemdateien
 .DS_Store
+
+# Jest / Test Coverage
+coverage/

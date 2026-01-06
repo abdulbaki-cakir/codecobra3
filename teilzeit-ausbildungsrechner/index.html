@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-translate-key="page_title">Teilzeit-Ausbildungsrechner</title>
+    <link rel="icon" type="image/png" href="/images/Logo%20Favicon.png" />
 
     <!-- html2canvas (für PDF-Screenshot) -->
     <script src="/js/html2canvas.min.js"></script>
@@ -15,25 +16,27 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="/src/css/_base.css" />
-    <link rel="stylesheet" href="/src/css/_header.css" />
     <link rel="stylesheet" href="/src/css/_calculator.css" />
-    <link rel="stylesheet" href="/src/css/_footer.css" />
     <link rel="stylesheet" href="/src/css/_input-validation.css" />
+    <script>
+      // Mark page when loaded inside an iframe to allow conditional styling
+      try {
+        if (window.self !== window.top) {
+          document.documentElement.classList.add("is-embedded");
+        }
+      } catch (err) {
+        document.documentElement.classList.add("is-embedded");
+      }
+    </script>
   </head>
 
   <body>
-    <!-- Header -->
-    <div>{{> _header }}</div>
 
     <main>
       <section id="calculator-section">
         <div class="container">{{> _rechner-formular }}</div>
       </section>
     </main>
-
-    <!-- Footer -->
-    <div>{{> _footer }}</div>
-
     <!-- Main Script (ES Module) -->
     <script src="/src/js/main.js" type="module"></script>
   </body>

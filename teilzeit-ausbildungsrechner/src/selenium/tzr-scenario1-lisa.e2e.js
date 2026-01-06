@@ -47,6 +47,9 @@ export async function runScenarioLisa() {
     // Sicherstellen, dass Step 2 sichtbar ist
     await waitVisibleById(driver, 'step-2');
 
+    // Keine Pflege von Angehörigen oder Kindern
+    await clickRadioByNameAndValue(driver, 'family-care-radio', '0');
+
     // Alter über 21 Jahre
     await clickRadioByNameAndValue(driver, 'age-radio', '12');
 
@@ -61,12 +64,6 @@ export async function runScenarioLisa() {
 
     // Kein Studium
     await clickRadioByNameAndValue(driver, 'study-radio', '0');
-
-    // Kind vorhanden → relevante Betreuungspflichten
-    await clickRadioByNameAndValue(driver, 'child-care-radio', '12');
-
-    // Keine Pflege von Angehörigen
-    await clickRadioByNameAndValue(driver, 'family-care-radio', '0');
 
     // Wechsel zu Step 3
     await clickButtonById(driver, 'next-btn-2');

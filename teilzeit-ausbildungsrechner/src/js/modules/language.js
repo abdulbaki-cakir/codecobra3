@@ -190,3 +190,11 @@ export function initializeLanguageSwitcher() {
     }
   });
 }
+  // --- Test/Bootstrap helper (no fetch required) ---
+export function __setTranslationsForTests(lang, translations) {
+  loadedLanguages[lang] = translations || {};
+  currentLanguage = lang;
+  currentTranslations = loadedLanguages[lang];
+}
+
+
