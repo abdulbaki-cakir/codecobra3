@@ -46,6 +46,8 @@ export async function runScenarioMarie() {
     console.log('Step 2: Verkürzungsfaktoren setzen');
     await waitVisibleById(driver, 'step-2');
 
+    // Pflege Angehörige (Mutter)
+    await clickRadioByNameAndValue(driver, 'family-care-radio', '12');
     // Marie ist 28 → über 21
     await clickRadioByNameAndValue(driver, 'age-radio', '12');
 
@@ -60,12 +62,6 @@ export async function runScenarioMarie() {
 
     // Kein Studium
     await clickRadioByNameAndValue(driver, 'study-radio', '0');
-
-    // Kind vorhanden
-    await clickRadioByNameAndValue(driver, 'child-care-radio', '12');
-
-    // Pflege Angehörige (Mutter)
-    await clickRadioByNameAndValue(driver, 'family-care-radio', '12');
 
     // Weiter zu Step 3
     await clickButtonById(driver, 'next-btn-2');
