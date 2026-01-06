@@ -963,7 +963,7 @@
 
 /* 1. GRUNDZUSTAND (Inaktiv): Weiß, Rot, Roter Rand */
 .nav-btn.btn-white {
-  background-color: #ffffff;
+  background-color: #fff;
   color: var(--primary);
   border-color: var(--primary-dark);
 }
@@ -990,12 +990,12 @@
 /* 3. AKTIV ZUSTAND (Eingeschaltet): Rot, Weiß, Puls */
 .nav-btn.btn-white.active {
   background-color: var(--primary);
-  color: #ffffff;
+  color: #fff;
   border-color: var(--primary-dark);
   box-shadow: 0 0 0 2px rgba(185, 49, 55, 0.15);
 
   /* WICHTIG: KEIN 'forwards' hier, damit die Transform-Eigenschaft nach 0.3s wieder frei ist */
-  animation: subtlePulse 0.3s ease-out;
+  animation: subtle-pulse 0.3s ease-out;
 }
 /* Icon weiß färben */
 .nav-btn.btn-white.active .nav-icon {
@@ -1006,7 +1006,6 @@
 .nav-btn.btn-white.active:hover {
   background-color: var(--primary-dark);
   border-color: var(--primary-dark);
-
   /* !important erzwingt das Schweben, auch wenn Animationen noch laufen */
   transform: translateY(-2px) !important;
   transition:
@@ -1015,7 +1014,7 @@
 }
 
 /* --- ANIMATION DEFINITION --- */
-@keyframes subtlePulse {
+@keyframes subtle-pulse {
   0% {
     transform: scale(1);
   }
