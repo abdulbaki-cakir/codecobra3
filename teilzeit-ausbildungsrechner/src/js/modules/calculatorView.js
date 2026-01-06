@@ -442,7 +442,7 @@ export function renderResults(data) {
       // Alles OK
       if (topErrorMsg) topErrorMsg.classList.add("hidden");
       if (partTimeCardLeft) partTimeCardLeft.style.backgroundColor = "#1a1a1a";
-      if (finalResultBox) finalResultBox.style.backgroundColor = primaryColor;
+      if (finalResultBox) finalResultBox.style.backgroundColor = "#1a1a1a";
 
       if (dailyHoursEl) {
         const avgPtDaily = partTimeHours / 5;
