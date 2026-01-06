@@ -85,10 +85,9 @@
 
   "result_early_title": "Hinweis zur vorzeitigen Zulassung zur Prüfung",
   "result_early_body": "Gute Leistungen können eine Verkürzung um 6 Monate ermöglichen. Der Antrag erfolgt bei der zuständigen Stelle (z. B. IHK/HWK) und ist unabhängig von den hier berechneten Gründen.",
-
   "disclaimer_intro": "Bitte beachten Sie:",
   "disclaimer_text": "Die Ergebnisse dienen lediglich zur Orientierung und begründen keinen Rechtsanspruch.",
-  "disclaimer_more": "Die endgültige Entscheidung trifft immer die zuständige Stelle (z. B. IHK, HWK). Für eine verbindliche Auskunft wenden Sie sich bitte an Ihre Kammer oder Beratungsstellen wie die Agentur für Arbeit.",
+  "disclaimer_more": "Eine detaillierte Erklärung zur Berechnung finden Sie hier: ",
   "result_extension_cap": "<strong>⚠️ Achtung:</strong> Die Gesamtdauer darf höchstens um die Hälfte der regulären Ausbildungsdauer verlängert werden (max. {maxAllowedTotalDuration} Monate). <br />Lösung: Erhöhe die Teilzeit-Stunden pro Woche.",
 
   "btn_pdf": "Als PDF ausdrucken",
