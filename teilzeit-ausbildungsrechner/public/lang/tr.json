@@ -22,7 +22,7 @@
   "label_parttime_hours": "Yarı zamanlı olarak haftada kaç saat çalışmak istiyorsunuz?",
   "placeholder_parttime_hours": "20",
   "info_parttime_hours": "Lütfen haftada kaç saat yarı zamanlı çalışmak istediğinizi buraya girin. Böylece hesaplayıcı, eğitiminizin ne kadar uzayacağını görür.",
-  "label_training_duration": "Eğitiminiz tam zamanlı olarak ne kadar sürüyor?",
+  "label_training_duration": "Tam zamanlı eğitiminiz kaç ay sürüyor?",
   "info_training_duration": "Lütfen eğitiminizin olağan tam zamanlı toplam süresini seçin (örneğin sözleşmeye göre 24, 36 veya 42 ay).",
   "question_parttime_start": "Eğitiminizi nasıl tamamlamak istiyorsunuz?",
   "option_parttime_direct": "<strong>Doğrudan yarı zamanlı</strong> başlıyorum",
