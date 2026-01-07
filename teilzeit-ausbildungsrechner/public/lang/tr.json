@@ -20,7 +20,7 @@
   "placeholder_fulltime_hours": "40",
   "info_fulltime_hours": "Lütfen şirketinizin sözleşmedeki tam zamanlı çalışma saatini girin (genellikle 38-40). Hesaplayıcı, yarı zamanlı yüzdenizi buna göre hesaplar.",
   "label_parttime_hours": "Yarı zamanlı olarak haftada kaç saat çalışmak istiyorsunuz?",
-  "placeholder_parttime_hours": "20",
+  "placeholder_parttime_hours": "30",
   "info_parttime_hours": "Lütfen haftada kaç saat yarı zamanlı çalışmak istediğinizi buraya girin. Böylece hesaplayıcı, eğitiminizin ne kadar uzayacağını görür.",
   "label_training_duration": "Tam zamanlı eğitiminiz kaç ay sürüyor?",
   "info_training_duration": "Lütfen eğitiminizin olağan tam zamanlı toplam süresini seçin (örneğin sözleşmeye göre 24, 36 veya 42 ay).",

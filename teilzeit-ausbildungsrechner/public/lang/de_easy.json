@@ -17,7 +17,7 @@
   "placeholder_fulltime_hours": "40",
   "info_fulltime_hours": "Tragen Sie hier die Stunden aus Ihrem Vertrag ein. Meist sind es 38 bis 40 Stunden.",
   "label_parttime_hours": "Wie viele Stunden möchten Sie pro Woche arbeiten?",
-  "placeholder_parttime_hours": "20",
+  "placeholder_parttime_hours": "30",
   "info_parttime_hours": "Tragen Sie hier ein, wie viele Stunden pro Woche Sie arbeiten wollen.",
   "label_training_duration": "Wie lange dauert die Ausbildung (Monate)?",
   "info_training_duration": "Bitte wählen Sie die übliche Vollzeit-Gesamtdauer Ihrer Ausbildung (z. B. laut Vertrag 24, 36 oder 42 Monate).",

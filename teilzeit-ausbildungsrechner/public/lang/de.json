@@ -17,7 +17,7 @@
   "placeholder_fulltime_hours": "40",
   "info_fulltime_hours": "Bitte geben Sie hier die vertraglichen Vollzeitstunden Ihrer Firma ein (meist 38-40). Damit berechnet der Rechner Ihren Teilzeit-Prozentsatz.",
   "label_parttime_hours": "Wie viele Stunden pro Woche möchten Sie in Teilzeit arbeiten?",
-  "placeholder_parttime_hours": "20",
+  "placeholder_parttime_hours": "30",
   "info_parttime_hours": "Bitte tragen Sie hier ein, wie viele Stunden Sie pro Woche in Teilzeit arbeiten wollen. So sieht der Rechner, wie stark sich Ihre Ausbildung verlängert.",
   "label_training_duration": "Wie viele Monate dauert Ihre Ausbildung in Vollzeit?",
   "info_training_duration": "Bitte wählen Sie die übliche Vollzeit-Gesamtdauer Ihrer Ausbildung (z. B. laut Vertrag 24, 36 oder 42 Monate).",

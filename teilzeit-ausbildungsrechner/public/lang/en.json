@@ -17,7 +17,7 @@
   "placeholder_fulltime_hours": "40",
   "info_fulltime_hours": "Please enter the contractual full-time hours of your company here (usually 38-40). The calculator will use this to calculate your part-time percentage.",
   "label_parttime_hours": "How many hours per week would you like to work part-time?",
-  "placeholder_parttime_hours": "20",
+  "placeholder_parttime_hours": "30",
   "info_parttime_hours": "Please enter here how many hours per week you want to work part-time. This allows the calculator to see how much your training will be extended.",
   "label_training_duration": "How many months does your full-time training last?",
   "info_training_duration": "Please select the usual full-time duration of your training (e.g., 24, 36, or 42 months according to your contract).",
