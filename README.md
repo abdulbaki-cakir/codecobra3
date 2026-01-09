@@ -84,13 +84,14 @@ Die Anwendung kann als iFrame in andere Seiten eingebettet werden. Im ausgeliefe
 
 ```html
 <iframe
-  src="https://codecobra3.vercel.app/embed.html"
+  src="https://IHRE-DOMAIN.de/embed.html"
   style="border:0;width:100%;min-height:1480px;"
   loading="lazy"
   allowfullscreen
 ></iframe>
 ```
 
+ #### Hinweis: Ersetzen Sie die URL durch die Domain, auf der Sie den Teilzeit-Ausbildungsrechner hosten.
 - Bei lokalem Dev-Server: `src` auf `http://localhost:5173/embed.html` setzen.
 - Bei Docker/Nginx: `src` auf `http://localhost:8080/embed.html` setzen.
 - Hoehe/Breite nach Bedarf anpassen, ggf. `min-height` erhohen, damit das Formular ohne Scrollen sichtbar ist.
