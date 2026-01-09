@@ -59,17 +59,18 @@ selenium-test-job:
   <<: *setup
   stage: test
   image: node:20
+  
+  dependencies:
+    - build-job
+
   services:
     - name: selenium/standalone-chrome:4.25.0
       alias: selenium
 
   variables:
     SELENIUM_REMOTE_URL: "http://selenium:4444/wd/hub"
-  
+   
   script:
-    - echo "Baue Projekt für Selenium-E2E..."
-    - npm run build
-
     - echo "Starte Vite Preview auf Port 4173..."
     - npx vite preview --host 0.0.0.0 --port 4173 &
 
