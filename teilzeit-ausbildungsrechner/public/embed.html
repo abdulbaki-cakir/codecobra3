@@ -5,38 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Teilzeit-Ausbildungsrechner – Einbettung</title>
     <style>
-      /* 1. Reset für HTML und Body */
       html,
       body {
         margin: 0;
-        padding: 0;
-        width: 100%;
         height: 100%;
-        
-        /* 2. HINTERGRUND AUF BODY SETZEN 
-           Das löst das Problem mit dem weißen Bereich beim Rauszoomen.
-           Egal wie groß der Screen ist, er bleibt immer in deiner Farbe. */
-        background-color: #f6f7fb; 
-
-        /* 3. SCROLLBARS VERSTECKEN
-           Wir verhindern, dass DIESE Datei Scrollbars erzeugt. 
-           Gescrollt wird nur im inneren index.html oder auf der Kundenseite. */
-        overflow: hidden; 
       }
 
       .frame-container {
         width: 100%;
         height: 100%;
-        /* Flexbox sorgt dafür, dass der innere iFrame wirklich alles ausfüllt */
-        display: flex; 
-        flex-direction: column;
+        background: #f6f7fb;
       }
 
       iframe {
         width: 100%;
-        height: 100%; /* Füllt den container komplett aus */
+        height: 100%;
         border: 0;
-        display: block; /* Entfernt mysteriöse Lücken am unteren Rand */
       }
     </style>
   </head>
