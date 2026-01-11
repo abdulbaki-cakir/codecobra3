@@ -1,6 +1,6 @@
 import { resetVollzeitMonateValidation } from "./input-validation.js";
 import { getTranslation, onLanguageChange } from "./language.js";
-import infoIcon from "../../assets/icons/information.svg";
+import infoIcon from "../../assets/icons/info-circle-fill.svg";
 
 // Globaler Chart-State, damit wir das Diagramm beim Neu-Rendern zerstören können
 let myResultsChart = null;
