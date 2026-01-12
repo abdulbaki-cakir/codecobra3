@@ -12,7 +12,7 @@
   "calc_title": "Yarı Zamanlı Mesleki Eğitim Hesaplayıcısı",
   "calc_intro": "Mesleki eğitiminizi yarı zamanlı olarak mı yapmak istiyorsunuz?<br />O zaman doğru yerdesiniz.<br />Eğitiminizin yarı zamanlı olarak ne kadar süreceğini hemen öğrenin.",
   "progress_start": "Başlangıç",
-  "progress_adjust": "Süreyi uyarla",
+  "progress_adjust": "Kısaltma kontrolü",
   "progress_results": "Sonuçlar",
 
   "step1_title": "1. Temel Veriler",
