@@ -6,7 +6,7 @@ stages:
 # --- VORLAGE FÜR NODE-JOBS ---
 
 .setup-template: &setup
-  image: node:20-alpine
+  image: node:24-alpine
   cache:
     key:
       files:
@@ -58,7 +58,7 @@ unit-test-job:
 selenium-test-job:
   <<: *setup
   stage: test
-  image: node:20
+  image: node:24
   
   dependencies:
     - build-job
