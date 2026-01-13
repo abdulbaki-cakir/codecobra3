@@ -271,8 +271,9 @@ export function renderResults(data) {
         noteElement.classList.add("cap-message");
         servedTimeDetailsDiv.appendChild(noteElement);
       }
-      noteElement.innerHTML =
-        "<i><strong>Hinweis: Dies ist keine Verkürzung, sondern geleistete Zeit.</strong></i>";
+
+      noteElement.innerHTML = `<i><strong>${getTranslation("note_served_time_not_shortening")}</strong></i>`;
+
       noteElement.style.display = "block";
     } else {
       servedTimeCard.style.display = "none";

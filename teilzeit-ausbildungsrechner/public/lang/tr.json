@@ -9,6 +9,8 @@
   "nav_easy_language": "Leichte Sprache",
   "easy_language_toggle_label": "Kolay Dili<br />etkinleştir",
 
+  "note_served_time_not_shortening": "Not: Bu bir kısaltma değil, tamamlanmış süredir.",
+
   "confirm_reset_message": "Hesaplayıcıyı gerçekten sıfırlamak istiyor musunuz? Girdiğiniz tüm veriler kaybolacaktır.",
 
   "calc_title": "Yarı Zamanlı Mesleki Eğitim Hesaplayıcısı",
