@@ -31,7 +31,6 @@ export function initializeCalculator() {
   View.linkRadiosToSelect("experience-radio", "experience-select");
   View.linkRadiosToSelect("apprenticeship-radio", "apprenticeship-select");
   View.linkRadiosToSelect("study-radio", "study-select");
-  // Falls "child-care" im HTML existiert (im vorherigen Code war es family-care, hier ist beides sicherheitshalber):
   View.linkRadiosToSelect("child-care-radio", "child-care-select");
   View.linkRadiosToSelect("family-care-radio", "family-care-select");
 
@@ -92,7 +91,7 @@ export function initializeCalculator() {
   View.setupPartTimeSwitch();
 
   // --- Live-Validierung (Blur & Enter Events) ---
-  setupLiveValidation(); // (Code ausgelagert in Helper unten für Lesbarkeit)
+  setupLiveValidation();
 
   // Global: Toggle-Logik für Details aktivieren
   setupDetailsToggle();
@@ -172,7 +171,7 @@ function setupResetButton() {
   const resetBtn = document.getElementById("reset-btn");
 
   if (resetBtn) {
-    resetBtn.onclick = null; // Entfernt inline onclicks, falls vorhanden
+    resetBtn.onclick = null;
 
     resetBtn.addEventListener("click", (e) => {
       e.preventDefault();
@@ -186,8 +185,6 @@ function setupResetButton() {
 
       // 3. Wenn Element da ist, nimm den Textinhalt und SÄUBERE ihn
       if (msgElement && msgElement.textContent.trim() !== "") {
-        // .replace(/\s+/g, ' ') -> Ersetzt alle Zeilenumbrüche und Tabulatoren durch ein einzelnes Leerzeichen
-        // .trim() -> Entfernt Leerzeichen ganz am Anfang und Ende
         message = msgElement.textContent.replace(/\s+/g, " ").trim();
       }
 
@@ -217,10 +214,9 @@ function resetCalculator() {
 
   // 3. Selects auf Standard setzen
   const dauerSelect = document.getElementById("ausbildungsdauer");
-  if (dauerSelect) dauerSelect.value = "36"; // Standardwert
+  if (dauerSelect) dauerSelect.value = "36";
 
   // 4. Radio Groups auf erste Option (Index 0) zurücksetzen
-  // Diese Liste muss mit den 'name'-Attributen im HTML übereinstimmen
   const radioGroups = [
     "part-time-start-radio",
     "family-care-radio",
@@ -235,7 +231,6 @@ function resetCalculator() {
     const radios = document.getElementsByName(name);
     if (radios.length > 0) {
       radios[0].checked = true;
-      // Event triggern, damit versteckte Inputs/Selects aktualisiert werden (via View.linkRadiosToSelect)
       radios[0].dispatchEvent(new Event("change"));
     }
   });
@@ -244,6 +239,7 @@ function resetCalculator() {
   const warnings = document.querySelectorAll(".validation-popup");
   warnings.forEach((el) => (el.style.display = "none"));
 
+  // 6. UI-Spezifika zurücksetzen (Versteckter Vollzeit-Input)
   const vollzeitMonateContainer = document.getElementById(
     "vollzeit-monate-input",
   );
@@ -251,9 +247,10 @@ function resetCalculator() {
   if (vollzeitMonateContainer) vollzeitMonateContainer.classList.add("hidden");
   if (separator) separator.classList.add("hidden");
 
-  // 7. View aktualisieren (Zeige Schritt 1, setze Progress Bar zurück)
+  // 7. View aktualisieren (Zeige Schritt 1)
   View.showStep(1);
 
-  // 8. Nach oben scrollen
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  // 8. Nach oben scrollen (mit der importierten Funktion)
+
+  scrollToCalculator();
 }
