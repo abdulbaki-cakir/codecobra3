@@ -775,17 +775,27 @@
   </div>
 
   <div class="reset-container">
-    <button class="reset-btn" onclick="window.location.href='index.html'">
+    <button class="reset-btn" type="button" id="reset-btn">
       <img
         src="/src/assets/icons/trash3.svg"
         alt=""
         aria-hidden="true"
         class="icon-inline reset-icon"
       />
-      <span data-translate-key="btn_restart" class="reset-label"
-        >Zurücksetzen</span
-      >
+      <span data-translate-key="btn_restart" class="reset-label">
+        Zurücksetzen
+      </span>
     </button>
+
+    <span
+      id="reset-confirm-msg"
+      data-translate-key="confirm_reset_message"
+      style="display: none"
+      aria-hidden="true"
+    >
+      Möchten Sie den Rechner wirklich zurücksetzen? Alle Ihre Eingaben gehen
+      verloren.
+    </span>
   </div>
 </main>
 

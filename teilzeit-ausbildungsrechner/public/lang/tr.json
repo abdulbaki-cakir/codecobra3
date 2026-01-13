@@ -9,6 +9,8 @@
   "nav_easy_language": "Leichte Sprache",
   "easy_language_toggle_label": "Kolay Dili<br />etkinleştir",
 
+  "confirm_reset_message": "Hesaplayıcıyı gerçekten sıfırlamak istiyor musunuz? Girdiğiniz tüm veriler kaybolacaktır.",
+
   "calc_title": "Yarı Zamanlı Mesleki Eğitim Hesaplayıcısı",
   "calc_intro": "Mesleki eğitiminizi yarı zamanlı olarak mı yapmak istiyorsunuz?<br />O zaman doğru yerdesiniz.<br />Eğitiminizin yarı zamanlı olarak ne kadar süreceğini hemen öğrenin.",
   "progress_start": "Başlangıç",

@@ -6,6 +6,8 @@
   "nav_easy_language": "Leichte Sprache",
   "easy_language_toggle_label": "Enable easy language",
 
+  "confirm_reset_message": "Do you really want to reset the calculator? All your inputs will be lost.",
+
   "calc_title": "Part-Time Apprenticeship Calculator",
   "calc_intro": "Do you want to complete your apprenticeship part-time?<br />Then you're in the right place.<br />Find out instantly how long your part-time training will take.",
   "progress_start": "Start",

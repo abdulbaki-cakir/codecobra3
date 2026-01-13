@@ -6,6 +6,8 @@
   "nav_easy_language": "Leichte Sprache",
   "easy_language_toggle_label": "Leichte Sprache<br />aktivieren",
 
+  "confirm_reset_message": "Möchten Sie den Rechner wirklich zurücksetzen? Alle Ihre Eingaben gehen verloren.",
+
   "calc_title": "Teilzeit\u00AD-Ausbildungs\u00ADrechner",
   "calc_intro": "Möchten Sie eine Ausbildung in Teilzeit?<br />Dann sind Sie hier richtig.<br />Hier finden Sie die Dauer der Ausbildung.",
   "progress_start": "Start",
