@@ -26,7 +26,7 @@
   "label_training_duration": "How many months does your full-time training last?",
   "info_training_duration": "Please select the usual full-time duration of your training (e.g., 24, 36, or 42 months according to your contract).",
   "question_parttime_start": "How would you like to complete your training?",
-  "option_parttime_direct": "I will start <strong>directly part-time</strong>",
+  "option_parttime_direct": "I will start <strong>directly in part-time</strong>",
   "option_parttime_later": "First full-time, <strong>later part-time</strong>",
   "label_fulltime_months": "Months full-time",
   "placeholder_fulltime_months": "6",
@@ -42,9 +42,9 @@
 
   "question_school": "What is your highest school qualification?",
   "option_school_none": "None of the above",
-  "option_school_basic": "secondary school diploma",
-  "option_school_mid": "high school diploma",
-  "option_school_high": "technical college entrance qualification / high school diploma",
+  "option_school_basic": "Lower secondary school certificate (Hauptschulabschluss)",
+  "option_school_mid": "intermediate school-leaving certificate (Mittlere Reife)",
+  "option_school_high": "technical college entrance qualification / university entrance qualification (Fachhochschulreife / Abitur)",
   "info_school": "The higher your school qualification, the more likely it is that a reduction in duration will be possible. Select the highest qualification you have.",
 
   "question_experience": "Have you already gained some relevant work experience (e.g., through an internship)?",
