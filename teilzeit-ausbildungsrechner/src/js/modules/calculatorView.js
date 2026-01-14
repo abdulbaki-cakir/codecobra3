@@ -1,6 +1,6 @@
 import { resetVollzeitMonateValidation } from "./input-validation.js";
 import { getTranslation, onLanguageChange } from "./language.js";
-import infoIcon from "../../assets/icons/information.svg";
+import infoIcon from "../../assets/icons/info-circle-fill.svg";
 
 // Globaler Chart-State, damit wir das Diagramm beim Neu-Rendern zerstören können
 let myResultsChart = null;
@@ -271,8 +271,9 @@ export function renderResults(data) {
         noteElement.classList.add("cap-message");
         servedTimeDetailsDiv.appendChild(noteElement);
       }
-      noteElement.innerHTML =
-        "<i><strong>Hinweis: Dies ist keine Verkürzung, sondern geleistete Zeit.</strong></i>";
+
+      noteElement.innerHTML = `<i><strong>${getTranslation("note_served_time_not_shortening")}</strong></i>`;
+
       noteElement.style.display = "block";
     } else {
       servedTimeCard.style.display = "none";

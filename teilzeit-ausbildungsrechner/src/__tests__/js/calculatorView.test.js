@@ -26,7 +26,7 @@ jest.mock("../../js/modules/input-validation.js", () => ({
 }));
 
 // Icon-Import im Modul
-jest.mock("../../assets/icons/information.svg", () => "info.svg", {
+jest.mock("../../assets/icons/info-circle-fill.svg", () => "info.svg", {
   virtual: true,
 });
 
@@ -138,9 +138,9 @@ describe("calculatorView", () => {
 
     // Initial: "später" (1) => Felder sichtbar
     expect(
-      document.getElementById("vollzeit-monate-input").classList.contains(
-        "hidden",
-      ),
+      document
+        .getElementById("vollzeit-monate-input")
+        .classList.contains("hidden"),
     ).toBe(false);
 
     // Wechsel auf "sofort" (0)
@@ -151,9 +151,9 @@ describe("calculatorView", () => {
     radios[1].dispatchEvent(new Event("change"));
 
     expect(
-      document.getElementById("vollzeit-monate-input").classList.contains(
-        "hidden",
-      ),
+      document
+        .getElementById("vollzeit-monate-input")
+        .classList.contains("hidden"),
     ).toBe(true);
     expect(document.getElementById("vollzeit-monate").value).toBe("0");
     expect(resetValidation).toHaveBeenCalled();

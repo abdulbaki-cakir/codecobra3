@@ -9,10 +9,14 @@
   "nav_easy_language": "Leichte Sprache",
   "easy_language_toggle_label": "Увімкнути<br />спрощену мову",
 
-  "calc_title": "Калькулятор професійного навчання (Ausbildung) з неповним робочим днем",
+  "note_served_time_not_shortening": "Примітка: це не скорочення, а вже відпрацьований час.",
+
+  "confirm_reset_message": "Ви дійсно бажаєте скинути калькулятор? Всі введені дані буде втрачено.",
+
+  "calc_title": "Калькулятор професійного навчання з неповним робочим днем",
   "calc_intro": "Бажаєте пройти професійне навчання (Ausbildung) у режимі неповного робочого дня?<br />Тоді ви в правильному місці.<br />Дізнайтеся відразу, скільки триватиме ваше навчання в такому режимі.",
   "progress_start": "Старт",
-  "progress_adjust": "Налаштувати тривалість",
+  "progress_adjust": "Перевірка скорочення",
   "progress_results": "Результати",
 
   "step1_title": "1. Основні дані",
@@ -131,12 +135,12 @@
   "reason_school_generic": "Шкільний атестат",
   "reason_school_none": "Немає/Базова середня освіта",
   "reason_school_base": "Базова середня освіта (Hauptschulabschluss)",
-  "reason_school_middle": "Повна загальна середня освіта (Mittlere Reife)",
+  "reason_school_mid": "Повна загальна середня освіта (Mittlere Reife)",
   "reason_school_high": "Абітур (Abitur)",
   "reason_experience": "Перший досвід роботи / EQ",
   "reason_apprenticeship": "Завершена професійна освіта",
   "reason_study": "Відповідні навчальні досягнення (ВНЗ)",
-  "reason_family_care": "Догляд за власними дітьми або родичами",
+  "reason_familycare": "Догляд за власними дітьми або родичами",
   "reason_generic": "Причина зарахування",
 
   "privacy_title": "Захист даних",

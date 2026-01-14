@@ -9,10 +9,14 @@
   "nav_easy_language": "Leichte Sprache",
   "easy_language_toggle_label": "تفعيل<br />اللغة المبسطة",
 
+  "note_served_time_not_shortening": "ملاحظة: هذا ليس تخفيضًا، بل وقت تم إنجازه.",
+
+  "confirm_reset_message": "هل تريد حقًا إعادة تعيين الحاسبة؟ ستفقد جميع البيانات التي أدخلتها.",
+
   "calc_title": "حاسبة التدريب المهني بدوام جزئي",
   "calc_intro": "هل ترغب في إكمال تدريبك المهني (Ausbildung) بدوام جزئي؟<br />إذن أنت في المكان الصحيح.<br />اكتشف فوراً المدة التي سيستغرقها تدريبك بنظام الدوام الجزئي.",
   "progress_start": "البداية",
-  "progress_adjust": "تعديل المدة",
+  "progress_adjust": "فحص التقصير",
   "progress_results": "النتائج",
 
   "step1_title": "1. البيانات الأساسية",
@@ -131,12 +135,12 @@
   "reason_school_generic": "المؤهل الدراسي",
   "reason_school_none": "لا يوجد/شهادة تعليم أساسي",
   "reason_school_base": "شهادة التعليم الأساسي (Hauptschulabschluss)",
-  "reason_school_middle": "الشهادة المتوسطة (Mittlere Reife)",
+  "reason_school_mid": "الشهادة المتوسطة (Mittlere Reife)",
   "reason_school_high": "الثانوية العامة (Abitur)",
   "reason_experience": "خبرة عملية أولى / EQ",
   "reason_apprenticeship": "تدريب مهني مكتمل",
   "reason_study": "إنجازات دراسية جامعية مناسبة",
-  "reason_family_care": "رعاية الأطفال أو الأقارب",
+  "reason_familycare": "رعاية الأطفال أو الأقارب",
   "reason_generic": "سبب الاحتساب",
 
   "privacy_title": "حماية البيانات",

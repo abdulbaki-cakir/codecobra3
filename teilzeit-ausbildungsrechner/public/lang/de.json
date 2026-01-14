@@ -6,10 +6,14 @@
   "nav_easy_language": "Leichte Sprache",
   "easy_language_toggle_label": "Leichte Sprache<br />aktivieren",
 
+  "note_served_time_not_shortening": "Hinweis: Dies ist keine Verkürzung, sondern geleistete Zeit.",
+
+  "confirm_reset_message": "Möchten Sie den Rechner wirklich zurücksetzen? Alle Ihre Eingaben gehen verloren.",
+
   "calc_title": "Teilzeit\u00AD-Ausbildungs\u00ADrechner",
   "calc_intro": "Sie möchten Ihre Ausbildung in Teilzeit absolvieren?<br />Dann sind Sie hier genau richtig.<br />Finden Sie sofort heraus, wie lange Ihre Ausbildung in Teilzeit dauert.",
   "progress_start": "Start",
-  "progress_adjust": "Dauer anpassen",
+  "progress_adjust": "Verkürzung prüfen",
   "progress_results": "Ergebnisse",
 
   "step1_title": "1. Basis Daten",
@@ -128,12 +132,12 @@
   "reason_school_generic": "Schulabschluss",
   "reason_school_none": "Kein/Hauptschulabschluss",
   "reason_school_base": "Hauptschulabschluss",
-  "reason_school_middle": "Mittlere Reife / Realschulabschluss",
+  "reason_school_mid": "Mittlere Reife / Realschulabschluss",
   "reason_school_high": "Fachhochschulreife / Abitur",
   "reason_experience": "Erste Berufserfahrung / EQ",
   "reason_apprenticeship": "Abgeschlossene Berufsausbildung",
   "reason_study": "Passende Studienleistungen",
-  "reason_family_care": "Betreuung eigener Kinder oder Pflege naher Angehöriger",
+  "reason_familycare": "Betreuung eigener Kinder oder Pflege naher Angehöriger",
   "reason_generic": "Anrechnungsgrund",
 
   "privacy_title": "Datenschutz",

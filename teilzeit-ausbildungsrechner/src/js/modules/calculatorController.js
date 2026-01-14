@@ -26,7 +26,6 @@ function handleCalculation() {
  */
 export function initializeCalculator() {
   // --- UI-Logik: Radio-Buttons mit Dropdowns verknüpfen ---
-  // Sorgt dafür, dass die Auswahl "Ja" das entsprechende Select-Menü aktiviert.
   View.linkRadiosToSelect("age-radio", "age-select");
   View.linkRadiosToSelect("school-finish-radio", "school-finish");
   View.linkRadiosToSelect("experience-radio", "experience-select");
@@ -44,12 +43,10 @@ export function initializeCalculator() {
   // Schritt 1 -> Schritt 2 (Mit Validierung)
   if (nextBtn1) {
     nextBtn1.addEventListener("click", () => {
-      // Validierung aller Pflichtfelder in Schritt 1
       const isVollzeitValid = Validation.validateVollzeitstunden(true);
       const isWochenstundenValid = Validation.validateWochenstunden(true);
       const isVollzeitMonateValid = Validation.validateVollzeitMonate(true);
 
-      // Nur weiterschalten, wenn alles valide ist
       if (isVollzeitValid && isWochenstundenValid && isVollzeitMonateValid) {
         currentStep = 2;
         View.showStep(currentStep);
@@ -70,15 +67,14 @@ export function initializeCalculator() {
   // Schritt 2 -> Schritt 3 (Berechnung auslösen)
   if (nextBtn2) {
     nextBtn2.addEventListener("click", () => {
-      handleCalculation(); // Kern-Logik ausführen
-
+      handleCalculation();
       currentStep = 3;
       View.showStep(currentStep);
       scrollToCalculator();
     });
   }
 
-  // Zurück zu Schritt 2 (Ergebnis verwerfen/korrigieren)
+  // Zurück zu Schritt 2
   if (backBtn3) {
     backBtn3.addEventListener("click", () => {
       currentStep = 2;
@@ -87,12 +83,24 @@ export function initializeCalculator() {
     });
   }
 
+  // --- Reset Button Integration ---
+  setupResetButton();
+
   // --- Initialen UI-Zustand setzen ---
   View.showStep(currentStep);
   View.setupPartTimeSwitch();
 
   // --- Live-Validierung (Blur & Enter Events) ---
-  // Diese Listener sorgen für sofortiges Feedback, wenn der Nutzer ein Feld verlässt
+  setupLiveValidation();
+
+  // Global: Toggle-Logik für Details aktivieren
+  setupDetailsToggle();
+}
+
+/**
+ * Hilfsfunktion: Setzt die Live-Validierung auf
+ */
+function setupLiveValidation() {
   const vollzeitInput = document.getElementById("vollzeitstunden");
   const wochenstundenInput = document.getElementById("wochenstunden");
   const vollzeitMonateInput = document.getElementById("vollzeit-monate");
@@ -101,15 +109,14 @@ export function initializeCalculator() {
   if (vollzeitInput) {
     const validateVollzeit = () => {
       Validation.validateVollzeitstunden(true);
-      // Wenn Wochenstunden schon gefüllt sind, diese auch neu validieren (Verhältnis-Check)
       if (wochenstundenInput.value.trim() !== "") {
         Validation.validateWochenstunden(false);
       }
     };
     vollzeitInput.addEventListener("blur", validateVollzeit);
-    vollzeitInput.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        event.preventDefault();
+    vollzeitInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
         vollzeitInput.blur();
       }
     });
@@ -120,9 +127,9 @@ export function initializeCalculator() {
       Validation.validateWochenstunden(true);
     };
     wochenstundenInput.addEventListener("blur", validateWochenstunden);
-    wochenstundenInput.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        event.preventDefault();
+    wochenstundenInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
         wochenstundenInput.blur();
       }
     });
@@ -133,15 +140,14 @@ export function initializeCalculator() {
       Validation.validateVollzeitMonate(true);
     };
     vollzeitMonateInput.addEventListener("blur", validateMonate);
-    vollzeitMonateInput.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        event.preventDefault();
+    vollzeitMonateInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
         vollzeitMonateInput.blur();
       }
     });
   }
 
-  // Validierung neu anstoßen, wenn sich abhängige Felder ändern
   if (dauerSelect) {
     dauerSelect.addEventListener("change", () => {
       Validation.validateVollzeitMonate(false);
@@ -158,5 +164,93 @@ export function initializeCalculator() {
   });
 }
 
-// Global: Toggle-Logik für Details aktivieren
-setupDetailsToggle();
+/**
+ * Logik für den Reset-Button (Soft-Reset ohne Page Reload)
+ */
+function setupResetButton() {
+  const resetBtn = document.getElementById("reset-btn");
+
+  if (resetBtn) {
+    resetBtn.onclick = null;
+
+    resetBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      // 1. Hole das versteckte Element mit dem Text
+      const msgElement = document.getElementById("reset-confirm-msg");
+
+      // 2. Fallback, falls Element fehlt: Deutscher Standardtext
+      let message =
+        "Möchten Sie den Rechner wirklich zurücksetzen? Alle Ihre Eingaben gehen verloren.";
+
+      // 3. Wenn Element da ist, nimm den Textinhalt und SÄUBERE ihn
+      if (msgElement && msgElement.textContent.trim() !== "") {
+        message = msgElement.textContent.replace(/\s+/g, " ").trim();
+      }
+
+      // 4. Browser-Dialog anzeigen
+      const confirmReset = confirm(message);
+
+      if (confirmReset) {
+        resetCalculator();
+      }
+    });
+  }
+}
+
+/**
+ * Führt den eigentlichen Reset durch
+ */
+function resetCalculator() {
+  // 1. State zurücksetzen
+  currentStep = 1;
+
+  // 2. Text-Inputs leeren
+  const inputsToClear = ["vollzeitstunden", "wochenstunden", "vollzeit-monate"];
+  inputsToClear.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) el.value = "";
+  });
+
+  // 3. Selects auf Standard setzen
+  const dauerSelect = document.getElementById("ausbildungsdauer");
+  if (dauerSelect) dauerSelect.value = "36";
+
+  // 4. Radio Groups auf erste Option (Index 0) zurücksetzen
+  const radioGroups = [
+    "part-time-start-radio",
+    "family-care-radio",
+    "age-radio",
+    "school-finish-radio",
+    "apprenticeship-radio",
+    "experience-radio",
+    "study-radio",
+  ];
+
+  radioGroups.forEach((name) => {
+    const radios = document.getElementsByName(name);
+    if (radios.length > 0) {
+      radios[0].checked = true;
+      radios[0].dispatchEvent(new Event("change"));
+    }
+  });
+
+  // 5. Validierungs-Meldungen ausblenden
+  const warnings = document.querySelectorAll(".validation-popup");
+  warnings.forEach((el) => (el.style.display = "none"));
+
+  // 6. UI-Spezifika zurücksetzen (Versteckter Vollzeit-Input)
+  const vollzeitMonateContainer = document.getElementById(
+    "vollzeit-monate-input",
+  );
+  const separator = document.getElementById("vollzeit-monate-separator");
+  if (vollzeitMonateContainer) vollzeitMonateContainer.classList.add("hidden");
+  if (separator) separator.classList.add("hidden");
+
+  // 7. View aktualisieren (Zeige Schritt 1)
+  View.showStep(1);
+
+  // 8. Nach oben scrollen (mit der importierten Funktion)
+
+  scrollToCalculator();
+}

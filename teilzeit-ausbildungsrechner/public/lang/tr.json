@@ -9,10 +9,14 @@
   "nav_easy_language": "Leichte Sprache",
   "easy_language_toggle_label": "Kolay Dili<br />etkinleştir",
 
+  "note_served_time_not_shortening": "Not: Bu bir kısaltma değil, tamamlanmış süredir.",
+
+  "confirm_reset_message": "Hesaplayıcıyı gerçekten sıfırlamak istiyor musunuz? Girdiğiniz tüm veriler kaybolacaktır.",
+
   "calc_title": "Yarı Zamanlı Mesleki Eğitim Hesaplayıcısı",
   "calc_intro": "Mesleki eğitiminizi yarı zamanlı olarak mı yapmak istiyorsunuz?<br />O zaman doğru yerdesiniz.<br />Eğitiminizin yarı zamanlı olarak ne kadar süreceğini hemen öğrenin.",
   "progress_start": "Başlangıç",
-  "progress_adjust": "Süreyi uyarla",
+  "progress_adjust": "Kısaltma kontrolü",
   "progress_results": "Sonuçlar",
 
   "step1_title": "1. Temel Veriler",
@@ -131,12 +135,12 @@
   "reason_school_generic": "Okul Diploması",
   "reason_school_none": "Yok/Temel Okul Diploması",
   "reason_school_base": "Temel Okul Diploması (Hauptschulabschluss)",
-  "reason_school_middle": "Ortaokul Diploması (Mittlere Reife)",
+  "reason_school_mid": "Ortaokul Diploması (Mittlere Reife)",
   "reason_school_high": "Lise Diploması / Abitur",
   "reason_experience": "İlk iş deneyimi / EQ",
   "reason_apprenticeship": "Tamamlanmış mesleki eğitim",
   "reason_study": "Uygun üniversite dersleri",
-  "reason_family_care": "Kendi çocuklarının bakımı veya yakın akraba bakımı",
+  "reason_familycare": "Kendi çocuklarının bakımı veya yakın akraba bakımı",
   "reason_generic": "Sayılma nedeni",
 
   "privacy_title": "Veri Gizliliği",

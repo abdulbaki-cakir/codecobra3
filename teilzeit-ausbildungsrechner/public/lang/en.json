@@ -6,10 +6,14 @@
   "nav_easy_language": "Leichte Sprache",
   "easy_language_toggle_label": "Enable easy language",
 
+  "note_served_time_not_shortening": "Note: This is not a reduction, but time already served.",
+
+  "confirm_reset_message": "Do you really want to reset the calculator? All your inputs will be lost.",
+
   "calc_title": "Part-Time Apprenticeship Calculator",
   "calc_intro": "Do you want to complete your apprenticeship part-time?<br />Then you're in the right place.<br />Find out instantly how long your part-time training will take.",
   "progress_start": "Start",
-  "progress_adjust": "Adjust duration",
+  "progress_adjust": "Check shortening",
   "progress_results": "Results",
 
   "step1_title": "1. Basic data",
@@ -128,12 +132,12 @@
   "reason_school_generic": "School degree",
   "reason_school_none": "No degree / lower secondary",
   "reason_school_base": "Lower secondary degree",
-  "reason_school_middle": "Intermediate secondary degree",
+  "reason_school_mid": "Intermediate secondary degree",
   "reason_school_high": "Higher secondary / university entrance",
   "reason_experience": "Initial work experience / EQ",
   "reason_apprenticeship": "Completed vocational training",
   "reason_study": "Relevant university courses",
-  "reason_family_care": "Caring for one's own children or close relatives",
+  "reason_familycare": "Caring for one's own children or close relatives",
   "reason_generic": "Reason for credit",
 
   "privacy_title": "Data Protection",
